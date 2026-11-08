@@ -11,5 +11,17 @@
     "force_pushes": false,
     "deletions": false
   },
-  "merge_status": "Awaiting required remote CI"
+  "validated_application_commit": "0a6a3d8",
+  "required_quality_run": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/42525267101",
+  "quality_result": "success",
+  "validated_stages": [
+    "Linux PostgreSQL tests",
+    "Ruff formatting/lint",
+    "strict mypy",
+    "frontend lint/format/type/build",
+    "native dependency audits",
+    "Chromium axe/responsive/keyboard checks",
+    "Docker deployment image build"
+  ],
+  "merge_policy": "Current PR head must pass protected quality status before merge; GitHub PR state is authoritative."
 }

@@ -6,7 +6,7 @@
 - [ ] Each member's individual eligibility/registration attestation and final contribution descriptions remain user-owned.
 - [x] GitHub implementation published in PR #1 and protected main verified.
 - [x] Remaining deployment/audio acceptance work tracked in GitHub issues #3 and #4.
-- [ ] Current commit must pass the required remote quality/container gate before merge.
+- [x] Application commit 0a6a3d8 passed Linux/browser/audit/container CI; protected PR merges also require the current head to be green.
 ## WBS-01: Real Gnani spike
 - [x] WBS-01.1 through WBS-01.6: actual WAV validated, direct cURL + backend HTTPX real responses, tests and sanitized evidence.
 - [ ] Exact deployed-account/key smoke requires actual hosting.
@@ -39,7 +39,7 @@
 - [x] RBAC/IDOR, provider and media failures, idempotency/version conflicts, secret boundaries and dependency audit.
 - [x] Actual private backup/isolated restore drill with matching table counts.
 - [x] Docker/Render/CI configuration and static Render schema validation.
-- [ ] Remote CI/container build and protected main execution evidence.
+- [x] Remote Linux/browser/audit/container build and protected main enforcement verified; see github-publication.json.
 - [ ] Render account connection, HTTPS deployment and fresh deployed Gnani smoke.
 - [ ] 15 distinct authentic audio evaluation cases; parser fixtures do not satisfy this.
 ## WBS-08: User-owned submission

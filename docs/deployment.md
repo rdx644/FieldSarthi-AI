@@ -12,6 +12,6 @@ A multi-stage non-root Docker image builds React, installs the frozen Python loc
 
 The standard Render PostgreSQL connection URL is normalized to SQLAlchemy's psycopg driver. Runtime cookies are Secure in production; same-origin browser requests use the CSRF header. CORS permits no external origins in the Blueprint; add exact trusted origins only if the architecture changes.
 
-**Limitations:** free services sleep after inactivity; free databases expire after 30 days. Do not present this as enterprise production hosting. Docker image execution remains unverified locally if the Docker daemon is unavailable; the repository contains a buildable specification, not a claim of a completed image build.
+**Limitations:** free services sleep after inactivity; free databases expire after 30 days. Do not present this as enterprise production hosting. The Docker image built successfully in GitHub CI. Local Docker execution and public hosted execution are not claimed. The local native application and its real provider workflow were verified separately.
 
 Sources checked: https://render.com/docs/blueprint-spec , https://render.com/docs/free , https://render.com/docs/postgresql-creating-connecting , https://docs.astral.sh/uv/guides/integration/docker/ .
