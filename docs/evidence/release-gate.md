@@ -15,7 +15,7 @@
 - Render Blueprint static schema validation passes. Docker image build was executed successfully in GitHub CI; actual hosted execution remains a separate gate below.
 
 ## External gates still requiring actual evidence
-- [x] GitHub implementation published in PR #1; Linux quality/browser/audit/container build passed for application commit 0a6a3d8. [Executed run](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42525267101). Any subsequent documentation-only commit remains subject to required current-head CI.
+- [x] GitHub implementation published in PR #2; Linux quality/browser/audit/container build passed for application commit 0a6a3d8. [Executed run](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42525267101). Any subsequent documentation-only commit remains subject to required current-head CI.
 - [x] Protected main workflow enforced: required quality check, PR workflow, no force pushes/deletions. See github-publication.json.
 - [ ] Public HTTPS hosting and deployed real-Gnani smoke with the authorized key.
 - [ ] 15 distinct consenting authentic audio evaluation clips and reviewed ground truth.

@@ -4,7 +4,7 @@
 - [x] Genuine key/STT access verified; user reports 5,000 starting credits and permits the same key for hosting.
 - [x] User confirms team of two, registration and final-form receipt; names/institution received.
 - [ ] Each member's individual eligibility/registration attestation and final contribution descriptions remain user-owned.
-- [x] GitHub implementation published in PR #1 and protected main verified.
+- [x] GitHub implementation published in PR #2 and protected main verified.
 - [x] Remaining deployment/audio acceptance work tracked in GitHub issues #3 and #4.
 - [x] Application commit 0a6a3d8 passed Linux/browser/audit/container CI; protected PR merges also require the current head to be green.
 ## WBS-01: Real Gnani spike

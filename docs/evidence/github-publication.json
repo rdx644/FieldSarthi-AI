@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/rdx644/FieldSarthi-AI",
-  "pull_request": "https://github.com/rdx644/FieldSarthi-AI/pull/1",
+  "pull_request": "https://github.com/rdx644/FieldSarthi-AI/pull/2",
   "protection": {
     "branch": "main",
     "required_contexts": [
@@ -23,5 +23,6 @@
     "Chromium axe/responsive/keyboard checks",
     "Docker deployment image build"
   ],
-  "merge_policy": "Current PR head must pass protected quality status before merge; GitHub PR state is authoritative."
+  "merge_policy": "Current PR head must pass protected quality status before merge; GitHub PR state is authoritative.",
+  "previous_pull_request": "https://github.com/rdx644/FieldSarthi-AI/pull/1"
 }
