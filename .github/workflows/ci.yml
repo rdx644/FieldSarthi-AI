@@ -1,10 +1,14 @@
 name: quality
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   quality:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: postgres:18
@@ -14,7 +18,7 @@ jobs:
           POSTGRES_DB: fieldsaarthi_test
         ports: ['5432:5432']
         options: >-
-          --health-cmd 'pg_isready -U fieldsaarthi -d fieldsaarthi_test'
+          --health-cmd "pg_isready -U fieldsaarthi -d fieldsaarthi_test"
           --health-interval 5s --health-timeout 5s --health-retries 10
     env:
       DATABASE_URL: postgresql+psycopg://fieldsaarthi:ci-password-only@localhost:5432/fieldsaarthi_app
