@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-11-08T21:10:30.874123+00:00",
+  "source": "actual saved-ticket endpoint exercised through Chrome",
+  "method": "POST",
+  "http_status": 200,
+  "content_type": "audio/wav",
+  "browser_audio_duration_seconds": 6.4,
+  "browser_audio_ready_state": 1,
+  "browser_audio_error": null,
+  "requested_model": "timbre-v2.5",
+  "capture_note": "Browser parsed/playable WAV blob. Playwright network response.body() did not retain bytes; no response-body hash is claimed. Binary delivery is independently covered by test_successful_tts_body_is_delivered_as_binary."
+}

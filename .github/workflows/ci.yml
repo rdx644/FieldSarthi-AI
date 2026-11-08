@@ -1,0 +1,76 @@
+name: quality
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: fieldsaarthi
+          POSTGRES_PASSWORD: ci-password-only
+          POSTGRES_DB: fieldsaarthi_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U fieldsaarthi -d fieldsaarthi_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+psycopg://fieldsaarthi:ci-password-only@localhost:5432/fieldsaarthi_app
+      TEST_DATABASE_URL: postgresql+psycopg://fieldsaarthi:ci-password-only@localhost:5432/fieldsaarthi_test
+      JWT_SECRET: ci-test-only-signing-key-never-used-in-production
+      GNANI_API_KEY_ID: CI_TEST_KEY_NOT_A_REAL_PROVIDER_CREDENTIAL
+      APP_ENV: development
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.1'
+          enable-cache: true
+      - run: uv python install 3.12
+      - run: uv sync --locked --python 3.12
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci --ignore-scripts
+        working-directory: web
+      - run: npm run lint
+        working-directory: web
+      - run: npm run format:check
+        working-directory: web
+      - run: npm run build
+        working-directory: web
+      - run: npm audit --audit-level=high
+        working-directory: web
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy app
+      - run: uv run pytest -q
+      - run: uv run pip-audit
+      - name: Non-billable browser/accessibility checks
+        run: |
+          uv run python -c "import psycopg; c=psycopg.connect('host=localhost port=5432 user=fieldsaarthi password=ci-password-only dbname=postgres',autocommit=True); c.execute('CREATE DATABASE fieldsaarthi_app'); c.close()"
+          uv run alembic upgrade head
+          uv run python -m app.seed
+          uv run playwright install --with-deps chromium
+          .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log > /tmp/fieldsaarthi-ci.log 2>&1 &
+          app_pid=$!
+          trap 'kill "$app_pid"' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/health/ready && break; sleep 1; done
+          uv run python scripts/browser_quality.py --channel chromium
+      - name: Build deployment image
+        run: docker build --tag fieldsaarthi:ci .
+        working-directory: .

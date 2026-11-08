@@ -1,0 +1,8 @@
+# Preserve byte-for-byte source evidence and its recorded SHA256.
+docs/roadmap.md -text
+docs/sources/*.html -text
+
+*.pdf binary
+*.png binary
+*.woff binary
+*.woff2 binary

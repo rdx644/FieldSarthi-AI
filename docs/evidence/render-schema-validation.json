@@ -1,0 +1,5 @@
+{
+  "source": "https://render.com/schema/render.yaml.json",
+  "valid": true,
+  "scope": "Static schema only, not an executed deployment"
+}

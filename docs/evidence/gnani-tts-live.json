@@ -1,0 +1,16 @@
+{
+  "timestamp_utc": "2026-11-08T19:36:40.068056+00:00",
+  "http_status": 200,
+  "requested_model": "timbre-v2.5",
+  "voice": "Nalini",
+  "language": "hi-IN",
+  "content_type": "audio/wav",
+  "provider_request_id": null,
+  "duration_seconds": 1.76,
+  "sample_rate": 48000,
+  "channels": 1,
+  "audio_sha256": "c0fea8a8d72d1bd8d3e26ee765e6a63f5e9306d2f457a8c5be0ca7493802524d",
+  "streaming_header_repaired": true,
+  "normalized_audio_sha256": "db1edfcadff3e3ed2fc0778485edf9593b490bfced61c18c79136d0d6dd24c65",
+  "model_provenance": "Requested timbre-v2.5; binary response does not echo model name"
+}

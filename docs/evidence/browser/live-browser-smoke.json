@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-11-08T19:35:12.188430+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "input": "user-recorded prerecorded Hindi sample; not fresh human microphone speech",
+  "recorder": "MediaRecorder start/stop verified with Chrome file-fed test audio; discarded",
+  "provider": {
+    "name": "Gnani AI",
+    "model": "prisma-v2.5",
+    "request_id": "31fc77de-ab52-4b66-8b64-59ddac50117b"
+  },
+  "transcribe_http_status": 201,
+  "order_id": "7bdfb548-f39a-4adf-bf19-e8bec07bba4c",
+  "public_code": "WO-1673DA779139",
+  "refresh_persistence": true,
+  "supervisor_assignment_and_resolution": true,
+  "javascript_errors": [],
+  "desktop_width": 1440,
+  "mobile_width": 390
+}

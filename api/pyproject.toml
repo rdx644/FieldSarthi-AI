@@ -1,0 +1,44 @@
+[project]
+name = "fieldsaarthi-api"
+version = "0.2.0"
+requires-python = ">=3.11"
+dependencies = [
+    "alembic>=1.20.1",
+    "fastapi==0.162.2",
+    "httpx==0.28.1",
+    "imageio-ffmpeg>=0.8.1",
+    "psycopg[binary]>=3.3.8",
+    "pwdlib[argon2]>=0.3.1",
+    "pydantic==2.13.3",
+    "pyjwt>=2.15.1",
+    "python-dotenv>=1.2.2",
+    "python-multipart>=0.0.33",
+    "sqlalchemy>=2.0,<2.1",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.0.3",
+    "ruff==0.14.10",
+    "mypy==1.19.1",
+    "pip-audit>=2.10.1",
+    "httpx2>=2.16.0",
+    "playwright>=1.64.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+mypy_path = "stubs"
+python_version = "3.11"
+strict = true

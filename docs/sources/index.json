@@ -1,0 +1,33 @@
+[
+  {
+    "name": "challenge",
+    "url": "https://www.gnani.ai/internship",
+    "error": "HTTPError"
+  },
+  {
+    "name": "terms",
+    "url": "https://www.gnani.ai/great-indian-ai-internship-registration-form",
+    "error": "HTTPError"
+  },
+  {
+    "name": "stt",
+    "url": "https://docs.gnani.ai/api/STT/speech-to-text",
+    "http_status": 200,
+    "sha256": "0924ef3c30e7dc097bf4ffb0a30c5d38eeac156869d49226b4cabb1a820face8",
+    "retrieved_utc": "2026-11-08T14:25:13.359228+00:00"
+  },
+  {
+    "name": "quick-start",
+    "url": "https://docs.gnani.ai/api/introduction/quick-start",
+    "http_status": 200,
+    "sha256": "4cae12ffaad6993298bd957cb6df616732dfb47de4d3395d6823237cce2d7c81",
+    "retrieved_utc": "2026-11-08T14:25:16.323985+00:00"
+  },
+  {
+    "name": "errors",
+    "url": "https://docs.gnani.ai/api/introduction/errors",
+    "http_status": 200,
+    "sha256": "01dbbe21fd52e9408bc2580bd92d49e77b3fb12f0cb349918744ea493f7f68e7",
+    "retrieved_utc": "2026-11-08T14:25:18.362310+00:00"
+  }
+]
