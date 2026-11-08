@@ -11,3 +11,9 @@ __pycache__/
 *.wav
 *.mp3
 *.webm
+
+node_modules/
+web/dist/
+output/
+.playwright-cli/
+*.log
