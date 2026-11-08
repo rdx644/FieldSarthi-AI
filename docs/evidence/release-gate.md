@@ -4,7 +4,7 @@
 - Full browser workflow: real prerecorded consenting voice upload -> actual Gnani -> human confirmation -> persisted order -> refresh -> supervisor assignment/start/resolution -> persisted audit. See browser/live-browser-smoke.json. This is not a claim of newly spoken microphone audio.
 - MediaRecorder start/stop: verified with Chrome file-fed test audio and discarded without a second STT call.
 - Timbre: real HTTP 200 binary WAV; repaired streaming header; actual 1.76-second PCM acknowledgment. Requested model timbre-v2.5; response does not echo a model ID. See gnani-tts-live.json.
-- Backend: **86 tests passed**, including PostgreSQL races, idempotency, IDOR, role checks, immutability triggers, replay conflict precedence, CSRF, body limits and TTS failure isolation. Strict Ruff formatting/lint and mypy pass.
+- Backend: **87 tests passed**, including PostgreSQL races, idempotency, IDOR, role checks, immutability triggers, replay conflict precedence, CSRF, body limits and TTS failure isolation. Strict Ruff formatting/lint and mypy pass.
 - Frontend: production TypeScript/Vite build, warning-free lint and formatting pass.
 - Accessibility: six desktop/mobile axe WCAG2A/AA/2.1AA views, zero reported violations/JS errors/horizontal overflow. See browser/accessibility.json. This is automated coverage, not a universal accessibility certification.
 - Text parser evaluation: 15/15 catalog fixtures pass; not an ASR accuracy metric. See ../tests/evaluation.csv.
@@ -26,3 +26,5 @@ The user explicitly instructed: **do not submit the final form**. Contribution d
 Local development completion does not claim production availability, official entry completion, CMMI certification, language recognition accuracy beyond the measured samples, or zero unknown vulnerabilities.
 
 Additional development checks: real saved-ticket browser TTS decoded as a 6.4-second playable WAV (browser/live-tts-playback.json); network-body capture was unavailable so no body hash is invented. Keyboard skip-to-content preserves the current hash route and focuses main, covered by browser_quality.py. Fresh-clone private-directory and stale-credential export cases have explicit regression tests.
+
+CI infrastructure findings were fixed without weakening application checks: Docker health-command quoting, checkout-name portability, fresh-clone private credential-directory creation, and stopping the browser test server before uv post-job cache pruning. The preceding Linux run passed all application/browser/audit/container stages; final commit-specific success must still be verified in the required GitHub quality check. Structured body-free HTTP logs now emit at INFO and propagate the HTTP request ID to Gnani, with a nonsecret telemetry regression test.

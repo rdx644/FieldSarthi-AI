@@ -5,7 +5,8 @@
 - [x] User confirms team of two, registration and final-form receipt; names/institution received.
 - [ ] Each member's individual eligibility/registration attestation and final contribution descriptions remain user-owned.
 - [x] GitHub implementation published in PR #1 and protected main verified.
-- [ ] Required remote quality/container gate and remaining issue tracker items still in progress.
+- [x] Remaining deployment/audio acceptance work tracked in GitHub issues #3 and #4.
+- [ ] Current commit must pass the required remote quality/container gate before merge.
 ## WBS-01: Real Gnani spike
 - [x] WBS-01.1 through WBS-01.6: actual WAV validated, direct cURL + backend HTTPX real responses, tests and sanitized evidence.
 - [ ] Exact deployed-account/key smoke requires actual hosting.
@@ -34,7 +35,7 @@
 - [x] Ownership-safe duplicate warnings and responsive/empty/error/accessibility polish.
 - [x] Model/language limitations documented honestly.
 ## WBS-07: Release
-- [x] 86 backend tests, strict lint/format/type, frontend build/lint/format, six axe/mobile/browser views.
+- [x] 87 backend tests, strict lint/format/type, frontend build/lint/format, six axe/mobile/browser views.
 - [x] RBAC/IDOR, provider and media failures, idempotency/version conflicts, secret boundaries and dependency audit.
 - [x] Actual private backup/isolated restore drill with matching table counts.
 - [x] Docker/Render/CI configuration and static Render schema validation.

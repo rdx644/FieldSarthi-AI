@@ -1,11 +1,10 @@
 # GitHub configuration - WBS-00.5
-Local repository, CI workflow, issue templates, RTM and risk register are prepared. Remote repository and enforced branch protection **not yet verified**. GitHub CLI was not available on PATH and no CLI authentication was confirmed.
+Repository supplied by the user: https://github.com/rdx644/FieldSarthi-AI . Existing history was preserved without force push. The implementation is reviewed through PR #1. Git credential-manager authentication works; no GitHub token is stored in this repository.
 
-After authenticating GitHub CLI (do not paste a token into chat), from the repository root:
-```powershell
-gh auth login
-gh repo create fieldsaarthi-ai --private --source . --remote origin --push
-```
-Use private visibility initially to protect review artifacts. Enable Issues. Create one issue per WBS item using `tasks/todo.md`; local task file is authoritative until tracker URLs are recorded.
-Protect `main`: require pull requests, require passing `quality` check, block force pushes/deletions. For a solo project do not require another person's approval unless a reviewer is actually available. Verify protection via repository settings/API; private-repository protection may depend on account plan. Do not claim enforcement from a workflow file alone.
-Global participant Git email is a placeholder (`your_email@example.com`). Local baseline commits use explicit Codex agent attribution. Set the intended participant identity before participant-authored commits; do not invent contributor attribution.
+Protected main is enforced: pull requests, required quality status, strict up-to-date checks, administrator enforcement, resolved conversations and no force push/deletion. Actual configuration is recorded in docs/evidence/github-publication.json. Individual reviewer approval count is zero; independent cross-model source review and executed tests are recorded separately, not represented as a GitHub human approval.
+
+CI validates Linux PostgreSQL, backend tests/Ruff/mypy, frontend type/build/lint/format, native dependency audits, non-billable Chromium/axe checks and a Docker deployment-image build. The browser test app is launched directly from the virtual environment and stopped at step exit, so it cannot retain uv cache locks during post-job pruning. Read the current required quality check on PR #1 for the commit-specific outcome; never infer a pass from this configuration document.
+
+Remaining development acceptance issues: #3 HTTPS deployment/real hosted smoke and #4 distinct authentic audio evaluation. Participant contributions and form submission remain user-owned. The user explicitly prohibited form submission by this agent.
+
+Commits use explicit Codex agent attribution. Set a participant's intended Git identity for their own commits; do not infer authorship from the placeholder global email.

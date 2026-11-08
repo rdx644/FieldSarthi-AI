@@ -2,7 +2,7 @@ import asyncio
 import os
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, File, Form, UploadFile
+from fastapi import APIRouter, Depends, File, Form, Request, UploadFile
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from starlette.concurrency import run_in_threadpool
@@ -10,7 +10,7 @@ from starlette.concurrency import run_in_threadpool
 from app.core.errors import AppError
 from app.core.limits import provider_budget
 from app.core.security import current_user, worker
-from app.db.models import Intake, Order, User, uid
+from app.db.models import Intake, Order, User
 from app.db.session import get_db
 from app.integrations.gnani import GnaniError, GnaniSpeechClient
 from app.integrations.tts import provider_slots
@@ -29,6 +29,7 @@ slots = provider_slots
 
 @router.post("/transcribe", status_code=201)
 async def transcribe(
+    request: Request,
     user: Worker,
     db: DB,
     audio_file: Annotated[UploadFile, File()],
@@ -55,7 +56,9 @@ async def transcribe(
     try:
         async with asyncio.timeout(90):
             async with slots:
-                result = await speech.transcribe(normalized, language_code, uid())
+                result = await speech.transcribe(
+                    normalized, language_code, request.state.request_id
+                )
         row.raw_transcript = result.transcript
         row.provider_model = result.model
         row.provider_request_id = result.request_id

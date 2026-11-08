@@ -35,6 +35,12 @@ app.add_middleware(
     ],
 )
 logger = logging.getLogger("fieldsaarthi")
+logger.setLevel(logging.INFO)
+logger.propagate = False
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(message)s"))
+    logger.addHandler(handler)
 app.add_middleware(BodyLimit)
 
 
@@ -80,7 +86,9 @@ async def request_context(
     logger.info(
         json.dumps(
             {
+                "event": "http_request",
                 "request_id": request.state.request_id,
+                "route": getattr(request.scope.get("route"), "path", "unmatched"),
                 "method": request.method,
                 "status": response.status_code,
                 "elapsed_ms": round((perf_counter() - started) * 1000),
