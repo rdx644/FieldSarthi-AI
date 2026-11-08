@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/rdx644/FieldSarthi-AI",
+  "pull_request": "https://github.com/rdx644/FieldSarthi-AI/pull/1",
+  "protection": {
+    "branch": "main",
+    "required_contexts": [
+      "quality"
+    ],
+    "strict": true,
+    "enforce_admins": true,
+    "force_pushes": false,
+    "deletions": false
+  },
+  "merge_status": "Awaiting required remote CI"
+}

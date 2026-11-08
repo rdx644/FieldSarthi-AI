@@ -43,7 +43,7 @@ def test_config_root_is_project_not_user_home():
     from app.integrations.smoke import ROOT
 
     assert (ROOT / "api/pyproject.toml").is_file()
-    assert ROOT.name == "fieldsaarthi-ai"
+    assert (ROOT / "docs/roadmap.md").is_file()
 
 
 def test_curl_secret_only_in_stdin_and_default_config_disabled(monkeypatch, tmp_path):

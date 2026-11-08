@@ -15,42 +15,42 @@ All requirements retained; no fixture success counts as live evidence.
 | O-10 | Deadline **10 Nov 2026, 11:59 PM IST** | docs/compliance.md; account/submission evidence pending |
 | O-11 | No bought engagement, bots, paid promotion, swaps, plagiarism, misleading demos | docs/compliance.md; account/submission evidence pending |
 | O-12 | Use synthetic demo data, not real calls/phone/account/Aadhaar/PAN data | docs/compliance.md; account/submission evidence pending |
-| FR-01 | Application boots from documented commands | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-02 | Seed known sites/locations/assets/users | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-03 | Role-restricted login/session | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-04 | Browser records audio with permission handling | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-05 | Server validates/normalizes audio | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-06 | Real Prisma request is made server-side | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
-| FR-07 | Transcript is displayed and saved as received | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
-| FR-08 | Gnani evidence is correlated | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
-| FR-09 | STT errors handled without false success | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
-| FR-10 | Extract asset and location from transcript | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-11 | Extract issue and urgency suggestion | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-12 | Provide explainable extraction evidence | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-13 | Worker corrects suggested fields | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-14 | Require valid location, asset and description | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-15 | Human confirmation required before ticket | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-16 | Work order persists transactionally | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-17 | Idempotent creation | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-18 | Immutable audit events record transitions | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-19 | Worker can view own tickets | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-20 | Supervisor views/searches work-order queue | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-21 | Supervisor can assign and reprioritize | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-22 | State transitions are constrained | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-23 | Timbre speaks saved-ticket acknowledgment | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-24 | Potential duplicates flagged | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-25 | Provenance page shows audit trail | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-01 | Reliability | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-02 | Latency | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-03 | Correctness | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-04 | Security | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
-| NFR-05 | Privacy | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
-| NFR-06 | Explainability | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-07 | Accessibility | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-08 | Reproducibility | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
-| NFR-09 | Observability | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
-| NFR-10 | Fault isolation | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
-| NFR-11 | Deployment | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-12 | Maintainability | Planned; see docs/roadmap.md; not implemented/tested |
-| NFR-13 | Cost awareness | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
-| NFR-14 | Honest representation | Partial WBS-01 controls; docs/security.md, README; full-system verification pending |
+| FR-01 | Application boots from documented commands | api/app/db/models.py; app/seed.py; Alembic; integration/test_foundation.py; real PostgreSQL seed/health verified |
+| FR-02 | Seed known sites/locations/assets/users | api/app/db/models.py; app/seed.py; Alembic; integration/test_foundation.py; real PostgreSQL seed/health verified |
+| FR-03 | Role-restricted login/session | app/core/security.py; routers/auth.py; integration/test_workflow.py and test_intakes.py; role/IDOR/cookie/CSRF checks |
+| FR-04 | Browser records audio with permission handling | web/src/pages/Report.tsx; app/services/audio.py; core/limits.py; test_intakes.py; file-fed MediaRecorder + real decoder verified, final human microphone capture pending |
+| FR-05 | Server validates/normalizes audio | web/src/pages/Report.tsx; app/services/audio.py; core/limits.py; test_intakes.py; file-fed MediaRecorder + real decoder verified, final human microphone capture pending |
+| FR-06 | Real Prisma request is made server-side | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
+| FR-07 | Transcript is displayed and saved as received | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
+| FR-08 | Gnani evidence is correlated | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
+| FR-09 | STT errors handled without false success | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
+| FR-10 | Extract asset and location from transcript | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
+| FR-11 | Extract issue and urgency suggestion | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
+| FR-12 | Provide explainable extraction evidence | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
+| FR-13 | Worker corrects suggested fields | web/src/pages/Review.tsx; app/schemas/commands.py; services/orders.py; test_release_guards.py and test_workflow.py; explicit confirmation and correction separation verified |
+| FR-14 | Require valid location, asset and description | web/src/pages/Review.tsx; app/schemas/commands.py; services/orders.py; test_release_guards.py and test_workflow.py; explicit confirmation and correction separation verified |
+| FR-15 | Human confirmation required before ticket | web/src/pages/Review.tsx; app/schemas/commands.py; services/orders.py; test_release_guards.py and test_workflow.py; explicit confirmation and correction separation verified |
+| FR-16 | Work order persists transactionally | services/orders.py; db/models.py; migration 0002; test_workflow.py; real concurrent/replay/ownership/immutability tests and browser refresh proof |
+| FR-17 | Idempotent creation | services/orders.py; db/models.py; migration 0002; test_workflow.py; real concurrent/replay/ownership/immutability tests and browser refresh proof |
+| FR-18 | Immutable audit events record transitions | services/orders.py; db/models.py; migration 0002; test_workflow.py; real concurrent/replay/ownership/immutability tests and browser refresh proof |
+| FR-19 | Worker can view own tickets | services/orders.py; db/models.py; migration 0002; test_workflow.py; real concurrent/replay/ownership/immutability tests and browser refresh proof |
+| FR-20 | Supervisor views/searches work-order queue | routers/orders.py; pages/Orders.tsx and Detail.tsx; test_workflow.py; actual browser assignment/start/resolution verified |
+| FR-21 | Supervisor can assign and reprioritize | routers/orders.py; pages/Orders.tsx and Detail.tsx; test_workflow.py; actual browser assignment/start/resolution verified |
+| FR-22 | State transitions are constrained | routers/orders.py; pages/Orders.tsx and Detail.tsx; test_workflow.py; actual browser assignment/start/resolution verified |
+| FR-23 | Timbre speaks saved-ticket acknowledgment | integrations/tts.py; routers/orders.py; pages/Detail.tsx; contract/test_tts.py; test_release_guards.py; actual Timbre WAV plus outage isolation |
+| FR-24 | Potential duplicates flagged | routers/intakes.py and orders.py; Review/Detail duplicate warnings; limited to reports user is authorized to see |
+| FR-25 | Provenance page shows audit trail | services/orders.py detail serializer; Detail.tsx; immutable DB audit/provenance; browser details/timeline evidence |
+| NFR-01 | Reliability | 83 local regression tests plus one genuine complete browser workflow; ten consecutive authentic full voice runs not claimed |
+| NFR-02 | Latency | Actual timing in live evidence; progress state; no fixed provider latency promise |
+| NFR-03 | Correctness | PostgreSQL race/idempotency/version/atomicity tests; database constraints and triggers |
+| NFR-04 | Security | Role/ownership/CSRF/cookie/upload/secret controls; dependency audits; no full pentest claim |
+| NFR-05 | Privacy | Private keys/test audio; temporary decode cleanup; synthetic data; body-free logs |
+| NFR-06 | Explainability | Original/corrected transcript, actual STT provenance and immutable event timeline |
+| NFR-07 | Accessibility | Six axe WCAG desktop/mobile views with zero reported violations; browser/accessibility.json |
+| NFR-08 | Reproducibility | Frozen uv/npm locks, README, migrations/seed, Docker/Render/CI artifacts |
+| NFR-09 | Observability | Generated request IDs, body-free structured timings/errors and live/ready endpoints |
+| NFR-10 | Fault isolation | STT failure cannot create order; TTS outage keeps saved order, verified |
+| NFR-11 | Deployment | Docker/Render Blueprint schema verified; actual public HTTPS deployment and smoke pending |
+| NFR-12 | Maintainability | Strict mypy/Ruff, TypeScript build and frontend lint/format; required GitHub quality gate |
+| NFR-13 | Cost awareness | 25s UI/30s decode cap; per-user/global single-process limits; actual console balance remains operator-owned |
+| NFR-14 | Honest representation | Test fixtures confined to tests; real local provider evidence; no deployed/form completion claim |
