@@ -185,7 +185,14 @@ export default function App() {
   const operations = route.startsWith("/orders") || user.role === "SUPERVISOR";
   return (
     <div className="app-shell">
-      <a className="skip-link" href="#main">
+      <a
+        className="skip-link"
+        href="#main"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById("main")?.focus();
+        }}
+      >
         Skip to content
       </a>
       <aside className={"sidebar " + (mobileNav ? "mobile-open" : "")}>
@@ -290,7 +297,7 @@ export default function App() {
           </div>
           <div className="top-date">{today}</div>
         </header>
-        <main id="main" className="main-content">
+        <main id="main" className="main-content" tabIndex={-1}>
           {detailId ? (
             <Detail id={detailId} user={user} />
           ) : operations ? (

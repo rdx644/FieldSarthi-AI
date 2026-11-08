@@ -50,3 +50,28 @@ def test_body_limit_before_parsing(accounts):
             headers={**headers, "Content-Length": str(20_000_000)},
         )
         assert result.status_code == 413
+
+
+def test_successful_tts_body_is_delivered_as_binary(accounts, monkeypatch):
+    from test_intakes import wav
+
+    expected = wav()
+
+    async def success(*args, **kwargs):
+        return expected
+
+    monkeypatch.setattr(TimbreClient, "synthesize", success)
+    monkeypatch.setenv("GNANI_TTS_ENABLED", "true")
+    with TestClient(app) as client:
+        headers = login(client, accounts[0])
+        created = client.post(
+            "/api/v1/work-orders",
+            json=payload(fixture_intake()),
+            headers={**headers, "Idempotency-Key": str(uuid4())},
+        )
+        result = client.post(
+            "/api/v1/work-orders/" + created.json()["id"] + "/acknowledgment-audio", headers=headers
+        )
+        assert result.status_code == 200
+        assert result.headers["content-type"] == "audio/wav"
+        assert result.content == expected

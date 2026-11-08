@@ -12,7 +12,7 @@ Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi
 - Real optional **Gnani Timbre** Hindi WAV acknowledgment, independently generated after saving. TTS failure cannot undo an order.
 - Immutable database audit/provenance protections, a responsive interface and tested desktop/mobile accessibility.
 
-**Verified locally:** 83 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six WCAG axe/browser checks, genuine browser-to-Gnani-to-database supervisor workflow, real Timbre response, and a matching PostgreSQL backup/restore drill. Exact limits and outstanding external release checks are in [the release record](docs/evidence/release-gate.md).
+**Verified locally:** 86 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six WCAG axe/browser checks, genuine browser-to-Gnani-to-database supervisor workflow, real Timbre response, and a matching PostgreSQL backup/restore drill. Exact limits and outstanding external release checks are in [the release record](docs/evidence/release-gate.md).
 
 **Hosting status:** reproducible local application; Docker/Render configuration prepared. Public HTTPS deployment is not claimed until a real hosted smoke succeeds. No public social post or official form submission is claimed.
 

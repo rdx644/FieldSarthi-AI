@@ -1,6 +1,7 @@
 import json
 import os
 import secrets
+from pathlib import Path
 from uuid import NAMESPACE_URL, uuid5
 
 from sqlalchemy import select
@@ -79,13 +80,21 @@ def seed(db: Session) -> list[dict[str, str]]:
     return accounts
 
 
+def write_accounts(accounts: list[dict[str, str]], *, root: Path = ROOT) -> None:
+    target = root / "private/demo-accounts.json"
+    target.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    existing = json.loads(target.read_text(encoding="utf-8")) if target.exists() else []
+    by_email = {account["email"]: account for account in existing}
+    by_email.update({account["email"]: account for account in accounts})
+    target.write_text(json.dumps(list(by_email.values()), indent=2), encoding="utf-8")
+
+
 if __name__ == "__main__":
+    (ROOT / "private").mkdir(parents=True, exist_ok=True, mode=0o700)
     with SessionLocal() as db:
         accounts = seed(db)
     if accounts:
-        target = ROOT / "private/demo-accounts.json"
-        existing = json.loads(target.read_text()) if target.exists() else []
-        target.write_text(json.dumps(existing + accounts, indent=2), encoding="utf-8")
+        write_accounts(accounts)
         print(
             "Synthetic accounts created; credentials saved privately to private/demo-accounts.json"
         )

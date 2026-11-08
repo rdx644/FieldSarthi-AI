@@ -65,6 +65,12 @@ def main():
         page.get_by_role("button", name="Toggle navigation").click()
         page.get_by_role("button", name="My reports", exact=False).click()
         page.get_by_role("heading", name="From reported to resolved.").wait_for()
+        previous_url = page.url
+        page.locator(".skip-link").focus()
+        page.locator(".skip-link").press("Enter")
+        page.wait_for_timeout(100)
+        assert page.url == previous_url, "Skip-to-content must not change the application route"
+        assert page.evaluate("document.activeElement.id") == "main"
         audit("quality-queue-mobile")
         page.set_viewport_size({"width": 1440, "height": 1000})
         audit("quality-queue-desktop")
