@@ -1,20 +1,48 @@
-# Execution tracker
-## WBS-00 - G0 pending
-- [ ] WBS-00.1: Official rules read; user confirmed registration, team of two and form receipt; individual eligibility and both-member registration confirmation remain. Evidence: docs/compliance.md.
-- [x] WBS-00.2: Private verification key configured; STT scope proved by two actual HTTP 200 responses; user reports 5,000 available credits. Current console balance not independently queried.
-- [x] WBS-00.3: Official sources checked; API snapshots/hashes and challenge retrieval limitations recorded in docs/sources/.
-- [x] WBS-00.4: Title, P0 scope, roles, Hindi baseline, scenario frozen in docs/scope.md.
-- [ ] WBS-00.5: Local Git, CI, issue template, RTM and risks prepared. Local baseline saved with Codex agent attribution; remote repo and protected main pending GitHub/account setup.
-## WBS-01 - local live spike passed; deployed-credential release check pending
-- [x] WBS-01.1: User-prepared real Hindi WAV verified: mono PCM16, 16kHz, 11.958 seconds.
-- [x] WBS-01.2: Genuine direct cURL call succeeded, HTTP 200; sanitized evidence saved.
-- [x] WBS-01.3: Authentic nonempty transcript, prisma-v2.5, returned request IDs and HTTP 200 verified for both transports.
-- [x] WBS-01.4: GnaniSpeechClient HTTPX adapter implemented; see api/app/integrations/gnani.py.
-- [x] WBS-01.5: Required success/no-speech/400/401/402/403/429/500/timeout cases pass offline.
-- [x] WBS-01.6: Actual sanitized cURL/HTTPX evidence saved; hashes checked against private original audio/transcripts.
-## Checkpoint
-- [ ] G0 participant/account verified
-- [x] Local G1 spike: authentic cURL + backend proof verified with verification credential
-- [ ] Strict release G1: exact eventual deployed account/key re-smoke pending deployment
-- [ ] Remote workflow/protection verified
-WBS-02 onward remains unstarted in this execution. Local integration proof exists; exact deployed-credential verification remains mandatory before release.
+# Execution status
+## WBS-00: Compliance and configuration
+- [x] Official rules/docs checked, P0 baseline frozen, original roadmap/source evidence preserved.
+- [x] Genuine key/STT access verified; user reports 5,000 starting credits and permits the same key for hosting.
+- [x] User confirms team of two, registration and final-form receipt; names/institution received.
+- [ ] Each member's individual eligibility/registration attestation and final contribution descriptions remain user-owned.
+- [ ] GitHub publication, issue tracker and protected main verification pending current publication work.
+## WBS-01: Real Gnani spike
+- [x] WBS-01.1 through WBS-01.6: actual WAV validated, direct cURL + backend HTTPX real responses, tests and sanitized evidence.
+- [ ] Exact deployed-account/key smoke requires actual hosting.
+## WBS-02: Foundation
+- [x] React/Vite/TypeScript and typed FastAPI; real PostgreSQL 18; versioned Alembic schema.
+- [x] Seven domain tables, synthetic two-worker/supervisor seed, salted Argon2 authentication and live role checks.
+- [x] Health/readiness, strict same-origin cookies/CSRF/CORS, typed errors and correlation logs; DB/access tests.
+## WBS-03: Audio/intake
+- [x] Recorder permission handling, 25-second stop, preview/rerecord and upload alternatives.
+- [x] Before-parser size cap, bounded real FFmpeg decoding/normalization, actual sample-count duration check.
+- [x] Real Prisma adapter, preserved raw transcript/provenance and READY_FOR_REVIEW intake only after genuine success.
+- [x] Temporary cleanup and corrupt/long/no-speech/provider failure tests.
+- [ ] Final human freshly spoken browser demonstration remains to be recorded by participant; file-fed recorder test is labeled explicitly.
+## WBS-04: Reviewed work orders
+- [x] Unicode aliases, location/asset relationship, issue/urgency evidence, unknown-field blocking.
+- [x] Corrected transcript separate from raw, strict explicit confirmation, server-generated IDs.
+- [x] Atomic intake/order/audit/idempotency transaction, unique intake barrier, same/different-key replay conflicts and concurrency tests.
+- [x] Refresh persistence and 15/15 measured text parser fixtures; negative validation.
+## WBS-05: Supervisor
+- [x] Authorized paged queue/search/status filters, assignment, priority and permitted transitions.
+- [x] Version conflicts, atomic immutable events, details/original/corrected transcript and chronological audit.
+- [x] Real browser assignment -> in progress -> resolution and refresh verified.
+## WBS-06: Optional polish
+- [x] Genuine Timbre WAV verified; bounded binary adapter repairs streaming length; saved-ticket-only playback.
+- [x] TTS outage leaves order/audit unchanged, tested.
+- [x] Ownership-safe duplicate warnings and responsive/empty/error/accessibility polish.
+- [x] Model/language limitations documented honestly.
+## WBS-07: Release
+- [x] 83 backend tests, strict lint/format/type, frontend build/lint/format, six axe/mobile/browser views.
+- [x] RBAC/IDOR, provider and media failures, idempotency/version conflicts, secret boundaries and dependency audit.
+- [x] Actual private backup/isolated restore drill with matching table counts.
+- [x] Docker/Render/CI configuration and static Render schema validation.
+- [ ] Remote CI/container build and protected main execution evidence.
+- [ ] Render account connection, HTTPS deployment and fresh deployed Gnani smoke.
+- [ ] 15 distinct authentic audio evaluation cases; parser fixtures do not satisfy this.
+## WBS-08: User-owned submission
+- [x] One-page PDF/Markdown pitch, accurate project explanation, 2-3 minute script and social draft prepared.
+- [ ] Final working video/public post/actual individual contribution statements.
+- [ ] User will submit the form later; **agent must not submit it**.
+
+All actual evidence is in docs/evidence/. No production, public-post or official-form completion is claimed without proof.

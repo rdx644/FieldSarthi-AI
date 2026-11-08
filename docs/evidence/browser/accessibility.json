@@ -1,0 +1,37 @@
+{
+  "timestamp_utc": "2026-11-08T20:35:44.964590+00:00",
+  "checks": [
+    {
+      "page": "quality-login",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "page": "quality-worker-desktop",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "page": "quality-worker-mobile",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "page": "quality-queue-mobile",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "page": "quality-queue-desktop",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "page": "quality-detail-desktop",
+      "violations": [],
+      "horizontal_overflow": false
+    }
+  ],
+  "javascript_errors": [],
+  "live_provider_calls": 0
+}

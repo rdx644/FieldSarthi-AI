@@ -1,0 +1,16 @@
+case_id,evaluation_kind,utterance,expected_location,expected_asset,expected_issue,result
+T-NLP-01,text_parser_fixture,block b water pump leak urgent,BLK-B-F2,PUMP-B02,LEAKAGE,PASS
+T-NLP-02,text_parser_fixture,Block B pump is leaking,BLK-B-F2,PUMP-B02,LEAKAGE,PASS
+T-NLP-03,text_parser_fixture,ब्लॉक बी वाटर पंप लीक अर्जेंट,BLK-B-F2,PUMP-B02,LEAKAGE,PASS
+T-NLP-04,text_parser_fixture,ब्लॉक बी मोटर खराब,BLK-B-F2,PUMP-B02,MECHANICAL,PASS
+T-NLP-05,text_parser_fixture,block a ac not working,BLK-A-GF,AC-A01,MECHANICAL,PASS
+T-NLP-06,text_parser_fixture,ब्लॉक ए एसी खराब,BLK-A-GF,AC-A01,MECHANICAL,PASS
+T-NLP-07,text_parser_fixture,warehouse c fan noise,WH-C,FAN-C03,MECHANICAL,PASS
+T-NLP-08,text_parser_fixture,warehouse light sparking,WH-C,LIGHT-C04,ELECTRICAL,PASS
+T-NLP-09,text_parser_fixture,गोदाम पंखा आवाज,WH-C,FAN-C03,MECHANICAL,PASS
+T-NLP-10,text_parser_fixture,गोदाम लाइट चिंगारी,WH-C,LIGHT-C04,ELECTRICAL,PASS
+T-NLP-11,text_parser_fixture,block b pump cleaning,BLK-B-F2,PUMP-B02,CLEANING,PASS
+T-NLP-12,text_parser_fixture,block a air conditioner dirty,BLK-A-GF,AC-A01,CLEANING,PASS
+T-NLP-13,text_parser_fixture,warehouse bulb broken,WH-C,LIGHT-C04,MECHANICAL,PASS
+T-NLP-14,text_parser_fixture,warehouse c exhaust stuck,WH-C,FAN-C03,MECHANICAL,PASS
+T-NLP-15,text_parser_fixture,block b pump रिसाव,BLK-B-F2,PUMP-B02,LEAKAGE,PASS

@@ -1,10 +1,8 @@
-# WBS-00 / WBS-01 execution plan
-User authorization: execute these phases from docs/roadmap.md, 2026-11-08.
-1. Read official rules and snapshot API decisions; confirm user-only eligibility/account facts.
-2. Freeze existing roadmap scope; initialize isolated local Git repository, RTM, risks and workflow.
-3. Write failing Prisma contract tests, implement real HTTPX adapter and execute tests.
-4. Prepare explicit opt-in cURL and HTTPX smoke with strict genuine WAV validation and redacted evidence.
-5. Run quality checks and review; execute authentic calls after G0 prerequisites and microphone sample are available.
-Dependencies: account/credits and consented voice precede live calls; G1 precedes WBS-02/frontend.
-Task tracker: tasks/todo.md until an authenticated GitHub repository is created.
-No incomplete pre-existing project/plan was overwritten. No new product requirements invented.
+# FieldSaarthi execution plan
+User initially authorized WBS-00/01, then explicitly authorized project completion on 2026-11-09. Original roadmap stays unchanged in docs/roadmap.md. User subsequently prioritized development and explicitly forbade submitting the final form; contributions remain user-owned decisions.
+
+Completed development slices: isolated PostgreSQL/migrations/seed/auth; verified audio normalization/intake; catalog extraction/human confirmation/transactional order; supervisor states/provenance/audit; optional real Timbre/duplicates; browser/accessibility/security/restore checks; portable deployment/CI configuration.
+
+Current critical path: publish reviewed code to supplied GitHub repository -> execute remote CI including container build -> enforce protected main -> hosted deployment when Render authentication exists -> real hosted smoke. No fabricated completion labels. Submission drafts exist but no posting or form submission is authorized now.
+
+Use tasks/todo.md for current status and docs/evidence/release-gate.md for measured evidence. Preserve private .env, original voice clips and real transcript bodies outside Git. Keep user edits to .env.example intact.

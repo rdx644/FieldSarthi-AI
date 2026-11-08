@@ -1,53 +1,65 @@
 # FieldSaarthi AI
-Multilingual voice reports to human-reviewed maintenance work orders for the Gnani AI internship challenge.
+### Multilingual voice reports. Human-verified work. Accountable resolution.
 
-## Current status
-Scope executed: **WBS-00 / WBS-01**. Genuine cURL and backend HTTPX Prisma v2.5 calls both returned HTTP 200 with nonempty Hindi transcripts and actual model/request provenance. See [live evidence](docs/evidence/gnani-stt-live.md). **41 offline tests pass.** WBS-01 local spike is verified with the user-provided verification key. Exact eventual deployed-key proof remains pending deployment. WBS-00 still has participant attestation and GitHub/protected-main setup items open. No frontend, database, dashboard or deployed application is claimed.
+Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi Kumar**, with AI-assisted implementation and testing. [One-page solution pitch](docs/submission/solution-pitch.pdf) | [Technical explanation](docs/submission/project-summary.md) | [Evidence](docs/evidence/release-gate.md).
 
-## Setup (PowerShell)
-Prerequisites: Python 3.11+, uv, Git; cURL for the direct provider test.
+## What works
+- Real Gnani **Prisma v2.5** transcription, with the original transcript and actual returned request/model provenance.
+- Browser microphone capture (25-second soft stop) or consenting audio upload; bounded server-side FFmpeg conversion; 30-second provider ceiling.
+- Catalog-backed Hindi/English/Tamil alias extraction, evidence phrases, correction and explicit human confirmation. Hindi/Hinglish is the authentic speech baseline; other speech quality is not yet claimed.
+- Exactly one durable PostgreSQL work order per intake, transactional idempotency, role/ownership checks, controlled assignment/priority/status changes and optimistic versions.
+- Separate worker/supervisor sessions, HTTP-only cookies, CSRF protection, strict headers, private credentials and synthetic demo inventory.
+- Real optional **Gnani Timbre** Hindi WAV acknowledgment, independently generated after saving. TTS failure cannot undo an order.
+- Immutable database audit/provenance protections, a responsive interface and tested desktop/mobile accessibility.
+
+**Verified locally:** 83 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six WCAG axe/browser checks, genuine browser-to-Gnani-to-database supervisor workflow, real Timbre response, and a matching PostgreSQL backup/restore drill. Exact limits and outstanding external release checks are in [the release record](docs/evidence/release-gate.md).
+
+**Hosting status:** reproducible local application; Docker/Render configuration prepared. Public HTTPS deployment is not claimed until a real hosted smoke succeeds. No public social post or official form submission is claimed.
+
+## Run locally (Windows / Python 3.12+, Node 26, PostgreSQL 18, uv 0.11.1)
 ```powershell
-cd C:\Users\putit\fieldsaarthi-ai\api
+cd C:\Users\putit\fieldsaarthi-ai\web
+npm.cmd ci --ignore-scripts
+npm.cmd run build
+cd ..\api
 uv sync --locked
-uv run pytest -q
+# Configure private root .env: DATABASE_URL, JWT_SECRET, GNANI_API_KEY_ID.
+uv run alembic upgrade head
+uv run python -m app.seed
+uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log
+```
+Open **http://127.0.0.1:8000**. The existing local isolated PostgreSQL cluster uses port **55432**. See [operations](docs/operations.md) for restart instructions. Migrations are required; the app never silently creates tables at startup.
+
+Seed credentials are generated privately in `private/demo-accounts.json`; never publish them. Synthetic accounts: `worker@fieldsaarthi.demo`, `worker2@fieldsaarthi.demo`, `supervisor@fieldsaarthi.demo`. Production requires strong `DEMO_WORKER_PASSWORD`, `DEMO_WORKER2_PASSWORD`, `DEMO_SUPERVISOR_PASSWORD` secret variables before seeding.
+
+For frontend development, use `npm.cmd run dev` in `web` and keep the API at port 8000; Vite proxies API traffic. The production build is served by FastAPI at the same origin, with no frontend API credential.
+
+## Verify
+```powershell
+cd api
 uv run ruff check .
 uv run ruff format --check .
 uv run mypy app
+uv run pytest -q
+uv run pip-audit
+uv run python scripts/browser_quality.py
+uv run python -m scripts.backup_drill
+cd ..\web
+npm.cmd run lint
+npm.cmd run format:check
+npm.cmd run build
+npm.cmd audit --audit-level=high
 ```
-Exact versions and transitive hashes are in `api/uv.lock`. This slice has no web server; its runnable entry point is the opt-in CLI below.
+Tests require a separate `TEST_DATABASE_URL` ending in `fieldsaarthi_test`. Integration fixtures deliberately recreate **only that test database's public schema**; never point it at real data. Ordinary tests/browser quality checks make no billable provider calls.
 
-## Private setup and live proof
-1. Confirm registration/eligibility/team and form delivery in `docs/compliance.md`.
-2. In the Gnani console, confirm active STT access and actual credits. Put the key in root `.env` as `GNANI_API_KEY_ID=...`. Environment variables take precedence. Never use a frontend `VITE_*` key.
-3. To record directly on Windows (manual launch only), from `api` run:
+Explicit live browser smoke (one paid STT request; consenting prerecorded sample, never claimed as freshly spoken audio):
 ```powershell
-uv run python scripts/record_sample.py --record
+cd api
+uv run python scripts/browser_smoke.py --live
 ```
-This prompts before using the microphone and saves a 12-second private WAV. Device compatibility is not yet verified; if Windows MCI is unavailable, use the manual export below.
+The live sample and real response text stay in ignored `private/`; sanitized metadata and synthetic-data screenshots go in `docs/evidence/`. Use a new consenting microphone report for the final human demo. Uploaded audio is temporary and deleted after conversion, not stored as an application attachment.
 
-Record your own consenting voice saying: **?Block B second floor ka water pump leak ho raha hai, urgent repair chahiye.?** Keep it under 25 seconds, with no personal information. Save **mono, PCM signed 16-bit, 16000 Hz WAV** as `private/sample_hi.wav`. An editor such as Audacity can export this format. Do not use generated silence, TTS, stock audio or a prepared transcript as proof.
-4. If FFmpeg is installed and your recording has another format, convert your actual file:
-```powershell
-ffmpeg -i ..\private\recording.m4a -ac 1 -ar 16000 -c:a pcm_s16le ..\private\sample_hi.wav
-```
-5. From `api`, run the two real requests sequentially (each can consume credits):
-```powershell
-uv run python -m app.integrations.smoke ..\private\sample_hi.wav --live --synthetic-consented --transport curl
-uv run python -m app.integrations.smoke ..\private\sample_hi.wav --live --synthetic-consented --transport httpx
-```
-The cURL runner sends the secret via stdin config, not process arguments or shell history. Neither runner follows redirects. Raw transcripts are saved only to ignored `private/`; sanitized evidence JSON contains provider model/request ID, HTTP status, language, audio metadata and hashes. Share only reviewed evidence. The CLI does not mark G1 passed automatically. Confirm the same credential is used on the eventual deployed backend and re-smoke it there.
+## Deploy and submit
+[Render/Docker deployment](docs/deployment.md) | [Architecture](docs/architecture.md) | [RTM](docs/rtm.md) | [Roadmap](docs/roadmap.md) | [Task status](tasks/todo.md).
 
-No retry occurs in live smoke. The adapter permits at most two configured retries for transient connection/429/502/503/504 failures, serializes calls on a shared instance, caps response size and uses bounded timeouts. Production audio validation/conversion beyond this strict WAV smoke is WBS-03 work; this adapter is not an upload endpoint.
-
-## Project records
-- `docs/roadmap.md`: original user roadmap, unchanged
-- `docs/compliance.md`: official requirements and personal confirmations
-- `docs/scope.md`: frozen product baseline and backlog
-- `docs/rtm.md`: complete requirement index and evidence mapping
-- `docs/risks.md`: open risks
-- `docs/sources/`: retrieved source snapshots, hashes and retrieval limitations
-- `tasks/todo.md`: item-level WBS status and blockers
-- `docs/evidence/gnani-stt-live.md`: honest live gate record
-- `docs/github-setup.md`: repository/protection instructions
-
-Prisma transcribes; catalog extraction and workflow logic will belong to FieldSaarthi. Timbre is optional and unimplemented. No automatic language detection or Prisma v3 capability is claimed.
+The actual final Microsoft form requires a **2-3 minute video** and a project URL containing a pitch no longer than one page. Prepare a separate 60-second social showcase if desired. Include **#GnaniAI** and **#GreatIndianAIInternshipChallenge**, tag the official account and complete the actual form before **10 November 2026, 11:59 PM IST**. Posting alone is not submitting. [Final checklist](docs/submission/final-checklist.md).
