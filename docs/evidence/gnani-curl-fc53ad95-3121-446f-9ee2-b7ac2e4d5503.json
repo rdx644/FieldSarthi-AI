@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "request_id": "fc53ad95-3121-446f-9ee2-b7ac2e4d5503",
+  "model": "prisma-v2.5",
+  "truncated": false,
+  "processing_time": 0.1771245002746582,
+  "end_to_end_latency": 0.20473504066467285,
+  "http_status": 200,
+  "correlation_id": "fc53ad95-3121-446f-9ee2-b7ac2e4d5503",
+  "language_code": "hi-IN",
+  "timestamp_utc": "2026-11-08T14:50:15.837322+00:00",
+  "transport": "curl",
+  "audio_seconds": 11.9580625,
+  "audio_sha256": "558b1916693e824cb3be9f3104ff94035c518a5895499872bba5b55a3e2ca4e5",
+  "transcript_nonempty": true,
+  "transcript_sha256": "c583c43b345f95a0fc504ce6212ef793d807ad9c6bc5dd16e6298cca4e64db91"
+}

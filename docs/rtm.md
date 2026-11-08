@@ -20,10 +20,10 @@ All requirements retained; no fixture success counts as live evidence.
 | FR-03 | Role-restricted login/session | Planned; see docs/roadmap.md; not implemented/tested |
 | FR-04 | Browser records audio with permission handling | Planned; see docs/roadmap.md; not implemented/tested |
 | FR-05 | Server validates/normalizes audio | Planned; see docs/roadmap.md; not implemented/tested |
-| FR-06 | Real Prisma request is made server-side | api/app/integrations/gnani.py; tests/contract/test_gnani.py; live proof pending |
-| FR-07 | Transcript is displayed and saved as received | api/app/integrations/gnani.py; tests/contract/test_gnani.py; live proof pending |
-| FR-08 | Gnani evidence is correlated | api/app/integrations/gnani.py; tests/contract/test_gnani.py; live proof pending |
-| FR-09 | STT errors handled without false success | api/app/integrations/gnani.py; tests/contract/test_gnani.py; live proof pending |
+| FR-06 | Real Prisma request is made server-side | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
+| FR-07 | Transcript is displayed and saved as received | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
+| FR-08 | Gnani evidence is correlated | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
+| FR-09 | STT errors handled without false success | api/app/integrations/gnani.py; tests/contract/test_gnani.py; genuine local cURL/HTTPX proof: docs/evidence/gnani-stt-live.md; deployed proof pending |
 | FR-10 | Extract asset and location from transcript | Planned; see docs/roadmap.md; not implemented/tested |
 | FR-11 | Extract issue and urgency suggestion | Planned; see docs/roadmap.md; not implemented/tested |
 | FR-12 | Provide explainable extraction evidence | Planned; see docs/roadmap.md; not implemented/tested |

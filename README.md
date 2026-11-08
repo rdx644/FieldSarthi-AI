@@ -2,7 +2,7 @@
 Multilingual voice reports to human-reviewed maintenance work orders for the Gnani AI internship challenge.
 
 ## Current status
-Scope: **WBS-00 / WBS-01 only**. The real HTTPX Prisma adapter and opt-in cURL/HTTPX smoke runners exist. Contract fixtures are tests, not live proof. **G0 and G1 remain pending** until account, registration and real recorded-audio calls are verified. No frontend, database, dashboard or deployed application is claimed.
+Scope executed: **WBS-00 / WBS-01**. Genuine cURL and backend HTTPX Prisma v2.5 calls both returned HTTP 200 with nonempty Hindi transcripts and actual model/request provenance. See [live evidence](docs/evidence/gnani-stt-live.md). **41 offline tests pass.** WBS-01 local spike is verified with the user-provided verification key. Exact eventual deployed-key proof remains pending deployment. WBS-00 still has participant attestation and GitHub/protected-main setup items open. No frontend, database, dashboard or deployed application is claimed.
 
 ## Setup (PowerShell)
 Prerequisites: Python 3.11+, uv, Git; cURL for the direct provider test.

@@ -1,18 +1,27 @@
-# Gnani live integration evidence - WBS-01.6
-**Status: NOT RUN / G1 NOT PASSED.** No authentic provider transcript/request ID is available yet.
+# Genuine Gnani Prisma live verification - WBS-01
+**Local integration spike PASSED on 2026-11-08.** Two actual outbound requests used the private user-provided verification credential. No fixture or synthesized transcript was used.
 
-Prerequisites: participant/account confirmation (G0), active scoped key with credits, consenting fresh synthetic-content Hindi recording. Root `.env` and `private/sample_hi.wav` are private and ignored.
+User confirmed registration, team of two, receipt of final form and 5,000 available credits. Balance is user-reported; the authenticated console balance was not independently queried, and remaining balance after these calls is unknown.
 
-Run the README cURL smoke first, then HTTPX adapter smoke. These are real requests, not tests with fixtures. A successful run creates `gnani-{transport}-{correlation}.json` here, with an actual provider-returned model and request ID, UTC timestamp, HTTP status, selected language, audio duration/SHA256 and transcript SHA256. Raw response transcript is retained only in ignored `private/` for operator review. Never paste credentials into this record.
+Input: user-prepared `private/sample_hi.wav`, actual 11.9580625-second mono PCM16 16kHz WAV, 382702 bytes. The user replied ready after recording/consent instructions. Audio SHA256: `558b1916693e824cb3be9f3104ff94035c518a5895499872bba5b55a3e2ca4e5`. Selected language `hi-IN`; requested and returned model `prisma-v2.5`; HTTPS POST to official `/stt/v3`.
 
-Gate review checklist:
-- [ ] G0 registration, eligibility, team and key/scope/credits confirmed
-- [ ] Actual recorded Hindi audio metadata verified (WBS-01.1)
-- [ ] Documented direct cURL request succeeded (WBS-01.2)
-- [ ] Nonempty real transcript; genuine returned model/request ID/HTTP checked (WBS-01.3)
-- [x] Typed real HTTPX adapter exists (WBS-01.4)
-- [x] Required offline contract cases executed (WBS-01.5)
-- [ ] Redacted actual evidence reviewed (WBS-01.6)
-- [ ] Exact eventual deployment account/key confirmed; deployed re-smoke when deployment exists
+| Transport | HTTP | Returned model | Actual returned request ID | Sanitized evidence |
+|---|---|---|---|---|
+| curl | 200 | prisma-v2.5 | fc53ad95-3121-446f-9ee2-b7ac2e4d5503 | [gnani-curl-fc53ad95-3121-446f-9ee2-b7ac2e4d5503.json](gnani-curl-fc53ad95-3121-446f-9ee2-b7ac2e4d5503.json) |
+| httpx | 200 | prisma-v2.5 | 5da963a4-4279-4527-9461-d487feca6250 | [gnani-httpx-5da963a4-4279-4527-9461-d487feca6250.json](gnani-httpx-5da963a4-4279-4527-9461-d487feca6250.json) |
 
-Do not treat model/request values in unit fixtures or the source documentation as proof. No credential fingerprint is published. No deployment exists yet.
+Actual commands from api/:
+```powershell
+uv run python -m app.integrations.smoke ..\private\sample_hi.wav --live --synthetic-consented --transport curl
+uv run python -m app.integrations.smoke ..\private\sample_hi.wav --live --synthetic-consented --transport httpx
+```
+Both commands exited 0. Exactly two live requests were issued; retries were disabled. HTTPX measured elapsed time: 2.4696556 seconds. Both returned the same nonempty transcript, reviewed for the intended synthetic water-pump fault scenario. Neither reported truncation. Transcript SHA256: `c583c43b345f95a0fc504ce6212ef793d807ad9c6bc5dd16e6298cca4e64db91`. The verbatim transcript and original recording remain private; public evidence contains no credential or raw transcript/audio.
+
+- [x] WBS-01.1 actual recorded Hindi audio metadata verified
+- [x] WBS-01.2 real direct cURL request succeeds
+- [x] WBS-01.3 nonempty transcript and actual model/request ID/HTTP verified
+- [x] WBS-01.4 real HTTPX adapter succeeds with the same key/audio
+- [x] WBS-01.5 41 offline tests passed in the preceding code verification; no code changed for these live calls
+- [x] WBS-01.6 sanitized actual evidence saved and checked against private transcript/audio hashes
+
+**Gate interpretation:** the local Gnani integration spike is proved. The user described this credential as for verification. No deployment exists and no assertion is made that it is the eventual deployed account/key. The roadmap's strict release requirement for the exact deployed credential remains pending a deployed re-smoke. Participant eligibility attestations and remote GitHub/protected-main setup remain separately tracked WBS-00 items.
