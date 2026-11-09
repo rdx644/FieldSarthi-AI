@@ -1,0 +1,31 @@
+{
+  "timestamp_utc": "2026-11-09T12:57:40.111078+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "source": "Participant attested a newly spoken microphone report in this session and supplied the resulting work-order code. Server order/provenance independently inspected; no audio-origin forensic claim.",
+  "participant_supplied_code": "WOAFF1E3EE3BD2",
+  "public_code": "WO-AFF1E3EE3BD2",
+  "order_id": "1914b2ff-aa64-4018-a99e-589a5d403aad",
+  "created_at": "2026-11-09T12:51:19.299986+00:00",
+  "status_observed": "OPEN",
+  "version_observed": 1,
+  "intake_status": "CONFIRMED",
+  "provider": {
+    "name": "Gnani AI",
+    "model": "prisma-v2.5",
+    "request_id": "0eb18653-4254-4502-8fe9-c774cd644693"
+  },
+  "selected_language": "hi-IN",
+  "audio_duration_seconds": 5.16,
+  "stt_latency_ms": 339,
+  "nonempty_original_transcript": true,
+  "transcript_sha256": "74c71c1b605682f863c7d521e4bed11985ff2e613cacab592ba1b86de3fc83d9",
+  "location_name": "Warehouse C",
+  "asset_name": "Exhaust Fan C-03",
+  "issue_category": "MECHANICAL",
+  "human_confirmed_created_event": true,
+  "audit_event_count_observed": 1,
+  "read_back_persistence_verified": true,
+  "new_provider_requests_by_agent": 0,
+  "user_report_modified_by_agent": false,
+  "limitations": "One participant-attested fresh human report; not a 15-case evaluation, WER/CER benchmark, ten-run reliability or public-video proof. This report remains OPEN; previous separate hosted smoke covers supervisor resolution."
+}

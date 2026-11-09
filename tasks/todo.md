@@ -20,7 +20,7 @@ Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/ev
 - [x] Before-parser size cap, bounded real FFmpeg decoding/normalization, actual sample-count duration check.
 - [x] Real Prisma adapter, preserved raw transcript/provenance and READY_FOR_REVIEW intake only after genuine success.
 - [x] Temporary cleanup and corrupt/long/no-speech/provider failure tests.
-- [ ] Final human freshly spoken browser demonstration remains to be recorded by participant; file-fed recorder test is labeled explicitly.
+- [x] Participant-attested fresh Hindi HTTPS microphone report WO-AFF1E3EE3BD2 verified by read-back of confirmed intake, actual Prisma provenance and durable creation audit; final public demo video remains pending.
 ## WBS-04: Reviewed work orders
 - [x] Unicode aliases, location/asset relationship, issue/urgency evidence, unknown-field blocking.
 - [x] Corrected transcript separate from raw, strict explicit confirmation, server-generated IDs.
@@ -42,7 +42,7 @@ Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/ev
 - [x] Docker/Render/CI configuration and static Render schema validation.
 - [x] Remote Linux/browser/audit/container build and protected main enforcement verified; see github-publication.json.
 - [x] Render CLI authorized; free web/PostgreSQL18 resources live; actual Blueprint GNANI in_sync; real hosted prerecorded STT/TTS and restart persistence verified.
-- [ ] Freshly spoken human HTTPS microphone sentence remains pending; hosted prerecorded evidence does not close this gate.
+- [x] Separate participant-attested fresh Hindi HTTPS microphone report verified with actual distinct Gnani request and saved order; no 15-case or multilingual accuracy claim.
 - [ ] 15 distinct authentic audio evaluation cases; parser fixtures do not satisfy this.
 ## WBS-08: User-owned submission
 - [x] One-page PDF/Markdown pitch, accurate project explanation, 2-3 minute script and social draft prepared.
