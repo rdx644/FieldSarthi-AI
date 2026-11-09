@@ -1,0 +1,992 @@
+{
+  "timestamp_utc": "2026-11-09T12:02:49.850803+00:00",
+  "baseline_commit": "8146882af557d46491888a644081d53c485ada13",
+  "source": "docs/roadmap.md",
+  "sha256": "c099f20863d923e045440542de63400f729069350821b40b5448c040ed20cd97",
+  "verdict": "partial_hold_for_full_roadmap_signoff",
+  "numbered_sections": 24,
+  "numbered_headings": 94,
+  "wbs_tasks": 64,
+  "headings": [
+    {
+      "id": "0",
+      "title": "Executive decision and success definition",
+      "line": 14,
+      "status": "PARTIAL",
+      "assessment": "Real prerecorded Hindi/provider -> reviewed order -> supervisor flow exists in browser/live-browser-smoke.json. Fresh human speech, KPI-08/public video and ten-run reliability proof remain missing."
+    },
+    {
+      "id": "0.1",
+      "title": "Product in one sentence",
+      "line": 16,
+      "status": "PARTIAL",
+      "assessment": "Real prerecorded Hindi/provider -> reviewed order -> supervisor flow exists in browser/live-browser-smoke.json. Fresh human speech, KPI-08/public video and ten-run reliability proof remain missing."
+    },
+    {
+      "id": "0.2",
+      "title": "The minimum qualifying working demonstration",
+      "line": 20,
+      "status": "PARTIAL",
+      "assessment": "Real prerecorded Hindi/provider -> reviewed order -> supervisor flow exists in browser/live-browser-smoke.json. Fresh human speech, KPI-08/public video and ten-run reliability proof remain missing."
+    },
+    {
+      "id": "0.3",
+      "title": "Primary differentiator",
+      "line": 34,
+      "status": "PARTIAL",
+      "assessment": "Real prerecorded Hindi/provider -> reviewed order -> supervisor flow exists in browser/live-browser-smoke.json. Fresh human speech, KPI-08/public video and ten-run reliability proof remain missing."
+    },
+    {
+      "id": "0.4",
+      "title": "Outcome metrics (proposed engineering targets, not Gnani scoring)",
+      "line": 38,
+      "status": "PARTIAL",
+      "assessment": "KPI-02 is 15/15 implemented text fixtures only; KPI-08 not done. Field-level ASR metrics/complete-case results on 15 recordings are absent."
+    },
+    {
+      "id": "1",
+      "title": "Official challenge compliance — no-invalidation controls",
+      "line": 53,
+      "status": "PARTIAL / USER",
+      "assessment": "docs/compliance.md and final-checklist.md: team/form receipt confirmed; individual eligibility/registration/one-entry attestations, final contributions, post URLs and form confirmation are pending. No publishing/submission authorized here."
+    },
+    {
+      "id": "2",
+      "title": "Product charter and operating assumptions",
+      "line": 84,
+      "status": "IMPLEMENTED / LIMITS",
+      "assessment": "Synthetic one-organization worker/supervisor use case is implemented. Hindi/Hinglish is the authentic baseline; English/Tamil speech is unverified. P2/non-goals remain excluded."
+    },
+    {
+      "id": "2.1",
+      "title": "Problem statement",
+      "line": 86,
+      "status": "IMPLEMENTED / LIMITS",
+      "assessment": "Synthetic one-organization worker/supervisor use case is implemented. Hindi/Hinglish is the authentic baseline; English/Tamil speech is unverified. P2/non-goals remain excluded."
+    },
+    {
+      "id": "2.2",
+      "title": "Target personas",
+      "line": 90,
+      "status": "IMPLEMENTED / LIMITS",
+      "assessment": "Synthetic one-organization worker/supervisor use case is implemented. Hindi/Hinglish is the authentic baseline; English/Tamil speech is unverified. P2/non-goals remain excluded."
+    },
+    {
+      "id": "2.3",
+      "title": "Realistic example",
+      "line": 99,
+      "status": "IMPLEMENTED / LIMITS",
+      "assessment": "Synthetic one-organization worker/supervisor use case is implemented. Hindi/Hinglish is the authentic baseline; English/Tamil speech is unverified. P2/non-goals remain excluded."
+    },
+    {
+      "id": "2.4",
+      "title": "Locked assumptions to avoid overengineering",
+      "line": 105,
+      "status": "IMPLEMENTED / LIMITS",
+      "assessment": "Synthetic one-organization worker/supervisor use case is implemented. Hindi/Hinglish is the authentic baseline; English/Tamil speech is unverified. P2/non-goals remain excluded."
+    },
+    {
+      "id": "2.5",
+      "title": "Explicit non-goals for the November 10 build",
+      "line": 116,
+      "status": "IMPLEMENTED / LIMITS",
+      "assessment": "Synthetic one-organization worker/supervisor use case is implemented. Hindi/Hinglish is the authentic baseline; English/Tamil speech is unverified. P2/non-goals remain excluded."
+    },
+    {
+      "id": "3",
+      "title": "Scope backlog with traceable priorities",
+      "line": 122,
+      "status": "PARTIAL",
+      "assessment": "FR-01..25 core implementation is present, with finer gaps below. RTM covers all 12 O, 25 FR and 14 NFR IDs. NFR-01/11, authentic multilingual evaluation and official submission remain open; EXP-01 is optional."
+    },
+    {
+      "id": "3.1",
+      "title": "Functional requirements and acceptance conditions",
+      "line": 142,
+      "status": "PARTIAL",
+      "assessment": "FR-01..25 core implementation is present, with finer gaps below. RTM covers all 12 O, 25 FR and 14 NFR IDs. NFR-01/11, authentic multilingual evaluation and official submission remain open; EXP-01 is optional."
+    },
+    {
+      "id": "3.2",
+      "title": "Nonfunctional requirements (engineering acceptance targets)",
+      "line": 172,
+      "status": "PARTIAL",
+      "assessment": "FR-01..25 core implementation is present, with finer gaps below. RTM covers all 12 O, 25 FR and 14 NFR IDs. NFR-01/11, authentic multilingual evaluation and official submission remain open; EXP-01 is optional."
+    },
+    {
+      "id": "3.3",
+      "title": "Requirement-to-evidence traceability matrix (RTM)",
+      "line": 191,
+      "status": "PARTIAL",
+      "assessment": "FR-01..25 core implementation is present, with finer gaps below. RTM covers all 12 O, 25 FR and 14 NFR IDs. NFR-01/11, authentic multilingual evaluation and official submission remain open; EXP-01 is optional."
+    },
+    {
+      "id": "4",
+      "title": "Lightweight CMMI-inspired delivery process (not certification)",
+      "line": 210,
+      "status": "PARTIAL",
+      "assessment": "Protected PR/main, locks, CI, RTM, risks, candidate tag and evidence exist. Full G0/G1/G3/G4/G5 closure, human release review, daily process/burndown and final v1.0.0-submission tag are not evidenced."
+    },
+    {
+      "id": "4.1",
+      "title": "Project lifecycle / release gates",
+      "line": 227,
+      "status": "PARTIAL",
+      "assessment": "G1/G2 have genuine local proof. Exact deployed-key G1/new-speech G2 and full G3 are not closed; G4/G5 not done."
+    },
+    {
+      "id": "4.2",
+      "title": "Development standards and branch policy",
+      "line": 247,
+      "status": "PARTIAL",
+      "assessment": "Protected main/current CI and v0.2.0-rc.1 exist. Historical commits do not all use the proposed requirement-ID naming convention. v1.0.0-submission must wait for actual release gates."
+    },
+    {
+      "id": "4.3",
+      "title": "Definition of Ready (DoR) / Done (DoD)",
+      "line": 257,
+      "status": "PARTIAL",
+      "assessment": "DoD is partially fulfilled locally; participant review/deployed proof cannot be inferred from agent success."
+    },
+    {
+      "id": "5",
+      "title": "Architecture and authoritative data flow",
+      "line": 264,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "See architecture.md, services/orders.py and migrations. Eight retrospective ADR records now describe actual choices and tradeoffs. Reopen is optional and intentionally absent; terminal resolved/cancelled states are enforced."
+    },
+    {
+      "id": "5.1",
+      "title": "Architecture diagram",
+      "line": 266,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "See architecture.md, services/orders.py and migrations. Eight retrospective ADR records now describe actual choices and tradeoffs. Reopen is optional and intentionally absent; terminal resolved/cancelled states are enforced."
+    },
+    {
+      "id": "5.2",
+      "title": "Trust boundaries and system ownership",
+      "line": 286,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "See architecture.md, services/orders.py and migrations. Eight retrospective ADR records now describe actual choices and tradeoffs. Reopen is optional and intentionally absent; terminal resolved/cancelled states are enforced."
+    },
+    {
+      "id": "5.3",
+      "title": "Sequence of a valid report",
+      "line": 295,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "See architecture.md, services/orders.py and migrations. Eight retrospective ADR records now describe actual choices and tradeoffs. Reopen is optional and intentionally absent; terminal resolved/cancelled states are enforced."
+    },
+    {
+      "id": "5.4",
+      "title": "State machines",
+      "line": 330,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "See architecture.md, services/orders.py and migrations. Eight retrospective ADR records now describe actual choices and tradeoffs. Reopen is optional and intentionally absent; terminal resolved/cancelled states are enforced."
+    },
+    {
+      "id": "5.5",
+      "title": "Architecture Decision Records (ADRs)",
+      "line": 335,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "ADR-001..008 now present in docs/adrs with actual implementation choices and remaining limitations."
+    },
+    {
+      "id": "6",
+      "title": "Technology baseline and repository layout",
+      "line": 350,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "uv/npm locks, typed React/FastAPI, migrations and Docker exist. Custom hash router/fetch/state replace suggested React Router/Query; browser scripts replace Vitest. Provider models/limits are fixed constants; unused example env names are not runtime settings."
+    },
+    {
+      "id": "6.1",
+      "title": "Pinned build choices",
+      "line": 352,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "uv/npm locks, typed React/FastAPI, migrations and Docker exist. Custom hash router/fetch/state replace suggested React Router/Query; browser scripts replace Vitest. Provider models/limits are fixed constants; unused example env names are not runtime settings."
+    },
+    {
+      "id": "6.2",
+      "title": "Proposed monorepo tree",
+      "line": 369,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "uv/npm locks, typed React/FastAPI, migrations and Docker exist. Custom hash router/fetch/state replace suggested React Router/Query; browser scripts replace Vitest. Provider models/limits are fixed constants; unused example env names are not runtime settings."
+    },
+    {
+      "id": "6.3",
+      "title": "Configuration contract (`.env.example`)",
+      "line": 444,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "Root safe example includes required backend/seed/test values. Models/limits/TTL/logging are fixed in code; the roadmap environment contract is illustrative, not fully configurable."
+    },
+    {
+      "id": "7",
+      "title": "Database design, invariants, migrations and synthetic seed",
+      "line": 469,
+      "status": "IMPLEMENTED / TEST GAPS",
+      "assessment": "Seven tables, seed, unique intake, locks, immutable provider/audit, original/corrected separation and real backup restore exist. DB schema is adapted (string IDs/application UUIDs/JSON). Asset-location check is in service; dedicated rollback/constraint tests are incomplete."
+    },
+    {
+      "id": "7.1",
+      "title": "Entity relationships",
+      "line": 471,
+      "status": "IMPLEMENTED / TEST GAPS",
+      "assessment": "Seven tables, seed, unique intake, locks, immutable provider/audit, original/corrected separation and real backup restore exist. DB schema is adapted (string IDs/application UUIDs/JSON). Asset-location check is in service; dedicated rollback/constraint tests are incomplete."
+    },
+    {
+      "id": "7.2",
+      "title": "Minimal relational schema (adapt in Alembic)",
+      "line": 486,
+      "status": "IMPLEMENTED / TEST GAPS",
+      "assessment": "Seven tables, seed, unique intake, locks, immutable provider/audit, original/corrected separation and real backup restore exist. DB schema is adapted (string IDs/application UUIDs/JSON). Asset-location check is in service; dedicated rollback/constraint tests are incomplete."
+    },
+    {
+      "id": "7.3",
+      "title": "Data invariants and transaction boundaries",
+      "line": 588,
+      "status": "IMPLEMENTED / TEST GAPS",
+      "assessment": "Seven tables, seed, unique intake, locks, immutable provider/audit, original/corrected separation and real backup restore exist. DB schema is adapted (string IDs/application UUIDs/JSON). Asset-location check is in service; dedicated rollback/constraint tests are incomplete."
+    },
+    {
+      "id": "7.4",
+      "title": "Example seed inventory (synthetic only)",
+      "line": 603,
+      "status": "IMPLEMENTED / TEST GAPS",
+      "assessment": "Seven tables, seed, unique intake, locks, immutable provider/audit, original/corrected separation and real backup restore exist. DB schema is adapted (string IDs/application UUIDs/JSON). Asset-location check is in service; dedicated rollback/constraint tests are incomplete."
+    },
+    {
+      "id": "7.5",
+      "title": "Migration/rollback procedure",
+      "line": 616,
+      "status": "IMPLEMENTED / TEST GAPS",
+      "assessment": "Actual private pg_dump -> new scratch restore counts match. Hosted restart/rollback remains unexecuted."
+    },
+    {
+      "id": "8",
+      "title": "API design — internal application contracts",
+      "line": 627,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "All proposed routes are represented in routers, including duplicate and saved-ticket audio. Review PATCH stores corrected transcript; selected fields commit atomically on confirmation. Error envelopes are safe; provider failures use generic 503 except no-speech 422. Response dict schemas are not fully typed."
+    },
+    {
+      "id": "8.1",
+      "title": "Example successful transcription response (our schema)",
+      "line": 653,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "All proposed routes are represented in routers, including duplicate and saved-ticket audio. Review PATCH stores corrected transcript; selected fields commit atomically on confirmation. Error envelopes are safe; provider failures use generic 503 except no-speech 422. Response dict schemas are not fully typed."
+    },
+    {
+      "id": "8.2",
+      "title": "Example work-order creation request",
+      "line": 684,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "All proposed routes are represented in routers, including duplicate and saved-ticket audio. Review PATCH stores corrected transcript; selected fields commit atomically on confirmation. Error envelopes are safe; provider failures use generic 503 except no-speech 422. Response dict schemas are not fully typed."
+    },
+    {
+      "id": "8.3",
+      "title": "Suggested standardized application errors",
+      "line": 704,
+      "status": "IMPLEMENTED / VARIATIONS",
+      "assessment": "Safe typed codes exist, but all provider errors except no-speech are generic HTTP 503 in the intake route; operator-specific UI messages differ from proposed taxonomy."
+    },
+    {
+      "id": "9",
+      "title": "Gnani integration specification — the central technical proof",
+      "line": 725,
+      "status": "PARTIAL",
+      "assessment": "Genuine curl/HTTPX STT, local browser flow and real Timbre proof exist. Fixed endpoints/models, selected locale, bounded retries and actual provenance are implemented. Hosted key smoke, new human capture, manual text support and broader language/audio evidence remain open. v3 remains optional."
+    },
+    {
+      "id": "9.1",
+      "title": "Account and authorization spike (FIRST task)",
+      "line": 727,
+      "status": "PARTIAL",
+      "assessment": "Real consenting sample/curl/HTTPX evidence exists. Smoke uses explicit consent/spend flags rather than an opt-in environment flag; exact deployed-key gate remains pending."
+    },
+    {
+      "id": "9.2",
+      "title": "Exact Prisma v2.5 REST contract (official)",
+      "line": 739,
+      "status": "PARTIAL",
+      "assessment": "Genuine curl/HTTPX STT, local browser flow and real Timbre proof exist. Fixed endpoints/models, selected locale, bounded retries and actual provenance are implemented. Hosted key smoke, new human capture, manual text support and broader language/audio evidence remain open. v3 remains optional."
+    },
+    {
+      "id": "9.3",
+      "title": "Optional Prisma v3.0 experiment — only after P0 passes",
+      "line": 766,
+      "status": "PARTIAL",
+      "assessment": "OPTIONAL / DEFERRED: Prisma v3.0 experiment is not required for the verified v2.5 baseline."
+    },
+    {
+      "id": "9.4",
+      "title": "Browser audio — subtle but critical implementation issue",
+      "line": 772,
+      "status": "PARTIAL",
+      "assessment": "Bounded FFmpeg sample-count inspection intentionally replaces ffprobe. No manual MANUAL_TEXT support path is implemented. New human capture remains pending."
+    },
+    {
+      "id": "9.5",
+      "title": "Provider adapter implementation plan",
+      "line": 787,
+      "status": "PARTIAL",
+      "assessment": "Conservative adapter requires model/request ID and rejects missing proof; retries avoid ambiguous read/write timeouts to control spend. Both differ deliberately from permissive example suggestions."
+    },
+    {
+      "id": "9.6",
+      "title": "Exact Timbre v2.5 contract (P1)",
+      "line": 805,
+      "status": "PARTIAL",
+      "assessment": "Real requested Timbre v2.5/Nalini Hindi WAV; response model is not invented. English/Tamil/code-mix voices/language choice are not implemented."
+    },
+    {
+      "id": "9.7",
+      "title": "Provider error taxonomy and safe behavior",
+      "line": 839,
+      "status": "PARTIAL",
+      "assessment": "Provider statuses map to safe codes and no false success. Generic end-user error text does not explain each operator/configuration category. Current console balance unqueried."
+    },
+    {
+      "id": "10",
+      "title": "Multilingual extraction, validation and decision logic",
+      "line": 860,
+      "status": "PARTIAL",
+      "assessment": "Unicode catalog extraction/human validation exist; 15 text fixtures pass. parser_version is absent, evidence contains matched catalog aliases rather than exact source spans, and the original 15-scenario multilingual/ambiguity suite differs from implemented positive fixtures."
+    },
+    {
+      "id": "10.1",
+      "title": "Why the extraction layer is not “magical AI”",
+      "line": 862,
+      "status": "PARTIAL",
+      "assessment": "Unicode catalog extraction/human validation exist; 15 text fixtures pass. parser_version is absent, evidence contains matched catalog aliases rather than exact source spans, and the original 15-scenario multilingual/ambiguity suite differs from implemented positive fixtures."
+    },
+    {
+      "id": "10.2",
+      "title": "Extraction pipeline",
+      "line": 866,
+      "status": "PARTIAL",
+      "assessment": "Current output lacks parser_version and exact source-span offsets; field_evidence is catalog aliases. Unknown facts still require human correction."
+    },
+    {
+      "id": "10.3",
+      "title": "Example extraction object (our schema)",
+      "line": 879,
+      "status": "PARTIAL",
+      "assessment": "Actual suggestion object is flatter than the illustrative per-field object. No arbitrary confidence scores; provenance is real."
+    },
+    {
+      "id": "10.4",
+      "title": "Ambiguity and safety rules",
+      "line": 911,
+      "status": "PARTIAL",
+      "assessment": "Server rejects wrong catalog relationships and empty data. Multiple assets in a location are unresolved; cross-location/multi-issue original scenarios need dedicated tests. Cancellation does not require a justification note."
+    },
+    {
+      "id": "10.5",
+      "title": "Optional LLM-based structured extraction (only after deterministic path works)",
+      "line": 925,
+      "status": "PARTIAL",
+      "assessment": "OPTIONAL / DEFERRED: no LLM parser, hosted Evon, RAG or autonomous dispatch introduced."
+    },
+    {
+      "id": "11",
+      "title": "UI/UX implementation specification",
+      "line": 931,
+      "status": "PARTIAL",
+      "assessment": "All primary screens, explicit confirmation, review/provenance, timeline, status search and responsive/axe checks exist. Queue location/assignee/priority filters are API-only. No manual support path; permission-denial/25-second timer/other UX branches lack dedicated browser regression evidence."
+    },
+    {
+      "id": "11.1",
+      "title": "Pages and components",
+      "line": 933,
+      "status": "PARTIAL",
+      "assessment": "Worker/review/order/queue/detail screens exist. Location/assignee/priority filtering is available only via API, not queue controls; per-page counts are labeled accurately."
+    },
+    {
+      "id": "11.2",
+      "title": "Required controls and accessibility",
+      "line": 945,
+      "status": "PARTIAL",
+      "assessment": "Recorded soft-stop code exists; six previous axe views are clean. Permission-denied and full 25-second auto-stop are not separately evidenced automated cases."
+    },
+    {
+      "id": "11.3",
+      "title": "Component contracts",
+      "line": 957,
+      "status": "PARTIAL",
+      "assessment": "All primary screens, explicit confirmation, review/provenance, timeline, status search and responsive/axe checks exist. Queue location/assignee/priority filters are API-only. No manual support path; permission-denial/25-second timer/other UX branches lack dedicated browser regression evidence."
+    },
+    {
+      "id": "11.4",
+      "title": "Visual direction",
+      "line": 967,
+      "status": "PARTIAL",
+      "assessment": "All primary screens, explicit confirmation, review/provenance, timeline, status search and responsive/axe checks exist. Queue location/assignee/priority filters are API-only. No manual support path; permission-denial/25-second timer/other UX branches lack dedicated browser regression evidence."
+    },
+    {
+      "id": "12",
+      "title": "Reliability, security, privacy and production controls",
+      "line": 973,
+      "status": "PARTIAL",
+      "assessment": "Server secrets, auth/RBAC/ownership, cookie CSRF, CSP, bounded decode, single-worker budgets, temporary audio and body-free HTTP logging are implemented. Dedicated XSS/SQLi/readiness-down tests, provider-stage success/error telemetry and explicit Gnani/retention disclosure remain gaps."
+    },
+    {
+      "id": "12.1",
+      "title": "Threat model and mitigations",
+      "line": 975,
+      "status": "PARTIAL",
+      "assessment": "Server secrets, auth/RBAC/ownership, cookie CSRF, CSP, bounded decode, single-worker budgets, temporary audio and body-free HTTP logging are implemented. Dedicated XSS/SQLi/readiness-down tests, provider-stage success/error telemetry and explicit Gnani/retention disclosure remain gaps."
+    },
+    {
+      "id": "12.2",
+      "title": "Basic SRE controls",
+      "line": 993,
+      "status": "PARTIAL",
+      "assessment": "Live/ready/body-free HTTP timing and request-ID correlation implemented. Provider-stage model/request/error metrics and alerting/dashboard are not emitted as proposed."
+    },
+    {
+      "id": "12.3",
+      "title": "Privacy and ethics",
+      "line": 1004,
+      "status": "PARTIAL",
+      "assessment": "Server secrets, auth/RBAC/ownership, cookie CSRF, CSP, bounded decode, single-worker budgets, temporary audio and body-free HTTP logging are implemented. Dedicated XSS/SQLi/readiness-down tests, provider-stage success/error telemetry and explicit Gnani/retention disclosure remain gaps."
+    },
+    {
+      "id": "13",
+      "title": "End-to-end implementation work breakdown (WBS)",
+      "line": 1010,
+      "status": "PARTIAL",
+      "assessment": "Every WBS-00..08 task is assessed below; coding completion does not close human speech, hosted acceptance, authentic corpus or participant submission gates."
+    },
+    {
+      "id": "14",
+      "title": "Test strategy, fixtures and objective validation",
+      "line": 1138,
+      "status": "PARTIAL",
+      "assessment": "87 tests and prior real browser/provider evidence exist. Explicit contract fixtures are isolated to tests. The specified negative-case catalog is not fully represented; 15 text cases are not the original 15 real audio scenarios. See test mapping below."
+    },
+    {
+      "id": "14.1",
+      "title": "Test pyramid and boundaries",
+      "line": 1140,
+      "status": "PARTIAL",
+      "assessment": "87 tests and prior real browser/provider evidence exist. Explicit contract fixtures are isolated to tests. The specified negative-case catalog is not fully represented; 15 text cases are not the original 15 real audio scenarios. See test mapping below."
+    },
+    {
+      "id": "14.2",
+      "title": "Test ID catalog",
+      "line": 1153,
+      "status": "PARTIAL",
+      "assessment": "See every catalog group below; do not treat 87 passes as proof of absent named negative cases."
+    },
+    {
+      "id": "14.3",
+      "title": "Synthetic 15-case multilingual evaluation suite",
+      "line": 1211,
+      "status": "PARTIAL",
+      "assessment": "Original Hindi/English/Tamil/code-mix/unknown/ambiguous/silence 15 audio scripts have not been recorded/evaluated; implemented parser fixtures are different positive cases."
+    },
+    {
+      "id": "15",
+      "title": "Short-horizon schedule: November 8–10, 2026 (IST)",
+      "line": 1245,
+      "status": "ACTIVE PLAN",
+      "assessment": "The date-based schedule is guidance, not evidence that timeboxes happened. Development is merged; remaining critical path is Render access -> hosted smoke/new speech -> authentic evaluation -> user video/post/form. P2 remains deferred."
+    },
+    {
+      "id": "15.1",
+      "title": "Milestone order / critical path",
+      "line": 1259,
+      "status": "ACTIVE PLAN",
+      "assessment": "The date-based schedule is guidance, not evidence that timeboxes happened. Development is merged; remaining critical path is Render access -> hosted smoke/new speech -> authentic evaluation -> user video/post/form. P2 remains deferred."
+    },
+    {
+      "id": "15.2",
+      "title": "Strict cut lines",
+      "line": 1268,
+      "status": "ACTIVE PLAN",
+      "assessment": "The date-based schedule is guidance, not evidence that timeboxes happened. Development is merged; remaining critical path is Render access -> hosted smoke/new speech -> authentic evaluation -> user video/post/form. P2 remains deferred."
+    },
+    {
+      "id": "16",
+      "title": "CI/CD, production readiness and release gate",
+      "line": 1278,
+      "status": "PARTIAL / HOLD",
+      "assessment": "Exact merged-main CI passed all retained Linux/browser/audit/container gates. Blueprint is prepared; no hosted availability/restart/HTTPS microphone result yet. Free PostgreSQL lacks the specified managed backups. No final release tag or human approval is invented."
+    },
+    {
+      "id": "16.1",
+      "title": "Local developer commands (template — adjust to actual dependencies)",
+      "line": 1280,
+      "status": "PARTIAL / HOLD",
+      "assessment": "Exact merged-main CI passed all retained Linux/browser/audit/container gates. Blueprint is prepared; no hosted availability/restart/HTTPS microphone result yet. Free PostgreSQL lacks the specified managed backups. No final release tag or human approval is invented."
+    },
+    {
+      "id": "16.2",
+      "title": "CI pipeline (suggested sequence)",
+      "line": 1313,
+      "status": "PARTIAL / HOLD",
+      "assessment": "CI retains lint/types/tests/audits/browser/Docker. It lacks automated history/secret/raw-media scanning and full fixture-provider voice-to-resolved browser CI flow."
+    },
+    {
+      "id": "16.3",
+      "title": "Deployment and smoke procedure",
+      "line": 1325,
+      "status": "PARTIAL / HOLD",
+      "assessment": "Pending actual HTTPS deploy, resource limits, secret/cookie/log inspection, microphone/new speech, supervisor flow and restart. Free DB has no managed backups; manual export is a documented limitation."
+    },
+    {
+      "id": "16.4",
+      "title": "Formal release checklist (G3)",
+      "line": 1341,
+      "status": "PARTIAL / HOLD",
+      "assessment": "HOLD for complete roadmap release. Current v0.2.0-rc.1 is a candidate; no final v1.0.0-submission or independent human approval."
+    },
+    {
+      "id": "17",
+      "title": "Risk register and mitigation triggers",
+      "line": 1368,
+      "status": "MAINTAINED",
+      "assessment": "risks.md now covers every original R-01..14 plus remote protection/free DB lifecycle. Evidence gaps are distinguished from actual defects. Severity policy remains in force."
+    },
+    {
+      "id": "17.1",
+      "title": "Defect severity policy",
+      "line": 1389,
+      "status": "MAINTAINED",
+      "assessment": "risks.md now covers every original R-01..14 plus remote protection/free DB lifecycle. Evidence gaps are distinguished from actual defects. Severity policy remains in force."
+    },
+    {
+      "id": "18",
+      "title": "Suggested Codex / AI-agent implementation protocol",
+      "line": 1398,
+      "status": "FOLLOWED / LIMITS",
+      "assessment": "Repository instructions and previous authorization read; changes and actual checks are recorded. No provider facts or human contributions invented. This audit does not claim an independent human release approval."
+    },
+    {
+      "id": "18.1",
+      "title": "Repository contract for coding agents (`AGENTS.md` suggested)",
+      "line": 1402,
+      "status": "FOLLOWED / LIMITS",
+      "assessment": "Repository instructions and previous authorization read; changes and actual checks are recorded. No provider facts or human contributions invented. This audit does not claim an independent human release approval."
+    },
+    {
+      "id": "18.2",
+      "title": "Task slices and prompt starters",
+      "line": 1421,
+      "status": "FOLLOWED / LIMITS",
+      "assessment": "Repository instructions and previous authorization read; changes and actual checks are recorded. No provider facts or human contributions invented. This audit does not claim an independent human release approval."
+    },
+    {
+      "id": "18.3",
+      "title": "Completion report required from every agent task",
+      "line": 1443,
+      "status": "FOLLOWED / LIMITS",
+      "assessment": "Repository instructions and previous authorization read; changes and actual checks are recorded. No provider facts or human contributions invented. This audit does not claim an independent human release approval."
+    },
+    {
+      "id": "19",
+      "title": "Public demonstration plan and technical proof package",
+      "line": 1459,
+      "status": "PREPARED / USER",
+      "assessment": "One-page pitch, project explanation, actual-form 2-3 minute script and social draft exist. Final new-speech video, optional 60-second cut, media review, public post/tag/hashtags, URLs, contributions and form confirmation remain undone."
+    },
+    {
+      "id": "19.1",
+      "title": "Show exactly what is real",
+      "line": 1461,
+      "status": "PREPARED / USER",
+      "assessment": "One-page pitch, project explanation, actual-form 2-3 minute script and social draft exist. Final new-speech video, optional 60-second cut, media review, public post/tag/hashtags, URLs, contributions and form confirmation remain undone."
+    },
+    {
+      "id": "19.2",
+      "title": "60-second public demo shot list (the Demo Day Drop category is specifically 60 seconds)",
+      "line": 1471,
+      "status": "PREPARED / USER",
+      "assessment": "60-second shot list is optional social cut; actual inspected final form requires 2-3 minutes. Neither final recording is claimed complete."
+    },
+    {
+      "id": "19.3",
+      "title": "Longer technical demonstration (recommended evidence, not mandatory separate official video)",
+      "line": 1484,
+      "status": "PREPARED / USER",
+      "assessment": "One-page pitch, project explanation, actual-form 2-3 minute script and social draft exist. Final new-speech video, optional 60-second cut, media review, public post/tag/hashtags, URLs, contributions and form confirmation remain undone."
+    },
+    {
+      "id": "19.4",
+      "title": "Submission project description template",
+      "line": 1494,
+      "status": "PREPARED / USER",
+      "assessment": "One-page pitch, project explanation, actual-form 2-3 minute script and social draft exist. Final new-speech video, optional 60-second cut, media review, public post/tag/hashtags, URLs, contributions and form confirmation remain undone."
+    },
+    {
+      "id": "19.5",
+      "title": "Public post content checklist",
+      "line": 1506,
+      "status": "PREPARED / USER",
+      "assessment": "One-page pitch, project explanation, actual-form 2-3 minute script and social draft exist. Final new-speech video, optional 60-second cut, media review, public post/tag/hashtags, URLs, contributions and form confirmation remain undone."
+    },
+    {
+      "id": "19.6",
+      "title": "Official final-form checklist",
+      "line": 1518,
+      "status": "PREPARED / USER",
+      "assessment": "USER RESERVED: final form stays unsubmitted under explicit prior instruction. Do not invent confirmation or public URLs."
+    },
+    {
+      "id": "20",
+      "title": "Post-submission technical interview preparation",
+      "line": 1537,
+      "status": "PREPARED / USER",
+      "assessment": "interview-preparation.md now covers all twelve technical prompts with source/evidence and honest accuracy limits. Personal contribution paragraphs and each member rehearsal remain participant-owned."
+    },
+    {
+      "id": "21",
+      "title": "Evidence index and final handoff package",
+      "line": 1556,
+      "status": "PARTIAL",
+      "assessment": "README, full source, pitch, architecture/ADRs, RTM, evidence, risks, operations and scripts exist. No public hosted URL/video/post/form confirmation exists yet. Original roadmap root copy is identical to docs/roadmap.md and is preserved unchanged."
+    },
+    {
+      "id": "21.1",
+      "title": "Suggested README outline",
+      "line": 1576,
+      "status": "PARTIAL",
+      "assessment": "README covers implemented stack/setup/evidence/limits. Public screenshots/evidence exist; hosted/public video links and finalized personal contributions remain absent."
+    },
+    {
+      "id": "22",
+      "title": "Master execution checklist (release and contest completion)",
+      "line": 1591,
+      "status": "PARTIAL",
+      "assessment": "Core implementation/local code checks and candidate tag are evidenced. Eligibility/one-entry, new speech/15 audio cases, hosted proof, final release approval/tag and all public submission evidence remain open."
+    },
+    {
+      "id": "23",
+      "title": "Reference index and verification notes",
+      "line": 1621,
+      "status": "REVIEWED / LIMITS",
+      "assessment": "Official source index/snapshots exist. Render blueprint/free/PostgreSQL docs were rechecked in this audit. Remaining empirical checks include current console balance, language quality, hosted resource behavior and final form/media. Historical source snapshots are not a current entitlement guarantee."
+    }
+  ],
+  "wbs": [
+    {
+      "id": "WBS-00.1",
+      "task": "Read programme rules/terms; verify registration, eligibility, team count, final form delivery.",
+      "assessment": "PARTIAL: team/form receipt confirmed; each member eligibility/registration and one-entry attestations pending."
+    },
+    {
+      "id": "WBS-00.2",
+      "task": "Verify Gnani account, credits, key scope; save credentials privately.",
+      "assessment": "LOCAL VERIFIED: key/scope and genuine STT/TTS; reported starting balance only; current balance not queried."
+    },
+    {
+      "id": "WBS-00.3",
+      "task": "Snapshot the official docs/URLs used for endpoint decisions; record last checked date.",
+      "assessment": "VERIFIED: docs/sources snapshots/index, original roadmap URLs retained."
+    },
+    {
+      "id": "WBS-00.4",
+      "task": "Freeze P0 backlog, project title, roles, language baseline and demonstration scenario.",
+      "assessment": "VERIFIED: scope.md baseline; updated to actual implemented scope and user authorization."
+    },
+    {
+      "id": "WBS-00.5",
+      "task": "Create GitHub repo, protected main workflow, issue tracker, RTM and risk register.",
+      "assessment": "VERIFIED: GitHub remote/protected main/CI, issues #3/#4, RTM and risks; no board/burndown evidence."
+    },
+    {
+      "id": "WBS-01.1",
+      "task": "Record short Hindi synthetic audio; verify actual format/duration locally.",
+      "assessment": "LOCAL VERIFIED: private consenting Hindi WAV; new human browser speech remains pending."
+    },
+    {
+      "id": "WBS-01.2",
+      "task": "Run documented cURL call to `POST /stt/v3` with `X-API-Key-ID`.",
+      "assessment": "VERIFIED: gnani-curl evidence, HTTP 200."
+    },
+    {
+      "id": "WBS-01.3",
+      "task": "Confirm nonempty transcript, actual `request_id`, actual model, HTTP status.",
+      "assessment": "VERIFIED: actual STT model/request ID/nonempty transcript."
+    },
+    {
+      "id": "WBS-01.4",
+      "task": "Build `GnaniSpeechClient` HTTPX adapter with typed success/error parsing.",
+      "assessment": "VERIFIED: real HTTPX adapter, strict contract parser and typed safe errors."
+    },
+    {
+      "id": "WBS-01.5",
+      "task": "Write contract tests for success, no-speech, 400, 401, 402, 403, 429, 500 and timeout.",
+      "assessment": "PARTIAL: auth/quota/rate/input/timeout contract tests; separate 500/502/504/success-false cases not all explicit."
+    },
+    {
+      "id": "WBS-01.6",
+      "task": "Save redacted live integration evidence (`docs/evidence/gnani-stt-live.md`).",
+      "assessment": "VERIFIED: gnani-stt-live.md and sanitized metadata JSON."
+    },
+    {
+      "id": "WBS-02.1",
+      "task": "Bootstrap React/Vite/TypeScript and FastAPI app with strict formatting.",
+      "assessment": "VERIFIED: React/Vite/TypeScript + FastAPI; fresh lint/types/build pass."
+    },
+    {
+      "id": "WBS-02.2",
+      "task": "Configure PostgreSQL, SQLAlchemy, Alembic initial migration.",
+      "assessment": "VERIFIED: PostgreSQL18 and Alembic0001/0002."
+    },
+    {
+      "id": "WBS-02.3",
+      "task": "Implement `users`, `locations`, `assets`, `report_intakes`, `work_orders`, `audit_events`, `idempotency_keys`.",
+      "assessment": "VERIFIED: all seven domain tables implemented."
+    },
+    {
+      "id": "WBS-02.4",
+      "task": "Seed synthetic workers, supervisor, locations, equipment and aliases.",
+      "assessment": "VERIFIED: two synthetic workers, supervisor, three locations/four assets."
+    },
+    {
+      "id": "WBS-02.5",
+      "task": "Implement seeded authentication with salted password hashing (Argon2/bcrypt) and verified role checks.",
+      "assessment": "VERIFIED: Argon2, signed expiring sessions, active DB role/ownership checks."
+    },
+    {
+      "id": "WBS-02.6",
+      "task": "Implement `/health/live`, `/health/ready`, CORS, errors and structured request IDs.",
+      "assessment": "VERIFIED: live/ready, body-free HTTP logs, request ID, CORS/errors."
+    },
+    {
+      "id": "WBS-02.7",
+      "task": "Add migration and access-control tests.",
+      "assessment": "PARTIAL: migrations/access/immutable/race tests; not every negative insert/expiry/atomic rollback test exists."
+    },
+    {
+      "id": "WBS-03.1",
+      "task": "Implement microphone permission handling and recorder state machine.",
+      "assessment": "PARTIAL: MediaRecorder/permission error code implemented; no fresh human/denial proof."
+    },
+    {
+      "id": "WBS-03.2",
+      "task": "Set 25-second soft stop, metadata preview, cancel/rerecord.",
+      "assessment": "PARTIAL: soft-stop/preview/rerecord implemented; file-fed start/stop verified, 25s timer/cancel lifecycle not separately tested."
+    },
+    {
+      "id": "WBS-03.3",
+      "task": "Create multipart upload to our `/intakes/transcribe`; never invoke Gnani from React.",
+      "assessment": "VERIFIED: browser uploads only to own backend."
+    },
+    {
+      "id": "WBS-03.4",
+      "task": "Validate size, media type, duration; convert WebM/Opus → WAV using protected ffmpeg invocation.",
+      "assessment": "VERIFIED: body/signature/sample-count/decode deadline/temporary cleanup; real WebM release evidence, dedicated WebM regression missing."
+    },
+    {
+      "id": "WBS-03.5",
+      "task": "Call verified `GnaniSpeechClient` with selected `language_code`; preserve response metadata.",
+      "assessment": "VERIFIED LOCAL: selected locale, genuine adapter, exact preserved metadata."
+    },
+    {
+      "id": "WBS-03.6",
+      "task": "Save real intake row with `READY_FOR_REVIEW` only after genuine nonempty STT result.",
+      "assessment": "VERIFIED: persisted READY_FOR_REVIEW only after valid STT; no order until confirm."
+    },
+    {
+      "id": "WBS-03.7",
+      "task": "Delete temporary audio files and handle errors, retry state, empty transcript.",
+      "assessment": "PARTIAL: cleanup/retry/error code implemented and negative tests; every cleanup/no-speech integration branch not separately covered."
+    },
+    {
+      "id": "WBS-03.8",
+      "task": "Add audio validation, provider adapter and live smoke tests.",
+      "assessment": "PARTIAL: audio/provider/regression plus prerecorded live browser smoke; fresh-human final gate pending."
+    },
+    {
+      "id": "WBS-04.1",
+      "task": "Implement Unicode-safe alias normalization and deterministic parser.",
+      "assessment": "VERIFIED: Unicode NFKC/casefold alias parser."
+    },
+    {
+      "id": "WBS-04.2",
+      "task": "Resolve location and asset candidates against DB; enforce asset-location relationship.",
+      "assessment": "VERIFIED: DB-backed active catalog and asset-location validation."
+    },
+    {
+      "id": "WBS-04.3",
+      "task": "Extract issue category and nonauthoritative urgency suggestion with evidence.",
+      "assessment": "PARTIAL: issue/urgency suggestions with matched aliases; exact source spans/parser_version absent."
+    },
+    {
+      "id": "WBS-04.4",
+      "task": "Implement `Review & Confirm` page showing raw transcript and editable corrections separately.",
+      "assessment": "VERIFIED: Review.tsx preserves raw vs corrections."
+    },
+    {
+      "id": "WBS-04.5",
+      "task": "Validate required fields on server; reject ambiguities and missing records.",
+      "assessment": "VERIFIED: required known catalog/description/explicit true confirmation server guards; some dedicated negative tests absent."
+    },
+    {
+      "id": "WBS-04.6",
+      "task": "Generate per-submission idempotency key; implement DB uniqueness/transaction logic.",
+      "assessment": "VERIFIED: key/body hash, advisory/intake locks and unique constraints with concurrent tests."
+    },
+    {
+      "id": "WBS-04.7",
+      "task": "Commit confirmed intake → order → `CREATED` audit event in one transaction.",
+      "assessment": "VERIFIED: intake/order/audit/idempotency atomic write in create_order."
+    },
+    {
+      "id": "WBS-04.8",
+      "task": "Show only server-returned real ticket code; verify after page refresh.",
+      "assessment": "VERIFIED LOCAL: server-generated order code and actual browser refresh proof."
+    },
+    {
+      "id": "WBS-04.9",
+      "task": "Create 15-case extraction fixtures and negative validation tests.",
+      "assessment": "PARTIAL: 15 positive text fixtures/negative checks differ from original multilingual/ambiguity scenarios; no authentic corpus."
+    },
+    {
+      "id": "WBS-05.1",
+      "task": "Implement authorized `/work-orders` listing with server paging/filters.",
+      "assessment": "VERIFIED: authorized pagination/search and status/priority/location/assignee API filters."
+    },
+    {
+      "id": "WBS-05.2",
+      "task": "Implement supervisor queue: status, priority, location, assignee, created time.",
+      "assessment": "VERIFIED: queue displays all required columns; location/assignee controls absent from UI."
+    },
+    {
+      "id": "WBS-05.3",
+      "task": "Implement authorized assignment and controlled priority adjustment.",
+      "assessment": "VERIFIED: supervisor-only assignment and priority; current role checked."
+    },
+    {
+      "id": "WBS-05.4",
+      "task": "Enforce state machine and expected `version` on every workflow mutation.",
+      "assessment": "VERIFIED: expected_version, locked changes and constrained states; cancellation justification not enforced."
+    },
+    {
+      "id": "WBS-05.5",
+      "task": "Transactionally write event history for each action.",
+      "assessment": "VERIFIED: workflow mutation + audit event commit together; dedicated injected-DB-failure assertion absent."
+    },
+    {
+      "id": "WBS-05.6",
+      "task": "Implement ticket details, provenance panel and chronological timeline.",
+      "assessment": "VERIFIED: details/provenance/raw-corrected timeline."
+    },
+    {
+      "id": "WBS-05.7",
+      "task": "Unit/integration/E2E tests for authorization, transitions and concurrency.",
+      "assessment": "PARTIAL: real local browser loop and RBAC/state/race tests; all prescribed negative catalog cases not explicit."
+    },
+    {
+      "id": "WBS-06.1",
+      "task": "Verify live Timbre v2.5 key scope using safe short text.",
+      "assessment": "VERIFIED LOCAL: actual requested Timbre v2.5 response."
+    },
+    {
+      "id": "WBS-06.2",
+      "task": "Add server-side TTS adapter; return binary WAV with correct MIME.",
+      "assessment": "VERIFIED: bounded binary adapter + real streaming-WAV normalization."
+    },
+    {
+      "id": "WBS-06.3",
+      "task": "Add `Play acknowledgment` only after saved ticket success; nonblocking error state.",
+      "assessment": "VERIFIED: saved-ticket control and tested outage isolation."
+    },
+    {
+      "id": "WBS-06.4",
+      "task": "Flag potential duplicates for the same asset in `OPEN/ASSIGNED/IN_PROGRESS` states; show warning, don't silently merge.",
+      "assessment": "IMPLEMENTED: authorized active same-asset warnings/details; dedicated resolved-only/distinct-asset cases missing."
+    },
+    {
+      "id": "WBS-06.5",
+      "task": "Polish mobile, accessibility, empty/error states; remove decorative unimplemented elements.",
+      "assessment": "PARTIAL: six automated axe/mobile views and keyboard check; permission/recording/failure UI branches incomplete."
+    },
+    {
+      "id": "WBS-06.6",
+      "task": "Document actual model usage and limitations.",
+      "assessment": "VERIFIED: model/selected-language/fixed-clip limits documented; other language speech performance not claimed."
+    },
+    {
+      "id": "WBS-07.1",
+      "task": "Lint, typecheck, backend unit and API contract tests green.",
+      "assessment": "VERIFIED FRESH: 87 backend tests; strict Ruff/mypy; frontend lint/format/type/build."
+    },
+    {
+      "id": "WBS-07.2",
+      "task": "Verify two-role RBAC, IDOR and direct HTTP requests, not only frontend route blocking.",
+      "assessment": "VERIFIED: direct HTTP RBAC/IDOR/cookie/CSRF and two-worker isolation."
+    },
+    {
+      "id": "WBS-07.3",
+      "task": "Evaluate 15 real or consented short audio scripts, review ground truth and export results.",
+      "assessment": "PENDING HUMAN: 15 distinct authentic audio scripts/ground truth/model results, not parser fixture reuse."
+    },
+    {
+      "id": "WBS-07.4",
+      "task": "Execute negative scenarios: empty, unsupported, oversized, corrupt, rate limited, provider down, wrong asset, duplicate, status conflict.",
+      "assessment": "PARTIAL: media/provider/race/IDOR/stale/conflict tests; catalog test gaps below."
+    },
+    {
+      "id": "WBS-07.5",
+      "task": "Deploy HTTPS frontend and backend, production secret config and PostgreSQL; check DB migration.",
+      "assessment": "PENDING ACCESS: authenticated Render creation and actual HTTPS/runtime/migration proof."
+    },
+    {
+      "id": "WBS-07.6",
+      "task": "Run production smoke with **real Gnani** from mobile/desktop browser using newly recorded clip.",
+      "assessment": "PENDING HUMAN + HOST: new browser clip/real deployed Gnani/desktop-mobile flow."
+    },
+    {
+      "id": "WBS-07.7",
+      "task": "Run backup/rollback drill, secret scan, public repository inspection.",
+      "assessment": "PARTIAL: real local backup/new-instance restore; exact-secret/history scan performed separately; hosted restart/rollback not executed."
+    },
+    {
+      "id": "WBS-07.8",
+      "task": "Freeze release tag and save evidence.",
+      "assessment": "CANDIDATE ONLY: v0.2.0-rc.1 at8146882; final submission tag waits for real release gates."
+    },
+    {
+      "id": "WBS-08.1",
+      "task": "Record full technical run and a sharp 60-second showcase with actual app behavior.",
+      "assessment": "PENDING HUMAN: full technical/new-speech demo and optional60s cut; actual form needs2-3min."
+    },
+    {
+      "id": "WBS-08.2",
+      "task": "Verify audio/video clarity, accuracy of model names, no credentials/personal data shown.",
+      "assessment": "PENDING HUMAN: inspect final media clarity/claims/no secrets."
+    },
+    {
+      "id": "WBS-08.3",
+      "task": "Draft project summary and each member's personally verifiable contributions.",
+      "assessment": "PARTIAL: project explanation/one-page pitch ready; contributions deliberately undecided by user."
+    },
+    {
+      "id": "WBS-08.4",
+      "task": "Post public demo on LinkedIn and/or X; tag Gnani AI; both exact hashtags.",
+      "assessment": "USER ACTION: no social post authorized or published."
+    },
+    {
+      "id": "WBS-08.5",
+      "task": "Verify post is public and directly opens for someone not signed into your account (where platform permits).",
+      "assessment": "PENDING USER POST: no URL/public-access validation possible yet."
+    },
+    {
+      "id": "WBS-08.6",
+      "task": "Find official submission form from registration email, fill all requested fields and **nominate post URL(s)**.",
+      "assessment": "USER RESERVED: actual form inspected privately; user explicitly forbids agent submission."
+    },
+    {
+      "id": "WBS-08.7",
+      "task": "Submit before November 10, 11:59 PM IST; retain visible/email confirmation.",
+      "assessment": "USER RESERVED: no submitted form or confirmation."
+    },
+    {
+      "id": "WBS-08.8",
+      "task": "Share organically only. No bought promotion, exchange groups, bots or misleading teaser.",
+      "assessment": "POLICY ADOPTED: organic-only plan; no bought/bot/swap activity performed."
+    }
+  ]
+}

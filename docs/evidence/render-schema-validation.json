@@ -1,5 +1,8 @@
 {
+  "timestamp_utc": "2026-11-09T12:04:25.947324+00:00",
   "source": "https://render.com/schema/render.yaml.json",
   "valid": true,
-  "scope": "Static schema only, not an executed deployment"
+  "blueprint_sha256": "6801b1f892efc984486aa515778274e6d502af5cfd9d905f88b69023b650efae",
+  "validator": "jsonschema.Draft202012Validator + application-specific assertions",
+  "scope": "Current public schema and local configuration only; not authenticated Render validation or deployed execution"
 }

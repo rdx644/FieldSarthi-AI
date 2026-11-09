@@ -1,12 +1,15 @@
 services:
   - type: web
     name: fieldsaarthi-ai
+    repo: https://github.com/rdx644/FieldSarthi-AI
+    branch: main
     runtime: docker
     plan: free
     region: singapore
     dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /health/ready
-    autoDeploy: false
+    autoDeployTrigger: 'off'
     envVars:
       - key: APP_ENV
         value: production

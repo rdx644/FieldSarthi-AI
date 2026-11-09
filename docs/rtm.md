@@ -6,7 +6,7 @@ All requirements retained; no fixture success counts as live evidence.
 | O-01 | Enrolled student in India, age **18+** | docs/compliance.md; account/submission evidence pending |
 | O-02 | Solo or team of **two** | docs/compliance.md; account/submission evidence pending |
 | O-03 | One submission per person/team | docs/compliance.md; account/submission evidence pending |
-| O-04 | Working app integrating **at least one genuine Gnani model/API** | docs/compliance.md; account/submission evidence pending |
+| O-04 | Working app integrating **at least one genuine Gnani model/API** | Real local STT/TTS and durable browser workflow: docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted proof pending |
 | O-05 | Explain title, problem, users, models/APIs, contributions | docs/compliance.md; account/submission evidence pending |
 | O-06 | Public video showing application **working** | docs/compliance.md; account/submission evidence pending |
 | O-07 | Include both **#GnaniAI** and **#GreatIndianAIInternshipChallenge**; tag Gnani AI | docs/compliance.md; account/submission evidence pending |
@@ -40,7 +40,7 @@ All requirements retained; no fixture success counts as live evidence.
 | FR-23 | Timbre speaks saved-ticket acknowledgment | integrations/tts.py; routers/orders.py; pages/Detail.tsx; contract/test_tts.py; test_release_guards.py; actual Timbre WAV plus outage isolation |
 | FR-24 | Potential duplicates flagged | routers/intakes.py and orders.py; Review/Detail duplicate warnings; limited to reports user is authorized to see |
 | FR-25 | Provenance page shows audit trail | services/orders.py detail serializer; Detail.tsx; immutable DB audit/provenance; browser details/timeline evidence |
-| NFR-01 | Reliability | 83 local regression tests plus one genuine complete browser workflow; ten consecutive authentic full voice runs not claimed |
+| NFR-01 | Reliability | 87 local regression tests plus one genuine complete browser workflow; ten consecutive full voice runs not claimed |
 | NFR-02 | Latency | Actual timing in live evidence; progress state; no fixed provider latency promise |
 | NFR-03 | Correctness | PostgreSQL race/idempotency/version/atomicity tests; database constraints and triggers |
 | NFR-04 | Security | Role/ownership/CSRF/cookie/upload/secret controls; dependency audits; no full pentest claim |

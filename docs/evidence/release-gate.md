@@ -1,4 +1,7 @@
 # Development release evidence - 2026-11-09 IST
+## Current full-roadmap audit
+The [complete audit](roadmap-audit.md) covers every numbered section/subsection and WBS task. Full roadmap sign-off is **HOLD**, with human speech/evaluation, actual hosting/restart, dedicated negative-test and smaller implementation gaps still open. The candidate tag is not a final submission release. Exact merged-main `8146882` [CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42527535002). Fresh local recheck: 87 tests passed in 21.97s, backend lint/format/types and frontend lint/format/type/build passed; root/live/ready HTTP 200 after restarting the existing private database/app. No fresh paid Gnani call was made during this audit.
+
 ## Verified locally
 - Genuine cURL and HTTPX Prisma v2.5 calls: HTTP 200, actual returned model/request IDs and nonempty Hindi transcript. See gnani-stt-live.md.
 - Full browser workflow: real prerecorded consenting voice upload -> actual Gnani -> human confirmation -> persisted order -> refresh -> supervisor assignment/start/resolution -> persisted audit. See browser/live-browser-smoke.json. This is not a claim of newly spoken microphone audio.
