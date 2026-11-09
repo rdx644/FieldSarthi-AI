@@ -1,0 +1,17 @@
+[
+  {"case_id":"NLP-01","language_code":"hi-IN","script":"Block B second floor ka water pump leak ho raha hai, urgent hai.","expected":{"location_code":"BLK-B-F2","asset_code":"PUMP-B02","issue_category":"LEAKAGE","priority_suggestion":"HIGH"}},
+  {"case_id":"NLP-02","language_code":"hi-IN","script":"ब्लॉक बी की दूसरी मंज़िल पर पानी का पंप लीक कर रहा है।","expected":{"location_code":"BLK-B-F2","asset_code":"PUMP-B02","issue_category":"LEAKAGE","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-03","language_code":"en-IN","script":"The air conditioner on Block A ground floor is not cooling.","expected":{"location_code":"BLK-A-GF","asset_code":"AC-A01","issue_category":"MECHANICAL","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-04","language_code":"en-IN","script":"The water pump on Block B second floor is leaking.","expected":{"location_code":"BLK-B-F2","asset_code":"PUMP-B02","issue_category":"LEAKAGE","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-05","language_code":"hi-IN","script":"Warehouse C mein exhaust fan band ho gaya.","expected":{"location_code":"WH-C","asset_code":"FAN-C03","issue_category":"MECHANICAL","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-06","language_code":"hi-IN","script":"गोदाम सी में लाइट खराब है।","expected":{"location_code":"WH-C","asset_code":"LIGHT-C04","issue_category":"MECHANICAL","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-07","language_code":"en-IN","script":"The pump has a problem.","must_block":true,"expected":{"location_code":null,"asset_code":null,"issue_category":"OTHER","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-08","language_code":"hi-IN","script":"तुरंत ठीक करो!","must_block":true,"expected":{"location_code":null,"asset_code":null,"issue_category":"OTHER","priority_suggestion":"HIGH"}},
+  {"case_id":"NLP-09","language_code":"en-IN","script":"Block A water pump leaks.","must_block":true,"expected":{"location_code":"BLK-A-GF","asset_code":null,"issue_category":"LEAKAGE","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-10","language_code":"en-IN","script":"The light here is not working.","must_block":true,"expected":{"location_code":null,"asset_code":null,"issue_category":"MECHANICAL","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-11","language_code":"hi-IN","script":"Block B mein pump or fan dono issue hain.","must_block":true,"expected":{"location_code":"BLK-B-F2","asset_code":null,"issue_category":"OTHER","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-12","language_code":"en-IN","script":"Air conditioner at Block A ground floor is broken and urgent.","expected":{"location_code":"BLK-A-GF","asset_code":"AC-A01","issue_category":"MECHANICAL","priority_suggestion":"HIGH"}},
+  {"case_id":"NLP-13","language_code":"hi-IN","script":"ब्लॉक बी दूसरी मंज़िल, पंप में रिसाव।","expected":{"location_code":"BLK-B-F2","asset_code":"PUMP-B02","issue_category":"LEAKAGE","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-14","language_code":"hi-IN","script":"Warehouse C ki bay light flicker kar rahi hai.","expected":{"location_code":"WH-C","asset_code":"LIGHT-C04","issue_category":"ELECTRICAL","priority_suggestion":"NORMAL"}},
+  {"case_id":"NLP-15","language_code":"en-IN","script":"Record silence or background hiss only; no spoken words.","must_block":true,"expected_error":"NO_SPEECH_DETECTED"}
+]

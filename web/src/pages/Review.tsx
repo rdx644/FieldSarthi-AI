@@ -46,6 +46,7 @@ export function Review({
   }, []);
 
   const missing = !location || !asset || description.trim().length < 5;
+  const descriptionTooLong = description.trim().length > 2000;
   return (
     <>
       <button className="back-link" onClick={onBack}>
@@ -85,7 +86,11 @@ export function Review({
               <Check size={17} />
             </span>
             <div>
-              <h2>What Gnani heard</h2>
+              <h2>
+                {intake.source_type === "MANUAL_TEXT"
+                  ? "Your typed report"
+                  : "What Gnani heard"}
+              </h2>
               <p>The original transcript is preserved with your report.</p>
             </div>
           </div>
@@ -97,20 +102,36 @@ export function Review({
           </blockquote>
           <div className="provider-strip">
             <span className="live-dot" />
-            <strong>{intake.provider.model}</strong>
-            <span>{(intake.stt_latency_ms / 1000).toFixed(1)}s end to end</span>
+            <strong>
+              {intake.provider?.model || "MANUAL TEXT · No speech recognition"}
+            </strong>
+            {intake.stt_latency_ms !== null && (
+              <span>
+                {(intake.stt_latency_ms / 1000).toFixed(1)}s speech request
+              </span>
+            )}
           </div>
           <details className="provenance">
             <summary>View speech recognition provenance</summary>
             <dl>
               <dt>Provider</dt>
-              <dd>{intake.provider.name}</dd>
+              <dd>
+                {intake.provider?.name || "Manual text — no provider call"}
+              </dd>
               <dt>Request ID</dt>
-              <dd className="mono">{intake.provider.request_id}</dd>
+              <dd className="mono">
+                {intake.provider?.request_id || "Not applicable"}
+              </dd>
               <dt>Selected language</dt>
               <dd>{intake.input_language_code}</dd>
               <dt>Audio duration</dt>
-              <dd>{intake.audio_duration_seconds.toFixed(2)}s</dd>
+              <dd>
+                {intake.audio_duration_seconds === null
+                  ? "Not applicable"
+                  : intake.audio_duration_seconds.toFixed(2) + "s"}
+              </dd>
+              <dt>Parser version</dt>
+              <dd>{intake.parser_version || "Historical record"}</dd>
             </dl>
           </details>
           <label>
@@ -140,6 +161,12 @@ export function Review({
                     <span>{label(field)}:</span> {values.join(", ")}
                   </p>
                 ))}
+              {!!intake.unresolved_fields.length && (
+                <p>
+                  Choose missing or ambiguous details:{" "}
+                  {intake.unresolved_fields.map(label).join(", ")}.
+                </p>
+              )}
             </div>
           </div>
         </section>
@@ -156,7 +183,7 @@ export function Review({
           }}
           onSubmit={async (e) => {
             e.preventDefault();
-            if (missing || !confirmed) return;
+            if (missing || descriptionTooLong || !confirmed) return;
             setBusy(true);
             setError("");
             try {
@@ -268,12 +295,26 @@ export function Review({
             <textarea
               minLength={5}
               maxLength={2000}
+              aria-invalid={descriptionTooLong}
+              aria-describedby={
+                descriptionTooLong ? "description-length-error" : undefined
+              }
               rows={4}
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </label>
+          {descriptionTooLong && (
+            <p
+              id="description-length-error"
+              className="validation-note"
+              role="alert"
+            >
+              Shorten the issue description to 2000 characters or fewer. Your
+              full original report is preserved.
+            </p>
+          )}
           {missing && (
             <p className="validation-note">
               Choose a known location and equipment, and describe the issue
@@ -297,7 +338,7 @@ export function Review({
           )}
           <button
             className="button primary full"
-            disabled={!confirmed || missing || busy}
+            disabled={!confirmed || missing || descriptionTooLong || busy}
           >
             {busy ? "Creating work order…" : "Confirm & create work order"}
             <ArrowRight size={17} />

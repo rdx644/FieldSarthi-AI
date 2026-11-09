@@ -38,6 +38,11 @@ class Review(Command):
     edited_transcript: str = Field(min_length=1, max_length=4000)
 
 
+class ManualIntake(Command):
+    text: str = Field(min_length=5, max_length=4000)
+    language_code: Literal["hi-IN", "en-IN", "ta-IN"] = "hi-IN"
+
+
 class Assignment(Command):
     assignee_id: str = Field(min_length=36, max_length=36)
     expected_version: int = Field(ge=1)
@@ -52,3 +57,4 @@ class StatusChange(Command):
     status: Status
     expected_version: int = Field(ge=1)
     resolution_note: str | None = Field(default=None, max_length=1000)
+    cancellation_note: str | None = Field(default=None, max_length=1000)

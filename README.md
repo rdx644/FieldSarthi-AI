@@ -1,18 +1,28 @@
 # FieldSaarthi AI
+
+**Judge dashboard: implemented and tested; hosted activation is pending deployment.**
+Once activated, [open the live app](https://fieldsaarthi-ai.onrender.com) and select
+“Open judge demo” to inspect the approved real report and provenance in read-only mode.
+[Two-minute evaluation guide](docs/judge-guide.md)
+| [Current verification and remaining participant gates](docs/evidence/judge-readiness.md)
+| [15-recording instructions](docs/tests/recording-guide.md).
+
 ### Multilingual voice reports. Human-verified work. Accountable resolution.
 
-Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi Kumar**, with AI-assisted implementation and testing. [One-page solution pitch](docs/submission/solution-pitch.pdf) | [Technical explanation](docs/submission/project-summary.md) | [Evidence](docs/evidence/release-gate.md).
+Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi Kumar**, with AI-assisted implementation and testing. [Architecture](docs/architecture.md) | [Verification](docs/evidence/judge-readiness.md) | [Judge walkthrough](docs/judge-guide.md).
 
 ## What works
 - Real Gnani **Prisma v2.5** transcription, with the original transcript and actual returned request/model provenance.
 - Browser microphone capture (25-second soft stop) or consenting audio upload; bounded server-side FFmpeg conversion; 30-second provider ceiling.
 - Catalog-backed Hindi/English/Tamil alias extraction, evidence phrases, correction and explicit human confirmation. Hindi/Hinglish is the authentic speech baseline; other speech quality is not yet claimed.
+- Versioned extraction preserves exact original-text evidence spans; conflicting assets stay unresolved. An accessible typed-report path is explicitly labelled MANUAL_TEXT with no speech-provider provenance.
 - Exactly one durable PostgreSQL work order per intake, transactional idempotency, role/ownership checks, controlled assignment/priority/status changes and optimistic versions.
 - Separate worker/supervisor sessions, HTTP-only cookies, CSRF protection, strict headers, private credentials and synthetic demo inventory.
+- Public read-only judge access exposes only explicitly approved demonstration reports. Team accounts retain private recording and supervisor controls; cancellation requires an audited reason.
 - Real optional **Gnani Timbre** Hindi WAV acknowledgment, independently generated after saving. TTS failure cannot undo an order.
 - Immutable database audit/provenance protections, a responsive interface and tested desktop/mobile accessibility.
 
-**Verified locally:** 87 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six WCAG axe/browser checks, genuine browser-to-Gnani-to-database supervisor workflow, real Timbre response, and a matching PostgreSQL backup/restore drill. Exact limits and outstanding external release checks are in [the release record](docs/evidence/release-gate.md).
+**Verified locally:** 190 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six retained accessibility views plus ten full-workflow browser checks, and matching local/hosted-snapshot PostgreSQL restore drills. The genuine 15-recording development evaluation achieved **12/15 complete cases**, with all six safety cases blocked correctly; [results and limitations](docs/evidence/audio-evaluation.json). Ten consecutive automated workflows also pass with test-only speech responses. See [current verification](docs/evidence/judge-readiness.md) for exact scope and participant gates.
 
 **Hosted app:** [Open FieldSaarthi AI](https://fieldsaarthi-ai.onrender.com). Free Render Docker + PostgreSQL 18 is live under Blueprint GNANI. Genuine hosted Prisma -> order -> supervisor workflow, Timbre WAV and restart persistence are verified with an existing consented recording; [actual deployment evidence](docs/evidence/hosted/README.md). A participant-attested fresh Hindi microphone report is also verified against its saved Gnani provenance; the 15-clip evaluation and other roadmap gaps remain open. No public social post or official form submission is claimed.
 
@@ -59,7 +69,7 @@ uv run python scripts/browser_smoke.py --live
 ```
 The live sample and real response text stay in ignored `private/`; sanitized metadata and synthetic-data screenshots go in `docs/evidence/`. Use a new consenting microphone report for the final human demo. Uploaded audio is temporary and deleted after conversion, not stored as an application attachment.
 
-## Deploy and submit
-[Render/Docker deployment](docs/deployment.md) | [Architecture](docs/architecture.md) | [RTM](docs/rtm.md) | [Roadmap](docs/roadmap.md) | [Full roadmap audit](docs/evidence/roadmap-audit.md) | [Task status](tasks/todo.md).
+## Deployment and evaluation
+[Render/Docker deployment](docs/deployment.md) | [Architecture](docs/architecture.md) | [RTM](docs/rtm.md) | [Full roadmap audit](docs/evidence/roadmap-audit.md) | [Task status](tasks/todo.md).
 
-The actual final Microsoft form requires a **2-3 minute video** and a project URL containing a pitch no longer than one page. Prepare a separate 60-second social showcase if desired. Include **#GnaniAI** and **#GreatIndianAIInternshipChallenge**, tag the official account and complete the actual form before **10 November 2026, 11:59 PM IST**. Posting alone is not submitting. [Final checklist](docs/submission/final-checklist.md).
+The implementation roadmap and submission drafts are excluded from this repository at the team's request. Engineering status and measured verification remain public. Participant contributions, final media and the official form are handled separately by the team.

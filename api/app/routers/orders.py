@@ -1,19 +1,22 @@
 import asyncio
 import os
+from time import perf_counter
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, Header, Query, Response
+from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.errors import AppError
 from app.core.limits import provider_budget
 from app.core.security import current_user, supervisor, worker
+from app.core.telemetry import stage_event
 from app.db.models import Order, User
 from app.db.session import get_db
 from app.integrations.gnani import GnaniError
 from app.integrations.tts import TimbreClient, provider_slots
-from app.schemas.commands import Assignment, Confirm, PriorityChange, StatusChange
+from app.schemas.commands import Assignment, Confirm, Priority, PriorityChange, Status, StatusChange
+from app.schemas.responses import OrderResponse, QueueResponse
 from app.services.orders import accessible_order, change_order, create_order, order_json
 
 router = APIRouter(prefix="/api/v1/work-orders")
@@ -25,11 +28,18 @@ Worker = Annotated[User, Depends(worker)]
 
 @router.get("/capabilities/audio")
 def audio_capability(user: Current) -> dict[str, bool]:
-    return {"tts_enabled": os.getenv("GNANI_TTS_ENABLED", "false").lower() == "true"}
+    return {
+        "tts_enabled": user.role != "JUDGE"
+        and os.getenv("GNANI_TTS_ENABLED", "false").lower() == "true"
+    }
 
 
 @router.post("/{oid}/acknowledgment-audio")
-async def acknowledgment(oid: str, user: Current, db: DB) -> Response:
+async def acknowledgment(oid: str, request: Request, user: Current, db: DB) -> Response:
+    if user.role == "JUDGE":
+        raise AppError(
+            403, "READ_ONLY_DEMO", "The judge demo is read-only; live audio uses team access."
+        )
     row = accessible_order(db, oid, user)
     code = row.public_code
     actor_id = user.id
@@ -42,17 +52,25 @@ async def acknowledgment(oid: str, user: Current, db: DB) -> Response:
         )
     try:
         provider_budget.check(actor_id)
+        started = perf_counter()
         async with asyncio.timeout(90):
             async with provider_slots:
                 data = await TimbreClient(os.environ["GNANI_API_KEY_ID"]).synthesize(code)
-    except (GnaniError, TimeoutError):
+        stage_event(request.state.request_id, "provider_tts", started)
+    except (GnaniError, TimeoutError) as exc:
+        stage_event(
+            request.state.request_id,
+            "provider_tts",
+            started,
+            code=exc.code if isinstance(exc, GnaniError) else "TTS_TIMEOUT",
+        )
         raise AppError(
             503, "TTS_UNAVAILABLE", "Audio is unavailable. Your work order remains saved."
         ) from None
     return Response(data, media_type="audio/wav", headers={"Cache-Control": "no-store"})
 
 
-@router.post("")
+@router.post("", response_model=OrderResponse)
 def confirm(
     body: Confirm,
     response: Response,
@@ -65,12 +83,12 @@ def confirm(
     return order_json(row, db, detail=True)
 
 
-@router.get("")
+@router.get("", response_model=QueueResponse)
 def queue(
     user: Current,
     db: DB,
-    status: str | None = None,
-    priority: str | None = None,
+    status: Status | None = None,
+    priority: Priority | None = None,
     location_id: str | None = None,
     assignee_id: str | None = None,
     q: Annotated[str, Query(max_length=100)] = "",
@@ -78,6 +96,8 @@ def queue(
     page_size: Annotated[int, Query(ge=1, le=100)] = 20,
 ) -> dict[str, Any]:
     query = select(Order)
+    if user.role == "JUDGE":
+        query = query.where(Order.judge_visible)
     if user.role == "WORKER":
         query = query.where(Order.reporter_id == user.id)
     for name, value in [
@@ -104,12 +124,12 @@ def queue(
     }
 
 
-@router.get("/{oid}")
+@router.get("/{oid}", response_model=OrderResponse)
 def detail(oid: str, user: Current, db: DB) -> dict[str, Any]:
     return order_json(accessible_order(db, oid, user), db, detail=True)
 
 
-@router.patch("/{oid}/assignment")
+@router.patch("/{oid}/assignment", response_model=OrderResponse)
 def assign(oid: str, body: Assignment, user: Supervisor, db: DB) -> dict[str, Any]:
     row = accessible_order(db, oid, user, lock=True)
     return order_json(
@@ -117,7 +137,7 @@ def assign(oid: str, body: Assignment, user: Supervisor, db: DB) -> dict[str, An
     )
 
 
-@router.patch("/{oid}/priority")
+@router.patch("/{oid}/priority", response_model=OrderResponse)
 def prioritize(oid: str, body: PriorityChange, user: Supervisor, db: DB) -> dict[str, Any]:
     row = accessible_order(db, oid, user, lock=True)
     return order_json(
@@ -127,7 +147,7 @@ def prioritize(oid: str, body: PriorityChange, user: Supervisor, db: DB) -> dict
     )
 
 
-@router.patch("/{oid}/status")
+@router.patch("/{oid}/status", response_model=OrderResponse)
 def advance(oid: str, body: StatusChange, user: Supervisor, db: DB) -> dict[str, Any]:
     row = accessible_order(db, oid, user, lock=True)
     return order_json(
@@ -138,14 +158,14 @@ def advance(oid: str, body: StatusChange, user: Supervisor, db: DB) -> dict[str,
             "STATUS_CHANGED",
             body.status,
             body.expected_version,
-            body.resolution_note,
+            body.cancellation_note if body.status == "CANCELLED" else body.resolution_note,
         ),
         db,
         True,
     )
 
 
-@router.get("/{oid}/duplicates")
+@router.get("/{oid}/duplicates", response_model=list[OrderResponse])
 def duplicates(oid: str, user: Current, db: DB) -> list[dict[str, Any]]:
     row = accessible_order(db, oid, user)
     query = select(Order).where(
@@ -155,4 +175,6 @@ def duplicates(oid: str, user: Current, db: DB) -> list[dict[str, Any]]:
     )
     if user.role == "WORKER":
         query = query.where(Order.reporter_id == user.id)
+    if user.role == "JUDGE":
+        query = query.where(Order.judge_visible)
     return [order_json(x, db) for x in db.scalars(query.limit(10))]

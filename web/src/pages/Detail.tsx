@@ -19,6 +19,7 @@ export function Detail({ id, user }: { id: string; user: User }) {
   const [assignee, setAssignee] = useState("");
   const [priority, setPriority] = useState("NORMAL");
   const [note, setNote] = useState("");
+  const [cancellationNote, setCancellationNote] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [duplicates, setDuplicates] = useState<Order[]>([]);
@@ -98,7 +99,12 @@ export function Detail({ id, user }: { id: string; user: User }) {
     <>
       <a className="back-link" href="#/orders">
         <ArrowLeft size={16} />
-        Back to {user.role === "SUPERVISOR" ? "operations queue" : "my reports"}
+        Back to{" "}
+        {user.role === "JUDGE"
+          ? "judge dashboard"
+          : user.role === "SUPERVISOR"
+            ? "operations queue"
+            : "my reports"}
       </a>
       <div className="page-heading detail-heading">
         <div>
@@ -200,6 +206,11 @@ export function Detail({ id, user }: { id: string; user: User }) {
                         {String(event.details.resolution_note)}
                       </blockquote>
                     )}
+                    {event.details.cancellation_note && (
+                      <blockquote>
+                        {String(event.details.cancellation_note)}
+                      </blockquote>
+                    )}
                   </div>
                 </li>
               ))}
@@ -212,7 +223,11 @@ export function Detail({ id, user }: { id: string; user: User }) {
               <ShieldCheck size={20} />
               <h2>From voice to action</h2>
             </div>
-            <span className="small-label">ORIGINAL GNANI TRANSCRIPT</span>
+            <span className="small-label">
+              {order.intake?.source_type === "MANUAL_TEXT"
+                ? "ORIGINAL MANUAL REPORT"
+                : "ORIGINAL GNANI TRANSCRIPT"}
+            </span>
             <blockquote className="original-transcript">
               {order.intake?.raw_transcript}
             </blockquote>
@@ -226,9 +241,14 @@ export function Detail({ id, user }: { id: string; user: User }) {
               )}
             <dl>
               <dt>Speech model</dt>
-              <dd>{order.intake?.provider.model}</dd>
+              <dd>
+                {order.intake?.provider?.model ||
+                  "Manual text — no speech recognition"}
+              </dd>
               <dt>Provider request</dt>
-              <dd className="mono">{order.intake?.provider.request_id}</dd>
+              <dd className="mono">
+                {order.intake?.provider?.request_id || "Not applicable"}
+              </dd>
               <dt>Language selected</dt>
               <dd>{order.intake?.input_language_code}</dd>
             </dl>
@@ -368,16 +388,29 @@ export function Detail({ id, user }: { id: string; user: User }) {
                   </button>
                 </>
               )}
+              <label>
+                Cancellation reason
+                <textarea
+                  value={cancellationNote}
+                  maxLength={1000}
+                  rows={2}
+                  onChange={(event) => setCancellationNote(event.target.value)}
+                  placeholder="Why should this work order be cancelled?"
+                />
+              </label>
               <button
                 className="button text danger full"
-                disabled={busy}
+                disabled={busy || !cancellationNote.trim()}
                 onClick={() => {
                   if (
                     window.confirm(
                       "Cancel this work order? This action is recorded in the audit trail.",
                     )
                   )
-                    update("status", { status: "CANCELLED" });
+                    update("status", {
+                      status: "CANCELLED",
+                      cancellation_note: cancellationNote,
+                    });
                 }}
               >
                 Cancel work order

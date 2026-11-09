@@ -23,6 +23,12 @@ function Login({ onLogin }: { onLogin: (user: User) => void }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [demoEnabled, setDemoEnabled] = useState(false);
+  useEffect(() => {
+    api<{ enabled: boolean }>("/auth/demo")
+      .then((result) => setDemoEnabled(result.enabled))
+      .catch(() => {});
+  }, []);
   return (
     <main className="login-layout">
       <section className="login-story">
@@ -123,6 +129,42 @@ function Login({ onLogin }: { onLogin: (user: User) => void }) {
               <ArrowRight size={18} />
             </button>
           </form>
+          {demoEnabled && (
+            <div className="demo-note">
+              <div>
+                <strong>Evaluating FieldSaarthi?</strong>
+                <p>
+                  Explore approved real reports and their audit trail.
+                  Read-only, with no password required.
+                </p>
+                <button
+                  className="button secondary full"
+                  disabled={busy}
+                  onClick={async () => {
+                    setBusy(true);
+                    setError("");
+                    try {
+                      const result = await api<{ user: User }>(
+                        "/auth/judge-demo",
+                        { method: "POST" },
+                      );
+                      onLogin(result.user);
+                    } catch (err) {
+                      setError(
+                        err instanceof Error
+                          ? err.message
+                          : "Could not open demo.",
+                      );
+                    } finally {
+                      setBusy(false);
+                    }
+                  }}
+                >
+                  Open judge demo <ArrowRight size={17} />
+                </button>
+              </div>
+            </div>
+          )}
           <div className="demo-note">
             <ShieldCheck size={19} />
             <p>
@@ -177,12 +219,12 @@ export default function App() {
       <Login
         onLogin={(u) => {
           setUser(u);
-          navigate(u.role === "SUPERVISOR" ? "/orders" : "/");
+          navigate(u.role !== "WORKER" ? "/orders" : "/");
         }}
       />
     );
   const detailId = route.startsWith("/orders/") ? route.split("/")[2] : null;
-  const operations = route.startsWith("/orders") || user.role === "SUPERVISOR";
+  const operations = route.startsWith("/orders") || user.role !== "WORKER";
   return (
     <div className="app-shell">
       <a
@@ -226,7 +268,11 @@ export default function App() {
             onClick={() => navigate("/orders")}
           >
             <ClipboardList size={19} />
-            {user.role === "SUPERVISOR" ? "Operations queue" : "My reports"}
+            {user.role === "JUDGE"
+              ? "Judge dashboard"
+              : user.role === "SUPERVISOR"
+                ? "Operations queue"
+                : "My reports"}
             <span className="nav-key">
               {user.role === "SUPERVISOR" ? "01" : "02"}
             </span>
@@ -252,9 +298,11 @@ export default function App() {
             <div>
               <strong>{user.display_name}</strong>
               <span>
-                {user.role === "SUPERVISOR"
-                  ? "Operations supervisor"
-                  : "Field reporter"}
+                {user.role === "JUDGE"
+                  ? "Read-only evaluator"
+                  : user.role === "SUPERVISOR"
+                    ? "Operations supervisor"
+                    : "Field reporter"}
               </span>
             </div>
             <button
@@ -299,7 +347,7 @@ export default function App() {
         </header>
         <main id="main" className="main-content" tabIndex={-1}>
           {detailId ? (
-            <Detail id={detailId} user={user} />
+            <Detail key={detailId} id={detailId} user={user} />
           ) : operations ? (
             <Orders user={user} />
           ) : (

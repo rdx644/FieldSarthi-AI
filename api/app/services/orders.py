@@ -23,11 +23,14 @@ def intake_json(row: Intake) -> dict[str, Any]:
     return {
         "intake_id": row.id,
         "id": row.id,
+        "source_type": row.source_type,
         "status": row.status,
         "input_language_code": row.language_code,
         "raw_transcript": row.raw_transcript,
         "edited_transcript": row.edited_transcript,
-        "provider": {
+        "provider": None
+        if row.source_type == "MANUAL_TEXT"
+        else {
             "name": "Gnani AI",
             "model": row.provider_model,
             "request_id": row.provider_request_id,
@@ -91,7 +94,11 @@ def accessible_order(db: Session, oid: str, user: User, *, lock: bool = False) -
     if lock:
         query = query.with_for_update()
     row = db.scalar(query)
-    if not row or (user.role != "SUPERVISOR" and row.reporter_id != user.id):
+    if (
+        not row
+        or (user.role == "JUDGE" and not row.judge_visible)
+        or (user.role == "WORKER" and row.reporter_id != user.id)
+    ):
         raise AppError(404, "NOT_FOUND", "Work order not found.")
     return row
 
@@ -124,9 +131,12 @@ def create_order(db: Session, command: Confirm, user: User, key: str) -> tuple[O
     if (
         intake.status not in {"READY_FOR_REVIEW", "CONFIRMED"}
         or not intake.raw_transcript
-        or not intake.provider_request_id
+        or (
+            intake.source_type == "GNANI_STT"
+            and (not intake.provider_request_id or not intake.provider_model)
+        )
     ):
-        raise AppError(409, "INTAKE_NOT_READY", "A genuine completed transcription is required.")
+        raise AppError(409, "INTAKE_NOT_READY", "A completed voice or manual report is required.")
     existing = db.scalar(select(Order).where(Order.intake_id == intake.id))
     if existing:
         # A different key may replay the same intake, never silently change it.
@@ -180,6 +190,11 @@ def create_order(db: Session, command: Confirm, user: User, key: str) -> tuple[O
                 details={
                     "priority_suggestion": command.priority_suggestion,
                     "human_confirmed": True,
+                    "source_type": intake.source_type,
+                    "edited_transcript": command.edited_transcript,
+                    "location_id": command.location_id,
+                    "asset_id": command.asset_id,
+                    "issue_category": command.issue_category,
                 },
             )
         )
@@ -225,6 +240,10 @@ def change_order(
     else:
         if value not in TRANSITIONS[row.status]:
             raise AppError(409, "INVALID_TRANSITION", "This status transition is not allowed.")
+        if value == "CANCELLED" and (not note or not note.strip()):
+            raise AppError(
+                422, "CANCELLATION_REQUIRED", "Add a reason before cancelling this work order."
+            )
         if value == "RESOLVED":
             if not row.assignee_id or not note or not note.strip():
                 raise AppError(
@@ -232,7 +251,8 @@ def change_order(
                 )
             row.resolved_at = now()
         row.status = value
-        details = {"resolution_note": note} if note else {}
+        note_key = "cancellation_note" if value == "CANCELLED" else "resolution_note"
+        details = {note_key: note.strip()} if note else {}
     row.version += 1
     row.updated_at = now()
     db.add(

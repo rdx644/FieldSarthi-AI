@@ -10,7 +10,7 @@ import {
   Search,
 } from "lucide-react";
 import { api, date, label } from "../lib/api";
-import type { Queue, User } from "../lib/api";
+import type { Location, Queue, User } from "../lib/api";
 import { navigate } from "../lib/navigation";
 
 export function Orders({ user }: { user: User }) {
@@ -21,11 +21,35 @@ export function Orders({ user }: { user: User }) {
     page_size: 20,
   });
   const [status, setStatus] = useState("");
+  const [priority, setPriority] = useState("");
+  const [location, setLocation] = useState("");
+  const [assignee, setAssignee] = useState("");
+  const [locations, setLocations] = useState<Location[]>([]);
+  const [workers, setWorkers] = useState<User[]>([]);
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
   const [revision, setRevision] = useState(0);
+  useEffect(() => {
+    let active = true;
+    Promise.all([
+      api<Location[]>("/locations"),
+      user.role === "SUPERVISOR" ? api<User[]>("/users") : Promise.resolve([]),
+    ])
+      .then(([places, people]) => {
+        if (active) {
+          setLocations(places);
+          setWorkers(people);
+        }
+      })
+      .catch((err) => {
+        if (active) setError(err.message);
+      });
+    return () => {
+      active = false;
+    };
+  }, [user.role]);
   useEffect(() => {
     let active = true;
     const params = new URLSearchParams({
@@ -34,6 +58,9 @@ export function Orders({ user }: { user: User }) {
       q,
     });
     if (status) params.set("status", status);
+    if (priority) params.set("priority", priority);
+    if (location) params.set("location_id", location);
+    if (assignee) params.set("assignee_id", assignee);
     api<Queue>("/work-orders?" + params)
       .then((x) => {
         if (active) {
@@ -50,25 +77,37 @@ export function Orders({ user }: { user: User }) {
     return () => {
       active = false;
     };
-  }, [status, q, page, revision]);
+  }, [status, priority, location, assignee, q, page, revision]);
+  function filter(setter: (value: string) => void, value: string) {
+    setBusy(true);
+    setter(value);
+    setPage(1);
+  }
+  const hasFilters = !!(q || status || priority || location || assignee);
   return (
     <>
       <div className="page-heading">
         <div>
           <div className="eyebrow">
-            {user.role === "SUPERVISOR"
-              ? "OPERATIONS / LIVE QUEUE"
-              : "YOUR REPORTS / ACTIVITY"}
+            {user.role === "JUDGE"
+              ? "JUDGE DEMO / VERIFIED EVIDENCE"
+              : user.role === "SUPERVISOR"
+                ? "OPERATIONS / LIVE QUEUE"
+                : "YOUR REPORTS / ACTIVITY"}
           </div>
           <h1>
-            {user.role === "SUPERVISOR"
-              ? "Keep the field moving."
-              : "From reported to resolved."}
+            {user.role === "JUDGE"
+              ? "Inspect the work. Follow the evidence."
+              : user.role === "SUPERVISOR"
+                ? "Keep the field moving."
+                : "From reported to resolved."}
           </h1>
           <p>
-            {user.role === "SUPERVISOR"
-              ? "Every issue has a next step. Put the right person on it."
-              : "Your reports, their progress, and everything that happened along the way."}
+            {user.role === "JUDGE"
+              ? "Approved demonstration reports, actual provider provenance and persisted history."
+              : user.role === "SUPERVISOR"
+                ? "Every issue has a next step. Put the right person on it."
+                : "Your reports, their progress, and everything that happened along the way."}
           </p>
         </div>
         {user.role === "WORKER" && (
@@ -78,6 +117,14 @@ export function Orders({ user }: { user: User }) {
           </button>
         )}
       </div>
+      {user.role === "JUDGE" && (
+        <div className="alert warning" role="status">
+          Judge demo · read-only. Only team-approved synthetic demonstration
+          reports are visible. Open a work order to inspect the actual
+          transcript, Gnani request and persisted audit trail. Team accounts can
+          record reports and perform supervisor actions.
+        </div>
+      )}
       <div className="metrics">
         <div className="metric">
           <span>REPORTS IN THIS FILTER</span>
@@ -126,6 +173,7 @@ export function Orders({ user }: { user: User }) {
               <button
                 key={value}
                 className={status === value ? "selected" : ""}
+                aria-pressed={status === value}
                 onClick={() => {
                   setBusy(true);
                   setStatus(value);
@@ -146,6 +194,67 @@ export function Orders({ user }: { user: User }) {
             }}
           >
             <RefreshCw size={16} />
+          </button>
+        </div>
+        <div className="queue-filters">
+          <label>
+            Priority filter
+            <select
+              value={priority}
+              onChange={(event) => filter(setPriority, event.target.value)}
+            >
+              <option value="">All priorities</option>
+              {["LOW", "NORMAL", "HIGH"].map((value) => (
+                <option key={value} value={value}>
+                  {label(value)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Location filter
+            <select
+              value={location}
+              onChange={(event) => filter(setLocation, event.target.value)}
+            >
+              <option value="">All locations</option>
+              {locations.map((place) => (
+                <option key={place.id} value={place.id}>
+                  {place.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          {user.role === "SUPERVISOR" && (
+            <label>
+              Assignee filter
+              <select
+                value={assignee}
+                onChange={(event) => filter(setAssignee, event.target.value)}
+              >
+                <option value="">All assignees</option>
+                {workers.map((person) => (
+                  <option key={person.id} value={person.id}>
+                    {person.display_name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <button
+            className="button small"
+            onClick={() => {
+              setBusy(true);
+              setStatus("");
+              setPriority("");
+              setLocation("");
+              setAssignee("");
+              setQ("");
+              setPage(1);
+              setRevision((value) => value + 1);
+            }}
+          >
+            Clear filters
           </button>
         </div>
         <div className="search-row">
@@ -243,18 +352,18 @@ export function Orders({ user }: { user: User }) {
           <div className="empty-state">
             <ClipboardList size={35} />
             <h3>
-              {q || status
+              {hasFilters
                 ? "No reports match this view."
                 : "A clearer day starts here."}
             </h3>
             <p>
-              {q || status
+              {hasFilters
                 ? "Try a different search or filter."
                 : user.role === "WORKER"
                   ? "Report your first issue with a short voice recording."
                   : "New worker reports will appear here after they are reviewed and confirmed."}
             </p>
-            {user.role === "WORKER" && !status && !q && (
+            {user.role === "WORKER" && !hasFilters && (
               <button className="button primary" onClick={() => navigate("/")}>
                 Make your first report
                 <ArrowRight size={16} />
@@ -292,7 +401,7 @@ export function Orders({ user }: { user: User }) {
       </section>
       <div className="queue-caption">
         <span className="tiny-dot" />
-        Every work order is backed by a real voice intake and human
+        Every work order records its voice or manual source and explicit human
         confirmation.
       </div>
     </>

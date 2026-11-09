@@ -15,6 +15,11 @@ def migrated_database():
 
 @pytest.fixture
 def accounts(migrated_database):
+    from app.core.limits import provider_budget
+    from app.routers.auth import attempts
+
+    attempts.clear()
+    provider_budget.entries.clear()
     assert engine.url.database == "fieldsaarthi_test"
     with engine.begin() as connection:
         connection.execute(text("DROP SCHEMA public CASCADE"))

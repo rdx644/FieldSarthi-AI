@@ -15,6 +15,7 @@ import {
 import { api } from "../lib/api";
 import type { Intake } from "../lib/api";
 import { Review } from "./Review";
+import { ManualReport } from "./ManualReport";
 
 export function Report() {
   const [language, setLanguage] = useState("hi-IN");
@@ -24,6 +25,8 @@ export function Report() {
   const [preview, setPreview] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [manualBusy, setManualBusy] = useState(false);
+  const [requestingMic, setRequestingMic] = useState(false);
   const [intake, setIntake] = useState<Intake | null>(null);
   const [fileName, setFileName] = useState("");
   const recorder = useRef<MediaRecorder | null>(null);
@@ -32,6 +35,10 @@ export function Report() {
   const started = useRef(0);
   const stopTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const previewRef = useRef("");
+  const mounted = useRef(true);
+  const capturePending = useRef(false);
+  const captureGeneration = useRef(0);
+  const inputBusy = busy || manualBusy || requestingMic;
   function chooseAudio(blob: Blob | null) {
     if (previewRef.current) URL.revokeObjectURL(previewRef.current);
     const url = blob ? URL.createObjectURL(blob) : "";
@@ -51,8 +58,10 @@ export function Report() {
     );
     return () => clearInterval(timer);
   }, [recording]);
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
       if (stopTimer.current) clearTimeout(stopTimer.current);
       if (recorder.current?.state === "recording") {
         recorder.current.onstop = null;
@@ -60,9 +69,8 @@ export function Report() {
       }
       if (previewRef.current) URL.revokeObjectURL(previewRef.current);
       stream.current?.getTracks().forEach((x) => x.stop());
-    },
-    [],
-  );
+    };
+  }, []);
   function stop() {
     if (recorder.current?.state === "recording") recorder.current.stop();
     if (stopTimer.current) clearTimeout(stopTimer.current);
@@ -70,6 +78,16 @@ export function Report() {
     stream.current?.getTracks().forEach((x) => x.stop());
   }
   async function start() {
+    if (
+      capturePending.current ||
+      recorder.current?.state === "recording" ||
+      busy ||
+      manualBusy
+    )
+      return;
+    capturePending.current = true;
+    const generation = ++captureGeneration.current;
+    setRequestingMic(true);
     setError("");
     chooseAudio(null);
     setSeconds(0);
@@ -80,6 +98,10 @@ export function Report() {
           "Microphone recording needs a supported browser on HTTPS or localhost. You can upload an audio file instead.",
         );
       const media = await navigator.mediaDevices.getUserMedia({ audio: true });
+      if (!mounted.current || generation !== captureGeneration.current) {
+        media.getTracks().forEach((track) => track.stop());
+        return;
+      }
       stream.current = media;
       const mime = [
         "audio/webm;codecs=opus",
@@ -96,9 +118,11 @@ export function Report() {
         if (e.data.size) chunks.push(e.data);
       };
       rec.onstop = () => {
+        media.getTracks().forEach((x) => x.stop());
+        if (!mounted.current || generation !== captureGeneration.current)
+          return;
         chooseAudio(new Blob(chunks, { type: rec.mimeType }));
         setRecording(false);
-        media.getTracks().forEach((x) => x.stop());
       };
       rec.start();
       started.current = Date.now();
@@ -106,6 +130,7 @@ export function Report() {
       stopTimer.current = setTimeout(stop, 25000);
     } catch (err) {
       stream.current?.getTracks().forEach((x) => x.stop());
+      if (!mounted.current) return;
       setError(
         err instanceof DOMException && err.name === "NotAllowedError"
           ? "Microphone access was denied. Allow microphone access in your browser settings, or upload a recording."
@@ -113,10 +138,19 @@ export function Report() {
             ? err.message
             : "Could not start recording.",
       );
+    } finally {
+      capturePending.current = false;
+      if (mounted.current) setRequestingMic(false);
     }
   }
+  function acceptIntake(value: Intake) {
+    if (!mounted.current) return;
+    captureGeneration.current++;
+    stop();
+    setIntake(value);
+  }
   async function transcribe() {
-    if (!audio) return;
+    if (!audio || recording || inputBusy) return;
     setBusy(true);
     setError("");
     const form = new FormData();
@@ -133,7 +167,7 @@ export function Report() {
     );
     form.append("language_code", language);
     try {
-      setIntake(
+      acceptIntake(
         await api<Intake>("/intakes/transcribe", {
           method: "POST",
           body: form,
@@ -190,7 +224,7 @@ export function Report() {
                   key={code}
                   aria-label={accessible}
                   aria-pressed={language === code}
-                  disabled={recording || busy}
+                  disabled={recording || inputBusy}
                   className={
                     language === code ? "language selected" : "language"
                   }
@@ -202,13 +236,18 @@ export function Report() {
               ))}
             </div>
           </div>
+          <p className="field-help">
+            Prisma v2.5 receives one selected language per recording. Code-mixed
+            speech may need correction. Tamil remains unverified in this
+            evaluation.
+          </p>
           <div className={"record-stage " + (recording ? "is-recording" : "")}>
             <div className="record-rings">
               <button
                 className="record-button"
                 aria-label={recording ? "Stop recording" : "Start recording"}
                 onClick={recording ? stop : start}
-                disabled={busy}
+                disabled={inputBusy}
               >
                 {recording ? (
                   <Square size={27} fill="currentColor" />
@@ -256,7 +295,7 @@ export function Report() {
                   chooseAudio(null);
                   setFileName("");
                 }}
-                disabled={busy}
+                disabled={inputBusy}
               >
                 <X size={18} />
               </button>
@@ -274,10 +313,16 @@ export function Report() {
               until you review.
             </div>
           )}
+          {requestingMic && (
+            <p role="status" className="processing">
+              Waiting for microphone permission…
+            </p>
+          )}
           <div className="record-actions">
             <input
               ref={fileInput}
               type="file"
+              disabled={recording || inputBusy}
               hidden
               accept="audio/*,.webm,.m4a"
               onChange={(e) => {
@@ -297,7 +342,7 @@ export function Report() {
             <button
               className="button text"
               onClick={() => fileInput.current?.click()}
-              disabled={recording || busy}
+              disabled={recording || inputBusy}
             >
               <Upload size={16} />
               Upload audio instead
@@ -306,7 +351,7 @@ export function Report() {
               <button
                 className="button primary"
                 onClick={transcribe}
-                disabled={busy || recording}
+                disabled={inputBusy || recording}
               >
                 {busy ? "Transcribing…" : "Transcribe report"}
                 <ArrowRight size={17} />
@@ -365,12 +410,22 @@ export function Report() {
             <p>
               <strong>Your recording stays temporary.</strong>
               <br />
-              Audio is processed for transcription, then discarded. The
-              transcript stays with your report.
+              Audio is sent to Gnani AI for transcription and discarded from
+              this app after processing. Gnani processes it under its own terms.
+              Your transcript and audit history stay with the report while this
+              demo database is retained. Use consenting voices and synthetic
+              details.
             </p>
           </div>
         </aside>
       </div>
+      {!recording && !busy && !requestingMic && (
+        <ManualReport
+          language={language}
+          onReady={acceptIntake}
+          onBusyChange={setManualBusy}
+        />
+      )}
       <div className="next-step">
         <div className="next-icon">
           <RotateCcw size={18} />

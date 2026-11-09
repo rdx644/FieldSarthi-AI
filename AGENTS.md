@@ -1,6 +1,8 @@
 # FieldSaarthi agent rules
-Read docs/roadmap.md and tasks/todo.md first. Reference FR/NFR/O IDs.
-Scope: user authorized WBS-02 through WBS-08 on 2026-11-09. Local genuine integration verified; deployed-key proof remains required before release.
+Read tasks/todo.md, docs/rtm.md and docs/evidence/judge-readiness.md first. Reference FR/NFR/O IDs.
+Scope: user authorized engineering completion and repository cleanup on 2026-11-09.
+The original implementation roadmap and docs/submission drafts are deliberately excluded from Git at the user's request. Ignored local copies may exist; use them for reference but do not republish them.
+User explicitly approved public read-only transcript/audit publication of WO-AFF1E3EE3BD2. Other reports remain private by default. Final contributions and the official submission form remain user-owned.
 Keep credentials in private .env; audio and raw live responses in private/.
 Never fake a provider response outside tests or invent request/model metadata.
 Never mark gates passed without actual evidence. Record exact executed checks.

@@ -1,3 +1,5 @@
+* text=auto eol=lf
+
 # Preserve byte-for-byte source evidence and its recorded SHA256.
 docs/roadmap.md -text
 docs/sources/*.html -text

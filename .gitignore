@@ -17,3 +17,9 @@ web/dist/
 output/
 .playwright-cli/
 *.log
+
+# Deliberately excluded from publication at the user's request.
+/FieldSaarthi_AI_Traceable_Implementation_Roadmap.md
+/docs/roadmap.md
+/docs/submission/
+/scripts/build_pitch.py

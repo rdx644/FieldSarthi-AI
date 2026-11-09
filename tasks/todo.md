@@ -1,4 +1,30 @@
 # Execution status
+
+## Judge-ready implementation update
+
+- [x] FR-04..12: distinct MANUAL_TEXT path, immutable source/provenance, actionable
+  provider errors, disclosure, parser version/exact source spans and conservative ambiguity handling.
+- [x] FR-20..25: priority/location/assignee controls, audited cancellation reason,
+  typed responses and explicitly approved read-only public judge dashboard.
+- [x] NFR-01/03/04/09: ten consecutive controlled API workflows; missing atomicity,
+  same-key race, required-field, failed-intake, token, duplicate, readiness, WebM,
+  TTS, correction immutability and stage-telemetry regression cases.
+- [x] 190 backend tests; frontend build/lint/format; six retained and ten new
+  browser accessibility/layout checks, permission-denied/XSS/complete workflow.
+- [x] Full reachable Git history/index scan, automatic CI browser workflow,
+  fresh private local backup/isolated restore, independent review and mutation check.
+- [x] Authentic 15-recording manifest, resumable genuine-provider runner, recording
+  guide and judge walkthrough prepared. All 15 participant clips are captured privately.
+- [x] Genuine 15-recording evaluation: 12/15 complete cases, all six safety cases
+  blocked; Hindi/English/Hinglish development corpus, English substitutions for
+  04/10, Tamil unverified, initial failures and same-corpus refinement disclosed.
+- [ ] Current protected PR CI, merged-main CI and new hosted deployment verification.
+- [ ] Participant eligibility/contributions, final video/public post/release review;
+  final official form remains explicitly reserved for the user.
+
+See [current evidence](../docs/evidence/judge-readiness.md). Earlier checklists below
+retain their historical test counts; this update supersedes those implementation gaps.
+
 Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/evidence/roadmap-audit.md). The development candidate does **not** satisfy every end-to-end roadmap gate; section-specific implementation/test gaps are recorded there. Existing broad checkmarks below describe development progress and do not override that audit.
 ## WBS-00: Compliance and configuration
 - [x] Official rules/docs checked, P0 baseline frozen, original roadmap/source evidence preserved.
