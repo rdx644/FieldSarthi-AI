@@ -1,8 +1,9 @@
 # FieldSaarthi AI
 
-**Judges: [open the live dashboard](https://fieldsaarthi-ai.onrender.com) and select
-“Open judge demo”.** No password required; inspect the approved real report,
-Gnani provenance and audit history in read-only mode. [Two-minute evaluation guide](docs/judge-guide.md)
+**Judge dashboard: implemented and tested; hosted activation is pending deployment.**
+Once activated, [open the live app](https://fieldsaarthi-ai.onrender.com) and select
+“Open judge demo” to inspect the approved real report and provenance in read-only mode.
+[Two-minute evaluation guide](docs/judge-guide.md)
 | [Current verification and remaining participant gates](docs/evidence/judge-readiness.md)
 | [15-recording instructions](docs/tests/recording-guide.md).
 
@@ -21,7 +22,7 @@ Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi
 - Real optional **Gnani Timbre** Hindi WAV acknowledgment, independently generated after saving. TTS failure cannot undo an order.
 - Immutable database audit/provenance protections, a responsive interface and tested desktop/mobile accessibility.
 
-**Verified locally:** 161 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six retained accessibility views plus ten full-workflow browser checks, and matching local/hosted-snapshot PostgreSQL restore drills. Ten consecutive automated workflows pass with test-only speech responses. Genuine hosted Gnani/Timbre evidence is recorded separately. See [current verification](docs/evidence/judge-readiness.md) for exact limits and outstanding participant gates.
+**Verified locally:** 190 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six retained accessibility views plus ten full-workflow browser checks, and matching local/hosted-snapshot PostgreSQL restore drills. The genuine 15-recording development evaluation achieved **12/15 complete cases**, with all six safety cases blocked correctly; [results and limitations](docs/evidence/audio-evaluation.json). Ten consecutive automated workflows also pass with test-only speech responses. See [current verification](docs/evidence/judge-readiness.md) for exact scope and participant gates.
 
 **Hosted app:** [Open FieldSaarthi AI](https://fieldsaarthi-ai.onrender.com). Free Render Docker + PostgreSQL 18 is live under Blueprint GNANI. Genuine hosted Prisma -> order -> supervisor workflow, Timbre WAV and restart persistence are verified with an existing consented recording; [actual deployment evidence](docs/evidence/hosted/README.md). A participant-attested fresh Hindi microphone report is also verified against its saved Gnani provenance; the 15-clip evaluation and other roadmap gaps remain open. No public social post or official form submission is claimed.
 

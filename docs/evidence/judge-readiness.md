@@ -16,7 +16,7 @@ priority/location/assignee filters; cancellation reason/audit; stage telemetry;
 exact migration-head readiness; user-approved read-only public judge role and report
 allowlist, with immediate flag-based session revocation.
 
-Verified locally: **161 backend tests**, strict mypy, Ruff lint/format, TypeScript/Vite
+Verified locally: **190 backend tests**, strict mypy, Ruff lint/format, TypeScript/Vite
 build and frontend lint/Prettier. Backend/frontend dependency audits report no known
 vulnerabilities. The retained six-view accessibility check passes. The new
 [full browser regression](browser-regression/results.json) passes ten axe/layout
@@ -58,8 +58,24 @@ The user explicitly approved public read-only publication of WO-AFF1E3EE3BD2 and
 authorized bounded paid evaluation/verification requests. Team passwords stay
 private. New reports do not become public automatically.
 
-Still participant-owned: the 15 authentic recordings and reviewed ground truth,
-individual eligibility/contributions, final 2–3 minute video/public post, release
-review and the user-reserved final form. The runner and guide are ready; no audio
-score is claimed until actual recordings have been evaluated. Managed backup and
-30-day database limitations remain explicit; no paid hosting upgrade is assumed.
+The participant recorded all 15 distinct clips through the local microphone
+wizard and confirmed them ready. The genuine Prisma v2.5 development evaluation
+scored **12/15 complete cases**, with all six required safety cases blocked.
+Cases 04/10 use participant-approved English equivalents; actual coverage is
+Hindi/English/Hinglish and Tamil remains unverified. Three ASR failures still
+require human correction. Two initial transport failures were preserved and
+recovered; cached successes were never resent for reassurance. Initial rules-v3
+9/15 results are preserved beside the final rules-v4 result. These rules were
+refined using the same development corpus: no held-out/WER/CER claim.
+See [final metrics/confusion tables](audio-evaluation.json) and [initial result](audio-evaluation-rules-v3.json).
+
+The final roadmap recheck independently covered 24 sections, 94 numbered headings
+and 64 WBS tasks. It additionally closed hazard cue warnings, deferred/duplicate/
+stale-stop microphone lifecycle races, selected-language disclosure, direct SQL
+FK/check failures, SQL-injection negatives, provider-error scoring and stale CI
+artifact risks. Original roadmap/submission materials remain excluded from Git;
+reference copies are retained only under ignored private/reference.
+
+Still participant-owned: individual eligibility/contributions, final 2–3 minute
+video/public post, release review and the user-reserved final form. Managed backup
+and 30-day database limitations remain explicit; no paid hosting upgrade is assumed.

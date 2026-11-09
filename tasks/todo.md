@@ -9,13 +9,15 @@
 - [x] NFR-01/03/04/09: ten consecutive controlled API workflows; missing atomicity,
   same-key race, required-field, failed-intake, token, duplicate, readiness, WebM,
   TTS, correction immutability and stage-telemetry regression cases.
-- [x] 161 backend tests; frontend build/lint/format; six retained and ten new
+- [x] 190 backend tests; frontend build/lint/format; six retained and ten new
   browser accessibility/layout checks, permission-denied/XSS/complete workflow.
 - [x] Full reachable Git history/index scan, automatic CI browser workflow,
   fresh private local backup/isolated restore, independent review and mutation check.
 - [x] Authentic 15-recording manifest, resumable genuine-provider runner, recording
-  guide and judge walkthrough prepared. Participant is recording the clips.
-- [ ] Actual 15-recording evaluation and reviewed ground truth.
+  guide and judge walkthrough prepared. All 15 participant clips are captured privately.
+- [x] Genuine 15-recording evaluation: 12/15 complete cases, all six safety cases
+  blocked; Hindi/English/Hinglish development corpus, English substitutions for
+  04/10, Tamil unverified, initial failures and same-corpus refinement disclosed.
 - [ ] Current protected PR CI, merged-main CI and new hosted deployment verification.
 - [ ] Participant eligibility/contributions, final video/public post/release review;
   final official form remains explicitly reserved for the user.

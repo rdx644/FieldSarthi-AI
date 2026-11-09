@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-11-09T15:18:42.491182+00:00",
+  "timestamp_utc": "2026-11-09T19:17:16.140558+00:00",
   "baseline_main": "e8d6f97",
   "branches": [
     {
@@ -24,7 +24,7 @@
     }
   ],
   "backend_tests": {
-    "passed": 161,
+    "passed": 190,
     "command": "api/.venv/Scripts/python.exe -m pytest -q --tb=short"
   },
   "backend_checks": [
@@ -50,7 +50,13 @@
     "blueprint_sha256": "bb3a140812844084b59ebf953668994439848001c01bdf3f0a0ddbf236262ed3"
   },
   "public_judge_report_authorized": "WO-AFF1E3EE3BD2",
-  "authentic_audio_evaluation": "pending participant recordings; no score claimed",
+  "authentic_audio_evaluation": {
+    "sample_count": 15,
+    "complete_cases_correct": 12,
+    "all_safety_cases_blocked": true,
+    "tamil_evaluated": false,
+    "same_corpus_refinement_disclosed": true
+  },
   "final_form": "user reserved, unsubmitted",
   "removed_from_current_git_tree": [
     "FieldSaarthi_AI_Traceable_Implementation_Roadmap.md",

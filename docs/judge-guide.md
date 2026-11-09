@@ -1,5 +1,9 @@
 # Evaluate FieldSaarthi AI
 
+Deployment status: the judge feature is implemented and tested; hosted activation
+and production verification are pending for this release. The steps below apply
+after activation.
+
 Open **https://fieldsaarthi-ai.onrender.com** and choose **Open judge demo**.
 No password is required. A free-host cold start can take a little time; leave the
 page open and retry once if the service is waking up.

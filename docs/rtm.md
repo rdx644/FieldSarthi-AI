@@ -40,7 +40,7 @@ All requirements retained; no fixture success counts as live evidence.
 | FR-23 | Timbre speaks saved-ticket acknowledgment | integrations/tts.py; routers/orders.py; pages/Detail.tsx; contract/test_tts.py; test_release_guards.py; actual Timbre WAV plus outage isolation |
 | FR-24 | Potential duplicates flagged | routers/intakes.py and orders.py; Review/Detail duplicate warnings; limited to reports user is authorized to see |
 | FR-25 | Provenance page shows audit trail | services/orders.py detail serializer; Detail.tsx; immutable DB audit/provenance; browser details/timeline evidence |
-| NFR-01 | Reliability | 87 local regression tests plus one genuine complete browser workflow; ten consecutive full voice runs not claimed |
+| NFR-01 | Reliability | 190 backend tests and ten consecutive complete test-only-provider API workflows; genuine 15-recording development evaluation scored 12/15 with all safety cases blocked; current hosted ten-run evidence tracked separately |
 | NFR-02 | Latency | Actual timing in live evidence; progress state; no fixed provider latency promise |
 | NFR-03 | Correctness | PostgreSQL race/idempotency/version/atomicity tests; database constraints and triggers |
 | NFR-04 | Security | Role/ownership/CSRF/cookie/upload/secret controls; dependency audits; no full pentest claim |

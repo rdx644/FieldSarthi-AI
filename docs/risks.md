@@ -6,8 +6,8 @@ Severity describes impact if the risk occurs, not proof that a defect exists. Se
 |---|---|---|---|
 | R-01 | Critical | Local and hosted genuine STT/TTS verified; current balance unqueried | Participant monitors actual console balance; starting allocation is not current balance |
 | R-02 | High | Bounded FFmpeg and file-fed browser capture verified | Backend owner: preserve regressions; participant verifies broader HTTPS microphone/browser coverage |
-| R-03 | Medium | Hindi sample verified; 15 audio cases/other languages missing | Participants: consented corpus and actual field/transcript comparison; limit claims |
-| R-04 | High | Catalog validation/human confirmation implemented; evidence-span/parser-version gaps | Backend owner: reject unknown/mismatched catalog IDs; track audit gaps |
+| R-03 | Medium | Actual 15-recording Hindi/English/Hinglish development corpus scored 12/15; Tamil unverified | Same-corpus rule refinement disclosed; three ASR failures require human correction; no population accuracy claim |
+| R-04 | High | Exact spans/parser version and catalog/human validation implemented; unknown ASR words stay unresolved | Reject unknown/mismatched IDs; retain negative/multilingual/hazard regressions and explicit human confirmation |
 | R-05 | High | Concurrent replay, unique intake and atomic writes verified | Backend owner: retain race/idempotency checks |
 | R-06 | Low | Real Timbre WAV verified; provider availability external | Backend owner: independent saved-ticket audio; outage cannot undo order |
 | R-07 | High | Free Render HTTPS workflow/restart verified; cold starts remain possible | Deployment owner: readiness before demo, reproducible local fallback and 15-clip evaluation and final video |
