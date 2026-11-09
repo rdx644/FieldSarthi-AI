@@ -1,7 +1,7 @@
 # Authentic 15-recording evaluation
 
-Prepare 15 separate consenting team recordings using [the original scripts](../roadmap.md#143-synthetic-15-case-multilingual-evaluation-suite)
-or the machine-readable [audio cases](audio-cases.json). Do not use generated speech,
+Prepare 15 separate consenting team recordings using the machine-readable
+[audio cases](audio-cases.json), derived from the team's private implementation plan. Do not use generated speech,
 third-party recordings or one recording copied into multiple cases. NLP-15 is
 deliberate silence/background hiss. State any accent/code-mix/noise limitations.
 

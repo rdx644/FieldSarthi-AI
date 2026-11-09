@@ -14,3 +14,7 @@ web/dist
 **/*.wav
 **/*.webm
 **/*.mp3
+FieldSaarthi_AI_Traceable_Implementation_Roadmap.md
+docs/roadmap.md
+docs/submission
+scripts/build_pitch.py
