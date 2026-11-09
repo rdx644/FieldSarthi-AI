@@ -1,0 +1,16 @@
+{
+  "timestamp_utc": "2026-11-09T19:30:23.808207+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "order_id": "c10b60c2-60c7-4d96-a845-9a0ae583d3d6",
+  "http_status": 200,
+  "content_type": "audio/wav",
+  "requested_model": "timbre-v2.5",
+  "requested_voice": "Nalini",
+  "requested_language": "hi-IN",
+  "response_model_not_invented": true,
+  "actual_wav_duration_seconds": 6.4,
+  "wav_sha256": "31c44cb80ad2e3a4edb9cb72a35549772cea671c30ee80dcfde760e02e49d772",
+  "order_and_audit_unchanged": true,
+  "application_tts_requests": 1,
+  "raw_audio_private": true
+}

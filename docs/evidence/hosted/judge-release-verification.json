@@ -1,0 +1,30 @@
+{
+  "timestamp_utc": "2026-11-09T19:27:13.539357+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "deployment_id": "dep-dbp1rkek1f9s73aqchvg",
+  "deployed_commit": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+  "live_provider_calls": 0,
+  "health": {
+    "/": 200,
+    "/health/live": 200,
+    "/health/ready": 200
+  },
+  "secure_cookie_flags": true,
+  "judge_session": true,
+  "only_approved_order_visible": true,
+  "approved_order_code": "WO-AFF1E3EE3BD2",
+  "participant_report_unmodified": true,
+  "original_transcript_hash_matches": true,
+  "original_provider_provenance_matches": true,
+  "audit_event_count": 1,
+  "denied_judge_actions": {
+    "manual_create": 403,
+    "supervisor_priority": 403,
+    "tts_spend": 403,
+    "users": 403
+  },
+  "frontend_secret_scan_passed": true,
+  "judge_frontend_present": true,
+  "typed_manual_contract_present": true,
+  "sign_out_revokes_cookie": true
+}

@@ -1,8 +1,8 @@
 # Evaluate FieldSaarthi AI
 
-Deployment status: the judge feature is implemented and tested; hosted activation
-and production verification are pending for this release. The steps below apply
-after activation.
+Deployment verified on 2026-11-10 IST at application commit `6f702c2`.
+The public judge dashboard is live; [deployed checks](evidence/hosted/judge-release-verification.json)
+and [desktop/mobile browser checks](evidence/hosted/judge-browser-verification.json) passed.
 
 Open **https://fieldsaarthi-ai.onrender.com** and choose **Open judge demo**.
 No password is required. A free-host cold start can take a little time; leave the

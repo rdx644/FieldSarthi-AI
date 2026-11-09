@@ -10,7 +10,7 @@ Severity describes impact if the risk occurs, not proof that a defect exists. Se
 | R-04 | High | Exact spans/parser version and catalog/human validation implemented; unknown ASR words stay unresolved | Reject unknown/mismatched IDs; retain negative/multilingual/hazard regressions and explicit human confirmation |
 | R-05 | High | Concurrent replay, unique intake and atomic writes verified | Backend owner: retain race/idempotency checks |
 | R-06 | Low | Real Timbre WAV verified; provider availability external | Backend owner: independent saved-ticket audio; outage cannot undo order |
-| R-07 | High | Free Render HTTPS workflow/restart verified; cold starts remain possible | Deployment owner: readiness before demo, reproducible local fallback and 15-clip evaluation and final video |
+| R-07 | High | Free Render HTTPS workflow/restart verified; cold starts remain possible | Deployment owner: readiness before demo, reproducible local fallback and final video; 15-clip evaluation and ten genuine workflows are now recorded |
 | R-08 | Critical | Deadline near; development merged | Team: prioritize hosted/audio proof and media; defer P2 |
 | R-09 | Critical | Environment/audio excluded from Git/image context | All: secret/content scans and video review; rotate any exposed key |
 | R-10 | Critical | Video/post/form unfinished; form reserved for user | Participants: final checklist, exact URLs and confirmation |

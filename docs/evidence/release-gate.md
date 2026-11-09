@@ -3,7 +3,11 @@
 Latest completion record: [judge readiness](judge-readiness.md), with 190 passing
 backend tests and explicit closure of the earlier implementation/test gaps.
 The following sections preserve historical checkpoints. Full participant submission
-approval, authentic 15-recording results and free-plan backup limits remain separate.
+approval and free-plan backup limits remain separate. The genuine 15-recording results
+(12/15; all safety cases blocked), ten genuine hosted workflows, public judge demo,
+Timbre and restart checks are recorded in [current hosted proof](hosted/README.md).
+Application commit `6f702c2` passed protected main CI and is deployed. Historical
+pending observations below are superseded only where current evidence exists.
 
 ## Current full-roadmap audit
 Actual hosting addendum: https://fieldsaarthi-ai.onrender.com is live under Blueprint GNANI. Real hosted prerecorded STT/TTS, browser supervisor workflow, production auth/secret boundaries and controlled restart persistence are verified in [hosted evidence](hosted/README.md). This supersedes the original missing-hosting observation below; a separate fresh human Hindi report is now verified below; authentic 15-clip evaluation and full-roadmap sign-off remain open.

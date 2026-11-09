@@ -1,0 +1,27 @@
+{
+  "timestamp_utc": "2026-11-09T19:27:36.633403+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "source": "actual deployed judge UI; approved historical human report; no provider fixtures",
+  "public_judge_session": true,
+  "approved_report_refresh_persisted": true,
+  "mutations_and_paid_audio_not_shown": true,
+  "live_provider_calls": 0,
+  "checks": [
+    {
+      "view": "judge-dashboard-desktop",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail-desktop",
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail-mobile",
+      "violations": [],
+      "horizontal_overflow": false
+    }
+  ],
+  "javascript_errors": []
+}

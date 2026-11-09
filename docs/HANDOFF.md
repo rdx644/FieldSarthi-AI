@@ -1,3 +1,32 @@
+# Current handoff — 2026-11-10 IST
+
+Application `6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd` is merged through protected
+PR #8, exact main CI passed, and Render deployment `dep-dbp1rkek1f9s73aqchvg` is live.
+All four user-named branches are already included in main. Open
+https://fieldsaarthi-ai.onrender.com and select **Open judge demo** (no password).
+Only explicitly approved WO-AFF1E3EE3BD2 is public; it remains OPEN/version 1.
+
+190 backend tests, strict backend/frontend checks, fixture browser regression,
+local/approved hosted-snapshot restore and deployed judge desktop/mobile checks pass.
+All 15 participant recordings are saved privately and genuinely evaluated: 12/15
+complete cases, all six safety cases blocked. Hindi/English/Hinglish coverage;
+04/10 use approved English replacements, Tamil unverified; three ASR failures need
+human correction. Same-corpus rules refinement is explicitly disclosed.
+Ten consecutive genuine hosted voice-to-resolved workflows passed, plus one
+saved-ticket Timbre WAV and a controlled restart preserving ten resolved records
+and the approved OPEN report. See docs/evidence/hosted/README.md and
+docs/evidence/judge-readiness.md for exact evidence and scope.
+
+Do not repeat paid verification or request another restart merely for reassurance.
+`private/hosted-reliability-run.json` guards the completed run. Raw audio, secrets,
+DB export and original implementation/submission reference materials stay ignored
+under private/. The user requested the roadmap and docs/submission removed from
+current Git; do not restore them. Individual contributions/eligibility, final video,
+public post and official form remain user-owned and unsubmitted. Free database
+expires 2026-12-09 with no managed backups; no paid hosting upgrade is authorized.
+
+Everything below is a historical checkpoint, superseded by this current record.
+
 # Current handoff - 2026-11-09 IST
 ## Latest participant speech result
 
