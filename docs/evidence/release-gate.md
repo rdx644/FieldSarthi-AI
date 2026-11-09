@@ -1,4 +1,10 @@
 # Development release evidence - 2026-11-09 IST
+
+Latest completion record: [judge readiness](judge-readiness.md), with 159 passing
+backend tests and explicit closure of the earlier implementation/test gaps.
+The following sections preserve historical checkpoints. Full participant submission
+approval, authentic 15-recording results and free-plan backup limits remain separate.
+
 ## Current full-roadmap audit
 Actual hosting addendum: https://fieldsaarthi-ai.onrender.com is live under Blueprint GNANI. Real hosted prerecorded STT/TTS, browser supervisor workflow, production auth/secret boundaries and controlled restart persistence are verified in [hosted evidence](hosted/README.md). This supersedes the original missing-hosting observation below; a separate fresh human Hindi report is now verified below; authentic 15-clip evaluation and full-roadmap sign-off remain open.
 The [complete audit](roadmap-audit.md) covers every numbered section/subsection and WBS task. Full roadmap sign-off is **HOLD**, with the 15-clip audio evaluation, ten-run reliability, dedicated negative-test, smaller implementation and managed-backup/rollback gaps still open. The candidate tag is not a final submission release. Exact merged-main `8146882` [CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42527535002). Fresh local recheck: 87 tests passed in 21.97s, backend lint/format/types and frontend lint/format/type/build passed; root/live/ready HTTP 200 after restarting the existing private database/app. No fresh paid Gnani call was made during this audit.

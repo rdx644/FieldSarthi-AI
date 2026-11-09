@@ -1,10 +1,10 @@
 {
-  "timestamp_utc": "2026-11-08T20:46:27.438253+00:00",
+  "timestamp_utc": "2026-11-09T14:43:30.879138+00:00",
   "source_database": "fieldsaarthi",
-  "scratch_database": "fieldsaarthi_restore_f7f52c5a",
+  "scratch_database": "fieldsaarthi_restore_aa4d5d7c",
   "source_and_restore_counts_match": true,
   "counts": {
-    "users": 3,
+    "users": 4,
     "locations": 3,
     "assets": 4,
     "report_intakes": 1,
@@ -12,7 +12,7 @@
     "audit_events": 4,
     "idempotency_keys": 1
   },
-  "backup": "private/backup-fieldsaarthi_restore_f7f52c5a.dump",
+  "backup": "private/backup-fieldsaarthi_restore_aa4d5d7c.dump",
   "source_modified": false,
   "scratch_retained": true
 }

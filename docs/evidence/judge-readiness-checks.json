@@ -1,0 +1,61 @@
+{
+  "timestamp_utc": "2026-11-09T14:54:05.341659+00:00",
+  "baseline_main": "e8d6f97",
+  "branches": [
+    {
+      "branch": "docs/human-microphone-proof",
+      "tip": "7c54fddc7e7da2c7038ae63df3f548ce71017121",
+      "already_in_baseline_main": true
+    },
+    {
+      "branch": "docs/render-hosted-proof",
+      "tip": "5b97838c2b72cb08acc9e4d746881d37798ce949",
+      "already_in_baseline_main": true
+    },
+    {
+      "branch": "chore/roadmap-audit-render",
+      "tip": "f0c34bb36cc8f4774d5fd93a3f7126c58e5cf478",
+      "already_in_baseline_main": true
+    },
+    {
+      "branch": "feature/complete-fieldsaarthi",
+      "tip": "8146882af557d46491888a644081d53c485ada13",
+      "already_in_baseline_main": true
+    }
+  ],
+  "backend_tests": {
+    "passed": 159,
+    "command": "api/.venv/Scripts/python.exe -m pytest -q --tb=short"
+  },
+  "backend_checks": [
+    "ruff check .",
+    "ruff format --check .",
+    "mypy app",
+    "pip-audit: no known vulnerabilities"
+  ],
+  "frontend_checks": [
+    "npm run build",
+    "npm run lint",
+    "npm run format:check",
+    "npm audit: 0 vulnerabilities"
+  ],
+  "fixture_browser_evidence": "browser-regression/results.json",
+  "retained_browser_evidence": "browser/accessibility.json",
+  "backup_restore": "backup-restore.json",
+  "judge_allowlist_mutation_detected": true,
+  "restored_focused_tests_passed": 2,
+  "authenticated_blueprint_validation": {
+    "valid": true,
+    "total_actions": 1,
+    "blueprint_sha256": "bb3a140812844084b59ebf953668994439848001c01bdf3f0a0ddbf236262ed3"
+  },
+  "public_judge_report_authorized": "WO-AFF1E3EE3BD2",
+  "authentic_audio_evaluation": "pending participant recordings; no score claimed",
+  "final_form": "user reserved, unsubmitted",
+  "removed_from_current_git_tree": [
+    "FieldSaarthi_AI_Traceable_Implementation_Roadmap.md",
+    "docs/roadmap.md",
+    "docs/submission",
+    "scripts/build_pitch.py"
+  ]
+}

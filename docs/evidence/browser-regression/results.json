@@ -1,0 +1,76 @@
+{
+  "timestamp_utc": "2026-11-09T14:40:07.353944+00:00",
+  "kind": "nonbillable_test_only_provider_fixture_browser_regression",
+  "live_provider_calls": 0,
+  "test_provider_calls": 1,
+  "permission_denied_guidance": true,
+  "manual_source_label": true,
+  "script_transcript_escaped": true,
+  "human_confirmation_required": true,
+  "idempotent_replay": true,
+  "supervisor_resolution_and_refresh": true,
+  "judge_read_only_dashboard": true,
+  "checks": [
+    {
+      "view": "test-only-review",
+      "width": 1440,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "test-only-resolved",
+      "width": 1440,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-queue-320",
+      "width": 320,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-queue-768",
+      "width": 768,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-queue-1024",
+      "width": 1024,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-queue-1440",
+      "width": 1440,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail-320",
+      "width": 320,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail-768",
+      "width": 768,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail-1024",
+      "width": 1024,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail-1440",
+      "width": 1440,
+      "violations": [],
+      "horizontal_overflow": false
+    }
+  ],
+  "javascript_errors": []
+}
