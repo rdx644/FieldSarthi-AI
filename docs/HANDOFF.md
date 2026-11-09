@@ -7,7 +7,8 @@ Actual hosted prerecorded Hindi Prisma -> explicit confirmation -> durable order
 
 Fresh human speech, 15 distinct audio evaluation, ten-run reliability target, roadmap implementation/test gaps, free DB managed-backup/rollback limitations and participant media/contributions/form remain open. Final form remains user-reserved and unsubmitted. Candidate tag v0.2.0-rc.1 unchanged; no final release tag. Free DB expires 2026-12-09; no paid upgrade or unrelated-resource changes.
 
-## Current audit/deployment work
+## Historical audit baseline - before hosted deployment
+This section records the earlier pre-hosting audit state. The latest hosted result above supersedes its account-connection, deployment, prerecorded provider smoke and restart blockers. Remaining human/evaluation/code-test/submission gates still apply.
 User requested session continuation, main/local synchronization check, complete roadmap audit and Render Blueprint deployment. Baseline `8146882` exactly matched fetched GitHub main; exact main CI 42527535002 passed and branch protection is active. Initial local changes were only a safe `.env.example` placeholder and an untracked root roadmap identical to docs/roadmap.md. Preserve/publish those reviewed files with the audit.
 
 Full audit: docs/evidence/roadmap-audit.md and machine-readable coverage cover all 94 numbered headings and 64 WBS tasks. **The full roadmap is not complete**: remaining hosting/new-human-speech/15 audio/reliability/submission plus finer implementation/test gaps are explicit. Stale scope/security/risks/compliance/checklist records are reconciled; retrospective ADR001..008 and interview guide added. Do not interpret old broad development checkmarks as gate sign-off.
@@ -16,7 +17,8 @@ Render canonical file remains render.yaml, explicit repository/main/Docker conte
 
 The private PostgreSQL cluster and local app were stopped at audit start. Restarted existing cluster 55432 and hidden Uvicorn 8000; root/live/ready 200. Fresh tests 87 passed in 21.97s after discarding the initial DB-offline attempt; Ruff/mypy and frontend lint/format/build pass. No paid provider calls during this audit. App process ID is in private/audit-server.pid; logs stay private. See audit JSON for additional executed checks.
 
-## Previous development handoff
+## Historical development handoff - before audit and hosting
+The following text is retained for context. Use the latest hosted result above for current deployment and account status.
 User authorized full development, then explicitly prioritized development and said **do not submit the final form**. They will decide contributions later. Team: Shubham Putitundi and Shambhavi Kumar; institution SRM Institute of Science and Technology. Registration email/form URL stay only in private/submission-details.json.
 
 Application implemented and locally verified: React + FastAPI + real PostgreSQL 18 (private cluster port55432), migrations0001/0002, three synthetic accounts in private/demo-accounts.json, real Prisma intake, catalog suggestions/human confirmation, atomic idempotent orders, supervisor workflow, immutable provenance/audit and optional real Timbre playback. 87 tests pass, strict mypy/Ruff, frontend build/lint/format, six clean axe/browser/mobile views, actual backup/restore counts match. Never rerun paid calls just for reassurance. Original live proof and a real browser-to-Gnani-to-order flow already exist; test recorder used file-fed audio, not a newly spoken human sentence.
