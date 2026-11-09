@@ -1,0 +1,86 @@
+{
+  "timestamp_utc": "2026-11-09T12:27:05.568590+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "service_id": "srv-dborlf7f3r2c73c4a710",
+  "database_id": "dpg-dborj7gu01pc738749hg-a",
+  "blueprint_id": "exs-dborlpu417fc7396uk2g",
+  "blueprint_name": "GNANI",
+  "deployed_commit": "09cb09faf75817f73e2f0cfc71397db266b2346c",
+  "input": "Existing consented prerecorded Hindi sample; file-fed recorder test. No fresh human speech claim.",
+  "provider": {
+    "name": "Gnani AI",
+    "model": "prisma-v2.5",
+    "request_id": "fd6afc18-61d1-442d-98c4-ce85ca6e0790"
+  },
+  "order_id": "8c574569-abe8-4b36-a3bd-696f2a8ff494",
+  "public_code": "WO-59BF37DC1536",
+  "browser_workflow": {
+    "timestamp_utc": "2026-11-09T12:25:13.571068+00:00",
+    "base_url": "https://fieldsaarthi-ai.onrender.com",
+    "input": "user-recorded prerecorded Hindi sample; not fresh human microphone speech",
+    "recorder": "MediaRecorder start/stop verified with Chrome file-fed test audio; discarded",
+    "provider": {
+      "name": "Gnani AI",
+      "model": "prisma-v2.5",
+      "request_id": "fd6afc18-61d1-442d-98c4-ce85ca6e0790"
+    },
+    "transcribe_http_status": 201,
+    "order_id": "8c574569-abe8-4b36-a3bd-696f2a8ff494",
+    "public_code": "WO-59BF37DC1536",
+    "refresh_persistence": true,
+    "supervisor_assignment_and_resolution": true,
+    "javascript_errors": [],
+    "desktop_width": 1440,
+    "mobile_width": 390
+  },
+  "http": {
+    "/": 200,
+    "/health/live": 200,
+    "/health/ready": 200
+  },
+  "cookie_attributes": {
+    "http_only": true,
+    "secure": true,
+    "same_site": "strict"
+  },
+  "cross_origin_cookie_mutation_rejected": true,
+  "persisted_order": {
+    "status": "RESOLVED",
+    "version": 4,
+    "audit_events": 4
+  },
+  "served_script_secret_scan": {
+    "files": 1,
+    "known_value_matches": 0
+  },
+  "tts": {
+    "http_status": 200,
+    "content_type": "audio/wav",
+    "requested_model": "timbre-v2.5",
+    "response_model_echo": null,
+    "duration_seconds": 5.76,
+    "bytes": 553004,
+    "sha256": "9476e824ae3fcbe9db843330b11a98ae98ca84ec08fa92a65384c1975673ba45",
+    "note": "Actual hosted binary WAV validated; no claim of a provider-echoed model or human listening test."
+  },
+  "authorization": {
+    "cross_worker_detail_statuses": {
+      "work-orders": 404,
+      "intakes": 404
+    },
+    "worker_supervisor_mutation_status": 403
+  },
+  "runtime_log_scan": {
+    "entries_checked": 100,
+    "known_secret_matches": 0,
+    "exact_transcript_matches": 0,
+    "scope": "Most recent100 entries, not all historical logs"
+  },
+  "live_provider_calls_in_acceptance": {
+    "stt_requests": 1,
+    "tts_requests": 1,
+    "provider_internal_retries_not_independently_counted": true
+  },
+  "fresh_human_speech_verified": false,
+  "fifteen_audio_evaluation_complete": false
+}

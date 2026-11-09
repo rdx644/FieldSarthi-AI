@@ -10,7 +10,7 @@ Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/ev
 - [x] Application commit 0a6a3d8 passed Linux/browser/audit/container CI; protected PR merges also require the current head to be green.
 ## WBS-01: Real Gnani spike
 - [x] WBS-01.1 through WBS-01.6: actual WAV validated, direct cURL + backend HTTPX real responses, tests and sanitized evidence.
-- [ ] Exact deployed-account/key smoke requires actual hosting.
+- [x] Exact deployed-account/key genuine STT and optional TTS smoke verified on Render with consenting prerecorded sample; docs/evidence/hosted/.
 ## WBS-02: Foundation
 - [x] React/Vite/TypeScript and typed FastAPI; real PostgreSQL 18; versioned Alembic schema.
 - [x] Seven domain tables, synthetic two-worker/supervisor seed, salted Argon2 authentication and live role checks.
@@ -41,7 +41,8 @@ Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/ev
 - [x] Actual private backup/isolated restore drill with matching table counts.
 - [x] Docker/Render/CI configuration and static Render schema validation.
 - [x] Remote Linux/browser/audit/container build and protected main enforcement verified; see github-publication.json.
-- [ ] Render account connection, HTTPS deployment and fresh deployed Gnani smoke.
+- [x] Render CLI authorized; free web/PostgreSQL18 resources live; actual Blueprint GNANI in_sync; real hosted prerecorded STT/TTS and restart persistence verified.
+- [ ] Freshly spoken human HTTPS microphone sentence remains pending; hosted prerecorded evidence does not close this gate.
 - [ ] 15 distinct authentic audio evaluation cases; parser fixtures do not satisfy this.
 ## WBS-08: User-owned submission
 - [x] One-page PDF/Markdown pitch, accurate project explanation, 2-3 minute script and social draft prepared.

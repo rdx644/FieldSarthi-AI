@@ -14,7 +14,7 @@ Names supplied: Shubham Putitundi; Shambhavi Kumar. Institution: SRM Institute o
 - [x] Genuine Prisma proof and durable supervisor workflow verified locally.
 - [x] One-page solution pitch prepared in docs/submission/solution-pitch.md.
 - [x] GitHub published code/CI and branch protection verified at merged main `8146882`; [exact main run](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42527535002).
-- [ ] Hosted HTTPS demo smoke (or documented reproducible local demo) verified.
+- [x] Hosted HTTPS prerecorded genuine Gnani workflow and restart persistence verified; final newly spoken human recording remains pending.
 - [ ] 15 distinct authentic audio scripts evaluated; do not confuse parser fixtures with speech tests.
 - [ ] Final technical video is 2-3 minutes, working, truthful, legible and secret-free.
 - [ ] Required social post is public with official tag and both exact hashtags.

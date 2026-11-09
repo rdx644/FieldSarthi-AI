@@ -1,0 +1,65 @@
+{
+  "timestamp_utc": "2026-11-09T12:33:51.485135+00:00",
+  "url": "https://fieldsaarthi-ai.onrender.com",
+  "deployed_commit": "09cb09faf75817f73e2f0cfc71397db266b2346c",
+  "deployment_id": "dep-dborm5ec6qcc738i127g",
+  "status": "live",
+  "deployment_finished_at": "2026-11-09T12:24:18.685773Z",
+  "blueprint": {
+    "id": "exs-dborlpu417fc7396uk2g",
+    "name": "GNANI",
+    "repo": "https://github.com/rdx644/FieldSarthi-AI",
+    "branch": "main",
+    "path": "render.yaml",
+    "status": "in_sync",
+    "resources": [
+      {
+        "id": "srv-dborlf7f3r2c73c4a710",
+        "name": "fieldsaarthi-ai",
+        "type": "web_service"
+      },
+      {
+        "id": "dpg-dborj7gu01pc738749hg-a",
+        "name": "fieldsaarthi-db",
+        "type": "postgres"
+      }
+    ]
+  },
+  "web_service": {
+    "runtime": "docker",
+    "plan": "free",
+    "region": "singapore",
+    "numInstances": 1,
+    "healthCheckPath": "/health/ready",
+    "url": "https://fieldsaarthi-ai.onrender.com"
+  },
+  "database": {
+    "id": "dpg-dborj7gu01pc738749hg-a",
+    "name": "fieldsaarthi-db",
+    "status": "available",
+    "plan": "free",
+    "region": "singapore",
+    "version": "18",
+    "expiresAt": "2026-12-09T12:16:30.004422Z",
+    "ipAllowList": []
+  },
+  "creation_method": "Authenticated official CLI/API resources; user completed Dashboard Blueprint creation; API verified adoption of same resources.",
+  "authenticated_blueprint_validation": {
+    "valid": true,
+    "services": [
+      "fieldsaarthi-ai"
+    ],
+    "databases": [
+      "fieldsaarthi-db"
+    ],
+    "totalActions": 2
+  },
+  "remaining_limits": [
+    "Fresh human microphone speech not verified",
+    "15 authentic audio cases not evaluated",
+    "Ten consecutive full workflows not measured",
+    "Free DB has no managed backups and expires after30days",
+    "Complete roadmap code/test gaps remain in audit",
+    "Final form remains user-reserved and unsubmitted"
+  ]
+}

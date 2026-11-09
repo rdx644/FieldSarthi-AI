@@ -6,7 +6,7 @@ All requirements retained; no fixture success counts as live evidence.
 | O-01 | Enrolled student in India, age **18+** | docs/compliance.md; account/submission evidence pending |
 | O-02 | Solo or team of **two** | docs/compliance.md; account/submission evidence pending |
 | O-03 | One submission per person/team | docs/compliance.md; account/submission evidence pending |
-| O-04 | Working app integrating **at least one genuine Gnani model/API** | Real local STT/TTS and durable browser workflow: docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted proof pending |
+| O-04 | Working app integrating **at least one genuine Gnani model/API** | Real local STT/TTS and durable browser workflow: docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded STT/TTS/workflow verified in docs/evidence/hosted/; fresh human demonstration pending |
 | O-05 | Explain title, problem, users, models/APIs, contributions | docs/compliance.md; account/submission evidence pending |
 | O-06 | Public video showing application **working** | docs/compliance.md; account/submission evidence pending |
 | O-07 | Include both **#GnaniAI** and **#GreatIndianAIInternshipChallenge**; tag Gnani AI | docs/compliance.md; account/submission evidence pending |
@@ -20,10 +20,10 @@ All requirements retained; no fixture success counts as live evidence.
 | FR-03 | Role-restricted login/session | app/core/security.py; routers/auth.py; integration/test_workflow.py and test_intakes.py; role/IDOR/cookie/CSRF checks |
 | FR-04 | Browser records audio with permission handling | web/src/pages/Report.tsx; app/services/audio.py; core/limits.py; test_intakes.py; file-fed MediaRecorder + real decoder verified, final human microphone capture pending |
 | FR-05 | Server validates/normalizes audio | web/src/pages/Report.tsx; app/services/audio.py; core/limits.py; test_intakes.py; file-fed MediaRecorder + real decoder verified, final human microphone capture pending |
-| FR-06 | Real Prisma request is made server-side | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
-| FR-07 | Transcript is displayed and saved as received | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
-| FR-08 | Gnani evidence is correlated | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
-| FR-09 | STT errors handled without false success | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; deployed smoke pending |
+| FR-06 | Real Prisma request is made server-side | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human speech pending |
+| FR-07 | Transcript is displayed and saved as received | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human speech pending |
+| FR-08 | Gnani evidence is correlated | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human speech pending |
+| FR-09 | STT errors handled without false success | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human speech pending |
 | FR-10 | Extract asset and location from transcript | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
 | FR-11 | Extract issue and urgency suggestion | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
 | FR-12 | Provide explainable extraction evidence | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
@@ -50,7 +50,7 @@ All requirements retained; no fixture success counts as live evidence.
 | NFR-08 | Reproducibility | Frozen uv/npm locks, README, migrations/seed, Docker/Render/CI artifacts |
 | NFR-09 | Observability | Generated request IDs, body-free structured timings/errors and live/ready endpoints |
 | NFR-10 | Fault isolation | STT failure cannot create order; TTS outage keeps saved order, verified |
-| NFR-11 | Deployment | Docker/Render Blueprint schema verified; actual public HTTPS deployment and smoke pending |
+| NFR-11 | Deployment | Actual Render HTTPS app/DB, Blueprint GNANI, real prerecorded provider/browser workflow and restart verified; fresh human microphone and free-backup limitation remain |
 | NFR-12 | Maintainability | Strict mypy/Ruff, TypeScript build and frontend lint/format; required GitHub quality gate |
 | NFR-13 | Cost awareness | 25s UI/30s decode cap; per-user/global single-process limits; actual console balance remains operator-owned |
-| NFR-14 | Honest representation | Test fixtures confined to tests; real local provider evidence; no deployed/form completion claim |
+| NFR-14 | Honest representation | Test fixtures confined to tests; real local and hosted provider evidence; no fresh-human/form completion claim |

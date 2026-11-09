@@ -6,6 +6,10 @@ Baseline inspected: merged main `8146882af557d46491888a644081d53c485ada13`, tag 
 
 The original working tree was not clean: `.env.example` contained a safe `YOUR API KEY` placeholder edit, and the root roadmap was untracked. Both are intentionally preserved in this audit branch for publication. The root roadmap is byte-identical to `docs/roadmap.md`; the plan is not rewritten to erase gaps. Ignored private credentials/audio/database files remain local and are not sync targets.
 
+## Later deployment addendum
+
+The baseline audit below is preserved as a point-in-time assessment. Subsequent authorized work deployed https://fieldsaarthi-ai.onrender.com and registered actual Blueprint GNANI. Authenticated validation, genuine hosted prerecorded STT/TTS/browser workflow, production cookies/authorization/secret checks and controlled restart persistence are now verified; see [the actual hosted evidence](hosted/README.md). These results supersede the baseline's missing-account/hosting/prerecorded-smoke/restart observations. They do **not** close fresh human speech,15 distinct authentic recordings, ten consecutive full workflows, managed backups/rollback, the listed code/test gaps or user-owned submission. Full roadmap sign-off remains HOLD.
+
 ## Fresh executed verification
 
 - Isolated PostgreSQL was stopped at audit start. Restarted only `private/postgres-data` on 127.0.0.1:55432. The initial stalled test run was stopped; it is not counted as a pass.
