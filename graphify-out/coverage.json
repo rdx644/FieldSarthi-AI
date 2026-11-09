@@ -102,8 +102,9 @@
     "93": "Vite Logo Asset"
   },
   "graph_nodes": 612,
-  "graph_edges": 866,
+  "graph_edges": 848,
   "semantic_input_tokens": null,
   "semantic_output_tokens": null,
-  "token_cost_note": "Not returned by semantic extraction agents."
+  "token_cost_note": "Not returned by semantic extraction agents.",
+  "removed_unreliable_generic_call_edges": 18
 }

@@ -5,8 +5,8 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 612 nodes · 866 edges · 94 communities detected
-- Extraction: 61% EXTRACTED · 39% INFERRED · 0% AMBIGUOUS · INFERRED: 342 edges (avg confidence: 0.79)
+- 612 nodes · 848 edges · 94 communities detected
+- Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 324 edges (avg confidence: 0.79)
 - Token cost: unavailable (semantic extraction agents did not return token telemetry)
 
 ## Community Hubs (Navigation)
@@ -111,23 +111,23 @@
 3. `fixture_intake()` - 24 edges
 4. `payload()` - 22 edges
 5. `stable()` - 21 edges
-6. `run()` - 19 edges
-7. `GnaniError` - 18 edges
-8. `extract()` - 18 edges
-9. `FieldSaarthi system architecture` - 17 edges
-10. `Database-backed workflow and security coverage` - 16 edges
+6. `GnaniError` - 18 edges
+7. `extract()` - 18 edges
+8. `FieldSaarthi system architecture` - 17 edges
+9. `Database-backed workflow and security coverage` - 16 edges
+10. `Gnani speech processing` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Bounded decoding of untrusted media; original bytes never persist after conversi` --uses--> `AppError`  [INFERRED]
   api\app\services\audio.py → api\app\core\errors.py
-- `curl_call()` --calls--> `run()`  [INFERRED]
-  api\app\integrations\smoke.py → api\alembic\env.py
-- `main()` --calls--> `run()`  [INFERRED]
-  api\app\integrations\smoke.py → api\alembic\env.py
-- `main()` --calls--> `run()`  [INFERRED]
-  api\scripts\evaluate_audio.py → api\alembic\env.py
-- `git()` --calls--> `run()`  [INFERRED]
-  api\scripts\repository_guard.py → api\alembic\env.py
+- `main()` --calls--> `now()`  [INFERRED]
+  api\scripts\backup_drill.py → api\app\db\models.py
+- `test_paid_response_survives_parser_failure_without_repeating_call()` --calls--> `evaluate()`  [INFERRED]
+  api\tests\unit\test_audio_evaluation.py → api\scripts\evaluate_audio.py
+- `WBS-02 initial schema and database-enforced provenance/audit protection.` --uses--> `Base`  [INFERRED]
+  api\alembic\versions\0001_foundation.py → api\app\db\models.py
+- `main()` --calls--> `upgrade()`  [INFERRED]
+  api\tests\browser\workflow_check.py → api\alembic\versions\0004_judge_demo.py
 
 ## Communities
 
@@ -160,8 +160,8 @@ Cohesion: 0.13
 Nodes (22): WBS-02 initial schema and database-enforced provenance/audit protection., DeclarativeBase, Audit, Base, Idempotency, Intake, Order, User (+14 more)
 
 ### Community 7 - "Audio Contracts And Backup Drill"
-Cohesion: 0.1
-Nodes (25): normalize_audio(), Bounded decoding of untrusted media; original bytes never persist after conversi, main(), Create a private pg_dump and restore to a new isolated scratch database.  Never, run(), test_paid_response_survives_parser_failure_without_repeating_call(), T-AUD-02: exercise actual FFmpeg WebM/Opus decoding, with test-only audio., test_actual_webm_opus_converts_to_provider_pcm_wav() (+17 more)
+Cohesion: 0.07
+Nodes (18): normalize_audio(), Bounded decoding of untrusted media; original bytes never persist after conversi, main(), Create a private pg_dump and restore to a new isolated scratch database.  Never, test_paid_response_survives_parser_failure_without_repeating_call(), T-AUD-02: exercise actual FFmpeg WebM/Opus decoding, with test-only audio., test_actual_webm_opus_converts_to_provider_pcm_wav(), call() (+10 more)
 
 ### Community 8 - "Catalog Extraction And Provenance"
 Cohesion: 0.11
@@ -233,7 +233,7 @@ Nodes (1): Add explicit manual accessibility provenance without relabeling voice
 
 ### Community 25 - "Health And Catalog Access Tests"
 Cohesion: 0.67
-Nodes (file inventory): test_foundation.py, test_anonymous_catalog_is_denied(), test_live_and_ready()
+Nodes (inventory): test_foundation.py, test_anonymous_catalog_is_denied(), test_live_and_ready()
 
 ### Community 26 - "Typed API Command And Response Models"
 Cohesion: 0.67
@@ -241,7 +241,7 @@ Nodes (3): Typed API contracts, api/app/schemas/commands.py, api/app/schemas/res
 
 ### Community 27 - "SQLAlchemy Session Dependency"
 Cohesion: 1.0
-Nodes (file inventory): session.py, get_db()
+Nodes (inventory): session.py, get_db()
 
 ### Community 28 - "Migration-First Server Startup"
 Cohesion: 1.0
@@ -249,15 +249,15 @@ Nodes (1): One-worker deployment entry point. Run migrations before accepting tr
 
 ### Community 29 - "Request ID Logging Tests"
 Cohesion: 1.0
-Nodes (file inventory): test_observability.py, test_http_event_is_emitted_with_request_id_and_without_query_secrets()
+Nodes (inventory): test_observability.py, test_http_event_is_emitted_with_request_id_and_without_query_secrets()
 
 ### Community 30 - "Accessible Manual Report Page"
 Cohesion: 1.0
-Nodes (file inventory): onReady(), ManualReport.tsx
+Nodes (inventory): onReady(), ManualReport.tsx
 
 ### Community 31 - "Work Order Queue Filters"
 Cohesion: 1.0
-Nodes (file inventory): filter(), Orders.tsx
+Nodes (inventory): filter(), Orders.tsx
 
 ### Community 32 - "Authentication And Authorization Core"
 Cohesion: 1.0
@@ -309,27 +309,27 @@ Nodes (2): Authentication and demo access, api/app/routers/auth.py
 
 ### Community 44 - "Backend Application Package"
 Cohesion: 1.0
-Nodes (file inventory): __init__.py
+Nodes (inventory): __init__.py
 
 ### Community 45 - "Environment Configuration"
 Cohesion: 1.0
-Nodes (file inventory): config.py
+Nodes (inventory): config.py
 
 ### Community 46 - "Gnani Integration Package"
 Cohesion: 1.0
-Nodes (file inventory): __init__.py
+Nodes (inventory): __init__.py
 
 ### Community 47 - "Pytest Configuration"
 Cohesion: 1.0
-Nodes (file inventory): conftest.py
+Nodes (inventory): conftest.py
 
 ### Community 48 - "Vite Development Configuration"
 Cohesion: 1.0
-Nodes (file inventory): vite.config.ts
+Nodes (inventory): vite.config.ts
 
 ### Community 49 - "Git Text And Binary Rules"
 Cohesion: 1.0
-Nodes (file inventory): .gitattributes
+Nodes (inventory): .gitattributes
 
 ### Community 50 - "Project Change Log"
 Cohesion: 1.0
@@ -337,19 +337,19 @@ Nodes (1): Changelog
 
 ### Community 51 - "Alembic Configuration"
 Cohesion: 1.0
-Nodes (file inventory): alembic.ini
+Nodes (inventory): alembic.ini
 
 ### Community 52 - "Python Dependencies And Tooling"
 Cohesion: 1.0
-Nodes (file inventory): pyproject.toml
+Nodes (inventory): pyproject.toml
 
 ### Community 53 - "FFmpeg Type Stub"
 Cohesion: 1.0
-Nodes (file inventory): imageio_ffmpeg.pyi
+Nodes (inventory): imageio_ffmpeg.pyi
 
 ### Community 54 - "Locked Python Dependencies"
 Cohesion: 1.0
-Nodes (file inventory): uv.lock
+Nodes (inventory): uv.lock
 
 ### Community 55 - "Participant Microphone Evidence"
 Cohesion: 1.0
@@ -381,11 +381,11 @@ Nodes (1): fieldsaarthi-web
 
 ### Community 62 - "Base Interface Styles"
 Cohesion: 1.0
-Nodes (file inventory): index.css
+Nodes (inventory): index.css
 
 ### Community 63 - "Application Theme Styles"
 Cohesion: 1.0
-Nodes (file inventory): styles.css
+Nodes (inventory): styles.css
 
 ### Community 64 - "Frontend App TypeScript Settings"
 Cohesion: 1.0
@@ -649,9 +649,9 @@ Nodes (1): Vite development tool logo asset
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppError` connect `Authentication And Intake Routes` to `Gnani STT And Timbre Adapters`, `Transactional Orders And Audit Models`, `Audio Contracts And Backup Drill`?**
-  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+  _High betweenness centrality (0.062) - this node is a cross-community bridge._
 - **Why does `ProviderResult` connect `Gnani STT And Timbre Adapters` to `Typed API Response Schemas`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
+  _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `stable()` connect `Backend Workflow Regression Tests` to `Catalog Extraction And Provenance`, `Authentication And Intake Routes`, `Recording And Browser Evaluation`?**
   _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Are the 25 inferred relationships involving `login()` (e.g. with `test_search_injection_is_literal_and_preserves_ownership_and_tables()` and `test_manual_text_is_explicit_and_has_no_provider_provenance()`) actually correct?**
