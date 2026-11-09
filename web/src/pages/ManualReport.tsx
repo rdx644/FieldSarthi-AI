@@ -5,9 +5,11 @@ import type { Intake } from "../lib/api";
 export function ManualReport({
   language,
   onReady,
+  onBusyChange,
 }: {
   language: string;
   onReady: (intake: Intake) => void;
+  onBusyChange: (busy: boolean) => void;
 }) {
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
@@ -25,6 +27,7 @@ export function ManualReport({
           event.preventDefault();
           if (text.trim().length < 5 || busy) return;
           setBusy(true);
+          onBusyChange(true);
           setError("");
           try {
             onReady(
@@ -41,6 +44,7 @@ export function ManualReport({
             );
           } finally {
             setBusy(false);
+            onBusyChange(false);
           }
         }}
       >

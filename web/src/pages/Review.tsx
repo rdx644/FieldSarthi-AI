@@ -46,6 +46,7 @@ export function Review({
   }, []);
 
   const missing = !location || !asset || description.trim().length < 5;
+  const descriptionTooLong = description.trim().length > 2000;
   return (
     <>
       <button className="back-link" onClick={onBack}>
@@ -182,7 +183,7 @@ export function Review({
           }}
           onSubmit={async (e) => {
             e.preventDefault();
-            if (missing || !confirmed) return;
+            if (missing || descriptionTooLong || !confirmed) return;
             setBusy(true);
             setError("");
             try {
@@ -294,12 +295,26 @@ export function Review({
             <textarea
               minLength={5}
               maxLength={2000}
+              aria-invalid={descriptionTooLong}
+              aria-describedby={
+                descriptionTooLong ? "description-length-error" : undefined
+              }
               rows={4}
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </label>
+          {descriptionTooLong && (
+            <p
+              id="description-length-error"
+              className="validation-note"
+              role="alert"
+            >
+              Shorten the issue description to 2000 characters or fewer. Your
+              full original report is preserved.
+            </p>
+          )}
           {missing && (
             <p className="validation-note">
               Choose a known location and equipment, and describe the issue
@@ -323,7 +338,7 @@ export function Review({
           )}
           <button
             className="button primary full"
-            disabled={!confirmed || missing || busy}
+            disabled={!confirmed || missing || descriptionTooLong || busy}
           >
             {busy ? "Creating work order…" : "Confirm & create work order"}
             <ArrowRight size={17} />

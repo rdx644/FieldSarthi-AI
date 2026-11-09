@@ -41,6 +41,21 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--channel", default="chrome")
     args = parser.parse_args()
+    target = ROOT / "docs/evidence/browser-regression"
+    target.mkdir(parents=True, exist_ok=True)
+    (target / "results.json").write_text(
+        json.dumps(
+            {
+                "timestamp_utc": datetime.now(UTC).isoformat(),
+                "status": "not_completed",
+                "passed": False,
+                "kind": "nonbillable_test_only_provider_fixture_browser_regression",
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     assert engine.url.database == "fieldsaarthi_test", "Never reset a non-test database"
     with engine.begin() as connection:
         connection.execute(text("DROP SCHEMA public CASCADE"))
@@ -80,8 +95,6 @@ def main():
         time.sleep(0.1)
     else:
         raise RuntimeError("Browser test server did not become ready")
-    target = ROOT / "docs/evidence/browser-regression"
-    target.mkdir(parents=True, exist_ok=True)
     axe = (ROOT / "web/node_modules/axe-core/axe.min.js").read_text(encoding="utf-8")
     audits = []
     errors = []
@@ -100,6 +113,7 @@ def main():
             page = context.new_page()
             page.on("pageerror", lambda error: errors.append(str(error)))
             page.add_init_script("""Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+                configurable: true, writable: true,
                 value: async () => { throw new DOMException('Denied in test', 'NotAllowedError'); }
             });""")
 
@@ -138,13 +152,90 @@ def main():
             page.goto(base)
             page.get_by_role("heading", name="Welcome back.").wait_for()
             sign_in(accounts[0])
+            page.get_by_role("button", name="Start recording").wait_for()
+            page.evaluate("""() => {
+                window.__originalRecorder = window.MediaRecorder;
+                window.__captureCalls = 0; window.__captureStarts = 0; window.__captureStops = 0;
+                navigator.mediaDevices.getUserMedia = () => {
+                    window.__captureCalls++;
+                    return new Promise(resolve => { window.__resolveMic = () => resolve({
+                        getTracks: () => [{ stop: () => window.__captureStops++ }]
+                    }); });
+                };
+                window.MediaRecorder = class {
+                    static isTypeSupported() { return true; }
+                    start() { window.__captureStarts++; this.state = 'recording'; }
+                    stop() { this.state = 'inactive'; }
+                };
+                const button = document.querySelector('[aria-label="Start recording"]');
+                button.click(); button.click();
+            }""")
+            assert page.evaluate("window.__captureCalls") == 1
+            expect(page.get_by_role("button", name="Upload audio instead")).to_be_disabled()
+            page.get_by_role("button", name="My reports", exact=False).click()
+            page.get_by_role("heading", name="From reported to resolved.").wait_for()
+            page.evaluate("window.__resolveMic()")
+            page.wait_for_function("window.__captureStops === 1")
+            assert page.evaluate("window.__captureStarts") == 0
+            page.evaluate("""() => {
+                window.MediaRecorder = window.__originalRecorder;
+                navigator.mediaDevices.getUserMedia = async () => {
+                    throw new DOMException('Denied in test', 'NotAllowedError');
+                };
+            }""")
+            page.get_by_role("button", name="New voice report").click()
+            page.get_by_role("button", name="Start recording").wait_for()
+            page.evaluate("""() => {
+                window.__delayedRecorders = [];
+                navigator.mediaDevices.getUserMedia = async () => ({
+                    getTracks: () => [{stop() {}}]
+                });
+                window.MediaRecorder = class {
+                    constructor() {
+                        this.mimeType = 'audio/webm'; window.__delayedRecorders.push(this);
+                    }
+                    static isTypeSupported() { return true; }
+                    start() { this.state = 'recording'; }
+                    stop() { this.state = 'inactive'; }
+                };
+            }""")
+            page.get_by_role("button", name="Start recording").click()
+            page.get_by_role("button", name="Stop recording").click()
+            page.get_by_role("button", name="Start recording").click()
+            page.get_by_role("button", name="Stop recording").wait_for()
+            page.evaluate("window.__delayedRecorders[0].onstop()")
+            assert page.get_by_role("button", name="Stop recording").is_visible()
+            assert page.get_by_label("Discard recording").count() == 0
+            page.get_by_role("button", name="Stop recording").click()
+            page.evaluate("window.__delayedRecorders[1].onstop()")
+            page.get_by_label("Discard recording").click()
+            page.evaluate("""() => {
+                window.MediaRecorder = window.__originalRecorder;
+                navigator.mediaDevices.getUserMedia = async () => {
+                    throw new DOMException('Denied in test', 'NotAllowedError');
+                };
+            }""")
             page.get_by_role("button", name="Start recording").click()
             expect(page.get_by_role("alert")).to_contain_text("Microphone access was denied")
             page.get_by_text("Type a report instead", exact=True).click()
-            page.get_by_label("Typed report").fill("Block B pump leak")
+            manual_text = "Block B pump leak " + "x" * 2100
+            page.get_by_label("Typed report").fill(manual_text)
+            pending_manual = []
+            page.route("**/api/v1/intakes/manual", lambda route: pending_manual.append(route))
             page.get_by_role("button", name="Review typed report").click()
+            expect(page.get_by_role("button", name="Start recording")).to_be_disabled()
+            assert len(pending_manual) == 1
+            pending_manual[0].continue_()
+            page.unroute("**/api/v1/intakes/manual")
             page.get_by_role("heading", name="Your typed report").wait_for()
             expect(page.locator(".provider-strip")).to_contain_text("MANUAL TEXT")
+            expect(page.locator("blockquote.transcript")).to_have_text(manual_text)
+            page.get_by_role("checkbox").check()
+            assert page.get_by_role("button", name="Confirm & create work order").is_disabled()
+            expect(page.get_by_role("alert")).to_contain_text("Shorten the issue description")
+            page.get_by_label("Issue description").fill("Block B pump leak")
+            page.get_by_role("checkbox").check()
+            assert page.get_by_role("button", name="Confirm & create work order").is_enabled()
             page.get_by_role("button", name="Back to recording").click()
             page.locator("input[type=file]").set_input_files(str(source))
             page.get_by_role("button", name="Transcribe report").click()
@@ -223,12 +314,19 @@ def main():
         server.should_exit = True
         thread.join(timeout=10)
     report = {
+        "status": "passed",
+        "passed": True,
         "timestamp_utc": datetime.now(UTC).isoformat(),
         "kind": "nonbillable_test_only_provider_fixture_browser_regression",
         "live_provider_calls": 0,
         "test_provider_calls": len(calls),
         "permission_denied_guidance": True,
+        "one_pending_microphone_request": True,
+        "stale_stop_callback_cannot_hide_new_capture": True,
+        "late_microphone_tracks_stopped_after_navigation": True,
+        "manual_request_disables_capture": True,
         "manual_source_label": True,
+        "long_manual_description_requires_shortening": True,
         "script_transcript_escaped": True,
         "human_confirmation_required": True,
         "idempotent_replay": True,
