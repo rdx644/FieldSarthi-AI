@@ -1,3 +1,4 @@
+import os
 import threading
 import time
 from collections import defaultdict, deque
@@ -26,6 +27,34 @@ router = APIRouter(prefix="/api/v1")
 attempts: dict[str, deque[float]] = defaultdict(deque)
 dummy_hash = password_hash.hash("not-a-valid-demo-password")
 hash_slots = threading.BoundedSemaphore(2)
+
+
+def judge_demo_enabled() -> bool:
+    return os.getenv("PUBLIC_JUDGE_DEMO_ENABLED", "false").lower() == "true"
+
+
+@router.get("/auth/demo")
+def demo_capability() -> dict[str, bool]:
+    return {"enabled": judge_demo_enabled()}
+
+
+@router.post("/auth/judge-demo", response_model=SessionResponse)
+def judge_demo(response: Response, db: Annotated[Session, Depends(get_db)]) -> dict[str, Any]:
+    from app.seed import stable
+
+    user = db.get(User, stable("public-judge")) if judge_demo_enabled() else None
+    if not user or user.role != "JUDGE" or not user.is_active:
+        raise AppError(404, "DEMO_UNAVAILABLE", "The public judge demo is not enabled.")
+    response.set_cookie(
+        "fieldsaarthi_session",
+        token_for(user),
+        max_age=1800,
+        httponly=True,
+        secure=APP_ENV == "production",
+        samesite="strict",
+        path="/",
+    )
+    return {"user": user_json(user)}
 
 
 def user_json(user: User) -> dict[str, Any]:

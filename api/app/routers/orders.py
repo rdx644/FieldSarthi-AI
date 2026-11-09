@@ -1,14 +1,16 @@
 import asyncio
 import os
+from time import perf_counter
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, Header, Query, Response
+from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.errors import AppError
 from app.core.limits import provider_budget
 from app.core.security import current_user, supervisor, worker
+from app.core.telemetry import stage_event
 from app.db.models import Order, User
 from app.db.session import get_db
 from app.integrations.gnani import GnaniError
@@ -26,11 +28,18 @@ Worker = Annotated[User, Depends(worker)]
 
 @router.get("/capabilities/audio")
 def audio_capability(user: Current) -> dict[str, bool]:
-    return {"tts_enabled": os.getenv("GNANI_TTS_ENABLED", "false").lower() == "true"}
+    return {
+        "tts_enabled": user.role != "JUDGE"
+        and os.getenv("GNANI_TTS_ENABLED", "false").lower() == "true"
+    }
 
 
 @router.post("/{oid}/acknowledgment-audio")
-async def acknowledgment(oid: str, user: Current, db: DB) -> Response:
+async def acknowledgment(oid: str, request: Request, user: Current, db: DB) -> Response:
+    if user.role == "JUDGE":
+        raise AppError(
+            403, "READ_ONLY_DEMO", "The judge demo is read-only; live audio uses team access."
+        )
     row = accessible_order(db, oid, user)
     code = row.public_code
     actor_id = user.id
@@ -43,10 +52,18 @@ async def acknowledgment(oid: str, user: Current, db: DB) -> Response:
         )
     try:
         provider_budget.check(actor_id)
+        started = perf_counter()
         async with asyncio.timeout(90):
             async with provider_slots:
                 data = await TimbreClient(os.environ["GNANI_API_KEY_ID"]).synthesize(code)
-    except (GnaniError, TimeoutError):
+        stage_event(request.state.request_id, "provider_tts", started)
+    except (GnaniError, TimeoutError) as exc:
+        stage_event(
+            request.state.request_id,
+            "provider_tts",
+            started,
+            code=exc.code if isinstance(exc, GnaniError) else "TTS_TIMEOUT",
+        )
         raise AppError(
             503, "TTS_UNAVAILABLE", "Audio is unavailable. Your work order remains saved."
         ) from None
@@ -79,6 +96,8 @@ def queue(
     page_size: Annotated[int, Query(ge=1, le=100)] = 20,
 ) -> dict[str, Any]:
     query = select(Order)
+    if user.role == "JUDGE":
+        query = query.where(Order.judge_visible)
     if user.role == "WORKER":
         query = query.where(Order.reporter_id == user.id)
     for name, value in [
@@ -156,4 +175,6 @@ def duplicates(oid: str, user: Current, db: DB) -> list[dict[str, Any]]:
     )
     if user.role == "WORKER":
         query = query.where(Order.reporter_id == user.id)
+    if user.role == "JUDGE":
+        query = query.where(Order.judge_visible)
     return [order_json(x, db) for x in db.scalars(query.limit(10))]

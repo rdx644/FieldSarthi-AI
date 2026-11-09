@@ -28,6 +28,9 @@ def upgrade() -> None:
     RETURNS trigger LANGUAGE plpgsql AS $$
     BEGIN
       IF NEW.source_type IS DISTINCT FROM OLD.source_type OR
+        (OLD.status = 'CONFIRMED' AND
+         (NEW.edited_transcript IS DISTINCT FROM OLD.edited_transcript OR
+          NEW.status IS DISTINCT FROM OLD.status)) OR
         (OLD.raw_transcript IS NOT NULL AND
           (NEW.raw_transcript IS DISTINCT FROM OLD.raw_transcript OR
            NEW.provider_model IS DISTINCT FROM OLD.provider_model OR

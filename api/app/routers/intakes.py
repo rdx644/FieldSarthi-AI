@@ -162,7 +162,16 @@ def manual(body: ManualIntake, user: Worker, db: DB) -> dict[str, Any]:
 @router.get("/{iid}", response_model=IntakeResponse)
 def detail(iid: str, user: Current, db: DB) -> dict[str, Any]:
     row = db.get(Intake, iid)
-    if not row or (row.reporter_id != user.id and user.role != "SUPERVISOR"):
+    visible = (
+        db.scalar(select(Order.id).where(Order.intake_id == iid, Order.judge_visible))
+        if user.role == "JUDGE"
+        else None
+    )
+    if (
+        not row
+        or (user.role == "JUDGE" and not visible)
+        or (user.role == "WORKER" and row.reporter_id != user.id)
+    ):
         raise AppError(404, "NOT_FOUND", "Voice report not found.")
     return intake_json(row)
 

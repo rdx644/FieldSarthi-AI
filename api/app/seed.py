@@ -79,6 +79,17 @@ def seed(db: Session) -> list[dict[str, str]]:
                     aliases=aliases,
                 )
             )
+    if os.getenv("PUBLIC_JUDGE_DEMO_ENABLED", "false").lower() == "true":
+        if not db.get(User, stable("public-judge")):
+            db.add(
+                User(
+                    id=stable("public-judge"),
+                    display_name="Judge · read-only demo",
+                    email="judge@fieldsaarthi.demo",
+                    role="JUDGE",
+                    password_hash=password_hash.hash(secrets.token_urlsafe(32)),
+                )
+            )
     db.commit()
     return accounts
 

@@ -4,6 +4,7 @@ from collections.abc import Awaitable, Callable
 from time import perf_counter
 from uuid import uuid4
 
+from alembic.script import ScriptDirectory
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -35,6 +36,7 @@ app.add_middleware(
     ],
 )
 logger = logging.getLogger("fieldsaarthi")
+schema_heads = set(ScriptDirectory(str(ROOT / "api/alembic")).get_heads())
 logger.setLevel(logging.INFO)
 logger.propagate = False
 if not logger.handlers:
@@ -137,7 +139,9 @@ def live() -> dict[str, str]:
 def ready() -> dict[str, str]:
     try:
         with engine.connect() as connection:
-            connection.execute(text("SELECT 1 FROM alembic_version"))
+            versions = set(connection.scalars(text("SELECT version_num FROM alembic_version")))
+            if versions != schema_heads:
+                raise RuntimeError("Database schema is not current")
     except Exception:
         raise AppError(
             503, "NOT_READY", "Database migrations or connectivity need attention."

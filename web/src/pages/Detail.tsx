@@ -99,7 +99,12 @@ export function Detail({ id, user }: { id: string; user: User }) {
     <>
       <a className="back-link" href="#/orders">
         <ArrowLeft size={16} />
-        Back to {user.role === "SUPERVISOR" ? "operations queue" : "my reports"}
+        Back to{" "}
+        {user.role === "JUDGE"
+          ? "judge dashboard"
+          : user.role === "SUPERVISOR"
+            ? "operations queue"
+            : "my reports"}
       </a>
       <div className="page-heading detail-heading">
         <div>

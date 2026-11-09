@@ -1,3 +1,4 @@
+import os
 from datetime import UTC, datetime, timedelta
 from typing import Annotated
 
@@ -54,6 +55,11 @@ def current_user(
         user = db.get(User, payload["sub"])
         if not user or not user.is_active:
             raise AppError(401, "UNAUTHENTICATED", "Your session is no longer active.")
+        if (
+            user.role == "JUDGE"
+            and os.getenv("PUBLIC_JUDGE_DEMO_ENABLED", "false").lower() != "true"
+        ):
+            raise AppError(401, "DEMO_UNAVAILABLE", "The public judge demo is disabled.")
         return user
     except jwt.InvalidTokenError:
         raise AppError(401, "UNAUTHENTICATED", "Please sign in again.") from None

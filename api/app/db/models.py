@@ -30,7 +30,7 @@ class Base(DeclarativeBase):
 
 class User(Base):
     __tablename__ = "users"
-    __table_args__ = (CheckConstraint("role IN ('WORKER','SUPERVISOR')"),)
+    __table_args__ = (CheckConstraint("role IN ('WORKER','SUPERVISOR','JUDGE')"),)
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
     display_name: Mapped[str] = mapped_column(String(100))
     email: Mapped[str] = mapped_column(String(200), unique=True)
@@ -101,6 +101,7 @@ class Order(Base):
     )
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
     public_code: Mapped[str] = mapped_column(String(40), unique=True)
+    judge_visible: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     intake_id: Mapped[str] = mapped_column(ForeignKey("report_intakes.id"), unique=True)
     reporter_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
     location_id: Mapped[str] = mapped_column(ForeignKey("locations.id"))

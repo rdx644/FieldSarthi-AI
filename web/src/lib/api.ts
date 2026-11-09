@@ -2,7 +2,7 @@ export interface User {
   id: string;
   display_name: string;
   email: string;
-  role: "WORKER" | "SUPERVISOR";
+  role: "WORKER" | "SUPERVISOR" | "JUDGE";
 }
 export interface Location {
   id: string;

@@ -94,7 +94,11 @@ def accessible_order(db: Session, oid: str, user: User, *, lock: bool = False) -
     if lock:
         query = query.with_for_update()
     row = db.scalar(query)
-    if not row or (user.role != "SUPERVISOR" and row.reporter_id != user.id):
+    if (
+        not row
+        or (user.role == "JUDGE" and not row.judge_visible)
+        or (user.role == "WORKER" and row.reporter_id != user.id)
+    ):
         raise AppError(404, "NOT_FOUND", "Work order not found.")
     return row
 

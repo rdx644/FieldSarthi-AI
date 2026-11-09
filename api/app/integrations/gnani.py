@@ -40,7 +40,7 @@ class ProviderResult(BaseModel):
         return value
 
     transcript: str
-    request_id: str = Field(min_length=1)
+    request_id: str = Field(min_length=1, max_length=160, pattern=r"^[A-Za-z0-9][A-Za-z0-9._:-]*$")
     model: str = Field(min_length=1)
     truncated: bool = False
     processing_time: float | None = Field(default=None, ge=0, allow_inf_nan=False)

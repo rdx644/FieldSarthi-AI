@@ -1,4 +1,40 @@
 # Operations
+
+## Public judge access and rollback
+
+`PUBLIC_JUDGE_DEMO_ENABLED=true` enables the user-approved read-only judge session.
+The flag is off in the local example and on in the submission Blueprint. The user
+approved publishing WO-AFF1E3EE3BD2; other reports default to private. This flag is
+owned by the participants and should be reviewed at the end of the challenge demo.
+Set it to false to deny both new and existing judge sessions. No team password is
+published; judges cannot mutate reports or call billable speech endpoints.
+
+Before rolling back to code older than migration 0004, first disable the flag and
+deactivate JUDGE users in the database with the authorized operator connection:
+
+```sql
+UPDATE users SET is_active=false WHERE role='JUDGE';
+```
+
+Verify existing judge cookies receive 401, then deploy the compatible earlier
+image. **Do not roll back first:** old queue authorization does not recognize
+JUDGE and could give an active judge session broader visibility. Preserve the
+additive source/publication columns and immutable migrations; do not downgrade or
+delete orders. Re-enable the account only after the current authorization code is
+restored and its tests pass. Also verify private MANUAL_TEXT orders are not
+mislabelled by an older UI; prefer fixing forward for source-display problems.
+
+## Stage diagnostics
+
+The operator questions are: did decoding fail, did Gnani fail or become slow, and
+did extraction finish? Correlated `stage_completed` JSON events answer these for
+`audio_normalize`, `provider_stt`, `extraction`, and `provider_tts`. Events contain
+elapsed time, safe error code and actual returned STT request/model metadata;
+never request bodies, passwords, raw audio or transcripts. Readiness also checks
+that the database migration heads match this build, and never calls Gnani.
+The explicit MANUAL_TEXT accessibility route requires human confirmation and
+never invents a provider result.
+
 ## Existing Windows local instance
 The private isolated PostgreSQL 18 cluster is `private/postgres-data`, bound to 127.0.0.1:55432. Never use another project's database.
 ```powershell

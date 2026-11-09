@@ -83,24 +83,31 @@ export function Orders({ user }: { user: User }) {
     setter(value);
     setPage(1);
   }
+  const hasFilters = !!(q || status || priority || location || assignee);
   return (
     <>
       <div className="page-heading">
         <div>
           <div className="eyebrow">
-            {user.role === "SUPERVISOR"
-              ? "OPERATIONS / LIVE QUEUE"
-              : "YOUR REPORTS / ACTIVITY"}
+            {user.role === "JUDGE"
+              ? "JUDGE DEMO / VERIFIED EVIDENCE"
+              : user.role === "SUPERVISOR"
+                ? "OPERATIONS / LIVE QUEUE"
+                : "YOUR REPORTS / ACTIVITY"}
           </div>
           <h1>
-            {user.role === "SUPERVISOR"
-              ? "Keep the field moving."
-              : "From reported to resolved."}
+            {user.role === "JUDGE"
+              ? "Inspect the work. Follow the evidence."
+              : user.role === "SUPERVISOR"
+                ? "Keep the field moving."
+                : "From reported to resolved."}
           </h1>
           <p>
-            {user.role === "SUPERVISOR"
-              ? "Every issue has a next step. Put the right person on it."
-              : "Your reports, their progress, and everything that happened along the way."}
+            {user.role === "JUDGE"
+              ? "Approved demonstration reports, actual provider provenance and persisted history."
+              : user.role === "SUPERVISOR"
+                ? "Every issue has a next step. Put the right person on it."
+                : "Your reports, their progress, and everything that happened along the way."}
           </p>
         </div>
         {user.role === "WORKER" && (
@@ -110,6 +117,14 @@ export function Orders({ user }: { user: User }) {
           </button>
         )}
       </div>
+      {user.role === "JUDGE" && (
+        <div className="alert warning" role="status">
+          Judge demo · read-only. Only team-approved synthetic demonstration
+          reports are visible. Open a work order to inspect the actual
+          transcript, Gnani request and persisted audit trail. Team accounts can
+          record reports and perform supervisor actions.
+        </div>
+      )}
       <div className="metrics">
         <div className="metric">
           <span>REPORTS IN THIS FILTER</span>
@@ -337,18 +352,18 @@ export function Orders({ user }: { user: User }) {
           <div className="empty-state">
             <ClipboardList size={35} />
             <h3>
-              {q || status
+              {hasFilters
                 ? "No reports match this view."
                 : "A clearer day starts here."}
             </h3>
             <p>
-              {q || status
+              {hasFilters
                 ? "Try a different search or filter."
                 : user.role === "WORKER"
                   ? "Report your first issue with a short voice recording."
                   : "New worker reports will appear here after they are reviewed and confirmed."}
             </p>
-            {user.role === "WORKER" && !status && !q && (
+            {user.role === "WORKER" && !hasFilters && (
               <button className="button primary" onClick={() => navigate("/")}>
                 Make your first report
                 <ArrowRight size={16} />
