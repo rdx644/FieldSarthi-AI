@@ -1,7 +1,10 @@
 # Development release evidence - 2026-11-09 IST
 ## Current full-roadmap audit
-Actual hosting addendum: https://fieldsaarthi-ai.onrender.com is live under Blueprint GNANI. Real hosted prerecorded STT/TTS, browser supervisor workflow, production auth/secret boundaries and controlled restart persistence are verified in [hosted evidence](hosted/README.md). This supersedes the original missing-hosting observation below; fresh human speech, authentic evaluation and full-roadmap sign-off remain open.
-The [complete audit](roadmap-audit.md) covers every numbered section/subsection and WBS task. Full roadmap sign-off is **HOLD**, with human speech/evaluation, ten-run reliability, dedicated negative-test, smaller implementation and managed-backup/rollback gaps still open. The candidate tag is not a final submission release. Exact merged-main `8146882` [CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42527535002). Fresh local recheck: 87 tests passed in 21.97s, backend lint/format/types and frontend lint/format/type/build passed; root/live/ready HTTP 200 after restarting the existing private database/app. No fresh paid Gnani call was made during this audit.
+Actual hosting addendum: https://fieldsaarthi-ai.onrender.com is live under Blueprint GNANI. Real hosted prerecorded STT/TTS, browser supervisor workflow, production auth/secret boundaries and controlled restart persistence are verified in [hosted evidence](hosted/README.md). This supersedes the original missing-hosting observation below; a separate fresh human Hindi report is now verified below; authentic 15-clip evaluation and full-roadmap sign-off remain open.
+The [complete audit](roadmap-audit.md) covers every numbered section/subsection and WBS task. Full roadmap sign-off is **HOLD**, with the 15-clip audio evaluation, ten-run reliability, dedicated negative-test, smaller implementation and managed-backup/rollback gaps still open. The candidate tag is not a final submission release. Exact merged-main `8146882` [CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42527535002). Fresh local recheck: 87 tests passed in 21.97s, backend lint/format/types and frontend lint/format/type/build passed; root/live/ready HTTP 200 after restarting the existing private database/app. No fresh paid Gnani call was made during this audit.
+
+## Fresh human microphone addendum
+The participant reported recording a new Hindi microphone sentence on the hosted app and supplied WO-AFF1E3EE3BD2. Its 5.16-second audio metadata, nonempty raw transcript, genuine Prisma v2.5 request 0eb18653-4254-4502-8fe9-c774cd644693, confirmed intake, saved Warehouse C/Exhaust Fan C-03 order and creation audit were independently read back. The agent made no new provider request and left this user report OPEN. This is one participant-attested sample, not the 15-case evaluation, ten-run target or final public video.
 
 ## Verified locally
 - Genuine cURL and HTTPX Prisma v2.5 calls: HTTP 200, actual returned model/request IDs and nonempty Hindi transcript. See gnani-stt-live.md.
@@ -23,7 +26,7 @@ The [complete audit](roadmap-audit.md) covers every numbered section/subsection 
 - [x] Protected main workflow enforced: required quality check, PR workflow, no force pushes/deletions. See github-publication.json.
 - [x] Public HTTPS Render hosting, adopted Blueprint GNANI and deployed real-Gnani STT/TTS smoke with authorized key, using the existing consenting prerecorded sample; controlled restart preserves order/audit. See [hosted evidence](hosted/README.md).
 - [ ] 15 distinct consenting authentic audio evaluation clips and reviewed ground truth.
-- [ ] Newly spoken human microphone sentence in the final demonstration.
+- [x] Newly spoken Hindi microphone report supplied by participant as WO-AFF1E3EE3BD2; server provenance/durable creation independently inspected. Public video remains pending. See hosted/human-microphone-verification.json.
 
 The user explicitly instructed: **do not submit the final form**. Contribution descriptions will be decided by the user. Registered emails are private. No social posting or final-form submission has been performed.
 

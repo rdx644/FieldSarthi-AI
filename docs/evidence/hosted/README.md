@@ -15,8 +15,12 @@ Deployed application commit: `09cb09faf75817f73e2f0cfc71397db266b2346c`. Render 
 
 Public files contain sanitized metadata and synthetic-data screenshots. Keys, JWTs, passwords, database connection strings, raw responses/logs and WAV stay in ignored private storage. The acceptance run submitted one STT request and one TTS request through the app; internal provider retries were not independently counted. No extra paid calls were made to poll readiness.
 
+## Later participant microphone verification
+
+The participant confirmed making a new Hindi microphone recording and supplied WO-AFF1E3EE3BD2. [The separate evidence](human-microphone-verification.json) records server-read confirmed intake, actual distinct Prisma v2.5 request, 5.16-second duration, persisted Warehouse C/Exhaust Fan C-03 order and creation audit. The ticket remains OPEN and was not modified by the agent. No additional provider request was needed to verify it. Earlier runtime/deployment JSON files are point-in-time records from the prerecorded test before this participant check; their fresh-human false/pending fields are superseded by this later artifact. The source attestation is explicit; no audio-origin forensic or broader accuracy claim.
+
 ## Remaining gates
 
-Fresh human microphone/new-sentence validation, 15 distinct authentic audio cases with ground truth, ten consecutive complete workflows, listed implementation/dedicated-test gaps, final review/tag and participant video/post/contributions/form remain open. See ../roadmap-audit.md. The user alone submits the final form.
+15 distinct authentic audio cases with ground truth, ten consecutive complete workflows, listed implementation/dedicated-test gaps, final review/tag and participant video/post/contributions/form remain open. See ../roadmap-audit.md. The user alone submits the final form.
 
 Free Render PostgreSQL has no managed backups and expires at `2026-12-09T12:16:30.004422Z`; app files are ephemeral and web service may cold-start. No paid upgrade, external DB access or production SLA is claimed. Private demo logins remain in private/demo-accounts.json.

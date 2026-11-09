@@ -1,5 +1,9 @@
 # Current handoff - 2026-11-09 IST
-## Latest: actual Render hosting verified
+## Latest participant speech result
+
+User supplied WO-AFF1E3EE3BD2 after recording a new Hindi microphone report on the hosted app. Supervisor-authorized read-back verified the confirmed intake, distinct actual Prisma v2.5 request 0eb18653-4254-4502-8fe9-c774cd644693, 5.16-second audio, saved Warehouse C/Exhaust Fan C-03 order and creation audit. Report remains OPEN and unmodified. See docs/evidence/hosted/human-microphone-verification.json. This closes the single participant-attested fresh Hindi sentence check; it is not a 15-case evaluation, ten-run target or final video. Earlier fresh-human pending statements below are historical snapshots superseded by this result. No additional agent provider request was made for verification.
+
+## Earlier hosted deployment verification - before participant speech
 
 App https://fieldsaarthi-ai.onrender.com is live at application commit 09cb09f. Actual Blueprint GNANI exs-dborlpu417fc7396uk2g is in_sync; web srv-dborlf7f3r2c73c4a710 and PostgreSQL 18 dpg-dborj7gu01pc738749hg-a are the exact two adopted free Singapore resources. User authorized official Render CLI browser login and created/applied the Dashboard Blueprint. Reuse these resources. CLI credentials live in the user's private .render config; never print them. Runtime secrets/connection are in ignored private/render-runtime-secrets.json and private/render-db-connection.json; demo logins match private/demo-accounts.json.
 

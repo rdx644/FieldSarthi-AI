@@ -14,7 +14,7 @@ Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi
 
 **Verified locally:** 87 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six WCAG axe/browser checks, genuine browser-to-Gnani-to-database supervisor workflow, real Timbre response, and a matching PostgreSQL backup/restore drill. Exact limits and outstanding external release checks are in [the release record](docs/evidence/release-gate.md).
 
-**Hosted app:** [Open FieldSaarthi AI](https://fieldsaarthi-ai.onrender.com). Free Render Docker + PostgreSQL 18 is live under Blueprint GNANI. Genuine hosted Prisma -> order -> supervisor workflow, Timbre WAV and restart persistence are verified with an existing consented recording; [actual deployment evidence](docs/evidence/hosted/README.md). Fresh human speech/15-clip evaluation and the remaining roadmap gaps are open. No public social post or official form submission is claimed.
+**Hosted app:** [Open FieldSaarthi AI](https://fieldsaarthi-ai.onrender.com). Free Render Docker + PostgreSQL 18 is live under Blueprint GNANI. Genuine hosted Prisma -> order -> supervisor workflow, Timbre WAV and restart persistence are verified with an existing consented recording; [actual deployment evidence](docs/evidence/hosted/README.md). A participant-attested fresh Hindi microphone report is also verified against its saved Gnani provenance; the 15-clip evaluation and other roadmap gaps remain open. No public social post or official form submission is claimed.
 
 ## Run locally (Windows / Python 3.12+, Node 26, PostgreSQL 18, uv 0.11.1)
 ```powershell

@@ -6,7 +6,7 @@ Checked against official challenge and registration/terms pages on 2026-11-08. P
 | O-01 | Enrolled student in India, age 18+ | Awaiting user confirmation; no ID document needed here |
 | O-02 | Solo or maximum two; every member registers | User confirmed registration and team of two; confirm both individually registered |
 | O-03 | One submission per individual/team | Awaiting one-entry confirmation |
-| O-04 | Working genuine Gnani integration | Genuine local Prisma -> reviewed durable order -> supervisor workflow and optional Timbre verified; hosted credential/STT/TTS verified with consenting prerecorded sample; final human demo pending |
+| O-04 | Working genuine Gnani integration | Genuine local Prisma -> reviewed durable order -> supervisor workflow and optional Timbre verified; hosted credential/STT/TTS verified with consenting prerecorded sample; participant-attested fresh human report verified; final public video pending |
 | O-05 | Explain problem, users, models, contributions | Scope frozen; final implemented contributions pending |
 | O-06 | Public video of working app | Future WBS-08; not published |
 | O-07 | Tag official Gnani account; both #GnaniAI and #GreatIndianAIInternshipChallenge | Final post check pending |
