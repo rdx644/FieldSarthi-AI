@@ -1,0 +1,16 @@
+{
+  "requested_at_utc": "2026-11-09T12:28:25.470505+00:00",
+  "verified_at_utc": "2026-11-09T12:30:17.155151+00:00",
+  "new_process_start_and_idempotent_seed_observed": true,
+  "active_instances_after_restart": 1,
+  "readiness_http_status": 200,
+  "order_id": "8c574569-abe8-4b36-a3bd-696f2a8ff494",
+  "order_status": "RESOLVED",
+  "order_version": 4,
+  "audit_event_count": 4,
+  "order_provenance_and_all_audit_fields_unchanged": true,
+  "locations": 3,
+  "assets": 4,
+  "live_provider_calls": 0,
+  "scope": "Controlled app restart with separate managed PostgreSQL; not a rollback or managed backup guarantee."
+}

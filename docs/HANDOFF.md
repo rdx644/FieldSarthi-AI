@@ -1,4 +1,12 @@
 # Current handoff - 2026-11-09 IST
+## Latest: actual Render hosting verified
+
+App https://fieldsaarthi-ai.onrender.com is live at application commit 09cb09f. Actual Blueprint GNANI exs-dborlpu417fc7396uk2g is in_sync; web srv-dborlf7f3r2c73c4a710 and PostgreSQL 18 dpg-dborj7gu01pc738749hg-a are the exact two adopted free Singapore resources. User authorized official Render CLI browser login and created/applied the Dashboard Blueprint. Reuse these resources. CLI credentials live in the user's private .render config; never print them. Runtime secrets/connection are in ignored private/render-runtime-secrets.json and private/render-db-connection.json; demo logins match private/demo-accounts.json.
+
+Actual hosted prerecorded Hindi Prisma -> explicit confirmation -> durable order -> supervisor assign/start/resolve/refresh/mobile passed. One saved-ticket Timbre call returned valid 5.76s WAV. Production Secure/HTTP-only/SameSite cookies, CSRF/role/ownership, bounded bundle/log secret scans pass. Controlled app restart retained exact order/provenance/four audit events and 3 locations/4 assets, returning to one instance. No fresh human speech claim. See docs/evidence/hosted/. Total acceptance requests: one STT and one TTS; health/restart did not spend credits.
+
+Fresh human speech, 15 distinct audio evaluation, ten-run reliability target, roadmap implementation/test gaps, free DB managed-backup/rollback limitations and participant media/contributions/form remain open. Final form remains user-reserved and unsubmitted. Candidate tag v0.2.0-rc.1 unchanged; no final release tag. Free DB expires 2026-12-09; no paid upgrade or unrelated-resource changes.
+
 ## Current audit/deployment work
 User requested session continuation, main/local synchronization check, complete roadmap audit and Render Blueprint deployment. Baseline `8146882` exactly matched fetched GitHub main; exact main CI 42527535002 passed and branch protection is active. Initial local changes were only a safe `.env.example` placeholder and an untracked root roadmap identical to docs/roadmap.md. Preserve/publish those reviewed files with the audit.
 

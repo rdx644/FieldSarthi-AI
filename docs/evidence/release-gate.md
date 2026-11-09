@@ -1,5 +1,6 @@
 # Development release evidence - 2026-11-09 IST
 ## Current full-roadmap audit
+Actual hosting addendum: https://fieldsaarthi-ai.onrender.com is live under Blueprint GNANI. Real hosted prerecorded STT/TTS, browser supervisor workflow, production auth/secret boundaries and controlled restart persistence are verified in [hosted evidence](hosted/README.md). This supersedes the original missing-hosting observation below; fresh human speech, authentic evaluation and full-roadmap sign-off remain open.
 The [complete audit](roadmap-audit.md) covers every numbered section/subsection and WBS task. Full roadmap sign-off is **HOLD**, with human speech/evaluation, actual hosting/restart, dedicated negative-test and smaller implementation gaps still open. The candidate tag is not a final submission release. Exact merged-main `8146882` [CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42527535002). Fresh local recheck: 87 tests passed in 21.97s, backend lint/format/types and frontend lint/format/type/build passed; root/live/ready HTTP 200 after restarting the existing private database/app. No fresh paid Gnani call was made during this audit.
 
 ## Verified locally
@@ -15,12 +16,12 @@ The [complete audit](roadmap-audit.md) covers every numbered section/subsection 
 - Dependency audit: backend no known vulnerabilities; frontend npm audit zero reported vulnerabilities. Audit reports record executed scope; no claim of a penetration test.
 - Cross-model review: reproduced and fixed all three identified boundary issues; reviewer found no actionable remaining violations in the corrected scope. See cross-model-review.md.
 - One-page PDF pitch generated, page count checked and rendered for visual review.
-- Render Blueprint static schema validation passes. Docker image build was executed successfully in GitHub CI; actual hosted execution remains a separate gate below.
+- Render Blueprint static schema validation passes. Docker image build was executed successfully in GitHub CI; actual hosted execution is now verified separately below.
 
 ## External gates still requiring actual evidence
 - [x] GitHub implementation published in PR #2; Linux quality/browser/audit/container build passed for application commit 0a6a3d8. [Executed run](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42525267101). Any subsequent documentation-only commit remains subject to required current-head CI.
 - [x] Protected main workflow enforced: required quality check, PR workflow, no force pushes/deletions. See github-publication.json.
-- [ ] Public HTTPS hosting and deployed real-Gnani smoke with the authorized key.
+- [x] Public HTTPS Render hosting, adopted Blueprint GNANI and deployed real-Gnani STT/TTS smoke with authorized key, using the existing consenting prerecorded sample; controlled restart preserves order/audit. See [hosted evidence](hosted/README.md).
 - [ ] 15 distinct consenting authentic audio evaluation clips and reviewed ground truth.
 - [ ] Newly spoken human microphone sentence in the final demonstration.
 
