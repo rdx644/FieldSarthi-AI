@@ -1,5 +1,6 @@
 import asyncio
 import io
+import json
 import wave
 
 import httpx
@@ -51,3 +52,37 @@ def test_tts_failure_never_returns_success_audio(status):
 
     with pytest.raises(GnaniError, match="TTS_UNAVAILABLE"):
         asyncio.run(run())
+
+
+def test_success_status_with_json_error_is_not_audio():
+    async def run():
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(
+                lambda request: httpx.Response(200, json={"error": "test-only error"})
+            )
+        ) as http:
+            return await TimbreClient("fixture-key", http=http).synthesize("WO-FIXTURE")
+
+    with pytest.raises(GnaniError, match="TTS_INVALID_AUDIO"):
+        asyncio.run(run())
+
+
+def test_request_model_voice_language_and_audio_format_are_exact():
+    def inspect(request):
+        body = json.loads(request.content)
+        assert body["model"] == "timbre-v2.5"
+        assert body["voice"] == "Nalini" and body["language"] == "hi-IN"
+        assert body["audio_config"] == {
+            "sample_rate": 48000,
+            "num_channels": 1,
+            "sample_width": 2,
+            "encoding": "linear_pcm",
+            "container": "wav",
+        }
+        return httpx.Response(200, content=wav())
+
+    async def run():
+        async with httpx.AsyncClient(transport=httpx.MockTransport(inspect)) as http:
+            return await TimbreClient("fixture-key", http=http).synthesize("WO-FIXTURE")
+
+    assert asyncio.run(run()) == wav()
