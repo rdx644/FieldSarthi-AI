@@ -48,10 +48,17 @@ def seed(db: Session) -> list[dict[str, str]]:
     locations = [
         ("BLK-B-F2", "Block B / Floor 2", ["block b", "ब्लॉक बी", "ब्लाक बी", "பிளாக் பி"]),
         ("BLK-A-GF", "Block A / Ground Floor", ["block a", "ब्लॉक ए", "பிளாக் ஏ"]),
-        ("WH-C", "Warehouse C", ["warehouse c", "warehouse", "गोदाम", "கிடங்கு"]),
+        (
+            "WH-C",
+            "Warehouse C",
+            ["warehouse c", "warehouse", "गोदाम", "वेयरहाउस", "वेयरहाउस सी", "கிடங்கு"],
+        ),
     ]
     for code, name, aliases in locations:
-        if not db.get(Location, stable(code)):
+        existing_location = db.get(Location, stable(code))
+        if existing_location:
+            existing_location.aliases = list(dict.fromkeys([*existing_location.aliases, *aliases]))
+        else:
             db.add(Location(id=stable(code), code=code, name=name, aliases=aliases))
     db.flush()
     assets = [
@@ -62,7 +69,7 @@ def seed(db: Session) -> list[dict[str, str]]:
             ["water pump", "pump", "वाटर पंप", "पानी पंप", "पंप", "मोटर", "பம்ப்"],
         ),
         ("AC-A01", "Air Conditioner A-01", "BLK-A-GF", ["air conditioner", "ac", "एसी", "ஏசி"]),
-        ("FAN-C03", "Exhaust Fan C-03", "WH-C", ["exhaust", "fan", "पंखा", "விசிறி"]),
+        ("FAN-C03", "Exhaust Fan C-03", "WH-C", ["exhaust", "fan", "पंखा", "फैन", "விசிறி"]),
         ("LIGHT-C04", "Bay Light C-04", "WH-C", ["light", "bulb", "लाइट", "விளக்கு"]),
     ]
     for code, name, loc, aliases in assets:

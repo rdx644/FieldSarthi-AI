@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.db.models import Asset, Location
 
-PARSER_VERSION = "rules-v2"
+PARSER_VERSION = "rules-v4"
 
 
 def normalized_source(value: str) -> tuple[str, list[tuple[int, int]]]:
@@ -92,6 +92,9 @@ def extract(transcript: str, db: Session) -> dict[str, Any]:
             "not working",
             "not cooling",
             "band ho gaya",
+            "बंद है",
+            "बंद हो गया",
+            "बन्द हो गया",
             "खराब",
             "आवाज",
             "சத்தம்",
@@ -137,6 +140,23 @@ def extract(transcript: str, db: Session) -> dict[str, Any]:
         "unresolved_fields": unresolved,
         "needs_review": True,
         "emergency_warning": bool(
-            matches(text, ["fire", "gas", "smoke", "spark", "आग", "धुआं", "गैस", "चिंगारी"])
+            matches(
+                text,
+                [
+                    "fire",
+                    "gas",
+                    "smoke",
+                    "spark",
+                    "sparks",
+                    "sparking",
+                    "short circuit",
+                    "electric shock",
+                    "आग",
+                    "धुआं",
+                    "धुआँ",
+                    "गैस",
+                    "चिंगारी",
+                ],
+            )
         ),
     }

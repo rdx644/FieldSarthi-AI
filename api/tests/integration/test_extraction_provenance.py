@@ -10,7 +10,7 @@ def test_exact_original_spans_and_parser_version(accounts):
     transcript = "Ｂｌｏｃｋ B, WATER PUMP leaking — URGENT!"
     with SessionLocal() as db:
         result = extract(transcript, db)
-    assert result["parser_version"] == "rules-v2"
+    assert result["parser_version"] == "rules-v4"
     assert result["field_evidence"]["location"] == ["Ｂｌｏｃｋ B"]
     assert "WATER PUMP" in result["field_evidence"]["asset"]
     for spans in result["evidence_spans"].values():
