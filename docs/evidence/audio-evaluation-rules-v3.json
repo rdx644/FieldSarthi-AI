@@ -1,0 +1,326 @@
+{
+  "evaluation_kind": "genuine_gnani_distinct_human_recordings",
+  "timestamp_utc": "2026-11-09T19:02:14.277332+00:00",
+  "sample_count": 15,
+  "complete_cases_correct": 9,
+  "per_field": {
+    "location_code": {
+      "correct": 9,
+      "total": 14
+    },
+    "asset_code": {
+      "correct": 8,
+      "total": 14
+    },
+    "issue_category": {
+      "correct": 11,
+      "total": 14
+    },
+    "priority_suggestion": {
+      "correct": 14,
+      "total": 14
+    }
+  },
+  "correction_confusion": {
+    "expected_and_blocked": 5,
+    "expected_but_not_blocked": 1,
+    "not_expected_but_blocked": 4,
+    "not_expected_and_not_blocked": 4,
+    "unassessed_provider_errors": 1
+  },
+  "required_field_missing_confusion": {
+    "location_id": {
+      "expected_missing_and_missing": 3,
+      "expected_missing_but_populated": 0,
+      "expected_present_but_missing": 4,
+      "expected_present_and_populated": 6
+    },
+    "asset_id": {
+      "expected_missing_and_missing": 4,
+      "expected_missing_but_populated": 1,
+      "expected_present_but_missing": 4,
+      "expected_present_and_populated": 4
+    }
+  },
+  "selected_language_codes": [
+    "en-IN",
+    "hi-IN"
+  ],
+  "failing_cases": [
+    {
+      "case_id": "NLP-02",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code",
+        "issue_category"
+      ],
+      "error_code": "GNANI_TIMEOUT"
+    },
+    {
+      "case_id": "NLP-04",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code"
+      ],
+      "error_code": null
+    },
+    {
+      "case_id": "NLP-05",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code",
+        "issue_category"
+      ],
+      "error_code": null
+    },
+    {
+      "case_id": "NLP-11",
+      "incorrect_fields": [
+        "asset_code"
+      ],
+      "error_code": null
+    },
+    {
+      "case_id": "NLP-12",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code"
+      ],
+      "error_code": null
+    },
+    {
+      "case_id": "NLP-14",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code",
+        "issue_category"
+      ],
+      "error_code": null
+    }
+  ],
+  "all_required_ambiguities_blocked": false,
+  "target_passed": false,
+  "parser_version": "rules-v3",
+  "models_observed": [
+    "prisma-v2.5"
+  ],
+  "cases": [
+    {
+      "case_id": "NLP-01",
+      "audio_duration_seconds": 6.5380625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "4aea7a17-2668-4966-856d-504441fd8a6b",
+      "stt_latency_ms": 5204,
+      "complete_case_correct": true,
+      "safety_blocked": false,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-02",
+      "audio_duration_seconds": 6.8780625,
+      "error_code": "GNANI_TIMEOUT",
+      "complete_case_correct": false,
+      "safety_blocked": false,
+      "field_correct": {
+        "location_code": false,
+        "asset_code": false,
+        "issue_category": false,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-03",
+      "audio_duration_seconds": 6.1580625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "026435b0-fa7f-478b-ac07-b7615290b189",
+      "stt_latency_ms": 2652,
+      "complete_case_correct": true,
+      "safety_blocked": false,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-04",
+      "audio_duration_seconds": 5.1180625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "d8714e99-4456-4dfc-9159-d2b75d6ad208",
+      "stt_latency_ms": 1566,
+      "complete_case_correct": false,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": false,
+        "asset_code": false,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-05",
+      "audio_duration_seconds": 6.3280625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "a89a475a-e59d-403e-a916-caa03ce190ec",
+      "stt_latency_ms": 1629,
+      "complete_case_correct": false,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": false,
+        "asset_code": false,
+        "issue_category": false,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-06",
+      "audio_duration_seconds": 5.0080625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "e025b088-5097-49d6-8b36-f2fa91b18f3c",
+      "stt_latency_ms": 1358,
+      "complete_case_correct": true,
+      "safety_blocked": false,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-07",
+      "audio_duration_seconds": 5.0380625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "89223e89-a435-449e-8ca4-f96f9701786b",
+      "stt_latency_ms": 1358,
+      "complete_case_correct": true,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-08",
+      "audio_duration_seconds": 4.5080625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "0152b08c-5812-46b3-948f-5c33e0ad5bd1",
+      "stt_latency_ms": 1976,
+      "complete_case_correct": true,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-09",
+      "audio_duration_seconds": 4.2480625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "97aafae9-c0b0-407c-8aa3-6179a792dcce",
+      "stt_latency_ms": 1417,
+      "complete_case_correct": true,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-10",
+      "audio_duration_seconds": 4.2680625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "d6b9dbd3-aae5-4a33-a054-287d07282646",
+      "stt_latency_ms": 2048,
+      "complete_case_correct": true,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-11",
+      "audio_duration_seconds": 4.9580625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "357e93dc-b3be-4a0d-8ce5-ddd1b7cba254",
+      "stt_latency_ms": 2193,
+      "complete_case_correct": false,
+      "safety_blocked": false,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": false,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-12",
+      "audio_duration_seconds": 5.8680625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "c6e35308-e5bf-4f6b-a71c-63581e7d3753",
+      "stt_latency_ms": 2108,
+      "complete_case_correct": false,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": false,
+        "asset_code": false,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-13",
+      "audio_duration_seconds": 6.0080625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "65305544-2852-4800-9b03-923f215ca2d5",
+      "stt_latency_ms": 4947,
+      "complete_case_correct": true,
+      "safety_blocked": false,
+      "field_correct": {
+        "location_code": true,
+        "asset_code": true,
+        "issue_category": true,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-14",
+      "audio_duration_seconds": 5.4180625,
+      "provider_model": "prisma-v2.5",
+      "provider_request_id": "698d3a00-b34b-4b26-a63c-2a570b6fcf42",
+      "stt_latency_ms": 1990,
+      "complete_case_correct": false,
+      "safety_blocked": true,
+      "field_correct": {
+        "location_code": false,
+        "asset_code": false,
+        "issue_category": false,
+        "priority_suggestion": true
+      }
+    },
+    {
+      "case_id": "NLP-15",
+      "audio_duration_seconds": 10.4080625,
+      "error_code": "NO_SPEECH_DETECTED",
+      "complete_case_correct": true,
+      "safety_blocked": true,
+      "field_correct": {}
+    }
+  ],
+  "limitations": "Small team-recorded synthetic corpus; no WER/CER or population accuracy claim. Raw audio and transcripts remain private."
+}

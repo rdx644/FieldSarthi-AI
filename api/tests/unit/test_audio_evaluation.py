@@ -40,6 +40,39 @@ def test_silence_requires_actual_no_speech_error():
     assert compare(case, {}, None)["complete_case_correct"] is False
 
 
+def test_provider_failure_gets_no_default_priority_or_field_credit():
+    case = {
+        "case_id": "NLP-02",
+        "expected": {
+            "location_code": None,
+            "asset_code": None,
+            "issue_category": "OTHER",
+            "priority_suggestion": "NORMAL",
+        },
+    }
+    extraction = {
+        "suggested_fields": {
+            "location_id": None,
+            "asset_id": None,
+            "issue_category": "OTHER",
+            "priority_suggestion": "NORMAL",
+        }
+    }
+    assert compare(case, extraction, "GNANI_TIMEOUT")["field_correct"] == {}
+    report = summary(
+        [
+            {
+                "case_id": "NLP-02",
+                "complete_case_correct": False,
+                "safety_blocked": False,
+                "error_code": "GNANI_TIMEOUT",
+                "field_correct": {"priority_suggestion": True},
+            }
+        ]
+    )
+    assert report["per_field"]["priority_suggestion"] == {"correct": 0, "total": 0}
+
+
 def test_summary_requires_fifteen_and_all_safety_cases():
     results = [
         {
@@ -55,6 +88,34 @@ def test_summary_requires_fifteen_and_all_safety_cases():
     assert summary(results[:14])["target_passed"] is False
     results[-1]["safety_blocked"] = False
     assert summary(results)["target_passed"] is False
+
+
+def test_confusion_export_separates_unsafe_fields_and_unassessed_provider_errors():
+    def row(case, blocked, error=None):
+        return {
+            "case_id": case,
+            "safety_blocked": blocked,
+            "complete_case_correct": False,
+            "field_correct": {"asset_code": False},
+            "error_code": error,
+        }
+
+    report = summary(
+        [
+            row("NLP-07", True),
+            row("NLP-01", True),
+            row("NLP-02", False, "GNANI_TIMEOUT"),
+            row("NLP-08", False),
+        ]
+    )
+    assert report["correction_confusion"] == {
+        "expected_and_blocked": 1,
+        "expected_but_not_blocked": 1,
+        "not_expected_but_blocked": 1,
+        "not_expected_and_not_blocked": 0,
+        "unassessed_provider_errors": 1,
+    }
+    assert report["failing_cases"][0]["incorrect_fields"] == ["asset_code"]
 
 
 def test_duplicate_normalized_recordings_are_rejected(tmp_path):
@@ -135,6 +196,7 @@ def test_paid_response_survives_parser_failure_without_repeating_call(tmp_path, 
             )
 
     monkeypatch.setattr(evaluate_audio, "GnaniSpeechClient", Speech)
+    monkeypatch.setenv("GNANI_API_KEY_ID", "test-only-key")
     monkeypatch.setattr(evaluate_audio, "SessionLocal", lambda: nullcontext(None))
 
     def fail(*args):

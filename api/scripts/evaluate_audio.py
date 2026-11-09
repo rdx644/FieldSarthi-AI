@@ -12,6 +12,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
+import httpx
+
 from app.core.config import ROOT
 from app.db.session import SessionLocal
 from app.integrations.gnani import GnaniError, GnaniSpeechClient
@@ -85,6 +87,8 @@ def compare(case, extraction, error=None):
     if case.get("expected_error"):
         passed = error == case["expected_error"]
         return {"complete_case_correct": passed, "safety_blocked": passed, "field_correct": {}}
+    if error:
+        return {"complete_case_correct": False, "safety_blocked": False, "field_correct": {}}
     observed = extraction.get("suggested_fields", {})
     expected = case["expected"]
     correct = {
@@ -107,10 +111,15 @@ def compare(case, extraction, error=None):
     }
 
 
-async def evaluate(prepared, folder):
+async def evaluate(prepared, folder, acknowledged_failures=()):
     import os
 
-    client = GnaniSpeechClient(os.environ["GNANI_API_KEY_ID"], retries=0)
+    async with httpx.AsyncClient(follow_redirects=False) as http:
+        client = GnaniSpeechClient(os.environ["GNANI_API_KEY_ID"], http=http, retries=0)
+        return await evaluate_cases(client, prepared, folder, acknowledged_failures)
+
+
+async def evaluate_cases(client, prepared, folder, acknowledged_failures=()):
     results = []
     with SessionLocal() as db:
         for case, audio, duration, digest in prepared:
@@ -134,8 +143,15 @@ async def evaluate(prepared, folder):
                         **compare(case, extraction, result.get("error_code")),
                     )
                     save(checkpoint, result)
+                result["expected"] = case.get("expected")
+                if result.get("error_code"):
+                    result.update(compare(case, result.get("extraction", {}), result["error_code"]))
+                save(checkpoint, result)
                 results.append(result)
-                if result.get("error_code") not in {None, "NO_SPEECH_DETECTED"}:
+                if (
+                    result.get("error_code") not in {None, "NO_SPEECH_DETECTED"}
+                    and case["case_id"] not in acknowledged_failures
+                ):
                     raise ValueError(
                         "Cached provider failure. Fix access and archive that case before retrying."
                     )
@@ -149,6 +165,7 @@ async def evaluate(prepared, folder):
                 "timestamp_utc": datetime.now(UTC).isoformat(),
                 "language_code": case["language_code"],
                 "must_block": case.get("must_block", False),
+                "expected": case.get("expected"),
             }
             extraction = {}
             error = None
@@ -187,8 +204,16 @@ def summary(results):
     complete = sum(result["complete_case_correct"] for result in results)
     field_counts = {
         field: {
-            "correct": sum(result["field_correct"].get(field, False) for result in results),
-            "total": sum(field in result["field_correct"] for result in results),
+            "correct": sum(
+                result["field_correct"].get(field, False)
+                for result in results
+                if not result.get("error_code")
+            ),
+            "total": sum(
+                field in result["field_correct"]
+                for result in results
+                if not result.get("error_code")
+            ),
         }
         for field in FIELDS
     }
@@ -196,12 +221,78 @@ def summary(results):
     safe = {result["case_id"] for result in safety_results} == SAFETY_CASES and all(
         result["safety_blocked"] for result in safety_results
     )
+    correction = {
+        "expected_and_blocked": 0,
+        "expected_but_not_blocked": 0,
+        "not_expected_but_blocked": 0,
+        "not_expected_and_not_blocked": 0,
+        "unassessed_provider_errors": 0,
+    }
+    missing = {
+        field: {
+            "expected_missing_and_missing": 0,
+            "expected_missing_but_populated": 0,
+            "expected_present_but_missing": 0,
+            "expected_present_and_populated": 0,
+        }
+        for field in ["location_id", "asset_id"]
+    }
+    for result in results:
+        error = result.get("error_code")
+        if error and not (result["case_id"] == "NLP-15" and error == "NO_SPEECH_DETECTED"):
+            correction["unassessed_provider_errors"] += 1
+            continue
+        expected_block = result["case_id"] in SAFETY_CASES
+        blocked = result["safety_blocked"]
+        key = (
+            ("expected_and_blocked" if blocked else "expected_but_not_blocked")
+            if expected_block
+            else ("not_expected_but_blocked" if blocked else "not_expected_and_not_blocked")
+        )
+        correction[key] += 1
+        if not result.get("expected") or error:
+            continue
+        for field, label in [("location_id", "location_code"), ("asset_id", "asset_code")]:
+            expected_missing = result["expected"][label] is None
+            observed_missing = (
+                not result.get("extraction", {}).get("suggested_fields", {}).get(field)
+            )
+            key = (
+                (
+                    "expected_missing_and_missing"
+                    if observed_missing
+                    else "expected_missing_but_populated"
+                )
+                if expected_missing
+                else (
+                    "expected_present_but_missing"
+                    if observed_missing
+                    else "expected_present_and_populated"
+                )
+            )
+            missing[field][key] += 1
     return {
         "evaluation_kind": "genuine_gnani_distinct_human_recordings",
         "timestamp_utc": datetime.now(UTC).isoformat(),
         "sample_count": len(results),
         "complete_cases_correct": complete,
         "per_field": field_counts,
+        "correction_confusion": correction,
+        "required_field_missing_confusion": missing,
+        "selected_language_codes": sorted(
+            {result["language_code"] for result in results if result.get("language_code")}
+        ),
+        "failing_cases": [
+            {
+                "case_id": result["case_id"],
+                "incorrect_fields": [
+                    field for field, correct in result["field_correct"].items() if not correct
+                ],
+                "error_code": result.get("error_code"),
+            }
+            for result in results
+            if not result["complete_case_correct"]
+        ],
         "all_required_ambiguities_blocked": safe,
         "target_passed": len(results) == 15 and complete >= 12 and safe,
         "parser_version": PARSER_VERSION,
@@ -241,6 +332,13 @@ def main():
     parser.add_argument("--live", action="store_true")
     parser.add_argument("--consent", action="store_true")
     parser.add_argument("--ground-truth-reviewed", action="store_true")
+    parser.add_argument(
+        "--acknowledge-failed-case",
+        action="append",
+        default=[],
+        choices=[f"NLP-{index:02}" for index in range(1, 16)],
+        help="Keep an inspected cached failure unassessed; never retry or pass it.",
+    )
     args = parser.parse_args()
     manifest = args.manifest or prepare(ROOT / "private/evaluation")
     if not manifest.resolve().is_relative_to((ROOT / "private").resolve()):
@@ -256,7 +354,7 @@ def main():
         return
     if not args.consent or not args.ground_truth_reviewed:
         parser.error("Live evaluation requires --consent and --ground-truth-reviewed.")
-    report = summary(asyncio.run(evaluate(prepared, manifest.parent)))
+    report = summary(asyncio.run(evaluate(prepared, manifest.parent, args.acknowledge_failed_case)))
     save(ROOT / "docs/evidence/audio-evaluation.json", report)
     print("Sanitized results saved to docs/evidence/audio-evaluation.json")
     if not report["target_passed"]:

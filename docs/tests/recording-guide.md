@@ -1,5 +1,10 @@
 # Authentic 15-recording evaluation
 
+The participant-approved corpus uses Hindi, English and Hinglish. Cases NLP-04
+and NLP-10 use English equivalents because the participant does not speak Tamil.
+Their positive/missing-location safety scenarios are preserved. Tamil remains
+unverified; these recordings must never be presented as Tamil evidence.
+
 Prepare 15 separate consenting team recordings using the machine-readable
 [audio cases](audio-cases.json), derived from the team's private implementation plan. Do not use generated speech,
 third-party recordings or one recording copied into multiple cases. NLP-15 is
@@ -30,6 +35,11 @@ rerunning; that new request may spend credits. Configuration, quota or outage
 errors stop further requests. Raw recordings/transcripts remain ignored. Only
 sanitized per-field/complete-case results and real model/request metadata are
 exported to `docs/evidence/audio-evaluation.json` after a full run.
+
+After inspecting an upstream failure, an operator may use
+`--acknowledge-failed-case NLP-02` to retain that cached case as failed/unassessed
+and continue with other clips. This never retries or passes the failed case;
+all required safety cases must still pass, and a new provider error stops the run.
 
 Target: at least 12/15 complete cases correct and every required ambiguity/no-speech
 case safely blocked. Report the actual count even if the target is missed.
