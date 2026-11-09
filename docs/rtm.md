@@ -53,4 +53,4 @@ All requirements retained; no fixture success counts as live evidence.
 | NFR-11 | Deployment | Actual Render HTTPS app/DB, Blueprint GNANI, real prerecorded provider/browser workflow and restart verified; fresh human Hindi report verified; free-backup limitation remains |
 | NFR-12 | Maintainability | Strict mypy/Ruff, TypeScript build and frontend lint/format; required GitHub quality gate |
 | NFR-13 | Cost awareness | 25s UI/30s decode cap; per-user/global single-process limits; actual console balance remains operator-owned |
-| NFR-14 | Honest representation | Test fixtures confined to tests; real local and hosted provider evidence; no fresh-human/form completion claim |
+| NFR-14 | Honest representation | Test fixtures confined to tests; real local/hosted provider evidence plus one participant-attested fresh Hindi report with server provenance; no 15-case benchmark, final-video or submitted-form claim |
