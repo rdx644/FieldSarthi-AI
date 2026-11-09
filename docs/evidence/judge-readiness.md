@@ -45,8 +45,23 @@ CI now scans all reachable commit history and the index for forbidden private/ra
 media paths and known credential signatures, including merge-resolution paths.
 This bounded scanner supplements review; it does not claim universal secret detection.
 CI also runs the complete non-billable fixture-provider browser workflow and saves
-its evidence as an artifact. Current remote CI/deployment outcomes will be recorded
-after they execute; the previous hosted evidence remains historical proof.
+its evidence as an artifact. Protected PR #8 merged at application commit
+`6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd`; its
+[exact main CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42682797881).
+That application commit is live in deployment `dep-dbp1rkek1f9s73aqchvg`, Blueprint
+GNANI in_sync. [Hosted authorization/health checks](hosted/judge-release-verification.json)
+and [deployed browser checks](hosted/judge-browser-verification.json) pass. The public
+judge button requires no password and exposes only the explicitly approved report.
+
+[Ten consecutive genuine hosted workflows](hosted/reliability.json) passed with ten
+actual Prisma requests, confirmation, replay, assignment/start/resolution and durable
+read-back. One consenting clip was repeated: this verifies workflow reliability,
+not distinct-clip ASR accuracy. [One genuine Timbre request](hosted/judge-release-tts.json)
+returned valid WAV without changing the saved order/audit. A
+[controlled restart](hosted/judge-release-restart.json) retained all ten workflow IDs,
+states, versions, provider metadata and audit counts. The approved OPEN report also
+retained its original transcript hash. Health and restart checks spent no credits.
+The earlier hosted artifacts remain clearly labelled historical proof.
 
 NFR-01 automated test: ten consecutive complete API workflows using test-only
 speech results, genuine decoding/PostgreSQL writes, explicit review/confirmation,

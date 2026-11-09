@@ -1,0 +1,162 @@
+{
+  "timestamp_utc": "2026-11-09T19:28:15.513946+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "input": "one consenting prerecorded clip repeated; not a distinct-recording evaluation",
+  "target_consecutive_workflows": 10,
+  "application_transcription_requests": 10,
+  "successful_workflows": 10,
+  "runs": [
+    {
+      "run": 1,
+      "public_code": "WO-3F29C0F7C9FD",
+      "order_id": "f9ae5480-03c5-4806-8c6d-b7e1fbfe2453",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "5c4ae01a-00ce-4b1b-ba84-074cf90cc405"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 2.496
+    },
+    {
+      "run": 2,
+      "public_code": "WO-C242DAE4123A",
+      "order_id": "c271aba7-610e-456b-a0cf-637eaa323b85",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "d7efe11a-a472-4d9e-be90-815b0ecb224c"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.986
+    },
+    {
+      "run": 3,
+      "public_code": "WO-C76BC76DAFFD",
+      "order_id": "e4ea9c54-e5e8-41b9-a087-bbeb65f6c09f",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "d47deb2d-beb3-4f0c-acc3-d32b46a7a704"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.739
+    },
+    {
+      "run": 4,
+      "public_code": "WO-96E23BCF53CF",
+      "order_id": "42d3235e-1efc-46fa-a86d-cb071519d073",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "7c1b5e87-2eba-49f7-8dad-fae242afefae"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.808
+    },
+    {
+      "run": 5,
+      "public_code": "WO-B62F6C54144C",
+      "order_id": "96eed8c8-d68f-49b0-915c-57a876cad6b4",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "a0801086-2252-4155-943a-2ab749e01781"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.716
+    },
+    {
+      "run": 6,
+      "public_code": "WO-AB6FF068A37D",
+      "order_id": "3b463d89-b460-4f8a-a941-2792c0145ce3",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "3560c5e4-d30d-46a1-a3dc-b8a731f78d61"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.999
+    },
+    {
+      "run": 7,
+      "public_code": "WO-6A4AEC41FB46",
+      "order_id": "48fa5f56-72f9-4c81-9efc-3b71c5a93820",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "e0f746af-d777-49ec-b068-7e4a2fc1251d"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 2.018
+    },
+    {
+      "run": 8,
+      "public_code": "WO-DDF81A012896",
+      "order_id": "b5604b29-5eee-4e96-8727-7abcfccd6079",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "626fb3af-ac93-4690-b1ff-994be493fb0a"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.808
+    },
+    {
+      "run": 9,
+      "public_code": "WO-006C91A363BC",
+      "order_id": "03b2ed00-8926-4893-b0ab-491d81f3a0bd",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "fbe7d03c-2959-4e5a-8beb-187c6e431cbe"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.756
+    },
+    {
+      "run": 10,
+      "public_code": "WO-C1EDD9EE244C",
+      "order_id": "c10b60c2-60c7-4d96-a845-9a0ae583d3d6",
+      "provider": {
+        "name": "Gnani AI",
+        "model": "prisma-v2.5",
+        "request_id": "77d66462-483b-4794-bf8d-58b2118c4234"
+      },
+      "final_status": "RESOLVED",
+      "audit_event_count": 4,
+      "idempotent_replay": true,
+      "persisted_read_back": true,
+      "elapsed_seconds": 1.863
+    }
+  ],
+  "passed": true,
+  "completed_at_utc": "2026-11-09T19:28:38.302711+00:00"
+}

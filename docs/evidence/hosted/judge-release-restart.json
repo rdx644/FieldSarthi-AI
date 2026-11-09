@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-11-09T19:36:44.065993+00:00",
+  "restart_acknowledged_at_utc": "2026-11-09T19:33:25.302804+00:00",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "controlled_restart_completed": true,
+  "new_ready_instance_observed": true,
+  "active_instances": 1,
+  "work_orders_verified": 11,
+  "ten_workflow_ids_states_versions_provider_metadata_and_audit_counts_match_pre_restart_evidence": true,
+  "approved_open_report_version_provenance_transcript_hash_and_audit_count_unchanged": true,
+  "catalog_counts": {
+    "locations": 3,
+    "assets": 4
+  },
+  "live_provider_calls": 0,
+  "scope": "Actual app restart and persisted-record read-back; not a rollback or managed-backup guarantee."
+}

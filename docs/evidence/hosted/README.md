@@ -1,3 +1,39 @@
+# Hosted judge release — 2026-11-10 IST
+
+Application commit **6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd** is live at
+https://fieldsaarthi-ai.onrender.com, deployment `dep-dbp1rkek1f9s73aqchvg`.
+[Exact application-main CI passed](https://github.com/rdx644/FieldSarthi-AI/actions/runs/42682797881).
+Blueprint GNANI is in_sync. Select **Open judge demo**; no password is needed.
+
+- [Hosted authorization/health checks](judge-release-verification.json): only the
+  explicitly approved WO-AFF1E3EE3BD2 is public, still OPEN/version 1 with its original
+  transcript hash, actual Prisma provenance and creation audit unchanged.
+- [Deployed browser checks](judge-browser-verification.json): login, dashboard,
+  desktop/mobile detail and refresh passed with no reported axe violations,
+  horizontal overflow or JavaScript errors. Screenshots accompany the result.
+- [Ten consecutive genuine hosted workflows](reliability.json) passed: Prisma,
+  explicit confirmation, idempotent replay, supervisor assignment/start/resolution,
+  and persisted read-back. One consenting clip was repeated for reliability;
+  this is separate from the distinct-recording evaluation.
+- [One genuine saved-ticket Timbre request](judge-release-tts.json) returned valid
+  6.4-second WAV and left the saved order/audit unchanged.
+- [Controlled restart](judge-release-restart.json) observed a new ready instance.
+  All ten workflow IDs, states, versions, provider metadata and audit counts
+  matched pre-restart evidence. The approved report additionally retained its
+  original transcript hash. No provider call was needed for restart verification.
+- The separate [15-recording development evaluation](../audio-evaluation.json)
+  scored 12/15 complete cases, with all six safety cases blocked. Hindi/English/
+  Hinglish were tested; Tamil is unverified. Same-corpus refinement is disclosed.
+
+190 backend tests and frontend/browser/audit/container checks passed. Engineering
+and measured evaluation gaps listed in the historical audit are superseded by
+[the current completion record](../judge-readiness.md). Individual contributions,
+eligibility attestations, final video/post and the user-reserved form remain pending.
+Free PostgreSQL still has no managed backups and expires on 2026-12-09; the approved
+private export/isolated restore does not establish a managed backup SLA.
+
+The following sections retain earlier point-in-time evidence and call counts.
+
 # Actual Render deployment evidence - 2026-11-09
 
 Application: https://fieldsaarthi-ai.onrender.com
@@ -19,8 +55,8 @@ Public files contain sanitized metadata and synthetic-data screenshots. Keys, JW
 
 The participant confirmed making a new Hindi microphone recording and supplied WO-AFF1E3EE3BD2. [The separate evidence](human-microphone-verification.json) records server-read confirmed intake, actual distinct Prisma v2.5 request, 5.16-second duration, persisted Warehouse C/Exhaust Fan C-03 order and creation audit. The ticket remains OPEN and was not modified by the agent. No additional provider request was needed to verify it. Earlier runtime/deployment JSON files are point-in-time records from the prerecorded test before this participant check; their fresh-human false/pending fields are superseded by this later artifact. The source attestation is explicit; no audio-origin forensic or broader accuracy claim.
 
-## Remaining gates
+## Historical remaining gates
 
-15 distinct authentic audio cases with ground truth, ten consecutive complete workflows, listed implementation/dedicated-test gaps, final review/tag and participant video/post/contributions/form remain open. See ../roadmap-audit.md. The user alone submits the final form.
+At this earlier checkpoint, the 15-case evaluation, ten-run reliability and implementation/test gaps were open. The hosted judge release above supersedes those observations. Participant video/post/contributions/form remain user-owned; the form is unsubmitted.
 
 Free Render PostgreSQL has no managed backups and expires at `2026-12-09T12:16:30.004422Z`; app files are ephemeral and web service may cold-start. No paid upgrade, external DB access or production SLA is claimed. Private demo logins remain in private/demo-accounts.json.

@@ -1,8 +1,8 @@
 # FieldSaarthi AI
 
-**Judge dashboard: implemented and tested; hosted activation is pending deployment.**
-Once activated, [open the live app](https://fieldsaarthi-ai.onrender.com) and select
-“Open judge demo” to inspect the approved real report and provenance in read-only mode.
+**Judge dashboard is live.** [Open the live app](https://fieldsaarthi-ai.onrender.com)
+and select **Open judge demo** to inspect the approved real report and provenance
+in read-only mode. No password is required.
 [Two-minute evaluation guide](docs/judge-guide.md)
 | [Current verification and remaining participant gates](docs/evidence/judge-readiness.md)
 | [15-recording instructions](docs/tests/recording-guide.md).
@@ -14,7 +14,7 @@ Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi
 ## What works
 - Real Gnani **Prisma v2.5** transcription, with the original transcript and actual returned request/model provenance.
 - Browser microphone capture (25-second soft stop) or consenting audio upload; bounded server-side FFmpeg conversion; 30-second provider ceiling.
-- Catalog-backed Hindi/English/Tamil alias extraction, evidence phrases, correction and explicit human confirmation. Hindi/Hinglish is the authentic speech baseline; other speech quality is not yet claimed.
+- Catalog-backed Hindi/English/Tamil alias extraction, evidence phrases, correction and explicit human confirmation. Authentic speech evaluation covers Hindi/English/Hinglish; Tamil remains unverified.
 - Versioned extraction preserves exact original-text evidence spans; conflicting assets stay unresolved. An accessible typed-report path is explicitly labelled MANUAL_TEXT with no speech-provider provenance.
 - Exactly one durable PostgreSQL work order per intake, transactional idempotency, role/ownership checks, controlled assignment/priority/status changes and optimistic versions.
 - Separate worker/supervisor sessions, HTTP-only cookies, CSRF protection, strict headers, private credentials and synthetic demo inventory.
@@ -24,7 +24,7 @@ Built for the Gnani AI internship challenge by **Shubham Putitundi and Shambhavi
 
 **Verified locally:** 190 backend tests, strict mypy/Ruff, frontend type/build/lint/format checks, six retained accessibility views plus ten full-workflow browser checks, and matching local/hosted-snapshot PostgreSQL restore drills. The genuine 15-recording development evaluation achieved **12/15 complete cases**, with all six safety cases blocked correctly; [results and limitations](docs/evidence/audio-evaluation.json). Ten consecutive automated workflows also pass with test-only speech responses. See [current verification](docs/evidence/judge-readiness.md) for exact scope and participant gates.
 
-**Hosted app:** [Open FieldSaarthi AI](https://fieldsaarthi-ai.onrender.com). Free Render Docker + PostgreSQL 18 is live under Blueprint GNANI. Genuine hosted Prisma -> order -> supervisor workflow, Timbre WAV and restart persistence are verified with an existing consented recording; [actual deployment evidence](docs/evidence/hosted/README.md). A participant-attested fresh Hindi microphone report is also verified against its saved Gnani provenance; the 15-clip evaluation and other roadmap gaps remain open. No public social post or official form submission is claimed.
+**Hosted app:** [Open FieldSaarthi AI](https://fieldsaarthi-ai.onrender.com). Free Render Docker + PostgreSQL 18 is live under Blueprint GNANI. Ten consecutive genuine Prisma -> confirmed order -> supervisor resolution workflows passed, with separate genuine Timbre WAV verification. A controlled restart preserved all ten resolved orders and the approved OPEN participant report. The public judge dashboard passed deployed desktop/mobile checks; [actual deployment evidence](docs/evidence/hosted/README.md). All 15 participant recordings were evaluated. Final participant contributions, video, public post and official form remain pending.
 
 ## Run locally (Windows / Python 3.12+, Node 26, PostgreSQL 18, uv 0.11.1)
 ```powershell

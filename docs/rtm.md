@@ -20,10 +20,10 @@ All requirements retained; no fixture success counts as live evidence.
 | FR-03 | Role-restricted login/session | app/core/security.py; routers/auth.py; integration/test_workflow.py and test_intakes.py; role/IDOR/cookie/CSRF checks |
 | FR-04 | Browser records audio with permission handling | web/src/pages/Report.tsx; app/services/audio.py; core/limits.py; test_intakes.py; file-fed MediaRecorder + real decoder verified, participant-attested fresh HTTPS Hindi microphone report and durable order verified in hosted/human-microphone-verification.json |
 | FR-05 | Server validates/normalizes audio | web/src/pages/Report.tsx; app/services/audio.py; core/limits.py; test_intakes.py; file-fed MediaRecorder + real decoder verified, participant-attested fresh HTTPS Hindi microphone report and durable order verified in hosted/human-microphone-verification.json |
-| FR-06 | Real Prisma request is made server-side | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; broader language evaluation pending |
-| FR-07 | Transcript is displayed and saved as received | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; broader language evaluation pending |
-| FR-08 | Gnani evidence is correlated | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; broader language evaluation pending |
-| FR-09 | STT errors handled without false success | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; broader language evaluation pending |
+| FR-06 | Real Prisma request is made server-side | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; 15-recording Hindi/English/Hinglish development evaluation completed; Tamil unverified |
+| FR-07 | Transcript is displayed and saved as received | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; 15-recording Hindi/English/Hinglish development evaluation completed; Tamil unverified |
+| FR-08 | Gnani evidence is correlated | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; 15-recording Hindi/English/Hinglish development evaluation completed; Tamil unverified |
+| FR-09 | STT errors handled without false success | app/integrations/gnani.py; routers/intakes.py; contract/test_gnani.py; docs/evidence/gnani-stt-live.md and browser/live-browser-smoke.json; hosted prerecorded smoke verified in docs/evidence/hosted/; fresh human Hindi report independently read back with actual Gnani provenance; 15-recording Hindi/English/Hinglish development evaluation completed; Tamil unverified |
 | FR-10 | Extract asset and location from transcript | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
 | FR-11 | Extract issue and urgency suggestion | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
 | FR-12 | Provide explainable extraction evidence | app/services/extraction.py; web/pages/Review.tsx; unit/test_extraction.py; docs/tests/evaluation.csv: 15/15 text fixtures, not ASR evaluation |
@@ -40,20 +40,20 @@ All requirements retained; no fixture success counts as live evidence.
 | FR-23 | Timbre speaks saved-ticket acknowledgment | integrations/tts.py; routers/orders.py; pages/Detail.tsx; contract/test_tts.py; test_release_guards.py; actual Timbre WAV plus outage isolation |
 | FR-24 | Potential duplicates flagged | routers/intakes.py and orders.py; Review/Detail duplicate warnings; limited to reports user is authorized to see |
 | FR-25 | Provenance page shows audit trail | services/orders.py detail serializer; Detail.tsx; immutable DB audit/provenance; browser details/timeline evidence |
-| NFR-01 | Reliability | 190 backend tests and ten consecutive complete test-only-provider API workflows; genuine 15-recording development evaluation scored 12/15 with all safety cases blocked; current hosted ten-run evidence tracked separately |
+| NFR-01 | Reliability | 190 backend tests and ten consecutive complete test-only-provider API workflows; genuine 15-recording development evaluation scored 12/15 with all safety cases blocked; ten consecutive genuine hosted workflows passed in evidence/hosted/reliability.json |
 | NFR-02 | Latency | Actual timing in live evidence; progress state; no fixed provider latency promise |
 | NFR-03 | Correctness | PostgreSQL race/idempotency/version/atomicity tests; database constraints and triggers |
 | NFR-04 | Security | Role/ownership/CSRF/cookie/upload/secret controls; dependency audits; no full pentest claim |
 | NFR-05 | Privacy | Private keys/test audio; temporary decode cleanup; synthetic data; body-free logs |
 | NFR-06 | Explainability | Original/corrected transcript, actual STT provenance and immutable event timeline |
-| NFR-07 | Accessibility | Six axe WCAG desktop/mobile views with zero reported violations; browser/accessibility.json |
+| NFR-07 | Accessibility | Six retained plus ten fixture-workflow axe/layout checks and deployed judge desktop/mobile checks; no reported violations in checked views |
 | NFR-08 | Reproducibility | Frozen uv/npm locks, README, migrations/seed, Docker/Render/CI artifacts |
 | NFR-09 | Observability | Generated request IDs, body-free structured timings/errors and live/ready endpoints |
 | NFR-10 | Fault isolation | STT failure cannot create order; TTS outage keeps saved order, verified |
 | NFR-11 | Deployment | Actual Render HTTPS app/DB, Blueprint GNANI, real prerecorded provider/browser workflow and restart verified; fresh human Hindi report verified; free-backup limitation remains |
 | NFR-12 | Maintainability | Strict mypy/Ruff, TypeScript build and frontend lint/format; required GitHub quality gate |
 | NFR-13 | Cost awareness | 25s UI/30s decode cap; per-user/global single-process limits; actual console balance remains operator-owned |
-| NFR-14 | Honest representation | Test fixtures confined to tests; real local/hosted provider evidence plus one participant-attested fresh Hindi report with server provenance; no 15-case benchmark, final-video or submitted-form claim |
+| NFR-14 | Honest representation | Test fixtures confined to tests; real local/hosted provider evidence plus one participant-attested fresh Hindi report with server provenance; 15-case development results disclosed with same-corpus limitations; no held-out benchmark, final-video or submitted-form claim |
 
 ## Current completion mapping
 
@@ -63,4 +63,6 @@ versioned extraction and actionable errors; FR-20..25 include all queue controls
 audited cancellation and restricted judge access. NFR-01/03/04/09 are additionally
 covered by test_reliability.py, test_roadmap_regressions.py, test_judge_access.py,
 test_stage_telemetry.py, tests/browser/workflow_check.py and repository_guard.py.
-The audio evaluation runner does not pass WBS-07.3 until authentic clips are run.
+WBS-07.3 now has all 15 authentic participant clips evaluated with genuine Prisma;
+12/15 complete cases and all six safety blocks are recorded in evidence/audio-evaluation.json.
+English equivalents were approved for 04/10; Tamil remains unverified.

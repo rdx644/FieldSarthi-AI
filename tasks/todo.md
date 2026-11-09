@@ -18,14 +18,16 @@
 - [x] Genuine 15-recording evaluation: 12/15 complete cases, all six safety cases
   blocked; Hindi/English/Hinglish development corpus, English substitutions for
   04/10, Tamil unverified, initial failures and same-corpus refinement disclosed.
-- [ ] Current protected PR CI, merged-main CI and new hosted deployment verification.
+- [x] Protected PR #8, exact application-main CI and live deployment at 6f702c2.
+- [x] Ten consecutive genuine hosted voice-to-resolved workflows, separate genuine
+  Timbre WAV, deployed judge desktop/mobile checks and controlled restart persistence.
 - [ ] Participant eligibility/contributions, final video/public post/release review;
   final official form remains explicitly reserved for the user.
 
 See [current evidence](../docs/evidence/judge-readiness.md). Earlier checklists below
 retain their historical test counts; this update supersedes those implementation gaps.
 
-Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/evidence/roadmap-audit.md). The development candidate does **not** satisfy every end-to-end roadmap gate; section-specific implementation/test gaps are recorded there. Existing broad checkmarks below describe development progress and do not override that audit.
+Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/evidence/roadmap-audit.md). That historical audit identified implementation/test/evaluation gaps now addressed by the current completion record. Participant submission gates and free-host managed-backup limitations remain open. Earlier development checkmarks retain their original scope.
 ## WBS-00: Compliance and configuration
 - [x] Official rules/docs checked, P0 baseline frozen, original roadmap/source evidence preserved.
 - [x] Genuine key/STT access verified; user reports 5,000 starting credits and permits the same key for hosting.
@@ -69,7 +71,7 @@ Full audit on 2026-11-09: [all 94 numbered headings and 64 WBS tasks](../docs/ev
 - [x] Remote Linux/browser/audit/container build and protected main enforcement verified; see github-publication.json.
 - [x] Render CLI authorized; free web/PostgreSQL18 resources live; actual Blueprint GNANI in_sync; real hosted prerecorded STT/TTS and restart persistence verified.
 - [x] Separate participant-attested fresh Hindi HTTPS microphone report verified with actual distinct Gnani request and saved order; no 15-case or multilingual accuracy claim.
-- [ ] 15 distinct authentic audio evaluation cases; parser fixtures do not satisfy this.
+- [x] 15 distinct participant recordings evaluated with genuine Prisma: 12/15 complete cases; all six safety cases blocked. See current evidence for limitations.
 ## WBS-08: User-owned submission
 - [x] One-page PDF/Markdown pitch, accurate project explanation, 2-3 minute script and social draft prepared.
 - [ ] Final working video/public post/actual individual contribution statements.
