@@ -68,6 +68,9 @@ class Intake(Base):
     )
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
     reporter_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
+    source_type: Mapped[str] = mapped_column(
+        String(20), default="GNANI_STT", server_default="GNANI_STT"
+    )
     status: Mapped[str] = mapped_column(String(30), default="TRANSCRIBING")
     language_code: Mapped[str] = mapped_column(String(10))
     provider_model: Mapped[str | None] = mapped_column(String(60))

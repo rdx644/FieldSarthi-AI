@@ -2069,3 +2069,24 @@ td > span:not(.status-badge, .priority) {
   height: 36px;
   margin-top: 10px;
 }
+.queue-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  padding: 1rem;
+}
+.queue-filters label {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.queue-filters select {
+  width: 100%;
+}
+.manual-report {
+  margin-top: 1.5rem;
+}
+.manual-report summary {
+  cursor: pointer;
+  font-weight: 600;
+}

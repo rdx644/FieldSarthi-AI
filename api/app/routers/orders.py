@@ -13,7 +13,8 @@ from app.db.models import Order, User
 from app.db.session import get_db
 from app.integrations.gnani import GnaniError
 from app.integrations.tts import TimbreClient, provider_slots
-from app.schemas.commands import Assignment, Confirm, PriorityChange, StatusChange
+from app.schemas.commands import Assignment, Confirm, Priority, PriorityChange, Status, StatusChange
+from app.schemas.responses import OrderResponse, QueueResponse
 from app.services.orders import accessible_order, change_order, create_order, order_json
 
 router = APIRouter(prefix="/api/v1/work-orders")
@@ -52,7 +53,7 @@ async def acknowledgment(oid: str, user: Current, db: DB) -> Response:
     return Response(data, media_type="audio/wav", headers={"Cache-Control": "no-store"})
 
 
-@router.post("")
+@router.post("", response_model=OrderResponse)
 def confirm(
     body: Confirm,
     response: Response,
@@ -65,12 +66,12 @@ def confirm(
     return order_json(row, db, detail=True)
 
 
-@router.get("")
+@router.get("", response_model=QueueResponse)
 def queue(
     user: Current,
     db: DB,
-    status: str | None = None,
-    priority: str | None = None,
+    status: Status | None = None,
+    priority: Priority | None = None,
     location_id: str | None = None,
     assignee_id: str | None = None,
     q: Annotated[str, Query(max_length=100)] = "",
@@ -104,12 +105,12 @@ def queue(
     }
 
 
-@router.get("/{oid}")
+@router.get("/{oid}", response_model=OrderResponse)
 def detail(oid: str, user: Current, db: DB) -> dict[str, Any]:
     return order_json(accessible_order(db, oid, user), db, detail=True)
 
 
-@router.patch("/{oid}/assignment")
+@router.patch("/{oid}/assignment", response_model=OrderResponse)
 def assign(oid: str, body: Assignment, user: Supervisor, db: DB) -> dict[str, Any]:
     row = accessible_order(db, oid, user, lock=True)
     return order_json(
@@ -117,7 +118,7 @@ def assign(oid: str, body: Assignment, user: Supervisor, db: DB) -> dict[str, An
     )
 
 
-@router.patch("/{oid}/priority")
+@router.patch("/{oid}/priority", response_model=OrderResponse)
 def prioritize(oid: str, body: PriorityChange, user: Supervisor, db: DB) -> dict[str, Any]:
     row = accessible_order(db, oid, user, lock=True)
     return order_json(
@@ -127,7 +128,7 @@ def prioritize(oid: str, body: PriorityChange, user: Supervisor, db: DB) -> dict
     )
 
 
-@router.patch("/{oid}/status")
+@router.patch("/{oid}/status", response_model=OrderResponse)
 def advance(oid: str, body: StatusChange, user: Supervisor, db: DB) -> dict[str, Any]:
     row = accessible_order(db, oid, user, lock=True)
     return order_json(
@@ -138,14 +139,14 @@ def advance(oid: str, body: StatusChange, user: Supervisor, db: DB) -> dict[str,
             "STATUS_CHANGED",
             body.status,
             body.expected_version,
-            body.resolution_note,
+            body.cancellation_note if body.status == "CANCELLED" else body.resolution_note,
         ),
         db,
         True,
     )
 
 
-@router.get("/{oid}/duplicates")
+@router.get("/{oid}/duplicates", response_model=list[OrderResponse])
 def duplicates(oid: str, user: Current, db: DB) -> list[dict[str, Any]]:
     row = accessible_order(db, oid, user)
     query = select(Order).where(

@@ -10,7 +10,7 @@ import {
   Search,
 } from "lucide-react";
 import { api, date, label } from "../lib/api";
-import type { Queue, User } from "../lib/api";
+import type { Location, Queue, User } from "../lib/api";
 import { navigate } from "../lib/navigation";
 
 export function Orders({ user }: { user: User }) {
@@ -21,11 +21,35 @@ export function Orders({ user }: { user: User }) {
     page_size: 20,
   });
   const [status, setStatus] = useState("");
+  const [priority, setPriority] = useState("");
+  const [location, setLocation] = useState("");
+  const [assignee, setAssignee] = useState("");
+  const [locations, setLocations] = useState<Location[]>([]);
+  const [workers, setWorkers] = useState<User[]>([]);
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
   const [revision, setRevision] = useState(0);
+  useEffect(() => {
+    let active = true;
+    Promise.all([
+      api<Location[]>("/locations"),
+      user.role === "SUPERVISOR" ? api<User[]>("/users") : Promise.resolve([]),
+    ])
+      .then(([places, people]) => {
+        if (active) {
+          setLocations(places);
+          setWorkers(people);
+        }
+      })
+      .catch((err) => {
+        if (active) setError(err.message);
+      });
+    return () => {
+      active = false;
+    };
+  }, [user.role]);
   useEffect(() => {
     let active = true;
     const params = new URLSearchParams({
@@ -34,6 +58,9 @@ export function Orders({ user }: { user: User }) {
       q,
     });
     if (status) params.set("status", status);
+    if (priority) params.set("priority", priority);
+    if (location) params.set("location_id", location);
+    if (assignee) params.set("assignee_id", assignee);
     api<Queue>("/work-orders?" + params)
       .then((x) => {
         if (active) {
@@ -50,7 +77,12 @@ export function Orders({ user }: { user: User }) {
     return () => {
       active = false;
     };
-  }, [status, q, page, revision]);
+  }, [status, priority, location, assignee, q, page, revision]);
+  function filter(setter: (value: string) => void, value: string) {
+    setBusy(true);
+    setter(value);
+    setPage(1);
+  }
   return (
     <>
       <div className="page-heading">
@@ -126,6 +158,7 @@ export function Orders({ user }: { user: User }) {
               <button
                 key={value}
                 className={status === value ? "selected" : ""}
+                aria-pressed={status === value}
                 onClick={() => {
                   setBusy(true);
                   setStatus(value);
@@ -146,6 +179,67 @@ export function Orders({ user }: { user: User }) {
             }}
           >
             <RefreshCw size={16} />
+          </button>
+        </div>
+        <div className="queue-filters">
+          <label>
+            Priority filter
+            <select
+              value={priority}
+              onChange={(event) => filter(setPriority, event.target.value)}
+            >
+              <option value="">All priorities</option>
+              {["LOW", "NORMAL", "HIGH"].map((value) => (
+                <option key={value} value={value}>
+                  {label(value)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Location filter
+            <select
+              value={location}
+              onChange={(event) => filter(setLocation, event.target.value)}
+            >
+              <option value="">All locations</option>
+              {locations.map((place) => (
+                <option key={place.id} value={place.id}>
+                  {place.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          {user.role === "SUPERVISOR" && (
+            <label>
+              Assignee filter
+              <select
+                value={assignee}
+                onChange={(event) => filter(setAssignee, event.target.value)}
+              >
+                <option value="">All assignees</option>
+                {workers.map((person) => (
+                  <option key={person.id} value={person.id}>
+                    {person.display_name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <button
+            className="button small"
+            onClick={() => {
+              setBusy(true);
+              setStatus("");
+              setPriority("");
+              setLocation("");
+              setAssignee("");
+              setQ("");
+              setPage(1);
+              setRevision((value) => value + 1);
+            }}
+          >
+            Clear filters
           </button>
         </div>
         <div className="search-row">
@@ -292,7 +386,7 @@ export function Orders({ user }: { user: User }) {
       </section>
       <div className="queue-caption">
         <span className="tiny-dot" />
-        Every work order is backed by a real voice intake and human
+        Every work order records its voice or manual source and explicit human
         confirmation.
       </div>
     </>

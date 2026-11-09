@@ -16,14 +16,20 @@ export interface Asset {
   asset_code: string;
 }
 export interface Intake {
+  source_type: "GNANI_STT" | "MANUAL_TEXT";
   intake_id: string;
   status: string;
   raw_transcript: string;
   edited_transcript?: string;
   input_language_code: string;
-  stt_latency_ms: number;
-  audio_duration_seconds: number;
-  provider: { name: string; model: string; request_id: string };
+  stt_latency_ms: number | null;
+  audio_duration_seconds: number | null;
+  provider: { name: string; model: string; request_id: string } | null;
+  parser_version?: string | null;
+  evidence_spans?: Record<
+    string,
+    { text: string; start: number; end: number }[]
+  >;
   suggested_fields: {
     location_id: string | null;
     asset_id: string | null;

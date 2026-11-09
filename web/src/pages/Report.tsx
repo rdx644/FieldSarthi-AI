@@ -15,6 +15,7 @@ import {
 import { api } from "../lib/api";
 import type { Intake } from "../lib/api";
 import { Review } from "./Review";
+import { ManualReport } from "./ManualReport";
 
 export function Report() {
   const [language, setLanguage] = useState("hi-IN");
@@ -365,12 +366,18 @@ export function Report() {
             <p>
               <strong>Your recording stays temporary.</strong>
               <br />
-              Audio is processed for transcription, then discarded. The
-              transcript stays with your report.
+              Audio is sent to Gnani AI for transcription and discarded from
+              this app after processing. Gnani processes it under its own terms.
+              Your transcript and audit history stay with the report while this
+              demo database is retained. Use consenting voices and synthetic
+              details.
             </p>
           </div>
         </aside>
       </div>
+      {!recording && !busy && (
+        <ManualReport language={language} onReady={setIntake} />
+      )}
       <div className="next-step">
         <div className="next-icon">
           <RotateCcw size={18} />
