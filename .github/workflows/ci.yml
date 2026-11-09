@@ -34,6 +34,8 @@ jobs:
         working-directory: api
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
         with:
           version: '0.11.1'
@@ -59,6 +61,8 @@ jobs:
       - run: uv run ruff format --check .
       - run: uv run mypy app
       - run: uv run pytest -q
+      - name: Scan complete reachable history and index for secrets and raw media
+        run: uv run python scripts/repository_guard.py
       - run: uv run pip-audit
       - name: Non-billable browser/accessibility checks
         run: |
@@ -71,6 +75,13 @@ jobs:
           trap 'kill "$app_pid"' EXIT
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/health/ready && break; sleep 1; done
           uv run python scripts/browser_quality.py --channel chromium
+          uv run python tests/browser/workflow_check.py --channel chromium
+      - name: Preserve non-billable browser regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-regression
+          path: docs/evidence/browser-regression
       - name: Build deployment image
         run: docker build --tag fieldsaarthi:ci .
         working-directory: .
