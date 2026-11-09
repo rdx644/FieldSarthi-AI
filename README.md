@@ -60,6 +60,6 @@ uv run python scripts/browser_smoke.py --live
 The live sample and real response text stay in ignored `private/`; sanitized metadata and synthetic-data screenshots go in `docs/evidence/`. Use a new consenting microphone report for the final human demo. Uploaded audio is temporary and deleted after conversion, not stored as an application attachment.
 
 ## Deploy and submit
-[Render/Docker deployment](docs/deployment.md) | [Architecture](docs/architecture.md) | [RTM](docs/rtm.md) | [Roadmap](docs/roadmap.md) | [Task status](tasks/todo.md).
+[Render/Docker deployment](docs/deployment.md) | [Architecture](docs/architecture.md) | [RTM](docs/rtm.md) | [Roadmap](docs/roadmap.md) | [Full roadmap audit](docs/evidence/roadmap-audit.md) | [Task status](tasks/todo.md).
 
 The actual final Microsoft form requires a **2-3 minute video** and a project URL containing a pitch no longer than one page. Prepare a separate 60-second social showcase if desired. Include **#GnaniAI** and **#GreatIndianAIInternshipChallenge**, tag the official account and complete the actual form before **10 November 2026, 11:59 PM IST**. Posting alone is not submitting. [Final checklist](docs/submission/final-checklist.md).

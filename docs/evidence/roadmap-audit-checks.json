@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-11-09T12:04:29.737335+00:00",
+  "baseline_commit": "8146882af557d46491888a644081d53c485ada13",
+  "roadmap_sections": 24,
+  "numbered_headings": 94,
+  "wbs_tasks": 64,
+  "root_and_tracked_roadmap_identical": true,
+  "roadmap_coverage_complete": true,
+  "secret_scan": {
+    "method": "Exact known private values (not printed) against all local refs Git patch history, publishable worktree and built client files",
+    "known_secret_values_checked": 9,
+    "publishable_files": 145,
+    "client_files": 59,
+    "matches": 0,
+    "raw_audio_paths_in_all_git_history": 0,
+    "limits": "Not a generic entropy scanner, all remote refs audit, PII certification or penetration test"
+  },
+  "backend_tests": {
+    "command": "api/.venv/Scripts/python.exe -m pytest -q",
+    "passed": 87,
+    "elapsed_seconds": 21.97,
+    "live_provider_calls": 0
+  },
+  "static_checks": {
+    "ruff": "pass",
+    "ruff_format": "pass",
+    "mypy_app": "pass",
+    "frontend_lint": "pass",
+    "frontend_format": "pass",
+    "typescript_vite_build": "pass"
+  },
+  "local_http": {
+    "/": 200,
+    "/health/live": 200,
+    "/health/ready": 200
+  },
+  "blueprint": {
+    "timestamp_utc": "2026-11-09T12:04:25.947324+00:00",
+    "source": "https://render.com/schema/render.yaml.json",
+    "valid": true,
+    "blueprint_sha256": "6801b1f892efc984486aa515778274e6d502af5cfd9d905f88b69023b650efae",
+    "validator": "jsonschema.Draft202012Validator + application-specific assertions",
+    "scope": "Current public schema and local configuration only; not authenticated Render validation or deployed execution"
+  },
+  "hosted_deployment_verified": false,
+  "fresh_human_speech_verified": false,
+  "official_form_submitted": false
+}

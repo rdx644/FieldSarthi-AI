@@ -6,7 +6,7 @@ Checked against official challenge and registration/terms pages on 2026-11-08. P
 | O-01 | Enrolled student in India, age 18+ | Awaiting user confirmation; no ID document needed here |
 | O-02 | Solo or maximum two; every member registers | User confirmed registration and team of two; confirm both individually registered |
 | O-03 | One submission per individual/team | Awaiting one-entry confirmation |
-| O-04 | Working genuine Gnani integration | Local genuine Prisma integration verified; full working app and deployed credential check pending |
+| O-04 | Working genuine Gnani integration | Genuine local Prisma -> reviewed durable order -> supervisor workflow and optional Timbre verified; hosted credential check pending |
 | O-05 | Explain problem, users, models, contributions | Scope frozen; final implemented contributions pending |
 | O-06 | Public video of working app | Future WBS-08; not published |
 | O-07 | Tag official Gnani account; both #GnaniAI and #GreatIndianAIInternshipChallenge | Final post check pending |
@@ -14,7 +14,7 @@ Checked against official challenge and registration/terms pages on 2026-11-08. P
 | O-09 | Complete official programme submission route | User confirmed final form received; live route authoritative |
 | O-10 | 10 November 2026, 11:59 PM IST | Verified public deadline; aim to submit early |
 | O-11 | No bought/bot/swapped engagement or misleading work | Adopted; publication review later |
-| O-12 | Synthetic demo content, no sensitive personal data | Adopted test script; real voice needs consent |
+| O-12 | Synthetic demo content, no sensitive personal data | Synthetic inventory and consenting private test audio used; final video/content review pending |
 
 Account access: private verification key configured and STT scope proved with two genuine HTTP 200 Prisma calls. User reports 5,000 available credits; balance was not independently queried and post-test remaining balance is unknown. Do not record the key value in this file. Programme allocation is not proof of a particular account's balance.
 
