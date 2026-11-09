@@ -54,7 +54,8 @@ All requirements retained; no fixture success counts as live evidence.
 | NFR-12 | Maintainability | Strict mypy/Ruff, TypeScript build and frontend lint/format; required GitHub quality gate |
 | NFR-13 | Cost awareness | 25s UI/30s decode cap; per-user/global single-process limits; actual console balance remains operator-owned |
 | NFR-14 | Honest representation | Test fixtures confined to tests; real local/hosted provider evidence plus one participant-attested fresh Hindi report with server provenance; no 15-case benchmark, final-video or submitted-form claim |
-# Current completion mapping
+
+## Current completion mapping
 
 The [judge readiness record](evidence/judge-readiness.md) supersedes historical gap
 notes in this matrix. FR-04..12 now include MANUAL_TEXT provenance, exact spans,
@@ -63,4 +64,3 @@ audited cancellation and restricted judge access. NFR-01/03/04/09 are additional
 covered by test_reliability.py, test_roadmap_regressions.py, test_judge_access.py,
 test_stage_telemetry.py, tests/browser/workflow_check.py and repository_guard.py.
 The audio evaluation runner does not pass WBS-07.3 until authentic clips are run.
-
