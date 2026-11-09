@@ -59,14 +59,17 @@ def seed(db: Session) -> list[dict[str, str]]:
             "PUMP-B02",
             "Water Pump B-02",
             "BLK-B-F2",
-            ["water pump", "pump", "वाटर पंप", "पानी पंप", "मोटर", "பம்ப்"],
+            ["water pump", "pump", "वाटर पंप", "पानी पंप", "पंप", "मोटर", "பம்ப்"],
         ),
         ("AC-A01", "Air Conditioner A-01", "BLK-A-GF", ["air conditioner", "ac", "एसी", "ஏசி"]),
         ("FAN-C03", "Exhaust Fan C-03", "WH-C", ["exhaust", "fan", "पंखा", "விசிறி"]),
         ("LIGHT-C04", "Bay Light C-04", "WH-C", ["light", "bulb", "लाइट", "விளக்கு"]),
     ]
     for code, name, loc, aliases in assets:
-        if not db.get(Asset, stable(code)):
+        existing = db.get(Asset, stable(code))
+        if existing:
+            existing.aliases = list(dict.fromkeys([*existing.aliases, *aliases]))
+        else:
             db.add(
                 Asset(
                     id=stable(code),
