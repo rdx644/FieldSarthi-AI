@@ -6538,6 +6538,58 @@
       "id": "file_inventory_docs_evidence_hosted_07_mobile_queue_png",
       "community": null,
       "norm_label": "07-mobile-queue.png"
+    },
+    {
+      "label": "GRAPH_REPORT.md",
+      "file_type": "document",
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "file_graphify_out_graph_report_md",
+      "community": 94,
+      "norm_label": "graph_report.md"
+    },
+    {
+      "label": "coverage.json",
+      "file_type": "document",
+      "source_file": "graphify-out/coverage.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "file_graphify_out_coverage_json",
+      "community": 94,
+      "norm_label": "coverage.json"
+    },
+    {
+      "label": "graph.html",
+      "file_type": "document",
+      "source_file": "graphify-out/graph.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "file_graphify_out_graph_html",
+      "community": 94,
+      "norm_label": "graph.html"
+    },
+    {
+      "label": "graph.json",
+      "file_type": "document",
+      "source_file": "graphify-out/graph.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "file_graphify_out_graph_json",
+      "community": 94,
+      "norm_label": "graph.json"
     }
   ],
   "links": [

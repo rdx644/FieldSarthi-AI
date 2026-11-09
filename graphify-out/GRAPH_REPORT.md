@@ -5,7 +5,7 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 612 nodes · 848 edges · 94 communities detected
+- 616 nodes · 848 edges · 95 communities detected
 - Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 324 edges (avg confidence: 0.79)
 - Token cost: unavailable (semantic extraction agents did not return token telemetry)
 
@@ -104,6 +104,7 @@
 - [[_COMMUNITY_Shared SVG Icon Symbols|Shared SVG Icon Symbols]]
 - [[_COMMUNITY_Layered Hero Illustration|Layered Hero Illustration]]
 - [[_COMMUNITY_Vite Logo Asset|Vite Logo Asset]]
+- [[_COMMUNITY_Graph Export Artifacts|Graph Export Artifacts]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `login()` - 32 edges
@@ -507,6 +508,10 @@ Nodes (1): Abstract layered violet hero illustration asset
 Cohesion: 1.0
 Nodes (1): Vite development tool logo asset
 
+### Community 94 - "Graph Export Artifacts"
+Cohesion: 0.0
+Nodes (inventory): GRAPH_REPORT.md, coverage.json, graph.html, graph.json
+
 ## Knowledge Gaps
 - **200 isolated node(s):** `Protect maintenance operations as well as row updates.`, `Add explicit manual accessibility provenance without relabeling voice reports.`, `User-approved public read-only judge role and explicit report allowlist.`, `Allowlisted stage events: no bodies, transcripts, credentials or exception text.`, `FR-06..09: real Prisma v2.5 REST adapter. No production fixture path. Contract:` (+195 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -649,7 +654,7 @@ Nodes (1): Vite development tool logo asset
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppError` connect `Authentication And Intake Routes` to `Gnani STT And Timbre Adapters`, `Transactional Orders And Audit Models`, `Audio Contracts And Backup Drill`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
 - **Why does `ProviderResult` connect `Gnani STT And Timbre Adapters` to `Typed API Response Schemas`?**
   _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `stable()` connect `Backend Workflow Regression Tests` to `Catalog Extraction And Provenance`, `Authentication And Intake Routes`, `Recording And Browser Evaluation`?**
