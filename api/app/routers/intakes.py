@@ -121,6 +121,10 @@ async def transcribe(
                 "Retry later or type your report.",
             ),
         ) from None
+    return review_json(row, user.id, db)
+
+
+def review_json(row: Intake, reporter_id: str, db: Session) -> dict[str, Any]:
     output = intake_json(row)
     asset = row.extraction.get("suggested_fields", {}).get("asset_id")
     # Never disclose another reporter's private report in duplicate hints.
@@ -131,7 +135,7 @@ async def transcribe(
                     select(Order.id)
                     .where(
                         Order.asset_id == asset,
-                        Order.reporter_id == user.id,
+                        Order.reporter_id == reporter_id,
                         Order.status.in_(["OPEN", "ASSIGNED", "IN_PROGRESS"]),
                     )
                     .limit(10)
@@ -156,7 +160,7 @@ def manual(body: ManualIntake, user: Worker, db: DB) -> dict[str, Any]:
     )
     db.add(row)
     db.commit()
-    return intake_json(row)
+    return review_json(row, user.id, db)
 
 
 @router.get("/{iid}", response_model=IntakeResponse)

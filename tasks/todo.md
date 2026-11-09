@@ -9,7 +9,7 @@
 - [x] NFR-01/03/04/09: ten consecutive controlled API workflows; missing atomicity,
   same-key race, required-field, failed-intake, token, duplicate, readiness, WebM,
   TTS, correction immutability and stage-telemetry regression cases.
-- [x] 159 backend tests; frontend build/lint/format; six retained and ten new
+- [x] 161 backend tests; frontend build/lint/format; six retained and ten new
   browser accessibility/layout checks, permission-denied/XSS/complete workflow.
 - [x] Full reachable Git history/index scan, automatic CI browser workflow,
   fresh private local backup/isolated restore, independent review and mutation check.

@@ -1,0 +1,14 @@
+{
+  "timestamp_utc": "2026-11-09T15:17:07.791566+00:00",
+  "scope": "actual hosted backup restored into isolated local scratch database",
+  "before_schema": "0002",
+  "legacy_user_constraints": [
+    "users_role_check"
+  ],
+  "after_schema": "0004",
+  "judge_seed_succeeded": true,
+  "only_approved_report_visible": true,
+  "participant_report_still_open_version_1": true,
+  "original_transcript_hash_matches": true,
+  "production_database_modified": false
+}

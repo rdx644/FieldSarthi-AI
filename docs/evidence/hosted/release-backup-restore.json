@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-11-09T15:02:20.419189+00:00",
+  "source": "existing Render FieldSaarthi PostgreSQL",
+  "source_modified": false,
+  "backup_is_private": true,
+  "restore_target": "new isolated local scratch database",
+  "source_and_restore_counts_match": true,
+  "counts": {
+    "users": 3,
+    "locations": 3,
+    "assets": 4,
+    "report_intakes": 2,
+    "work_orders": 2,
+    "audit_events": 5,
+    "idempotency_keys": 2
+  },
+  "scratch_retained": true,
+  "original_ip_allowlist_restored": true
+}

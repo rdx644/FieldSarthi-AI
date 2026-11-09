@@ -16,7 +16,7 @@ priority/location/assignee filters; cancellation reason/audit; stage telemetry;
 exact migration-head readiness; user-approved read-only public judge role and report
 allowlist, with immediate flag-based session revocation.
 
-Verified locally: **159 backend tests**, strict mypy, Ruff lint/format, TypeScript/Vite
+Verified locally: **161 backend tests**, strict mypy, Ruff lint/format, TypeScript/Vite
 build and frontend lint/Prettier. Backend/frontend dependency audits report no known
 vulnerabilities. The retained six-view accessibility check passes. The new
 [full browser regression](browser-regression/results.json) passes ten axe/layout
@@ -31,6 +31,15 @@ removed its access check, observed the focused test fail, restored exact source
 bytes, and reran the focused tests successfully (2 passed). Independent review
 also found and closed existing-session revocation, stale detail-page state,
 cached-response recovery, safety-score and historical-path scanning defects.
+
+PR review additionally reproduced and fixed the legacy `users_check` migration
+constraint and missing duplicate hints for typed reports. The actual hosted
+snapshot was privately exported with explicit user approval, restored locally and
+upgraded from 0002 to 0004; judge seeding succeeds, only the approved report is
+published, and its OPEN/version-1 state and original transcript hash remain intact.
+See [hosted snapshot restore](hosted/release-backup-restore.json) and
+[actual snapshot upgrade](hosted/snapshot-upgrade.json). The production database
+was not migrated by this drill; its original IP allowlist was restored.
 
 CI now scans all reachable commit history and the index for forbidden private/raw
 media paths and known credential signatures, including merge-resolution paths.

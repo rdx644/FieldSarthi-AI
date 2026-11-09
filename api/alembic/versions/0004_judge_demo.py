@@ -9,6 +9,7 @@ depends_on = None
 
 
 def upgrade() -> None:
+    op.execute("ALTER TABLE users DROP CONSTRAINT IF EXISTS users_check")
     op.execute("ALTER TABLE users DROP CONSTRAINT IF EXISTS users_role_check")
     op.execute(
         "ALTER TABLE users ADD CONSTRAINT users_role_check "
