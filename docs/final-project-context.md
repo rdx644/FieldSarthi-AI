@@ -38,7 +38,7 @@ PostgreSQL owns business state. Creation commits intake confirmation, work order
 
 React/Vite/TypeScript is served by FastAPI from one origin. SQLAlchemy/Pydantic provide typed persistence/contracts. PostgreSQL 18 schema head is migration 0004. The seven domain tables are users, locations, assets, intakes, work orders, audit events and idempotency records. Use actual model/table names when writing SQL. Runtime migrations precede serving; readiness checks exact migration head.
 
-Use the graph as navigation evidence: `graphify-out/graph.json`, `graph.html`, `GRAPH_REPORT.md`, `coverage.json`. The existing graph is a **196-path historical snapshot**; this change adds files and does not claim that old inventory is current. Check actual source/Git state. Any future refresh must use all `git ls-files` inputs, exclude private/ignored/untracked material and include all four graph exports as inventory nodes. Do not scan the whole workspace or publish private reference documents.
+Graph exports are private local reference material. `graphify-out/` is ignored by Git and excluded from Docker; fresh clones do not require it. Use the tracked source, architecture/ADRs, RTM and this report for public project context. Private refreshes must use tracked-file inputs and exclude credentials, raw audio and private/untracked material. The exports were removed from the current tracked tree; older commits and branches retain their historical copies.
 
 ## Verification and evidence boundaries
 

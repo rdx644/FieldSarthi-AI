@@ -72,10 +72,6 @@ The live sample and real response text stay in ignored `private/`; sanitized met
 ## Deployment and evaluation
 [Render/Docker deployment](docs/deployment.md) | [Architecture](docs/architecture.md) | [RTM](docs/rtm.md) | [Full roadmap audit](docs/evidence/roadmap-audit.md) | [Task status](tasks/todo.md).
 
-## Codebase graph
-To use the interactive view, download [`graph.html`](graphify-out/graph.html) from GitHub (open the file, choose **Raw**, then save it) and open the downloaded file in a browser. It has a searchable offline fallback if the hosted visualization library is unavailable. [GraphRAG JSON](graphify-out/graph.json) | [Graph report and community index](graphify-out/GRAPH_REPORT.md) | [Coverage audit](graphify-out/coverage.json).
-The graph covers every tracked repository file, including its four exported artifacts. On refresh, use `git ls-files` as the Graphify input list because a workspace scan can include ignored local files; exclude private audio, credentials and all untracked files.
-
 The implementation roadmap and submission drafts are excluded from this repository at the team's request. Engineering status and measured verification remain public. Participant contributions, final media and the official form are handled separately by the team.
 
 ## Engineering context for future changes
