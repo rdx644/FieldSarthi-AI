@@ -1,3 +1,8 @@
+## Demo operational controls ? 2026-11-10
+
+- Operators can pause both live STT and TTS with `GNANI_REQUESTS_ENABLED=false`; manual reports and saved workflows stay available.
+- Added regression coverage for pause isolation and shared hourly request limits. Actual account credits remain console-monitored; no automatic monetary limit is claimed.
+
 # Changelog
 
 ## Unreleased — judge evaluation candidate

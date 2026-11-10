@@ -55,3 +55,11 @@ Rollback application code to the prior verified commit/image with a compatible s
 Single worker/replica, 20 sign-in attempts per IP/15 minutes, 24 provider calls per user/hour and 80 per process/hour. In-memory counters reset on restart and are not an account-wide credit guarantee; monitor the actual Gnani console. Clips target 25 seconds, provider maximum 30; local upload cap 10 MiB. Temporary decoded audio is removed in finally blocks. Existing consented test clips in private/ are operator test assets, not app storage; remove after the evidence/submission review unless continued retention is consented.
 
 Render free services can sleep/cold-start and their files are ephemeral; DB storage is separate. Free PostgreSQL expires after 30 days. The prepared plan is for a submission demo, not a production availability or backup SLA.
+
+## Temporary demo credit control ? NFR-13
+
+`GNANI_REQUESTS_ENABLED=false` pauses both STT and TTS before any provider call, returning `503 GNANI_REQUESTS_PAUSED`. Existing reports, manual text reporting, confirmation and supervisor actions remain available. The TTS capability also becomes false. Unset defaults to true for compatibility; an explicit value other than true pauses calls. An environment change on Render needs a deploy before the running process sees it. Check readiness afterwards; no paid smoke is needed to verify the flag.
+
+Before opening the demo, check the actual remaining balance in https://app.gnani.ai/voice/usage and record the value and UTC/IST timestamp privately. Recheck after a demo session and before re-enabling a paused service. Pause when balance is exhausted, uncertain or below the operator's chosen reserve. A 402 provider response remains a failed request, never success. This app does not invent a price per request, account balance or undocumented balance API.
+
+The shared 24-per-user/80-global hourly admission throttle covers both STT and TTS. Retries inside the adapter can produce more than one upstream attempt per admitted operation. Counters reset on restart and do not cover other uses of the key. They are request controls, not a monetary guarantee. The balance attestation and chosen reserve remain operator configuration. Backups and database expiry are explicitly user-managed for the temporary demo; no paid upgrade is required or performed.
