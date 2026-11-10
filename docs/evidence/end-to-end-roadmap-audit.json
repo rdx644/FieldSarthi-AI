@@ -9,12 +9,9 @@
   "all_headings_mapped": true,
   "all_wbs_mapped": true,
   "scope": "Engineering; contributions/eligibility/video/post/form user-owned; Tamil excluded by user on 2026-11-10",
-  "verdict": "Core implementation covered within scoped languages; strict production/release equivalence retains exceptions.",
+  "verdict": "All identified engineering gaps closed for agreed temporary-demo scope; participant tasks and backups/DB expiry remain user-owned.",
   "exceptions": [
-    "Managed backups unavailable on free hosting; DB expires 2026-12-09.",
-    "Actual app rollback rehearsal not proven by restart or isolated DB restore.",
-    "Provider console remaining credit balance requires operator monitoring.",
-    "Final submission release tag/signoff remains reserved."
+    "Backups and December 9 DB expiry explicitly accepted as user-managed for temporary demo."
   ],
   "headings": [
     {
@@ -199,39 +196,39 @@
     },
     {
       "id": "7",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
-      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "7.1",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
-      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "7.2",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
-      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "7.3",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
-      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "7.4",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
-      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "7.5",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
-      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "8",
@@ -373,27 +370,27 @@
     },
     {
       "id": "12",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
-      "evidence": "docs/security.md; docs/operations.md"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "docs/security.md; docs/operations.md; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "12.1",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
-      "evidence": "docs/security.md; docs/operations.md"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "docs/security.md; docs/operations.md; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "12.2",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
-      "evidence": "docs/security.md; docs/operations.md"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "docs/security.md; docs/operations.md; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "12.3",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
-      "evidence": "docs/security.md; docs/operations.md"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "docs/security.md; docs/operations.md; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "13",
@@ -445,45 +442,45 @@
     },
     {
       "id": "16",
-      "status": "VERIFIED / OPERATIONAL GAPS",
-      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
-      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "16.1",
-      "status": "VERIFIED / OPERATIONAL GAPS",
-      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
-      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "16.2",
-      "status": "VERIFIED / OPERATIONAL GAPS",
-      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
-      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "16.3",
-      "status": "VERIFIED / OPERATIONAL GAPS",
-      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
-      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "16.4",
-      "status": "VERIFIED / OPERATIONAL GAPS",
-      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
-      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "17",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Risk register maintained; hosting expiry, backups, credits and model accuracy limits require operational ownership.",
-      "evidence": "docs/risks.md"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Risk register maintained; hosting expiry, backups, credits and model accuracy limits require operational ownership. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "docs/risks.md; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "17.1",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Risk register maintained; hosting expiry, backups, credits and model accuracy limits require operational ownership.",
-      "evidence": "docs/risks.md"
+      "status": "VERIFIED / USER-MANAGED DEMO LIMITS",
+      "assessment": "Risk register maintained; hosting expiry, backups, credits and model accuracy limits require operational ownership. Latest closure: actual hosted compatible app rollback/restore verified; console balance supplied by user and STT/TTS pause tested. Backups/expiry accepted as user-managed.",
+      "evidence": "docs/risks.md; docs/evidence/demo-operational-release.json"
     },
     {
       "id": "18",
@@ -909,15 +906,15 @@
     },
     {
       "id": "WBS-07.7",
-      "status": "VERIFIED / LIMITS",
-      "assessment": "Isolated local/hosted-snapshot restore, history/index guard and hosted restart verified; actual app rollback rehearsal not proven.",
-      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+      "status": "VERIFIED",
+      "assessment": "Actual hosted compatible app deploy/rollback/restore verified against all original persisted report-detail hashes, approved judge report and readiness. Existing restore and privacy evidence retained; no schema downgrade.",
+      "evidence": "docs/evidence/demo-operational-release.json"
     },
     {
       "id": "WBS-07.8",
-      "status": "PARTIAL",
-      "assessment": "Immutable v0.2.0-rc.1 candidate retained; final submission tag/signoff remains reserved until release gates are met.",
-      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+      "status": "VERIFIED FOR TECHNICAL DEMO",
+      "assessment": "Immutable engineering tag demo-verified-2026-11-10 identifies verified application commit; engineering signoff complete. Contest submission remains user-owned.",
+      "evidence": "docs/evidence/demo-operational-release.json"
     },
     {
       "id": "WBS-08.1",
@@ -1019,6 +1016,11 @@
     "frontend": "build, lint and Prettier passed",
     "browser": "full fixture-provider/accessibility workflow passed; 0 live provider calls",
     "confirmation_audit_mutation": "Detected failure with human_confirmed=false, restored exact source, focused 3 tests passed",
-    "hosted_current_readiness": "HTTP 200 on bounded retry after initial 60-second timeout; Render existing deployment live/unsuspended; no new provider calls"
-  }
+    "hosted_current_readiness": "HTTP 200 on bounded retry after initial 60-second timeout; Render existing deployment live/unsuspended; no new provider calls",
+    "latest_backend_tests": "199 passed",
+    "hosted_rollback": "Forward, rollback to 6f702c2, restore; all 12 original persisted report-detail hashes and approved judge visibility unchanged",
+    "credit_balance": "User-reported authenticated-console check; positive balance; pause controls tested",
+    "technical_release_tag": "demo-verified-2026-11-10"
+  },
+  "operational_closure": "demo-operational-release.json"
 }

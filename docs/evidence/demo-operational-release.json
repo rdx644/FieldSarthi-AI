@@ -1,0 +1,63 @@
+{
+  "verified_at_utc": "2026-11-10T14:21:48.808599+00:00",
+  "scope": "Temporary demo engineering release; participant/publication/form gates excluded; backups and DB expiry user-managed",
+  "application_commit": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+  "engineering_tag": "demo-verified-2026-11-10",
+  "original_commit": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+  "all_persisted_order_details_audits_and_provenance_unchanged": true,
+  "persisted_orders_checked": 12,
+  "approved_public_report_unchanged": true,
+  "live_provider_calls": 0,
+  "new_recordings": 0,
+  "database_migrations_changed": false,
+  "phases": {
+    "forward": {
+      "id": "dep-dbpidsbbc2fs73a9sfn0",
+      "commit": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+      "verified": true,
+      "verified_at_utc": "2026-11-10T14:17:18.270568+00:00",
+      "persisted_orders_unchanged": 12,
+      "approved_judge_report_unchanged": true,
+      "status_at_verification": "live"
+    },
+    "rollback": {
+      "id": "dep-dbpieu8m7kps73b1mk60",
+      "commit": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+      "target_deploy": "dep-dbp1rkek1f9s73aqchvg",
+      "verified": true,
+      "verified_at_utc": "2026-11-10T14:19:18.541669+00:00",
+      "persisted_orders_unchanged": 12,
+      "approved_judge_report_unchanged": true,
+      "status_at_verification": "live"
+    },
+    "restore": {
+      "id": "dep-dbpifq5g1s2s738he2v0",
+      "commit": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+      "target_deploy": "dep-dbpidsbbc2fs73a9sfn0",
+      "verified": true,
+      "verified_at_utc": "2026-11-10T14:21:29.291649+00:00",
+      "persisted_orders_unchanged": 12,
+      "approved_judge_report_unchanged": true,
+      "status_at_verification": "live"
+    }
+  },
+  "credit_balance_check": "User-reported positive remaining balance at authenticated console; amount retained privately; no balance API claim",
+  "credit_controls_evidence": "demo-credit-controls.json",
+  "checks": {
+    "backend_tests": 199,
+    "backend_lint_format_types": "passed",
+    "frontend_build_lint_format": "passed",
+    "quality_ci": "passed on merged application commit; includes browser/accessibility, privacy guard, audits and Docker"
+  },
+  "release_decision": "PASS for agreed temporary-demo engineering scope",
+  "remaining_engineering_gaps": [],
+  "user_owned": [
+    "Backups and December 9 DB expiry",
+    "Eligibility/contributions/video/post/form",
+    "Ongoing actual-console credit checks"
+  ],
+  "rollback_contract_source": "https://render.com/docs/rollbacks",
+  "rollback_api_source": "https://api-docs.render.com/reference/rollback-deploy",
+  "application_ci_url": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/42831804955",
+  "application_pr_url": "https://github.com/rdx644/FieldSarthi-AI/pull/13"
+}
