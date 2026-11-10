@@ -1,3 +1,12 @@
+# Latest scoped roadmap review ? 2026-11-10
+
+- [x] Downloads roadmap hash verified; 24 sections / 94 headings / 64 WBS tasks individually mapped in docs/evidence/end-to-end-roadmap-audit.json.
+- [x] Three ASR failure corrections verified by cached-transcript replay in isolated tests; original automatic 12/15 score retained.
+- [x] 193 backend tests, strict backend/frontend and complete fixture browser/accessibility checks.
+- [x] Existing branch commits already included in main; publish audit via protected PR.
+- User-reserved: contributions/eligibility/video/post/form. Tamil excluded by user.
+- Production exceptions: managed backups/free DB expiry, actual app rollback rehearsal, operator credit monitoring and final submission tag/signoff. See docs/final-project-context.md.
+
 # Execution status
 
 ## Judge-ready implementation update
