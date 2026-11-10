@@ -4,9 +4,9 @@ Turn a spoken maintenance report into a human-verified work order that a supervi
 
 ---
 
-[Live demo](https://fieldsaarthi-ai.onrender.com) · [Demo credentials](#demo-access) · [Overview](#-overview) · [Getting started](#-getting-started) · [Usage](#-usage) · [Architecture](#-architecture) · [Contributing and support](#-contributing-and-support) · [License and credits](#-license-and-credits)
+[Live demo](https://fieldsaarthi-ai.onrender.com) · [Demo credentials](#demo-access) · [Overview](#overview) · [Getting started](#getting-started) · [Usage](#usage) · [Architecture](#architecture) · [Contributing and support](#contributing-and-support) · [License and credits](#license-and-credits)
 
-## 🧭 Overview
+## Overview
 
 ![FieldSaarthi’s read-only judge dashboard showing the approved work order and server-backed queue](docs/evidence/hosted/judge-dashboard-desktop.png)
 
@@ -48,7 +48,7 @@ A free-host cold start may delay the first request. Leave the page open and retr
 
 These are scoped demo measurements, not a held-out accuracy benchmark or availability guarantee. Evaluated speech covers **Hindi, English and Hinglish**; Tamil is excluded from acceptance and remains unverified. Parser rules were refined on the same development corpus. The free PostgreSQL database expires **December 9, 2026**; backups and expiry are managed by the project owner for this temporary demo.
 
-## 🚀 Getting started
+## Getting started
 
 ### Prerequisites
 
@@ -122,7 +122,7 @@ npm.cmd run dev
 
 Open the URL Vite prints, normally **http://127.0.0.1:5173**. Vite proxies `/api` and `/health` to the backend; no separate frontend API-base variable is needed.
 
-## ▶️ Usage
+## Usage
 
 1. **Sign in:** Use a hosted demo worker account or your locally seeded account. Choose the password-free judge option for inspection only.
 2. **Describe a fault:** Record a short consenting report or choose **Upload audio instead**, select the language and choose **Transcribe report**. A useful synthetic example is “Block B second floor ka water pump leak ho raha hai, urgent hai.” Recording targets 25 seconds; the backend rejects decoded audio over 30 seconds or uploads above 10 MiB.
@@ -133,7 +133,7 @@ Open the URL Vite prints, normally **http://127.0.0.1:5173**. Vite proxies `/api
 
 The shared speech admission limits are **24 operations per user/hour** and **80 per process/hour** across STT and TTS. Counters reset on restart, and adapter retries may add upstream attempts; these are not monetary caps. The operator monitors the actual Gnani console balance. Pausing with `GNANI_REQUESTS_ENABLED=false` leaves saved workflows and manual reporting available; a Render environment change needs a deploy to take effect.
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -170,7 +170,7 @@ The canonical [render.yaml](render.yaml) defines the free Docker web service and
 
 Audio is decoded in bounded temporary storage rather than retained as an application attachment. Use synthetic data and consenting recordings; routine logs omit transcript/audio bodies and credentials. Private graph exports, original roadmap/submission drafts, raw audio and runtime secrets remain excluded from the current tracked repository. Participant contribution descriptions, final video/post and the official form remain participant-owned.
 
-## 🤝 Contributing and support
+## Contributing and support
 
 - **Report an issue:** Use the [issue tracker](https://github.com/rdx644/FieldSarthi-AI/issues) with reproducible steps, expected/actual behavior and sanitized request IDs. Include FR/NFR/WBS references where applicable; omit passwords, tokens, raw audio and personal data.
 - **Prepare a change:** Read [AGENTS.md](AGENTS.md), [requirements](docs/rtm.md), [current tasks](tasks/todo.md) and [project context](docs/final-project-context.md). Preserve user work, provider provenance, schema invariants and intentional privacy exclusions.
@@ -205,7 +205,7 @@ uv run python tests/browser/workflow_check.py --channel chromium
 
 Integration fixtures and this browser workflow deliberately recreate **only the `fieldsaarthi_test` schema**. Run them sequentially and never point `TEST_DATABASE_URL` at application data. The ordinary automated suite makes no billable provider calls. Live STT/TTS verification is separate, explicitly credit-consuming work; do not rerun it merely for reassurance.
 
-## 📄 License and credits
+## License and credits
 
 No project `LICENSE` file is currently tracked. Licensing and reuse permissions are **not specified**; do not assume an MIT or Apache license from repository visibility. Third-party dependencies retain their respective licenses.
 
