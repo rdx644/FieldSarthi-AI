@@ -23,3 +23,6 @@ output/
 /docs/roadmap.md
 /docs/submission/
 /scripts/build_pitch.py
+
+# Private local graph exports; never publish.
+/graphify-out/
