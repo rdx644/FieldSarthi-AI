@@ -8,7 +8,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.errors import AppError
-from app.core.limits import provider_budget
+from app.core.limits import provider_budget, provider_requests_enabled
 from app.core.security import current_user, supervisor, worker
 from app.core.telemetry import stage_event
 from app.db.models import Order, User
@@ -29,7 +29,8 @@ Worker = Annotated[User, Depends(worker)]
 @router.get("/capabilities/audio")
 def audio_capability(user: Current) -> dict[str, bool]:
     return {
-        "tts_enabled": user.role != "JUDGE"
+        "tts_enabled": provider_requests_enabled()
+        and user.role != "JUDGE"
         and os.getenv("GNANI_TTS_ENABLED", "false").lower() == "true"
     }
 

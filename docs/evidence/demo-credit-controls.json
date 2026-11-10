@@ -1,0 +1,27 @@
+{
+  "requirement": "NFR-13",
+  "source": "User-reported authenticated Gnani console observation",
+  "console_url": "https://app.gnani.ai/voice/usage",
+  "checked_at_received_utc": "2026-11-10T14:05:47.181283+00:00",
+  "positive_remaining_balance_reported": true,
+  "exact_balance_retained_privately": true,
+  "independent_balance_api_query": false,
+  "operator_pause_flag": "GNANI_REQUESTS_ENABLED",
+  "pause_blocks": [
+    "STT",
+    "TTS"
+  ],
+  "manual_and_saved_work_available_when_paused": true,
+  "hourly_limits": {
+    "per_user": 24,
+    "global_shared": 80
+  },
+  "limits": "Admission limits reset at process restart; adapter retries/other key use can spend beyond admitted counts. No monetary cap or automatic balance sync claim.",
+  "verification": {
+    "initial_failing_regressions": 5,
+    "focused_passed": 6,
+    "full_backend_tests_passed": 199,
+    "ruff_mypy_frontend_checks": "passed"
+  },
+  "new_live_provider_calls": 0
+}

@@ -1,3 +1,4 @@
+import os
 import threading
 import time
 from collections import defaultdict, deque
@@ -50,6 +51,11 @@ class BodyLimit:
         await self.app(scope, limited_receive, send)
 
 
+def provider_requests_enabled() -> bool:
+    """An unset flag preserves the demo default; explicit invalid values pause it."""
+    return os.getenv("GNANI_REQUESTS_ENABLED", "true").lower() == "true"
+
+
 class ProviderBudget:
     """Bounded single-process demo throttle. Deploy exactly one worker/replica."""
 
@@ -58,6 +64,13 @@ class ProviderBudget:
         self.lock = threading.Lock()
 
     def check(self, actor_id: str) -> None:
+        if not provider_requests_enabled():
+            raise AppError(
+                503,
+                "GNANI_REQUESTS_PAUSED",
+                "Live audio is paused by the operator. "
+                "Type your report; saved work remains available.",
+            )
         with self.lock:
             now = time.monotonic()
             for key in list(self.entries):
