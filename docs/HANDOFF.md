@@ -1,3 +1,9 @@
+Latest temporary-demo engineering signoff — 2026-11-10
+
+All identified engineering gaps are closed within the agreed scope. Application `85e1a5e20c1f623c0ce664493c8f002e7d5cff10`, engineering tag `demo-verified-2026-11-10`: 199 backend tests and required CI passed; actual hosted deploy -> compatible rollback -> restoration verified with all 12 persisted report details/audits/provenance and approved judge access unchanged. User provided actual-console credit observation; tested `GNANI_REQUESTS_ENABLED` pause controls both billable endpoints. No new recordings/provider calls. [Release proof](evidence/demo-operational-release.json).
+
+Backups/December 9 expiry are user-managed for the temporary demo. Contributions/eligibility/video/post/form remain user-owned; Tamil excluded. Earlier remaining-gap notes below are historical and superseded by this record.
+
 # Latest engineering handoff ? 2026-11-10
 
 Read [complete project context](final-project-context.md) and the [end-to-end audit](evidence/end-to-end-roadmap-audit.md) first. The Downloads roadmap matches the saved reference exactly; all 24 sections, 94 headings and 64 WBS tasks are mapped. User scope excludes Tamil and reserves contributions, media/post/form and participant attestations.

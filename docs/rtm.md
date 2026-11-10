@@ -66,3 +66,7 @@ test_stage_telemetry.py, tests/browser/workflow_check.py and repository_guard.py
 WBS-07.3 now has all 15 authentic participant clips evaluated with genuine Prisma;
 12/15 complete cases and all six safety blocks are recorded in evidence/audio-evaluation.json.
 English equivalents were approved for 04/10; Tamil remains unverified.
+
+## Temporary demo operational closure ? 2026-11-10
+
+NFR-11/WBS-07.7: actual compatible hosted app rollback and restoration passed, preserving all 12 report-detail hashes and approved judge access. NFR-13: user supplied actual-console balance observation; tested operator pause prevents new STT/TTS calls while saved/manual work remains available. WBS-07.8: immutable technical tag `demo-verified-2026-11-10` and scoped engineering signoff complete. [Evidence](evidence/demo-operational-release.json). Backups/DB expiry are explicitly user-managed; participant/publication/form tasks and Tamil remain outside this engineering scope.

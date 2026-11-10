@@ -80,4 +80,6 @@ The implementation roadmap and submission drafts are excluded from this reposito
 
 ## Engineering context for future changes
 
-See [complete project context](docs/final-project-context.md) and the [Downloads-roadmap audit](docs/evidence/end-to-end-roadmap-audit.md). The latest scoped review has 193 passing backend tests and 3/3 explicit correction replays; automatic ASR remains 12/15. Tamil is excluded from acceptance by the user. Production/release exceptions remain explicit in the report.
+See [complete project context](docs/final-project-context.md) and the [Downloads-roadmap audit](docs/evidence/end-to-end-roadmap-audit.md). The latest scoped review has 199 passing backend tests and 3/3 explicit correction replays; automatic ASR remains 12/15. Tamil is excluded from acceptance by the user. Production/release exceptions remain explicit in the report.
+
+Temporary-demo engineering signoff: [actual hosted rollback/restoration and release proof](docs/evidence/demo-operational-release.json), frozen at tag `demo-verified-2026-11-10`. Credit observation and STT/TTS pause controls are verified; backups/DB expiry are user-managed.

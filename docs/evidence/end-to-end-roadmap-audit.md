@@ -1,3 +1,5 @@
+Latest operational closure: [all identified engineering gaps closed for the agreed demo scope](demo-operational-release.json). The section table below retains the audit baseline; the JSON contains current WBS-07.7/07.8 dispositions.
+
 # End-to-end roadmap engineering audit — 2026-11-10
 
 Source: Downloads roadmap, SHA256 `c099f20863d923e045440542de63400f729069350821b40b5448c040ed20cd97`; identical to the private reference. All 24 sections, 94 numbered headings and 64 WBS tasks are mapped in the [full audit](end-to-end-roadmap-audit.json). Audit coverage does not imply every production/release gate passed.
@@ -8,7 +10,7 @@ Core implementation and implemented optional TTS/duplicates are covered. The aut
 
 193 backend tests; strict backend/frontend checks and the complete fixture browser/accessibility flow passed. No new recordings/provider calls/hosted writes were needed.
 
-Strict exceptions: free DB lacks managed backups and expires December 9; actual app rollback rehearsal is unproven; console credits require operator monitoring; final submission tag/signoff is reserved. These exceptions prevent a blanket production-complete claim.
+Latest closure: actual hosted app rollback and restoration passed with all persisted reports unchanged; console balance was checked by the user, provider pause controls tested, and engineering tag/signoff completed. [Operational release evidence](demo-operational-release.json). Backups and December 9 expiry are explicitly user-managed for this temporary demo. Contest submission remains user-owned.
 
 | Section | Disposition | Assessment and evidence |
 |---|---|---|
