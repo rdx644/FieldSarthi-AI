@@ -1,0 +1,1024 @@
+{
+  "timestamp_utc": "2026-11-10T13:40:59.322977+00:00",
+  "baseline_main": "562d4c0",
+  "source": "Downloads/FieldSaarthi_AI_Traceable_Implementation_Roadmap.md",
+  "sha256": "c099f20863d923e045440542de63400f729069350821b40b5448c040ed20cd97",
+  "numbered_sections": 24,
+  "numbered_headings": 94,
+  "wbs_tasks": 64,
+  "all_headings_mapped": true,
+  "all_wbs_mapped": true,
+  "scope": "Engineering; contributions/eligibility/video/post/form user-owned; Tamil excluded by user on 2026-11-10",
+  "verdict": "Core implementation covered within scoped languages; strict production/release equivalence retains exceptions.",
+  "exceptions": [
+    "Managed backups unavailable on free hosting; DB expires 2026-12-09.",
+    "Actual app rollback rehearsal not proven by restart or isolated DB restore.",
+    "Provider console remaining credit balance requires operator monitoring.",
+    "Final submission release tag/signoff remains reserved."
+  ],
+  "headings": [
+    {
+      "id": "0",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "KPI-01..07 have provider, safety, persistence and CI evidence. The >=12/15 automatic target is met. KPI-08 is user-owned.",
+      "evidence": "docs/evidence/audio-evaluation.json"
+    },
+    {
+      "id": "0.1",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "KPI-01..07 have provider, safety, persistence and CI evidence. The >=12/15 automatic target is met. KPI-08 is user-owned.",
+      "evidence": "docs/evidence/audio-evaluation.json"
+    },
+    {
+      "id": "0.2",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "KPI-01..07 have provider, safety, persistence and CI evidence. The >=12/15 automatic target is met. KPI-08 is user-owned.",
+      "evidence": "docs/evidence/audio-evaluation.json"
+    },
+    {
+      "id": "0.3",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "KPI-01..07 have provider, safety, persistence and CI evidence. The >=12/15 automatic target is met. KPI-08 is user-owned.",
+      "evidence": "docs/evidence/audio-evaluation.json"
+    },
+    {
+      "id": "0.4",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "KPI-01..07 have provider, safety, persistence and CI evidence. The >=12/15 automatic target is met. KPI-08 is user-owned.",
+      "evidence": "docs/evidence/audio-evaluation.json"
+    },
+    {
+      "id": "1",
+      "status": "USER RESERVED",
+      "assessment": "Eligibility, contributions, final media, social links and official form belong to the user.",
+      "evidence": "docs/compliance.md"
+    },
+    {
+      "id": "2",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "Single-organization synthetic worker/supervisor product; Hindi/English/Hinglish evaluated. Tamil excluded by user on 2026-11-10.",
+      "evidence": "docs/scope.md"
+    },
+    {
+      "id": "2.1",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "Single-organization synthetic worker/supervisor product; Hindi/English/Hinglish evaluated. Tamil excluded by user on 2026-11-10.",
+      "evidence": "docs/scope.md"
+    },
+    {
+      "id": "2.2",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "Single-organization synthetic worker/supervisor product; Hindi/English/Hinglish evaluated. Tamil excluded by user on 2026-11-10.",
+      "evidence": "docs/scope.md"
+    },
+    {
+      "id": "2.3",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "Single-organization synthetic worker/supervisor product; Hindi/English/Hinglish evaluated. Tamil excluded by user on 2026-11-10.",
+      "evidence": "docs/scope.md"
+    },
+    {
+      "id": "2.4",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "Single-organization synthetic worker/supervisor product; Hindi/English/Hinglish evaluated. Tamil excluded by user on 2026-11-10.",
+      "evidence": "docs/scope.md"
+    },
+    {
+      "id": "2.5",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "Single-organization synthetic worker/supervisor product; Hindi/English/Hinglish evaluated. Tamil excluded by user on 2026-11-10.",
+      "evidence": "docs/scope.md"
+    },
+    {
+      "id": "3",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "All FR-01..25 core requirements and implemented P1 TTS/duplicates mapped in RTM; production exceptions below remain explicit.",
+      "evidence": "docs/rtm.md"
+    },
+    {
+      "id": "3.1",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "All FR-01..25 core requirements and implemented P1 TTS/duplicates mapped in RTM; production exceptions below remain explicit.",
+      "evidence": "docs/rtm.md"
+    },
+    {
+      "id": "3.2",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "All FR-01..25 core requirements and implemented P1 TTS/duplicates mapped in RTM; production exceptions below remain explicit.",
+      "evidence": "docs/rtm.md"
+    },
+    {
+      "id": "3.3",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "All FR-01..25 core requirements and implemented P1 TTS/duplicates mapped in RTM; production exceptions below remain explicit.",
+      "evidence": "docs/rtm.md"
+    },
+    {
+      "id": "4",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Traceability, protected branches and evidence exist. G1/G2/G3 technical evidence does not complete participant attestations or G4 media.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "4.1",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Traceability, protected branches and evidence exist. G1/G2/G3 technical evidence does not complete participant attestations or G4 media.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "4.2",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Traceability, protected branches and evidence exist. G1/G2/G3 technical evidence does not complete participant attestations or G4 media.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "4.3",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Traceability, protected branches and evidence exist. G1/G2/G3 technical evidence does not complete participant attestations or G4 media.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "5",
+      "status": "VERIFIED",
+      "assessment": "React -> FastAPI -> Gnani -> catalog review -> PostgreSQL -> supervisor workflow; authoritative state, state machines and ADRs documented.",
+      "evidence": "docs/architecture.md"
+    },
+    {
+      "id": "5.1",
+      "status": "VERIFIED",
+      "assessment": "React -> FastAPI -> Gnani -> catalog review -> PostgreSQL -> supervisor workflow; authoritative state, state machines and ADRs documented.",
+      "evidence": "docs/architecture.md"
+    },
+    {
+      "id": "5.2",
+      "status": "VERIFIED",
+      "assessment": "React -> FastAPI -> Gnani -> catalog review -> PostgreSQL -> supervisor workflow; authoritative state, state machines and ADRs documented.",
+      "evidence": "docs/architecture.md"
+    },
+    {
+      "id": "5.3",
+      "status": "VERIFIED",
+      "assessment": "React -> FastAPI -> Gnani -> catalog review -> PostgreSQL -> supervisor workflow; authoritative state, state machines and ADRs documented.",
+      "evidence": "docs/architecture.md"
+    },
+    {
+      "id": "5.4",
+      "status": "VERIFIED",
+      "assessment": "React -> FastAPI -> Gnani -> catalog review -> PostgreSQL -> supervisor workflow; authoritative state, state machines and ADRs documented.",
+      "evidence": "docs/architecture.md"
+    },
+    {
+      "id": "5.5",
+      "status": "VERIFIED",
+      "assessment": "React -> FastAPI -> Gnani -> catalog review -> PostgreSQL -> supervisor workflow; authoritative state, state machines and ADRs documented.",
+      "evidence": "docs/architecture.md"
+    },
+    {
+      "id": "6",
+      "status": "VERIFIED",
+      "assessment": "Python/npm locks, environment contract, single-origin build and setup commands. Actual layout differs from illustrative roadmap template.",
+      "evidence": "README.md; api/uv.lock; web/package-lock.json"
+    },
+    {
+      "id": "6.1",
+      "status": "VERIFIED",
+      "assessment": "Python/npm locks, environment contract, single-origin build and setup commands. Actual layout differs from illustrative roadmap template.",
+      "evidence": "README.md; api/uv.lock; web/package-lock.json"
+    },
+    {
+      "id": "6.2",
+      "status": "VERIFIED",
+      "assessment": "Python/npm locks, environment contract, single-origin build and setup commands. Actual layout differs from illustrative roadmap template.",
+      "evidence": "README.md; api/uv.lock; web/package-lock.json"
+    },
+    {
+      "id": "6.3",
+      "status": "VERIFIED",
+      "assessment": "Python/npm locks, environment contract, single-origin build and setup commands. Actual layout differs from illustrative roadmap template.",
+      "evidence": "README.md; api/uv.lock; web/package-lock.json"
+    },
+    {
+      "id": "7",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+    },
+    {
+      "id": "7.1",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+    },
+    {
+      "id": "7.2",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+    },
+    {
+      "id": "7.3",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+    },
+    {
+      "id": "7.4",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+    },
+    {
+      "id": "7.5",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Seven domain tables, migrations 0001..0004, seed, constraints/triggers, atomicity and isolated snapshot upgrade/restore. No actual app rollback claim.",
+      "evidence": "api/app/db/models.py; docs/evidence/hosted/snapshot-upgrade.json"
+    },
+    {
+      "id": "8",
+      "status": "VERIFIED",
+      "assessment": "Typed commands/responses, protected intake/order APIs, explicit errors and generated OpenAPI.",
+      "evidence": "api/app/routers; api/app/schemas"
+    },
+    {
+      "id": "8.1",
+      "status": "VERIFIED",
+      "assessment": "Typed commands/responses, protected intake/order APIs, explicit errors and generated OpenAPI.",
+      "evidence": "api/app/routers; api/app/schemas"
+    },
+    {
+      "id": "8.2",
+      "status": "VERIFIED",
+      "assessment": "Typed commands/responses, protected intake/order APIs, explicit errors and generated OpenAPI.",
+      "evidence": "api/app/routers; api/app/schemas"
+    },
+    {
+      "id": "8.3",
+      "status": "VERIFIED",
+      "assessment": "Typed commands/responses, protected intake/order APIs, explicit errors and generated OpenAPI.",
+      "evidence": "api/app/routers; api/app/schemas"
+    },
+    {
+      "id": "9",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.1",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.2",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.3",
+      "status": "OPTIONAL",
+      "assessment": "Prisma v3 and LLM extraction are explicit optional enhancements, not core implementation gaps.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.4",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.5",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.6",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "9.7",
+      "status": "VERIFIED / OPTIONAL",
+      "assessment": "Genuine Prisma v2.5 and Timbre v2.5, bounded requests/decoding/errors. Prisma v3 is optional.",
+      "evidence": "api/app/integrations; docs/evidence/gnani-stt-live.md"
+    },
+    {
+      "id": "10",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "rules-v4 catalog/evidence/ambiguity validation; 12/15 automatic; all six safety cases blocked; three failures recover by explicit correction.",
+      "evidence": "api/app/services/extraction.py; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "10.1",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "rules-v4 catalog/evidence/ambiguity validation; 12/15 automatic; all six safety cases blocked; three failures recover by explicit correction.",
+      "evidence": "api/app/services/extraction.py; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "10.2",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "rules-v4 catalog/evidence/ambiguity validation; 12/15 automatic; all six safety cases blocked; three failures recover by explicit correction.",
+      "evidence": "api/app/services/extraction.py; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "10.3",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "rules-v4 catalog/evidence/ambiguity validation; 12/15 automatic; all six safety cases blocked; three failures recover by explicit correction.",
+      "evidence": "api/app/services/extraction.py; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "10.4",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "rules-v4 catalog/evidence/ambiguity validation; 12/15 automatic; all six safety cases blocked; three failures recover by explicit correction.",
+      "evidence": "api/app/services/extraction.py; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "10.5",
+      "status": "OPTIONAL",
+      "assessment": "Prisma v3 and LLM extraction are explicit optional enhancements, not core implementation gaps.",
+      "evidence": "api/app/services/extraction.py; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "11",
+      "status": "VERIFIED",
+      "assessment": "Recorder/upload/manual review, explicit confirmation, supervisor queue/filters, provenance and responsive accessible views. Correction help now explains separate field edits.",
+      "evidence": "web/src/pages; docs/evidence/browser-regression/results.json"
+    },
+    {
+      "id": "11.1",
+      "status": "VERIFIED",
+      "assessment": "Recorder/upload/manual review, explicit confirmation, supervisor queue/filters, provenance and responsive accessible views. Correction help now explains separate field edits.",
+      "evidence": "web/src/pages; docs/evidence/browser-regression/results.json"
+    },
+    {
+      "id": "11.2",
+      "status": "VERIFIED",
+      "assessment": "Recorder/upload/manual review, explicit confirmation, supervisor queue/filters, provenance and responsive accessible views. Correction help now explains separate field edits.",
+      "evidence": "web/src/pages; docs/evidence/browser-regression/results.json"
+    },
+    {
+      "id": "11.3",
+      "status": "VERIFIED",
+      "assessment": "Recorder/upload/manual review, explicit confirmation, supervisor queue/filters, provenance and responsive accessible views. Correction help now explains separate field edits.",
+      "evidence": "web/src/pages; docs/evidence/browser-regression/results.json"
+    },
+    {
+      "id": "11.4",
+      "status": "VERIFIED",
+      "assessment": "Recorder/upload/manual review, explicit confirmation, supervisor queue/filters, provenance and responsive accessible views. Correction help now explains separate field edits.",
+      "evidence": "web/src/pages; docs/evidence/browser-regression/results.json"
+    },
+    {
+      "id": "12",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
+      "evidence": "docs/security.md; docs/operations.md"
+    },
+    {
+      "id": "12.1",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
+      "evidence": "docs/security.md; docs/operations.md"
+    },
+    {
+      "id": "12.2",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
+      "evidence": "docs/security.md; docs/operations.md"
+    },
+    {
+      "id": "12.3",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Upload/auth/RBAC/CSRF/secret/telemetry/cost controls and restore evidence. Single-process limits reset on restart; console credit monitoring remains operational.",
+      "evidence": "docs/security.md; docs/operations.md"
+    },
+    {
+      "id": "13",
+      "status": "MAPPED",
+      "assessment": "All 64 WBS tasks have a current disposition in this report; user work and infrastructure exceptions are retained.",
+      "evidence": "docs/evidence/end-to-end-roadmap-audit.json"
+    },
+    {
+      "id": "14",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "193 backend tests, full fixture browser regression and existing genuine hosted evidence. Cached correction replay is not new live accuracy.",
+      "evidence": "api/tests; docs/evidence/hosted/reliability.json"
+    },
+    {
+      "id": "14.1",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "193 backend tests, full fixture browser regression and existing genuine hosted evidence. Cached correction replay is not new live accuracy.",
+      "evidence": "api/tests; docs/evidence/hosted/reliability.json"
+    },
+    {
+      "id": "14.2",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "193 backend tests, full fixture browser regression and existing genuine hosted evidence. Cached correction replay is not new live accuracy.",
+      "evidence": "api/tests; docs/evidence/hosted/reliability.json"
+    },
+    {
+      "id": "14.3",
+      "status": "VERIFIED / SCOPED",
+      "assessment": "193 backend tests, full fixture browser regression and existing genuine hosted evidence. Cached correction replay is not new live accuracy.",
+      "evidence": "api/tests; docs/evidence/hosted/reliability.json"
+    },
+    {
+      "id": "15",
+      "status": "REFERENCE / USER RESERVED",
+      "assessment": "Historical timeboxes are guidance; critical engineering path is complete through hosted workflow. User owns publication/submission scheduling.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "15.1",
+      "status": "REFERENCE / USER RESERVED",
+      "assessment": "Historical timeboxes are guidance; critical engineering path is complete through hosted workflow. User owns publication/submission scheduling.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "15.2",
+      "status": "REFERENCE / USER RESERVED",
+      "assessment": "Historical timeboxes are guidance; critical engineering path is complete through hosted workflow. User owns publication/submission scheduling.",
+      "evidence": "tasks/todo.md"
+    },
+    {
+      "id": "16",
+      "status": "VERIFIED / OPERATIONAL GAPS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+    },
+    {
+      "id": "16.1",
+      "status": "VERIFIED / OPERATIONAL GAPS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+    },
+    {
+      "id": "16.2",
+      "status": "VERIFIED / OPERATIONAL GAPS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+    },
+    {
+      "id": "16.3",
+      "status": "VERIFIED / OPERATIONAL GAPS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+    },
+    {
+      "id": "16.4",
+      "status": "VERIFIED / OPERATIONAL GAPS",
+      "assessment": "Protected CI and HTTPS deployment exist. Free DB lacks managed backups, expires 2026-12-09. Restart/isolated restore is not an actual app rollback. Final submission tag remains reserved.",
+      "evidence": "render.yaml; .github/workflows/ci.yml; docs/evidence/hosted"
+    },
+    {
+      "id": "17",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Risk register maintained; hosting expiry, backups, credits and model accuracy limits require operational ownership.",
+      "evidence": "docs/risks.md"
+    },
+    {
+      "id": "17.1",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Risk register maintained; hosting expiry, backups, credits and model accuracy limits require operational ownership.",
+      "evidence": "docs/risks.md"
+    },
+    {
+      "id": "18",
+      "status": "VERIFIED",
+      "assessment": "AGENTS instructions, requirement IDs, private-data boundaries, typed modules and regression/review workflow applied.",
+      "evidence": "AGENTS.md; docs/evidence/end-to-end-roadmap-audit.json"
+    },
+    {
+      "id": "18.1",
+      "status": "VERIFIED",
+      "assessment": "AGENTS instructions, requirement IDs, private-data boundaries, typed modules and regression/review workflow applied.",
+      "evidence": "AGENTS.md; docs/evidence/end-to-end-roadmap-audit.json"
+    },
+    {
+      "id": "18.2",
+      "status": "VERIFIED",
+      "assessment": "AGENTS instructions, requirement IDs, private-data boundaries, typed modules and regression/review workflow applied.",
+      "evidence": "AGENTS.md; docs/evidence/end-to-end-roadmap-audit.json"
+    },
+    {
+      "id": "18.3",
+      "status": "VERIFIED",
+      "assessment": "AGENTS instructions, requirement IDs, private-data boundaries, typed modules and regression/review workflow applied.",
+      "evidence": "AGENTS.md; docs/evidence/end-to-end-roadmap-audit.json"
+    },
+    {
+      "id": "19",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "19.1",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "19.2",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "19.3",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "19.4",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "19.5",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "19.6",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, final video/post and official form are excluded from this engineering pass by explicit user direction.",
+      "evidence": "docs/judge-guide.md"
+    },
+    {
+      "id": "20",
+      "status": "REFERENCE / USER RESERVED",
+      "assessment": "Model contracts, architecture, failures, accuracy and tradeoffs documented for future changes/interviews; personal contributions decided by user.",
+      "evidence": "docs/final-project-context.md"
+    },
+    {
+      "id": "21",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Source/setup/ADRs/RTM/evidence/runbook provided. Original roadmap/submission drafts remain excluded as requested.",
+      "evidence": "README.md; docs/HANDOFF.md"
+    },
+    {
+      "id": "21.1",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Source/setup/ADRs/RTM/evidence/runbook provided. Original roadmap/submission drafts remain excluded as requested.",
+      "evidence": "README.md; docs/HANDOFF.md"
+    },
+    {
+      "id": "22",
+      "status": "MAPPED / USER RESERVED",
+      "assessment": "Engineering checklist reviewed; participant work is user-reserved, Tamil excluded and production exceptions retained.",
+      "evidence": "docs/evidence/end-to-end-roadmap-audit.json"
+    },
+    {
+      "id": "23",
+      "status": "VERIFIED / REFERENCE",
+      "assessment": "Saved provider source index and empirical runtime evidence retained; no new external contest-rule claim.",
+      "evidence": "docs/sources/index.json; docs/evidence/hosted"
+    }
+  ],
+  "wbs": [
+    {
+      "id": "WBS-00.1",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Configuration/access/source baseline and publication verified; individual eligibility/registration attestations stay user-owned.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-00.2",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Configuration/access/source baseline and publication verified; individual eligibility/registration attestations stay user-owned.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-00.3",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Configuration/access/source baseline and publication verified; individual eligibility/registration attestations stay user-owned.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-00.4",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Configuration/access/source baseline and publication verified; individual eligibility/registration attestations stay user-owned.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-00.5",
+      "status": "VERIFIED / USER RESERVED",
+      "assessment": "Configuration/access/source baseline and publication verified; individual eligibility/registration attestations stay user-owned.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-01.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-01.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-01.3",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-01.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-01.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-01.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.3",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-02.7",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.3",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.7",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-03.8",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.3",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.7",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.8",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-04.9",
+      "status": "VERIFIED",
+      "assessment": "15 genuine recordings evaluated; 12/15 automatic meets >=12 target, six safety cases blocked; 3/3 explicit correction replays pass; Tamil excluded.",
+      "evidence": "docs/evidence/audio-evaluation.json; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "WBS-05.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-05.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-05.3",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-05.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-05.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-05.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-05.7",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-06.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-06.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-06.3",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-06.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-06.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-06.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.1",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.2",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.3",
+      "status": "VERIFIED",
+      "assessment": "15 genuine recordings evaluated; 12/15 automatic meets >=12 target, six safety cases blocked; 3/3 explicit correction replays pass; Tamil excluded.",
+      "evidence": "docs/evidence/audio-evaluation.json; docs/evidence/asr-correction-recovery.json"
+    },
+    {
+      "id": "WBS-07.4",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.5",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.6",
+      "status": "VERIFIED",
+      "assessment": "Implemented and covered by current source/tests, RTM and judge-readiness evidence.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.7",
+      "status": "VERIFIED / LIMITS",
+      "assessment": "Isolated local/hosted-snapshot restore, history/index guard and hosted restart verified; actual app rollback rehearsal not proven.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-07.8",
+      "status": "PARTIAL",
+      "assessment": "Immutable v0.2.0-rc.1 candidate retained; final submission tag/signoff remains reserved until release gates are met.",
+      "evidence": "docs/evidence/judge-readiness.md; docs/rtm.md"
+    },
+    {
+      "id": "WBS-08.1",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.2",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.3",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.4",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.5",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.6",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.7",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    },
+    {
+      "id": "WBS-08.8",
+      "status": "USER RESERVED",
+      "assessment": "Contributions, media/post/form and final confirmation belong to user; no participant action performed.",
+      "evidence": "User clarification 2026-11-10; docs/compliance.md"
+    }
+  ],
+  "branch_ancestry_at_baseline": [
+    {
+      "branch": "origin/chore/roadmap-audit-render",
+      "main_ahead": 31,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/docs/graphify-project-context",
+      "main_ahead": 3,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/docs/human-microphone-proof",
+      "main_ahead": 25,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/docs/judge-release-proof",
+      "main_ahead": 8,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/docs/render-hosted-proof",
+      "main_ahead": 28,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/docs/safe-graph-refresh",
+      "main_ahead": 1,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/feature/complete-fieldsaarthi",
+      "main_ahead": 33,
+      "main_behind": 0
+    },
+    {
+      "branch": "origin/feature/judge-readiness",
+      "main_ahead": 10,
+      "main_behind": 0
+    }
+  ],
+  "executed_checks": {
+    "backend_tests": "193 passed in 44.59s",
+    "private_cached_correction_replay": "3 passed in 4.87s",
+    "ruff": "passed",
+    "ruff_format": "64 files formatted",
+    "mypy": "22 source files passed",
+    "frontend": "build, lint and Prettier passed",
+    "browser": "full fixture-provider/accessibility workflow passed; 0 live provider calls",
+    "confirmation_audit_mutation": "Detected failure with human_confirmed=false, restored exact source, focused 3 tests passed",
+    "hosted_current_readiness": "HTTP 200 on bounded retry after initial 60-second timeout; Render existing deployment live/unsuspended; no new provider calls"
+  }
+}

@@ -148,7 +148,9 @@ export function Review({
           </label>
           <p className="field-help">
             Your corrections are stored separately. The original transcript
-            stays unchanged.
+            stays unchanged. Also check the location, equipment, issue category,
+            urgency and issue description below; editing this transcript does
+            not update those fields.
           </p>
           <div className="evidence-box">
             <Sparkles size={16} />

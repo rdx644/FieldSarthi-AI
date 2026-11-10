@@ -77,3 +77,7 @@ To use the interactive view, download [`graph.html`](graphify-out/graph.html) fr
 The graph covers every tracked repository file, including its four exported artifacts. On refresh, use `git ls-files` as the Graphify input list because a workspace scan can include ignored local files; exclude private audio, credentials and all untracked files.
 
 The implementation roadmap and submission drafts are excluded from this repository at the team's request. Engineering status and measured verification remain public. Participant contributions, final media and the official form are handled separately by the team.
+
+## Engineering context for future changes
+
+See [complete project context](docs/final-project-context.md) and the [Downloads-roadmap audit](docs/evidence/end-to-end-roadmap-audit.md). The latest scoped review has 193 passing backend tests and 3/3 explicit correction replays; automatic ASR remains 12/15. Tamil is excluded from acceptance by the user. Production/release exceptions remain explicit in the report.

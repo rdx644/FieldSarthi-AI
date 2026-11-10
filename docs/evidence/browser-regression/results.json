@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "passed": true,
-  "timestamp_utc": "2026-11-09T19:15:11.433547+00:00",
+  "timestamp_utc": "2026-11-10T13:38:02.888204+00:00",
   "kind": "nonbillable_test_only_provider_fixture_browser_regression",
   "live_provider_calls": 0,
   "test_provider_calls": 1,

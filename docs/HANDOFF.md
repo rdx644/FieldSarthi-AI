@@ -1,3 +1,11 @@
+# Latest engineering handoff ? 2026-11-10
+
+Read [complete project context](final-project-context.md) and the [end-to-end audit](evidence/end-to-end-roadmap-audit.md) first. The Downloads roadmap matches the saved reference exactly; all 24 sections, 94 headings and 64 WBS tasks are mapped. User scope excludes Tamil and reserves contributions, media/post/form and participant attestations.
+
+193 backend tests, backend/frontend static checks and full fixture browser/accessibility flow pass. The three cached ASR failures recover with explicit corrections in the isolated test DB (3/3); automatic ASR remains 12/15 with all six safety blocks. No new recording/provider call/hosted write was needed. UI help clarifies that transcript edits require separate structured field review.
+
+All existing topic branch tips were already ancestors of baseline main 562d4c0. Production exceptions remain: free DB managed backups absent/December 9 expiry, actual app rollback rehearsal unproven, console credit monitoring operational, final submission tag/signoff reserved. Graph exports remain the prior 196-path snapshot; inspect current source and use a tracked-only refresh when needed. The complete report supersedes older completion/remaining-work statements below.
+
 # Current handoff — 2026-11-10 IST
 
 Application `6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd` is merged through protected

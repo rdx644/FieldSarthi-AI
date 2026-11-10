@@ -1,0 +1,49 @@
+{
+  "timestamp_utc": "2026-11-10T13:40:59.313486+00:00",
+  "kind": "cached_asr_correction_replay_in_isolated_test_database",
+  "automatic_asr_score_unchanged": "12/15",
+  "cases": [
+    {
+      "case_id": "NLP-04",
+      "passed": true,
+      "kind": "cached_asr_test_database_replay",
+      "original_provider_request_id": "d8714e99-4456-4dfc-9159-d2b75d6ad208",
+      "explicit_correction": true,
+      "original_preserved": true,
+      "confirmation_required": true,
+      "idempotent": true,
+      "live_provider_calls": 0,
+      "hosted_database_writes": 0
+    },
+    {
+      "case_id": "NLP-12",
+      "passed": true,
+      "kind": "cached_asr_test_database_replay",
+      "original_provider_request_id": "c6e35308-e5bf-4f6b-a71c-63581e7d3753",
+      "explicit_correction": true,
+      "original_preserved": true,
+      "confirmation_required": true,
+      "idempotent": true,
+      "live_provider_calls": 0,
+      "hosted_database_writes": 0
+    },
+    {
+      "case_id": "NLP-14",
+      "passed": true,
+      "kind": "cached_asr_test_database_replay",
+      "original_provider_request_id": "698d3a00-b34b-4b26-a63c-2a570b6fcf42",
+      "explicit_correction": true,
+      "original_preserved": true,
+      "confirmation_required": true,
+      "idempotent": true,
+      "live_provider_calls": 0,
+      "hosted_database_writes": 0
+    }
+  ],
+  "correction_recoveries_passed": 3,
+  "correction_recoveries_total": 3,
+  "live_provider_calls": 0,
+  "hosted_database_writes": 0,
+  "new_recordings": 0,
+  "limitations": "Ground-truth scripts/catalog fields supplied explicitly by test operator. Not a new human review session, live run, or 15/15 automatic ASR claim."
+}

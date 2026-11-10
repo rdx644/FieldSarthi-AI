@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-11-10T13:45:25.321408+00:00",
+  "scope": "Nonbillable current availability check; no new provider calls/reports",
+  "live_provider_calls": 0,
+  "render_deployment_status": "live",
+  "render_deployed_commit": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+  "initial_http_attempt": "ReadTimeout after 60 seconds",
+  "ready_status": 200,
+  "current_http_ready_verified": true
+}
