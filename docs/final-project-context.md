@@ -1,4 +1,4 @@
-﻿# FieldSaarthi AI — project context for future changes
+# FieldSaarthi AI — project context for future changes
 
 Engineering review: 2026-11-10. Baseline main: `562d4c0`; this report ships with the correction-recovery audit. Use Git to identify the eventual merge commit. Repository: https://github.com/rdx644/FieldSarthi-AI. Hosted app: https://fieldsaarthi-ai.onrender.com; **Open judge demo** requires no password.
 
@@ -47,6 +47,8 @@ Existing genuine evidence remains separate: [15-recording evaluation](evidence/a
 Local checks from `api/`: `.venv/Scripts/python.exe -m pytest -q`, `-m ruff check .`, `-m ruff format --check .`, `-m mypy app`. CI uses `uv sync --locked` and corresponding `uv run` commands on Linux. Frontend from `web/`: `npm run build`, `npm run lint`, `npm run format:check`. Browser from `api/`: `.venv/Scripts/python.exe tests/browser/workflow_check.py --channel chrome` (CI uses installed Chromium). Browser and integration tests reset **only** `fieldsaarthi_test`; run them sequentially.
 
 For optional cached recovery, set `FIELD_SAARTHI_REPLAY_RESULTS` to the ignored `private/evaluation/results` directory and run the correction test file. It reads cached transcripts only inside tests and emits sanitized results under `private/asr-recovery/`. Credentials and original recordings/results stay ignored. Local PostgreSQL must use the documented port **55432**, not its default 5432. Never print `.env`, private account files or credential helper output.
+
+Current availability: the first free hosted HTTP attempt timed out at 60 seconds; a bounded retry returned readiness HTTP 200. Render reports the existing application commit `6f702c2` live and unsuspended. See [current health evidence](evidence/hosted/final-engineering-health.json). This audit does not redeploy the app or rerun paid hosted workflows.
 
 ## Security, privacy and operational limits
 

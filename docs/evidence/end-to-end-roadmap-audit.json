@@ -1018,6 +1018,7 @@
     "mypy": "22 source files passed",
     "frontend": "build, lint and Prettier passed",
     "browser": "full fixture-provider/accessibility workflow passed; 0 live provider calls",
-    "confirmation_audit_mutation": "Detected failure with human_confirmed=false, restored exact source, focused 3 tests passed"
+    "confirmation_audit_mutation": "Detected failure with human_confirmed=false, restored exact source, focused 3 tests passed",
+    "hosted_current_readiness": "HTTP 200 on bounded retry after initial 60-second timeout; Render existing deployment live/unsuspended; no new provider calls"
   }
 }
