@@ -63,9 +63,16 @@ export function Review({
           </p>
         </div>
         <span className="outline-tag">
-          <ShieldCheck size={14} /> Review before creating
+          <ShieldCheck size={14} /> <span>Needs review</span>
         </span>
       </div>
+      {!!intake.unresolved_fields.length && (
+        <div className="alert warning" role="status">
+          Missing or conflicting details:{" "}
+          {intake.unresolved_fields.map(label).join(", ")}. Select a known
+          location, then its equipment, and check every suggested field.
+        </div>
+      )}
       {intake.emergency_warning && (
         <div className="alert warning">
           <AlertTriangle size={19} />
@@ -227,6 +234,8 @@ export function Review({
             <select
               required
               value={location}
+              aria-label="Location"
+              aria-invalid={!location}
               onChange={(e) => {
                 setLocation(e.target.value);
                 setAsset("");
@@ -245,6 +254,8 @@ export function Review({
             <select
               required
               value={asset}
+              aria-label="Equipment / asset"
+              aria-invalid={!asset}
               onChange={(e) => setAsset(e.target.value)}
               disabled={!location}
             >

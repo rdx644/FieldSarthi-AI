@@ -218,7 +218,11 @@ export function Report() {
               {[
                 ["hi-IN", "हिन्दी", "Hindi"],
                 ["en-IN", "English", "English"],
-                ["ta-IN", "தமிழ்", "Tamil"],
+                [
+                  "ta-IN",
+                  "தமிழ் · Experimental",
+                  "Tamil · Experimental, not yet validated",
+                ],
               ].map(([code, name, accessible]) => (
                 <button
                   key={code}
@@ -237,9 +241,10 @@ export function Report() {
             </div>
           </div>
           <p className="field-help">
-            Prisma v2.5 receives one selected language per recording. Code-mixed
-            speech may need correction. Tamil remains unverified in this
-            evaluation.
+            Hindi, English and Hinglish were evaluated on the development
+            corpus. Prisma v2.5 receives one selected language per recording;
+            select Hindi or English for Hinglish and check the result. Tamil is
+            experimental and not yet validated.
           </p>
           <div className={"record-stage " + (recording ? "is-recording" : "")}>
             <div className="record-rings">

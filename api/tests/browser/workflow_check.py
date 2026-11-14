@@ -36,12 +36,13 @@ def main():
     from app.integrations.gnani import Transcription
     from app.main import app
     from app.routers import intakes
-    from app.seed import seed
+    from app.seed import seed, stable
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--channel", default="chrome")
+    parser.add_argument("--output-dir", default="docs/evidence/browser-regression")
     args = parser.parse_args()
-    target = ROOT / "docs/evidence/browser-regression"
+    target = ROOT / args.output_dir
     target.mkdir(parents=True, exist_ok=True)
     (target / "results.json").write_text(
         json.dumps(
@@ -240,6 +241,13 @@ def main():
             page.locator("input[type=file]").set_input_files(str(source))
             page.get_by_role("button", name="Transcribe report").click()
             page.get_by_role("heading", name="What Gnani heard").wait_for()
+            expect(page.get_by_text("Needs review", exact=True)).to_be_visible()
+            page.get_by_role("checkbox").check()
+            page.get_by_label("Location", exact=True).select_option(value=stable("BLK-A-GF"))
+            expect(page.get_by_label("Equipment / asset")).to_have_value("")
+            expect(page.get_by_role("checkbox")).not_to_be_checked()
+            page.get_by_label("Location", exact=True).select_option(value=stable("BLK-B-F2"))
+            page.get_by_label("Equipment / asset").select_option(value=stable("PUMP-B02"))
             expect(page.locator("blockquote.transcript")).to_have_text(transcript)
             assert page.locator("blockquote.transcript img").count() == 0
             assert page.evaluate("window.__xss === undefined")
@@ -271,8 +279,15 @@ def main():
             assert page.evaluate("window.__xss === undefined")
             page.get_by_label("Sign out").click()
             sign_in(accounts[2])
+            page.get_by_role("button", name="All reports", exact=True).click()
+            expect(page.get_by_test_id("active-count")).to_have_text("1")
             page.get_by_label("Priority filter").select_option("HIGH")
             page.get_by_role("heading", name="No reports match this view.").wait_for()
+            expect(page.get_by_test_id("active-count")).to_have_text("1")
+            expect(page.get_by_test_id("high-priority-count")).to_have_text("0")
+            for width in [320, 768, 1024, 1440]:
+                page.set_viewport_size({"width": width, "height": 1000})
+                audit("supervisor-filtered-queue-" + str(width), screenshot=width in [320, 1440])
             page.get_by_role("button", name="Clear filters").click()
             page.get_by_role("link", name=order["public_code"], exact=True).click()
             page.get_by_label("Assign a worker").select_option(label="Ravi Kumar")
@@ -296,16 +311,60 @@ def main():
             page.get_by_role("button", name="Open judge demo").click()
             page.get_by_role("heading", name="Inspect the work. Follow the evidence.").wait_for()
             page.get_by_role("link", name=order["public_code"], exact=True).wait_for()
+            expect(page.get_by_text("Approved sample only", exact=True)).to_be_visible()
+            expect(page.get_by_test_id("resolved-count")).to_have_text("1")
             for width in [320, 768, 1024, 1440]:
                 page.set_viewport_size({"width": width, "height": 1000})
                 audit("judge-queue-" + str(width), screenshot=width == 1440)
-            page.get_by_role("link", name=order["public_code"], exact=True).click()
+            shortcut = page.get_by_role("link", name="Review this example", exact=True)
+            shortcut.focus()
+            expect(shortcut).to_be_focused()
+            page.keyboard.press("Enter")
             page.get_by_role("heading", name="The reported issue").wait_for()
             assert page.get_by_role("button", name="Save assignment").count() == 0
             assert page.get_by_role("button", name="Hear acknowledgment").count() == 0
             for width in [320, 768, 1024, 1440]:
                 page.set_viewport_size({"width": width, "height": 1000})
                 audit("judge-detail-" + str(width))
+            queue_pattern = "**/api/v1/work-orders?*"
+            empty = context.request.get(base + "/api/v1/work-orders").json()
+            empty.update(items=[], total=0)
+            empty["summary"] = {
+                key: "role_accessible_all"
+                if key == "scope"
+                else None
+                if key == "mean_resolution_seconds"
+                else []
+                if key == "issue_counts"
+                else 0
+                for key in empty["summary"]
+            }
+            page.route(queue_pattern, lambda route: route.fulfill(json=empty))
+            page.goto(base + "/#/orders")
+            expect(
+                page.get_by_text("No approved example in this view.", exact=False)
+            ).to_be_visible()
+            assert page.get_by_role("link", name="Review this example", exact=True).count() == 0
+            expect(page.get_by_test_id("active-count")).to_have_text("0")
+            audit("judge-empty-queue")
+            page.unroute(queue_pattern)
+            page.reload()
+            page.get_by_role("link", name=order["public_code"], exact=True).wait_for()
+            page.route(
+                queue_pattern,
+                lambda route: route.fulfill(
+                    status=503,
+                    json={"error": {"code": "TEST_ONLY", "message": "Test-only queue unavailable"}},
+                ),
+            )
+            page.get_by_label("Refresh queue").click()
+            expect(page.get_by_role("alert")).to_contain_text("Test-only queue unavailable")
+            assert page.get_by_role("link", name="Review this example", exact=True).count() == 0
+            assert page.get_by_role("link", name=order["public_code"], exact=True).count() == 0
+            expect(page.get_by_text("Count unavailable", exact=True)).to_be_visible()
+            expect(page.get_by_test_id("active-count")).to_have_text("—")
+            audit("judge-queue-unavailable")
+            page.unroute(queue_pattern)
             assert not errors
             assert len(calls) == 1
             context.close()
@@ -332,6 +391,10 @@ def main():
         "idempotent_replay": True,
         "supervisor_resolution_and_refresh": True,
         "judge_read_only_dashboard": True,
+        "role_scoped_summary_ignores_filters": True,
+        "changing_location_clears_equipment_and_confirmation": True,
+        "judge_example_keyboard_shortcut": True,
+        "judge_empty_and_unavailable_states": True,
         "checks": audits,
         "javascript_errors": errors,
     }
