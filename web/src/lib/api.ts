@@ -71,11 +71,27 @@ export interface Order {
   intake?: Intake;
   audit?: Audit[];
 }
+export interface QueueSummary {
+  scope: "role_accessible_all";
+  total: number;
+  open: number;
+  assigned: number;
+  in_progress: number;
+  resolved: number;
+  cancelled: number;
+  active_high_priority: number;
+  voice_intake: number;
+  manual_intake: number;
+  mean_resolution_seconds: number | null;
+  resolution_sample_count: number;
+  issue_counts: { issue_category: string; count: number }[];
+}
 export interface Queue {
   items: Order[];
   total: number;
   page: number;
   page_size: number;
+  summary: QueueSummary;
 }
 
 export class ApiError extends Error {

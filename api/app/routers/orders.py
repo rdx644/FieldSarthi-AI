@@ -17,6 +17,7 @@ from app.integrations.gnani import GnaniError
 from app.integrations.tts import TimbreClient, provider_slots
 from app.schemas.commands import Assignment, Confirm, Priority, PriorityChange, Status, StatusChange
 from app.schemas.responses import OrderResponse, QueueResponse
+from app.services.analytics import accessible_orders, queue_summary
 from app.services.orders import accessible_order, change_order, create_order, order_json
 
 router = APIRouter(prefix="/api/v1/work-orders")
@@ -96,11 +97,8 @@ def queue(
     page: Annotated[int, Query(ge=1)] = 1,
     page_size: Annotated[int, Query(ge=1, le=100)] = 20,
 ) -> dict[str, Any]:
-    query = select(Order)
-    if user.role == "JUDGE":
-        query = query.where(Order.judge_visible)
-    if user.role == "WORKER":
-        query = query.where(Order.reporter_id == user.id)
+    query = accessible_orders(user)
+    summary = queue_summary(db, query)
     for name, value in [
         ("status", status),
         ("priority", priority),
@@ -122,6 +120,7 @@ def queue(
         "total": total,
         "page": page,
         "page_size": page_size,
+        "summary": summary,
     }
 
 
