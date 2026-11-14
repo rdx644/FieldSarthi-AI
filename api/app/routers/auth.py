@@ -25,6 +25,7 @@ from app.schemas.responses import (
 
 router = APIRouter(prefix="/api/v1")
 attempts: dict[str, deque[float]] = defaultdict(deque)
+attempts_lock = threading.Lock()
 dummy_hash = password_hash.hash("not-a-valid-demo-password")
 hash_slots = threading.BoundedSemaphore(2)
 
@@ -71,17 +72,7 @@ def login(
     *, body: Login, request: Request, response: Response, db: Annotated[Session, Depends(get_db)]
 ) -> dict[str, Any]:
     address = request.client.host if request.client else "unknown"
-    now = time.monotonic()
-    for key in list(attempts):
-        while attempts[key] and attempts[key][0] < now - 900:
-            attempts[key].popleft()
-        if not attempts[key]:
-            del attempts[key]
-    if len(attempts) >= 10000 and address not in attempts:
-        raise AppError(429, "RATE_LIMITED", "Please try again later.")
-    if len(attempts[address]) >= 20:
-        raise AppError(429, "RATE_LIMITED", "Too many sign-in attempts. Try again in 15 minutes.")
-    attempts[address].append(now)
+    check_login_attempt(address)
     user = db.scalar(select(User).where(User.email == body.email.lower()))
     if not hash_slots.acquire(timeout=1):
         raise AppError(429, "SIGN_IN_BUSY", "Sign-in is busy. Please try again.")
@@ -105,6 +96,25 @@ def login(
         path="/",
     )
     return {"access_token": token, "token_type": "bearer", "user": user_json(user)}
+
+
+def check_login_attempt(address: str) -> None:
+    # Sync FastAPI handlers run concurrently in worker threads. Keep pruning,
+    # admission checks and append atomic; release before DB/password hashing.
+    with attempts_lock:
+        now = time.monotonic()
+        for key in list(attempts):
+            while attempts[key] and attempts[key][0] < now - 900:
+                attempts[key].popleft()
+            if not attempts[key]:
+                del attempts[key]
+        if len(attempts) >= 10000 and address not in attempts:
+            raise AppError(429, "RATE_LIMITED", "Please try again later.")
+        if len(attempts[address]) >= 20:
+            raise AppError(
+                429, "RATE_LIMITED", "Too many sign-in attempts. Try again in 15 minutes."
+            )
+        attempts[address].append(now)
 
 
 @router.post("/auth/logout")

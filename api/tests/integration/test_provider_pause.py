@@ -1,11 +1,35 @@
 """NFR-13: operator can pause billable audio while saved workflows stay available."""
 
 from fastapi.testclient import TestClient
+from sqlalchemy import func, select
 from test_intakes import wav
 from test_workflow import fixture_intake, login, payload
 
+from app.db.models import ProviderAdmission
+from app.db.session import SessionLocal
 from app.main import app
 from app.routers import intakes, orders
+
+
+def test_paused_stt_never_decodes_or_reserves(accounts, monkeypatch):
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Paused STT must not decode, reserve or call a provider")
+
+    monkeypatch.setenv("GNANI_REQUESTS_ENABLED", "false")
+    monkeypatch.setattr(intakes, "normalize_audio", forbidden)
+    monkeypatch.setattr(intakes.provider_budget, "check", forbidden)
+    monkeypatch.setattr(intakes.speech, "transcribe", forbidden)
+    with TestClient(app) as client:
+        headers = login(client, accounts[0])
+        response = client.post(
+            "/api/v1/intakes/transcribe",
+            headers=headers,
+            files={"audio_file": ("corrupt.wav", b"not audio", "audio/wav")},
+        )
+        assert response.status_code == 503
+        assert response.json()["error"]["code"] == "GNANI_REQUESTS_PAUSED"
+    with SessionLocal() as db:
+        assert db.scalar(select(func.count()).select_from(ProviderAdmission)) == 0
 
 
 def test_provider_pause_blocks_stt_tts_and_preserves_saved_work(accounts, monkeypatch):

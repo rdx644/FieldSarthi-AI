@@ -6,6 +6,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
+from starlette.concurrency import run_in_threadpool
 
 from app.core.errors import AppError
 from app.core.limits import provider_budget, provider_requests_enabled
@@ -53,7 +54,7 @@ async def acknowledgment(oid: str, request: Request, user: Current, db: DB) -> R
             "Spoken acknowledgment is not enabled. Your report remains saved.",
         )
     try:
-        provider_budget.check(actor_id)
+        await run_in_threadpool(provider_budget.check, actor_id, "TTS")
         started = perf_counter()
         async with asyncio.timeout(90):
             async with provider_slots:
