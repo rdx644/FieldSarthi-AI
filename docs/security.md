@@ -1,18 +1,64 @@
-# Security and privacy boundaries - development candidate
+# Security and source distribution — IMP-00
 
-Scope: React/FastAPI development candidate at `8146882`, including genuine Prisma/Timbre adapters, PostgreSQL and Render configuration. This supersedes the initial WBS-01-only description. It is not a penetration-test or privacy-compliance certification.
+The three shared synthetic demo account logins in [README](../README.md#demo-access)
+are intentionally public by participant authorization on November 10, 2026.
+Worker and supervisor activity is shared with other users of those accounts;
+this temporary demo is not private or a production access model. Their publication
+does not authorize disclosure of Gnani keys, database credentials, JWT secrets,
+hosting tokens, private account exports or raw recordings. Changing published
+access or rotating credentials remains an owner decision.
 
-Assets are provider credentials/credits, sessions/password hashes, synthetic reports, consenting audio and truthful provenance. Untrusted inputs cross browser -> API, media -> FFmpeg, provider -> strict response parser, and command -> database boundaries. The backend and PostgreSQL own persisted facts.
+The password-free judge session is read-only and exposes only explicitly approved
+synthetic evidence. Publication authorization covers **WO-AFF1E3EE3BD2**; it does
+not extend to other reports or recordings. Do not add new judge-visible reports
+without participant approval and consent review.
 
-- Gnani credentials remain server-side. Fixed HTTPS endpoints, no redirects, bounded responses/time/retries and typed errors prevent raw provider-payload disclosure. No production fixture adapter exists.
-- Argon2 passwords; short-lived signed JWT; HTTP-only SameSite=strict cookies, Secure in production; Origin plus X-Requested-With on cookie mutations. Every protected request verifies the current active DB identity/role. Malformed bearer auth cannot fall back to cookies.
-- Worker ownership covers intake/order reads/writes, queue, duplicate hints and TTS. Supervisor mutations require the verified role. ORM binding and Pydantic commands constrain input.
-- React renders text without unsafe HTML. CSP, frame denial, no-sniff, no-store API responses and microphone permission policy are applied.
-- The request cap precedes multipart parsing. Media signatures and actual decoded sample count replace trust in names/MIME/duration. FFmpeg uses a fixed executable, argument array, restricted protocols, deadline, output-duration bound, two slots and temporary-directory cleanup.
-- Advisory/intake/order locks, unique intake and idempotency constraints protect atomic order/audit writes. Audit/original provider facts have immutable DB triggers. Database-owner access still needs administrative discipline.
-- Exactly one runtime worker, in-memory sign-in/provider limits and a shared STT/TTS semaphore bound demo use. Restarts reset counters; these are not account-wide durable spending limits.
-- Body-free logs record generated request IDs, route templates, status and timing. Credentials/transcripts/audio do not belong in routine logs. No raw audio is stored as an application attachment.
+## Distributing source safely
 
-Verification now includes 190 backend tests, strict lint/types, browser/accessibility evidence, dependency audits and a Linux Docker build gate. Dedicated XSS/injection, invalid/expired-token, injected transaction rollback, direct FK/check, permission-denial and microphone lifecycle regressions close the historical audit gaps. See [current verification](evidence/judge-readiness.md); this is not an exhaustive penetration-test claim.
+Ignore rules apply to Git and Docker, not to a recursive ZIP of the workspace.
+Private runtime files, backups and audio must remain local. Distribute the public
+repository or export a reviewed, verified commit from the **repository root**:
 
-Consenting test clips/raw responses remain in ignored `private/`; `.env`/private files are excluded from Docker context. Retain clips only through verification/submission review unless continued retention is consented. The UI discloses external Gnani processing and actual application retention; provider retention follows Gnani's own terms. Hosted Secure/HTTP-only/SameSite cookies, cross-origin mutation rejection, cross-worker denial, worker role restrictions and scoped bundle/log secret checks are evidenced in [hosted verification](evidence/hosted/README.md). The public JUDGE role is read-only, restricted to approved reports, denied billable endpoints and revoked when its flag is disabled.
+```powershell
+git rev-parse HEAD
+git archive --format=zip --output=output/fieldsaarthi-source.zip <verified-commit>
+api/.venv/Scripts/python.exe api/scripts/repository_guard.py --archive output/fieldsaarthi-source.zip
+```
+
+Create the ignored `output` directory first on a fresh clone. On other platforms,
+use `uv run python` from `api/` to run the guard with the archive's absolute path.
+The ZIP contains committed source only; uncommitted improvements need their own
+reviewed commit before export. Do not recursively archive the working directory
+and do not distribute a ZIP just because a previous ZIP appeared safe.
+
+The archive guard reads member names and bounded contents without extraction. It
+rejects private/environment/media/backup/runtime artifacts, nested archives,
+private graph/reference exports, traversal, symlinks and known key signatures.
+Migration SQL and sanitized JSON evidence remain allowed. Inspection limits are
+10,000 members, 100 MiB expanded total and 10 MiB per file. An archive exceeding
+these limits needs explicit review rather than bypassing checks. No secret body
+is printed on rejection.
+
+The regular guard scans reachable Git history and the index for prohibited paths
+and known signatures:
+
+```powershell
+cd api
+uv run python scripts/repository_guard.py
+```
+
+Passing these deterministic checks does not establish that all credentials are
+absent, that every document is approved for publication, or that historical
+copies held elsewhere are safe. If an actual credential exposure is found, stop
+distribution and notify the owner without printing the value. Credential rotation
+and history remediation require owner authorization; do not rewrite Git history.
+
+## Provider and infrastructure controls
+
+Judge access cannot initiate paid speech. Manual text is a distinct workflow.
+The owner monitors the actual provider console balance; application admission
+counters do not measure money. Use `GNANI_REQUESTS_ENABLED=false` to pause both
+speech endpoints; applying a Render environment change requires deployment.
+Maintain single-worker deployment and the documented backup/expiry procedures in
+[operations](operations.md). The historically recorded free database expiry is
+December 9, 2026; current retention and expiry require operator verification.
