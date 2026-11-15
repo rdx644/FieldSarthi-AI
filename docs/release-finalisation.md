@@ -1,6 +1,6 @@
 # FieldSaarthi release finalisation
 
-Status: **local engineering, exact source CI and actual container rollback verified; production approval pending**.
+Status: **engineering and CI verified; production backup is participant-owned and not yet confirmed**.
 
 The final backend suite passed **307 tests in 91.84 seconds**. Strict Ruff/format,
 mypy and the Python dependency audit pass. Exact candidate CI repeats frontend checks and all 16 Chrome fixture views successfully. Both candidate and
@@ -51,14 +51,14 @@ transcripts, 6/6 expected blocks and 3/3 cached correction recovery keep their
 original denominators. Genuine WER/CER and held-out generalisation remain unmeasured.
 No 95-point result or new speech accuracy uplift is claimed.
 
-## Concrete production release plan - approval pending
+## Production release plan - owner backup gate
 
 1. Review exact candidate/compatibility CI and container evidence.
-2. Temporarily allow only the current operator's public IP/32 on the existing
-   database, take a private consistent read-only export, verify an isolated restore,
-   and restore the original allowlist. Verify the actual production schema and
-   protected report directly during the read-only connection.
-3. Approve the release SHAs and preserve protected main. Deploy the compatibility
+2. The participant takes care of production backup and restore readiness.
+   Confirm that the backup is current and restore-ready before migration. The
+   agent does not change database ingress, export production data or claim backup
+   completion. Backup ownership does not waive the migration safety gate.
+3. Complete protected source merge and exact main CI. After owner backup confirmation, deploy the compatibility
    build first; it must remain at 0004 and healthy with paid speech paused.
 4. Deploy the candidate; its startup advances additively to 0005. Perform read-only
    health, judge/provenance and private baseline-data comparisons. Make no new
@@ -73,6 +73,23 @@ are complete; actual production execution must remain distinguished
 in the final status. Official contribution/eligibility, video, public post and
 submission form remain participant-owned and untouched.
 
-The existing live app remains the previous known-good release until these steps
-are approved and executed. Existing account passwords, public judge visibility,
+The existing live app remains the previous known-good release while owner backup
+confirmation is pending. Updating protected main does not deploy it because
+Render auto-deploy remains disabled. Existing account passwords, public judge visibility,
 provider choice and all production data remain unchanged by this work.
+
+
+## Latest participant scope and automatic completion
+
+The participant explicitly owns backup and asked the agent to finish all remaining
+steps requiring no manual configuration. Engineering/code, 307 tests, both image
+builds, source and real-container rollback, exact source CI, and sanitized evidence
+are verified. The agent can publish the latest status, complete PR #18 through
+required checks and keep local/main synchronized. PR #19 remains the separate
+rollback artifact and must not be merged into the candidate.
+
+The [owner handoff](evidence/improvement-owner-handoff.json) records the split.
+Production backup completion is not inferred from the promise to take care of it;
+no live migration or hosted rollback is marked complete. Independent evaluation
+remains explicitly deferred. No additional manual configuration, paid test,
+credential rotation or participant submission is introduced.

@@ -1,12 +1,12 @@
 {
-  "timestamp_utc": "2026-11-15T06:32:51.435894+00:00",
+  "timestamp_utc": "2026-11-15T07:03:03.075827+00:00",
   "specification": {
     "name": "FieldSaarthi_AI_95_Improvement_Specification.md",
     "sha256": "33fd3f5d86ad91392de5ef1672bedbed819bb1e3edf23050e8ebc1b04be02253"
   },
   "baseline_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
   "verified_application_source_sha": "c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff",
-  "status": "LOCAL ENGINEERING AND IMAGE COMPATIBILITY VERIFIED; RELEASE PENDING",
+  "status": "ALL NON-MANUAL ENGINEERING VERIFIED; REPOSITORY FINALISATION IN PROGRESS; OWNER BACKUP GATES LIVE RELEASE",
   "counts": {
     "passed_local": 32,
     "deferred_by_participant": 1,
@@ -383,7 +383,7 @@
         "docs/evidence/improvement-finalisation-release.json",
         "docs/evidence/improvement-ci-container-release.json"
       ],
-      "note": "Both exact source CI runs passed and draft PRs are published; production backup, merge and staged deployment still await participant approval."
+      "note": "Candidate and rollback source CI passed; latest status is being synchronized and merged through required checks. Participant owns production backup; live deployment and hosted checks remain gated on its completion."
     },
     {
       "id": "T-IMP-063",
@@ -396,7 +396,7 @@
       "evidence": [
         "docs/evidence/improvement-container-release.json"
       ],
-      "note": "Actual local Docker-image rollback/restoration passed; this is not a production rehearsal. Repeat approved scoped readback after any hosted rollout."
+      "note": "Actual local and CI Docker-image rollback/restoration passed. A production rehearsal remains dependent on owner backup completion and staged deployment."
     }
   ],
   "scope_choices_permitted_by_spec": [
@@ -646,5 +646,6 @@
   ],
   "compatibility_source_sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
   "traceability_correction": "T-IMP-010..012 and 020..025 labels now match section 12 of the supplied specification verbatim in meaning; the earlier audit labels were reordered, not omitted tests.",
-  "supersedes": "docs/evidence/improvement-completion-audit.json"
+  "supersedes": "docs/evidence/improvement-completion-audit.json",
+  "owner_managed_backup": "Participant explicitly took responsibility; completed backup is not yet confirmed and is not marked passed."
 }

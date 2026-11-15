@@ -1,6 +1,6 @@
 {
   "timestamp_utc": "2026-11-15T06:32:51.435894+00:00",
-  "status": "EXACT SOURCE CI AND IMAGE ROLLBACK VERIFIED - PRODUCTION APPROVAL PENDING",
+  "status": "ENGINEERING AND CI VERIFIED - OWNER BACKUP GATES PRODUCTION",
   "baseline_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
   "candidate_code_sha": "c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff",
   "compatibility_sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
@@ -57,7 +57,26 @@
   "participant_submission": "Eligibility/contributions/video/public post/form untouched",
   "candidate_source_sha": "c8de7d6cdfbe7876524759701e2a433082546310",
   "publication": "Both exact branch pushes and draft PRs explicitly approved by participant and completed",
-  "production_approval": "pending participant decision",
+  "production_approval": "Production migration held for owner backup confirmation; no paid tests or credential/access changes.",
   "ci_image_evidence": "docs/evidence/improvement-ci-container-release.json",
-  "ci_browser_evidence": "docs/evidence/improvement-ci-browser-release.json"
+  "ci_browser_evidence": "docs/evidence/improvement-ci-browser-release.json",
+  "backup_ownership": {
+    "owner": "participant",
+    "instruction": "Participant will take care of production backup; agent completes non-manual engineering and repository steps.",
+    "completion": "not confirmed",
+    "agent_backup_or_ingress_changes": false,
+    "release_gate": "Confirm a current restore-ready backup before production schema migration."
+  },
+  "repository_completion": "Latest status publication and protected candidate merge authorized by the request to close remaining automatic Git tasks; required CI remains mandatory.",
+  "manual_configuration_excluded": [
+    "production backup and restore readiness",
+    "new independent recordings and human references",
+    "participant submission/eligibility/video/public post"
+  ],
+  "remaining_automatic_steps": [
+    "publish latest committed status",
+    "verify required CI on the latest candidate head",
+    "merge protected candidate PR",
+    "verify final main CI and synchronize local main"
+  ]
 }

@@ -1,3 +1,9 @@
+Latest ownership update: production backup is handled by the participant and
+completion is not yet confirmed. The agent completes automatic source publication,
+protected merge, CI and local/main synchronization. Engineering and image rollback
+are verified; live migration waits for backup confirmation. See
+[current status](release-finalisation.md). Earlier checkpoint statements below retain their scope.
+
 Latest finalisation: **307 backend tests and actual container compatibility,
 rollback and restoration pass locally**; independent evaluation is explicitly
 participant-deferred. The prepared compatibility build resolves the earlier local

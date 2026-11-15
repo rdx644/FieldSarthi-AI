@@ -1,3 +1,9 @@
+Latest ownership update: production backup is handled by the participant and
+completion is not yet confirmed. The agent completes automatic source publication,
+protected merge, CI and local/main synchronization. Engineering and image rollback
+are verified; live migration waits for backup confirmation. See
+[current status](release-finalisation.md). Earlier checkpoint statements below retain their scope.
+
 # Latest release finalisation traceability
 
 The [current audit](evidence/improvement-finalisation-audit.json) supersedes the

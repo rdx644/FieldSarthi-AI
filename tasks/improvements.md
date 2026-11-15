@@ -5,7 +5,9 @@ Baseline: `0fca9716e3589eb9cac70f12e2468aacf7cadb5a`.
 
 **Local engineering, source compatibility and real container rollback are verified.**
 The participant explicitly approved deferring independent audio evaluation.
-Both exact source CI runs pass. Production release awaits an approved backup, merge and deployment.
+Both exact source CI runs pass. The participant owns production backup.
+Latest status publication, protected merge and main synchronization are the
+remaining automatic Git steps; live migration awaits backup completion confirmation.
 No requirement was silently waived. The previous [audit](../docs/evidence/improvement-completion-audit.json)
 and [handoff](../docs/improvement-handoff.md) preserve the earlier 30-pass/3-blocked checkpoint;
 this status supersedes those local compatibility blockers.
@@ -19,7 +21,8 @@ this status supersedes those local compatibility blockers.
 - [x] IMP-05 local: durable admissions and a separate verified compatibility rollback build.
 - [x] IMP-06 local: 307 backend tests, strict checks and actual four-phase Docker rehearsal.
 - [x] IMP-06 source CI: both approved draft PR heads pass the required quality workflow.
-- [ ] IMP-06 production: approved private backup, merge and staged release.
+- [ ] IMP-06 repository: latest-status push, protected candidate merge and exact main CI.
+- [ ] IMP-06 production: participant confirms current restore-ready backup; staged release follows.
 
 Candidate code: `c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff`.
 Published source: `c8de7d6cdfbe7876524759701e2a433082546310`, [PR #18](https://github.com/rdx644/FieldSarthi-AI/pull/18), exact CI passed.
@@ -81,11 +84,12 @@ seven domain tables, one synthetic order/audit/idempotency workflow and both
 admission records through stage -> activation -> rollback -> restoration.
 The internal test network had no provider access or host-port exposure.
 
-A production backup requires a temporary current-operator-IP/32 ingress rule,
-a consistent read-only export, isolated local restore, and restoration of the
-original ingress allowlist. Deployment and this infrastructure change require
-approval of the concrete release plan. Do not down-migrate, delete data, rotate
-accounts or change the public judge allowlist. Participant submission stays owned
+Production backup is participant-owned by explicit instruction. The agent will not
+change database ingress, take the production backup or mark it complete. The
+remaining automatic Git tasks can proceed with Render auto-deploy disabled.
+Production migration/hosted rollback remain gated on a current restore-ready
+backup confirmation; no downgrade, data deletion, account rotation or public judge
+allowlist change is authorized by this handoff. Participant submission stays owned
 by the participant. No new speech call or production action was made.
 
 See [current release details](../docs/release-finalisation.md),
