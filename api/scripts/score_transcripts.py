@@ -326,8 +326,12 @@ def main():
     try:
         # Cap local input size; reject output aliasing so private originals survive.
         paths = [args.manifest.resolve(), args.transcripts.resolve()]
-        if args.output.resolve() in paths or any(
-            p.stat().st_size > 16 * 1024 * 1024 for p in paths
+        output = args.output.resolve()
+        if (
+            output in paths
+            or output.exists()
+            and any(output.samefile(path) for path in paths)
+            or any(path.stat().st_size > 16 * 1024 * 1024 for path in paths)
         ):
             raise ValueError("Input/output path or size invalid.")
         raw_inputs = [path.read_bytes() for path in paths]

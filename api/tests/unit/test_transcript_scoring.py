@@ -281,3 +281,36 @@ def test_cli_reads_explicit_local_files_and_emits_sanitized_summary(tmp_path):
     assert completed.returncode == 0, completed.stderr
     assert "pump is leaking" not in completed.stdout + completed.stderr + output.read_text()
     assert json.loads(output.read_text())["attempted_count"] == 1
+
+
+@pytest.mark.parametrize("aliased_input", ["manifest", "transcripts"])
+def test_cli_rejects_hardlinked_output_without_changing_private_inputs(tmp_path, aliased_input):
+    manifest = tmp_path / "manifest.json"
+    transcripts = tmp_path / "transcripts.json"
+    output = tmp_path / "summary.json"
+    manifest.write_text(json.dumps(dataset()), encoding="utf-8")
+    transcripts.write_text(json.dumps([response()]), encoding="utf-8")
+    originals = {path: path.read_bytes() for path in (manifest, transcripts)}
+    output.hardlink_to(manifest if aliased_input == "manifest" else transcripts)
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__).resolve().parents[2] / "scripts/score_transcripts.py"),
+            "--manifest",
+            str(manifest),
+            "--transcripts",
+            str(transcripts),
+            "--dataset-id",
+            "TEST-ONLY",
+            "--parser-version",
+            "rules-test",
+            "--output",
+            str(output),
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 2
+    assert {path: path.read_bytes() for path in originals} == originals
+    assert "pump is leaking" not in completed.stdout + completed.stderr
