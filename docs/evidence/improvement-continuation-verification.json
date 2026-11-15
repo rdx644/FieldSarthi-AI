@@ -1,0 +1,137 @@
+{
+  "timestamp_utc": "2026-11-15T09:11:23.458473+00:00",
+  "status": "LOCAL VERIFIED - EXACT HEAD CI PENDING - NOT DEPLOYED",
+  "specification": {
+    "filename": "FieldSaarthi_AI_95_Improvement_Specification.md",
+    "sha256": "33fd3f5d86ad91392de5ef1672bedbed819bb1e3edf23050e8ebc1b04be02253"
+  },
+  "continuation_baseline_sha": "16697f73150f191d727c9006e9739919ff5b6385",
+  "candidate_code_sha": "fba5afff8d60da5d788ac307cbaf71f2251aca06",
+  "branch": "feature/95-improvements",
+  "backend": {
+    "passed": 328,
+    "duration_seconds": 90.71,
+    "database": "fieldsaarthi_test",
+    "command": "uv run pytest -q"
+  },
+  "static_checks": {
+    "ruff": "passed",
+    "ruff_format": "84 files passed; edited browser script rechecked",
+    "mypy": "24 application files passed",
+    "frontend_lint": "passed",
+    "frontend_prettier": "passed",
+    "frontend_types_and_build": "passed"
+  },
+  "dependency_audits": {
+    "backend": "no known vulnerabilities",
+    "frontend": "0 vulnerabilities"
+  },
+  "browser": {
+    "result": "docs/evidence/improvement-owner-review-browser/results.json",
+    "passed_views": 18,
+    "widths": [
+      320,
+      768,
+      1024,
+      1440
+    ],
+    "javascript_errors": 0,
+    "accessibility_violations": 0,
+    "horizontal_overflow": false,
+    "initial_failure": "Unfinished retry assertion expected three workers; API correctly returns two. Corrected to assert the seeded worker names independent of order."
+  },
+  "regression_changes": [
+    {
+      "change_id": "IMP-00",
+      "test_ids": [
+        "T-IMP-001",
+        "T-IMP-002"
+      ],
+      "tests": "api/tests/unit/test_repository_guard.py",
+      "result": "backup folder exclusions and normalized nested private-reference archive exclusions verified"
+    },
+    {
+      "change_id": "IMP-02/03",
+      "test_ids": [
+        "T-IMP-025",
+        "T-IMP-035"
+      ],
+      "tests": "api/tests/browser/workflow_check.py",
+      "result": "queue and summaries survive lookup failures; retry restores filters; original-extraction warnings remain accurate"
+    },
+    {
+      "change_id": "IMP-03/04A",
+      "test_ids": [
+        "T-IMP-036",
+        "T-IMP-042"
+      ],
+      "tests": "api/tests/unit/test_cached_replay_inputs.py",
+      "result": "six replay input-preservation cases pass, including hard-linked source and reviewed manifest outputs"
+    },
+    {
+      "change_id": "IMP-05",
+      "test_ids": [
+        "T-IMP-050",
+        "T-IMP-055"
+      ],
+      "tests": "api/tests/integration/test_stt_admission_pool.py",
+      "result": "real PostgreSQL pool_size=1/max_overflow=0 succeeds; one admission and genuine fixture provenance preserved"
+    },
+    {
+      "change_id": "IMP-06",
+      "test_ids": [
+        "T-IMP-060",
+        "T-IMP-063"
+      ],
+      "tests": "api/tests/unit/test_release_container_cleanup.py",
+      "result": "cleanup inspection timeout preserves unrelated resources, continues later cleanup and writes failed evidence"
+    }
+  ],
+  "mutation_review": {
+    "change": "temporarily remove backup-directory exclusion",
+    "red": "3 targeted regressions failed",
+    "restoration": "exact original bytes restored",
+    "green": "3 targeted regressions passed"
+  },
+  "archive": {
+    "source_sha": "fba5afff8d60da5d788ac307cbaf71f2251aca06",
+    "private_output": true,
+    "guard_result": "Archive guard passed: 298 members; no forbidden paths/key signatures.",
+    "note": "tracked-commit source archive with a project prefix; private ZIP is not published"
+  },
+  "container": {
+    "current_local_engine": "unavailable: dockerDesktopLinuxEngine pipe absent",
+    "current_actual_rehearsal": "pending exact candidate CI",
+    "previous_actual_evidence": "docs/evidence/improvement-ci-container-release.json",
+    "unit_cleanup_regressions": "passed in 328-test suite"
+  },
+  "hosted_readback": "docs/evidence/improvement-continuation-hosted-readback.json",
+  "deployed_sha": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+  "schema": {
+    "candidate": "0005",
+    "live": "0004 inferred from exact previous-app readiness; no fresh direct SQL claim",
+    "compatible_rollback_sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d"
+  },
+  "production_backup": "participant-owned; current restore-ready completion not confirmed",
+  "production_deployment": "not performed; requires backup confirmation and approved staged plan",
+  "independent_evaluation": "participant-deferred; WER/CER and held-out accuracy unmeasured",
+  "provider_calls": 0,
+  "new_recordings": 0,
+  "production_domain_writes": 0,
+  "participant_submission": "untouched",
+  "score": "No new numeric reassessment; 95/100 remains an unverified target",
+  "publication": {
+    "status": "NOT PUBLISHED - EXPLICIT GITHUB PUBLICATION APPROVAL REQUIRED",
+    "remote": "https://github.com/rdx644/FieldSarthi-AI.git",
+    "branch": "feature/95-improvements",
+    "pull_request": 18,
+    "automatic_review": "git push rejected: explicit user authorization is required to publish source and sanitized evidence to this remote",
+    "remote_writes_performed": false,
+    "required_next_step": "Owner explicitly approves publishing these commits and protected PR completion; then require exact-head CI before merging."
+  },
+  "documentation_check": {
+    "relative_links_checked": 87,
+    "T_IMP_test_references_checked": 34,
+    "result": "passed"
+  }
+}

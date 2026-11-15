@@ -8,8 +8,9 @@ Turn a spoken maintenance report into a human-verified work order that a supervi
 
 Improvement implementation verified locally on **November 15, 2026**: role-scoped
 queue totals, clearer judge/review navigation, offline WER/CER tooling, archive
-protection and durable speech admission. **307 backend tests, actual two-image rollback and 16 Chrome
-fixture accessibility/layout views pass. Not deployed.** A compatible rollback
+protection and durable speech admission. **328 backend tests and 18 Chrome fixture accessibility/layout views pass.
+Not deployed.** The prior two-image rollback passes locally and in CI; the latest
+follow-up source is awaiting its exact-head CI rehearsal. A compatible rollback
 build and both exact source CI runs are verified. Production backup is
 participant-owned; confirmation of a current restore-ready backup gates deployment. Independent evaluation is deferred by participant decision. See the [complete requirement status](tasks/improvements.md),
 [current engineering handoff](docs/release-finalisation.md),

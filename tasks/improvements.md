@@ -1,3 +1,13 @@
+Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
+views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
+queue filter failure/retry, replay input protection, nested archive exclusions
+and timeout cleanup. Strict checks and dependency audits pass. Fresh hosted
+read-only checks preserve the sole approved sample, original transcript hash,
+OPEN/version-1 state and one audit event. The hosted app remains `85e1a5e`.
+See [current follow-up verification](../docs/evidence/improvement-continuation-verification.json). Exact follow-up CI and protected
+source merge are next; production remains gated on owner backup confirmation.
+Earlier checkpoint records below retain their historical scope.
+
 # FieldSaarthi improvement plan - current finalisation status
 
 Source: `Downloads/FieldSaarthi_AI_95_Improvement_Specification.md`.
@@ -95,3 +105,22 @@ by the participant. No new speech call or production action was made.
 See [current release details](../docs/release-finalisation.md),
 [finalisation audit](../docs/evidence/improvement-finalisation-audit.json) and
 [release evidence](../docs/evidence/improvement-finalisation-release.json).
+
+## November 15 continuation: finish existing follow-up fixes
+
+Scope: preserve the existing feature branch and its uncommitted changes; finish
+IMP-00/02/03/05/06 follow-ups, verify them, and complete the previously authorized
+protected source publication. Production backup confirmation, deployment approval
+and independent evaluation remain separate gates.
+
+- [x] IMP-00 / T-IMP-001..002: verify nested export exclusions and backup paths.
+- [x] IMP-02/03 / T-IMP-025/035: verify filter lookup failure/retry and original-evidence labels in a real browser.
+- [x] IMP-03/04A / T-IMP-036/042: preserve replay sources and reviewed labels, including hard links.
+- [x] IMP-05 / T-IMP-050/055: prove STT admission succeeds with a single connection and keeps provider provenance.
+- [x] IMP-06 / T-IMP-060/063: verify timeout cleanup records failure while continuing owned-resource cleanup.
+- [x] Run backend/static/frontend/browser/archive/dependency checks; record actual results.
+- [ ] Publish focused commits, require green exact-head CI, merge candidate PR and verify main.
+
+Baseline of this continuation: `16697f73150f191d727c9006e9739919ff5b6385`.
+Original Downloads specification SHA-256:
+`33fd3f5d86ad91392de5ef1672bedbed819bb1e3edf23050e8ebc1b04be02253`.

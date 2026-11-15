@@ -1,3 +1,13 @@
+Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
+views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
+queue filter failure/retry, replay input protection, nested archive exclusions
+and timeout cleanup. Strict checks and dependency audits pass. Fresh hosted
+read-only checks preserve the sole approved sample, original transcript hash,
+OPEN/version-1 state and one audit event. The hosted app remains `85e1a5e`.
+See [current follow-up verification](evidence/improvement-continuation-verification.json). Exact follow-up CI and protected
+source merge are next; production remains gated on owner backup confirmation.
+Earlier checkpoint records below retain their historical scope.
+
 Latest ownership update: production backup is handled by the participant and
 completion is not yet confirmed. The agent completes automatic source publication,
 protected merge, CI and local/main synchronization. Engineering and image rollback

@@ -1,3 +1,22 @@
+Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
+views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
+queue filter failure/retry, replay input protection, nested archive exclusions
+and timeout cleanup. Strict checks and dependency audits pass. Fresh hosted
+read-only checks preserve the sole approved sample, original transcript hash,
+OPEN/version-1 state and one audit event. The hosted app remains `85e1a5e`.
+See [current follow-up verification](evidence/improvement-continuation-verification.json). Exact follow-up CI and protected
+source merge are next; production remains gated on owner backup confirmation.
+Earlier checkpoint records below retain their historical scope.
+
+Publication gate for this continuation: the follow-up commits are local only.
+Automatic approval review rejected `git push` because publishing source and
+sanitized evidence to `rdx644/FieldSarthi-AI` requires explicit owner authorization.
+No remote write or protected merge was performed in this continuation. After
+approval, publish `feature/95-improvements`, require its exact-head quality result,
+and complete PR #18 through branch protection. Local Docker is currently stopped;
+the current actual image rehearsal must run in CI. Historical container evidence
+below retains its original scope.
+
 # FieldSaarthi release finalisation
 
 Status: **engineering and CI verified; production backup is participant-owned and not yet confirmed**.
