@@ -279,28 +279,61 @@ def main():
         )
     finally:
         # Only exact invocation-owned, labelled resources may be removed.
+        # One failed inspect/removal must not skip later cleanup or the evidence report.
+        cleanup_failures = []
+
+        def cleanup(*arguments):
+            try:
+                result = docker(*arguments, check=False)
+            except (subprocess.TimeoutExpired, OSError) as exc:
+                cleanup_failures.append(
+                    {
+                        "operation": arguments[0],
+                        "resource": arguments[-1],
+                        "error": type(exc).__name__,
+                    }
+                )
+                return None
+            if result.returncode and (
+                arguments[0] == "rm"
+                or arguments[:2] == ("network", "rm")
+                or result.stderr
+                and "no such" not in result.stderr.lower()
+            ):
+                cleanup_failures.append(
+                    {"operation": arguments[0], "resource": arguments[-1], "error": "nonzero_exit"}
+                )
+            return result
+
         for name in reversed(containers):
-            observed = docker(
+            observed = cleanup(
                 "inspect",
                 "--format",
                 '{{index .Config.Labels "fieldsaarthi.release-test"}}',
                 name,
-                check=False,
             )
-            if observed.returncode == 0 and observed.stdout.strip() == TOKEN:
-                docker("rm", "--force", "--volumes", name, check=False)
-        network = docker(
+            if (
+                observed is not None
+                and observed.returncode == 0
+                and observed.stdout.strip() == TOKEN
+            ):
+                cleanup("rm", "--force", "--volumes", name)
+        network = cleanup(
             "network",
             "inspect",
             "--format",
             '{{index .Labels "fieldsaarthi.release-test"}}',
             PREFIX,
-            check=False,
         )
-        if network.returncode == 0 and network.stdout.strip() == TOKEN:
-            docker("network", "rm", PREFIX, check=False)
+        if network is not None and network.returncode == 0 and network.stdout.strip() == TOKEN:
+            cleanup("network", "rm", PREFIX)
+        report.update(cleanup_complete=not cleanup_failures, cleanup_failures=cleanup_failures)
+        if cleanup_failures:
+            report["status"] = "failed_cleanup"
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if report["status"] != "passed":
+        raise RuntimeError("Release rehearsal cleanup failed; inspect the evidence report.")
     print("Isolated container release rehearsal passed; no live provider or production changes.")
 
 
