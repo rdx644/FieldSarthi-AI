@@ -1,0 +1,89 @@
+{
+  "timestamp_utc": "2026-11-15T09:25:55.956564+00:00",
+  "status": "SPECIFICATION SOURCE ENGINEERING COMPLETE; PRODUCTION RELEASE GATED",
+  "specification_sha256": "33fd3f5d86ad91392de5ef1672bedbed819bb1e3edf23050e8ebc1b04be02253",
+  "candidate_sha": "e782b850697d2683ab45e41cdca2e25ff26372e8",
+  "candidate_pr": "https://github.com/rdx644/FieldSarthi-AI/pull/18",
+  "candidate_merge_sha": "e6a1b80ef33b60963a6ccf2682835f37c9441179",
+  "candidate_ci": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/43698531168",
+  "candidate_ci_status": "success",
+  "merged_application_main_ci": {
+    "sha": "e6a1b80ef33b60963a6ccf2682835f37c9441179",
+    "url": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/43698864910",
+    "conclusion": "success"
+  },
+  "backend_tests": 328,
+  "browser_fixture_views": 18,
+  "ci_evidence": [
+    "docs/evidence/improvement-source-ci.json",
+    "docs/evidence/improvement-source-ci-browser.json",
+    "docs/evidence/improvement-source-ci-container.json"
+  ],
+  "traceability": {
+    "specification_headings": 39,
+    "test_ids": 34,
+    "local_pass": 32,
+    "participant_deferred_evaluation": 1,
+    "hosted_release_gate": 1
+  },
+  "completed_change_ids": [
+    "IMP-00",
+    "IMP-01",
+    "IMP-02",
+    "IMP-03",
+    "IMP-04A",
+    "IMP-05 source",
+    "IMP-06 source"
+  ],
+  "independent_evaluation": "IMP-04B deferred by explicit participant decision; no WER/CER, held-out or 95-point result claimed",
+  "publication_approval": "Participant explicitly requested publication, local sync and main ahead of all branches on 2026-11-15; prior publication blocker resolved",
+  "resolved_review_threads": 4,
+  "branch_ancestry": {
+    "maintenance_merge_sha": "2175545c9eb233f5372483549d01fd54a2376e32",
+    "strategy": "ours history-only merge of reviewed rollback tip",
+    "entire_tree_unchanged": true,
+    "source_tree": "ee759c3aa287f96e2fe3abcbdda4ac38576567d7",
+    "remote_heads_checked": [
+      {
+        "branch": "origin",
+        "sha": "e6a1b80ef33b60963a6ccf2682835f37c9441179",
+        "contained_by_maintenance_head": true
+      },
+      {
+        "branch": "origin/feature/95-improvements",
+        "sha": "e782b850697d2683ab45e41cdca2e25ff26372e8",
+        "contained_by_maintenance_head": true
+      },
+      {
+        "branch": "origin/main",
+        "sha": "e6a1b80ef33b60963a6ccf2682835f37c9441179",
+        "contained_by_maintenance_head": true
+      },
+      {
+        "branch": "origin/release/schema-compatibility",
+        "sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+        "contained_by_maintenance_head": true
+      }
+    ],
+    "rollback_branch_unchanged": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+    "reason": "Superseded rollback behavior remains a deployable artifact; main retains its durable limiter and current frontend. The maintenance PR must pass branch protection before it joins main."
+  },
+  "production": {
+    "deployed_sha": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+    "backup": "owner-managed; current restore-ready completion not confirmed",
+    "deployment": "not performed; staged release still requires backup confirmation and approval",
+    "schema": "candidate 0005; prior live 0004 inferred from readiness, no fresh direct SQL claim",
+    "autodeploy": "off"
+  },
+  "provider_calls": 0,
+  "production_domain_writes": 0,
+  "new_recordings": 0,
+  "participant_submission": "untouched",
+  "rollback_pull_request": {
+    "pr": 19,
+    "state": "closed",
+    "merged": false,
+    "sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+    "reason": "Superseded mainline proposal; immutable rollback branch preserved, with history-only main ancestry handled separately."
+  }
+}

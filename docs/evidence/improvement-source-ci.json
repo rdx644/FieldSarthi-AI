@@ -1,0 +1,135 @@
+{
+  "timestamp_utc": "2026-11-15T09:21:59.449204+00:00",
+  "source_sha": "e782b850697d2683ab45e41cdca2e25ff26372e8",
+  "run_id": 43698531168,
+  "url": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/43698531168",
+  "status": "success",
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run astral-sh/setup-uv@v6",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv python install 3.12",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv sync --locked --python 3.12",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm ci --ignore-scripts",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm run lint",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm run format:check",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm run build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm audit --audit-level=high",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv run ruff check .",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv run ruff format --check .",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv run mypy app",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv run pytest -q",
+      "conclusion": "success"
+    },
+    {
+      "name": "Scan complete reachable history and index for secrets and raw media",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run uv run pip-audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Non-billable browser/accessibility checks",
+      "conclusion": "success"
+    },
+    {
+      "name": "Preserve non-billable browser regression evidence",
+      "conclusion": "success"
+    },
+    {
+      "name": "Prepare the previous-application compatibility source",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build candidate and compatibility images",
+      "conclusion": "success"
+    },
+    {
+      "name": "Rehearse container activation, rollback and restoration",
+      "conclusion": "success"
+    },
+    {
+      "name": "Preserve non-billable container release evidence",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run astral-sh/setup-uv@v6",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": {
+    "browser": "docs/evidence/improvement-source-ci-browser.json",
+    "container": "docs/evidence/improvement-source-ci-container.json"
+  },
+  "provider_calls": 0,
+  "production_writes": 0,
+  "backend": {
+    "passed": 328,
+    "duration_seconds": 46.64
+  }
+}

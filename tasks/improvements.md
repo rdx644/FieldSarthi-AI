@@ -1,3 +1,19 @@
+Current source completion - 2026-11-15: **specification engineering complete
+and merged through protected PR #18**. Exact candidate and merged-application
+main CI pass with 328 backend tests, 18 Chromium fixture accessibility/layout
+views, dependency/static/build checks and the actual four-phase container
+activation/rollback/restoration rehearsal. Read
+[the source completion record](../docs/evidence/improvement-source-finalisation.json) for exact commits and CI links.
+
+The accompanying maintenance change records the compatibility branch history
+without changing any application file; its original deployable tip is preserved.
+All future main updates continue through required CI and branch protection.
+Production remains at `85e1a5e` with auto-deploy off, pending owner confirmation
+of a current restore-ready backup and the staged release approval. Independent
+held-out evaluation remains explicitly participant-deferred; no 95/100 result
+is claimed. The earlier checkpoints below are historical and superseded for
+source publication and local compatibility status.
+
 Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
 views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
 queue filter failure/retry, replay input protection, nested archive exclusions
@@ -16,8 +32,9 @@ Baseline: `0fca9716e3589eb9cac70f12e2468aacf7cadb5a`.
 **Local engineering, source compatibility and real container rollback are verified.**
 The participant explicitly approved deferring independent audio evaluation.
 Both exact source CI runs pass. The participant owns production backup.
-Latest status publication, protected merge and main synchronization are the
-remaining automatic Git steps; live migration awaits backup completion confirmation.
+Source publication, protected merge and merged-application main CI are complete.
+The accompanying maintenance PR finishes branch ancestry and the local main checkout.
+Live migration awaits backup completion confirmation.
 No requirement was silently waived. The previous [audit](../docs/evidence/improvement-completion-audit.json)
 and [handoff](../docs/improvement-handoff.md) preserve the earlier 30-pass/3-blocked checkpoint;
 this status supersedes those local compatibility blockers.
@@ -31,7 +48,7 @@ this status supersedes those local compatibility blockers.
 - [x] IMP-05 local: durable admissions and a separate verified compatibility rollback build.
 - [x] IMP-06 local: 307 backend tests, strict checks and actual four-phase Docker rehearsal.
 - [x] IMP-06 source CI: both approved draft PR heads pass the required quality workflow.
-- [ ] IMP-06 repository: latest-status push, protected candidate merge and exact main CI.
+- [x] IMP-06 repository: latest-status push, protected candidate merge and exact main CI.
 - [ ] IMP-06 production: participant confirms current restore-ready backup; staged release follows.
 
 Candidate code: `c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff`.
@@ -119,7 +136,7 @@ and independent evaluation remain separate gates.
 - [x] IMP-05 / T-IMP-050/055: prove STT admission succeeds with a single connection and keeps provider provenance.
 - [x] IMP-06 / T-IMP-060/063: verify timeout cleanup records failure while continuing owned-resource cleanup.
 - [x] Run backend/static/frontend/browser/archive/dependency checks; record actual results.
-- [ ] Publish focused commits, require green exact-head CI, merge candidate PR and verify main.
+- [x] Publish focused commits, require green exact-head CI, merge candidate PR and verify main.
 
 Baseline of this continuation: `16697f73150f191d727c9006e9739919ff5b6385`.
 Original Downloads specification SHA-256:

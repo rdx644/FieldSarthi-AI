@@ -1,3 +1,19 @@
+Current source completion - 2026-11-15: **specification engineering complete
+and merged through protected PR #18**. Exact candidate and merged-application
+main CI pass with 328 backend tests, 18 Chromium fixture accessibility/layout
+views, dependency/static/build checks and the actual four-phase container
+activation/rollback/restoration rehearsal. Read
+[the source completion record](../docs/evidence/improvement-source-finalisation.json) for exact commits and CI links.
+
+The accompanying maintenance change records the compatibility branch history
+without changing any application file; its original deployable tip is preserved.
+All future main updates continue through required CI and branch protection.
+Production remains at `85e1a5e` with auto-deploy off, pending owner confirmation
+of a current restore-ready backup and the staged release approval. Independent
+held-out evaluation remains explicitly participant-deferred; no 95/100 result
+is claimed. The earlier checkpoints below are historical and superseded for
+source publication and local compatibility status.
+
 Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
 views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
 queue filter failure/retry, replay input protection, nested archive exclusions
