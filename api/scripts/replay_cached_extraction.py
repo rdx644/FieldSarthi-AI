@@ -125,12 +125,20 @@ def main():
     if not args.results.resolve().is_relative_to((ROOT / "private").resolve()):
         parser.error("Cached transcripts must remain under the ignored private directory")
     try:
+        result_paths = [args.results / f"NLP-{index:02}.json" for index in range(1, 16)]
+        manifest_path = ROOT / "docs/tests/audio-cases.json"
+        inputs = [*result_paths, manifest_path]
+        output = args.output.resolve()
+        if (
+            output.is_relative_to(args.results.resolve())
+            or output in [path.resolve() for path in inputs]
+            or output.exists()
+            and any(output.samefile(path) for path in inputs)
+        ):
+            raise ValueError("Replay output must preserve cached sources and reviewed labels.")
         url = isolated_database_url(os.environ["TEST_DATABASE_URL"])
-        records = [
-            json.loads((args.results / f"NLP-{index:02}.json").read_text(encoding="utf-8"))
-            for index in range(1, 16)
-        ]
-        cases = json.loads((ROOT / "docs/tests/audio-cases.json").read_text(encoding="utf-8"))
+        records = [json.loads(path.read_text(encoding="utf-8")) for path in result_paths]
+        cases = json.loads(manifest_path.read_text(encoding="utf-8"))
         for record, case in zip(records, cases, strict=True):
             if record["case_id"] != case["case_id"] or record.get("expected") != case.get(
                 "expected"
