@@ -16,6 +16,7 @@ COPY api/app/ ./app/
 COPY api/alembic/ ./alembic/
 COPY api/alembic.ini ./
 COPY api/scripts/start.py ./scripts/start.py
+COPY api/scripts/schema_bridge.py ./scripts/schema_bridge.py
 COPY --from=frontend /frontend/dist /app/web/dist
 RUN useradd --create-home --uid 10001 fieldsaarthi && mkdir -p /app/private && chown -R fieldsaarthi:fieldsaarthi /app
 ENV PATH="/app/api/.venv/bin:$PATH" APP_ENV=production

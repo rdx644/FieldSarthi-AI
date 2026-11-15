@@ -1,0 +1,28 @@
+{
+  "profile": "previous-application-schema-bridge-speech-paused",
+  "source_baseline": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "previous_application": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+  "previous_app_source_identical": true,
+  "preparation_source_sha": "c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff",
+  "accepted_schema_heads": [
+    "0004",
+    "0005"
+  ],
+  "automatic_migration": false,
+  "billable_speech": "forced paused before startup validation and serving",
+  "changed_files": [
+    "api/app/main.py",
+    "api/scripts/start.py",
+    "Dockerfile",
+    "api/scripts/schema_bridge.py",
+    "api/alembic/versions/0005_provider_admissions.py"
+  ],
+  "changed_file_sha256": {
+    "api/app/main.py": "16391aca5a0bce83271040c5e8b84b2dde00200626207758ba24363017d5878c",
+    "api/scripts/start.py": "ded9361d00b2f5429410a21f5b86d448fc185f4cff6f98f5e90a1b72e9a2e79b",
+    "Dockerfile": "9fa45183ec79b04147ae730e17d2b81653b69b6fece18a1bd8e4cefd681aabcc",
+    "api/scripts/schema_bridge.py": "299900f9a421c0ea5e5b5196c123b118fdda5be3f94c38f53fc7abfa7cfa77ab",
+    "api/alembic/versions/0005_provider_admissions.py": "0eeedd525fbc6d22c5b9532ad7572520f637874cb64b80f64cbff24025ef973f"
+  },
+  "deployment": "not performed; operator approval, exact CI and backup required"
+}

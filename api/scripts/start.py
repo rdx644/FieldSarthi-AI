@@ -4,7 +4,8 @@ import os
 import subprocess
 import sys
 
-subprocess.run([sys.executable, "-m", "alembic", "upgrade", "head"], check=True)
+os.environ["GNANI_REQUESTS_ENABLED"] = "false"
+subprocess.run([sys.executable, "-m", "scripts.schema_bridge"], check=True)
 subprocess.run([sys.executable, "-m", "app.seed"], check=True)
 os.execvp(
     "uvicorn",
