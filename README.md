@@ -6,7 +6,7 @@ Built for the [Great Indian AI Internship Challenge 2026](https://www.gnani.ai/i
 
 [![Live demo](https://img.shields.io/badge/Live%20demo-Render-168575)](https://fieldsaarthi-ai.onrender.com/) [![Speech AI](https://img.shields.io/badge/Gnani%20AI-Prisma%20v2.5-168575)](https://www.gnani.ai/) [![Engineering checks](https://img.shields.io/badge/Engineering-328%20recorded%20tests-168575)](https://github.com/rdx644/FieldSarthi-AI/actions)
 
-[Live application](https://fieldsaarthi-ai.onrender.com/) · [Reviewer walkthrough](#reviewer-walkthrough) · [Demo access](#demo-access) · [Architecture](#architecture) · [Evaluation](#evaluation-and-release-evidence) · [Local setup](#getting-started)
+[Live application](https://fieldsaarthi-ai.onrender.com/) · [Solution pitch](#solution-pitch) · [Reviewer walkthrough](#reviewer-walkthrough) · [Demo access](#demo-access) · [Architecture](#architecture) · [Evaluation](#evaluation-and-release-evidence) · [Local setup](#getting-started)
 
 <!-- Before submission, participants may add the actual published video and nominated public LinkedIn/X post URLs here. Do not use placeholder links in the rendered README. -->
 
@@ -19,6 +19,10 @@ Designed for **frontline facility workers, maintenance supervisors and operation
 ![FieldSaarthi read-only judge dashboard — recorded hosted example](docs/evidence/hosted/judge-dashboard-desktop.png)
 
 *Recorded hosted screenshot. The current release adds database-backed queue analytics; see the latest release evidence below.*
+
+## Solution pitch
+
+FieldSaarthi AI connects a field worker's voice report to an accountable maintenance workflow. Gnani Prisma transcribes the report; the worker reviews catalog-backed equipment, location and issue details before explicitly confirming a durable work order. A supervisor assigns an owner, sets priority and tracks resolution. Original transcripts, corrections and workflow history remain traceable, while optional Gnani Timbre provides a spoken acknowledgment after saving.
 
 ## Key capabilities
 
