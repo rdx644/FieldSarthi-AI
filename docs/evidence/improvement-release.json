@@ -1,0 +1,175 @@
+{
+  "timestamp_utc": "2026-11-15T04:16:40.539175+00:00",
+  "status": "LOCAL VERIFIED — NOT DEPLOYED",
+  "decision": "HOLD PRODUCTION RELEASE; retain the known-good hosted application and schema. All remaining gates are explicit, not waived.",
+  "baseline_git_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "verified_application_source_sha": "84366153682af65f96874dc717e4aa6febed10be",
+  "branch": "feature/95-improvements",
+  "commit_binding": "All application/test changes through this SHA were verified; following commits contain documentation/evidence only. No exact candidate CI is claimed.",
+  "deployed_git_sha": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+  "baseline_ci_url": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/42850275143",
+  "candidate_ci_url": null,
+  "release_tag_preserved": "demo-verified-2026-11-10",
+  "previous_historical_rollback_sha": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+  "schema": {
+    "prior": "0004",
+    "candidate_local_test": "0005",
+    "direct_deployed_sql_check": "unavailable; operational error",
+    "deployed_head_inferred_from_unchanged_old_app_readiness": "0004",
+    "compatibility_evidence": "docs/evidence/improvement-rollback-compatibility.json"
+  },
+  "checks": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest -q --tb=short (from api)",
+      "result": "295 passed in 56.84s",
+      "kind": "local, nonbillable; PostgreSQL fieldsaarthi_test"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m ruff check . (from api)",
+      "result": "All checks passed"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m ruff format --check . (from api)",
+      "result": "77 files already formatted"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m mypy app (from api)",
+      "result": "Success: no issues found in 24 source files"
+    },
+    {
+      "command": "npm run lint (from web)",
+      "result": "passed"
+    },
+    {
+      "command": "npm run format:check (from web)",
+      "result": "passed"
+    },
+    {
+      "command": "npm run build (from web)",
+      "result": "TypeScript and Vite passed"
+    },
+    {
+      "command": "npm audit --audit-level=high (from web)",
+      "result": "found 0 vulnerabilities"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pip_audit (from api)",
+      "result": "No known vulnerabilities found"
+    },
+    {
+      "command": ".venv/Scripts/python.exe tests/browser/workflow_check.py --channel chrome --output-dir docs/evidence/improvement-browser-final (from api)",
+      "result": "passed: 16 axe/layout views; no JavaScript errors; one explicitly test-only speech stub invocation; zero live provider calls"
+    },
+    {
+      "command": "git ls-remote origin refs/heads/main",
+      "result": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a"
+    },
+    {
+      "command": "docker info --format {{.ServerVersion}}",
+      "result": "NOT RUNNABLE: Docker Desktop engine pipe unavailable; no container build claimed"
+    },
+    {
+      "command": "api/.venv/Scripts/python.exe api/scripts/repository_guard.py (from repository root)",
+      "result": "passed; full reachable history and the reviewed staged index scanned; no forbidden paths/media/key signatures"
+    },
+    {
+      "command": "git archive of verified application source plus repository_guard.py --archive (from repository root)",
+      "result": "passed: 263 committed-source members; no private paths/key signatures",
+      "evidence": "docs/evidence/improvement-archive-final.json"
+    },
+    {
+      "command": "read-only local Markdown/test/evidence reference validation",
+      "result": "passed: 56 relative links/anchors, all 34 actual planned test references and all 39 numbered specification headings",
+      "evidence": "docs/evidence/improvement-documentation-check.json"
+    }
+  ],
+  "initial_failed_attempts": [
+    "First backend suite was interrupted after setup connection timeouts while local PostgreSQL was stopped; a focused reproduction also timed out. The documented cluster was started and a fresh complete suite passed.",
+    "pip_audit --disable-pip was rejected because that flag requires a requirements file; reran the exact CI command successfully.",
+    "Direct script replay invocation lacked the application import path; documented -m scripts.replay_cached_extraction succeeded.",
+    "Initial hosted health attempts timed out; later authenticated hosting metadata and both public health checks succeeded."
+  ],
+  "red_green_fix": {
+    "test": "test_cli_rejects_hardlinked_output_without_changing_private_inputs",
+    "before": "both manifest/transcripts alias cases failed: return code 0; temporary fixture inputs overwritten",
+    "after": "30 scoring tests passed; hardlinked private inputs preserved; no real private inputs changed"
+  },
+  "evidence": {
+    "baseline": "docs/evidence/improvement-baseline-current.json",
+    "judge": "docs/evidence/improvement-judge.json",
+    "dashboard": "docs/evidence/improvement-dashboard.json",
+    "extraction": "docs/evidence/improvement-extraction-final.json",
+    "offline_method": "docs/tests/offline-asr-methodology.md",
+    "asr_blocker": "docs/evidence/improvement-asr-development.json",
+    "quota": "docs/evidence/improvement-provider-budget.json",
+    "browser": "docs/evidence/improvement-browser-final/results.json",
+    "coverage": "docs/evidence/improvement-completion-audit.json"
+  },
+  "remaining_gates": [
+    {
+      "id": "IMP-04B / T-IMP-043",
+      "status": "DEFERRED",
+      "owner": "participant",
+      "reason": "No approved independent consented corpus or credit budget; no new recordings or paid evaluation authorized."
+    },
+    {
+      "id": "IMP-04A genuine WER/CER",
+      "status": "NOT MEASURED",
+      "owner": "participant",
+      "reason": "Existing private manifest has no independently verified human reference transcripts; prompts and ASR text are not promoted to references."
+    },
+    {
+      "id": "IMP-05 / T-IMP-056",
+      "status": "BLOCKED FOR PRODUCTION",
+      "owner": "engineering/operator",
+      "reason": "Exact deployed API source cannot resolve 0005 on startup and returns 503 readiness. Additive SQL alone is insufficient. A compatible rollback image must be prepared, built and verified before rollout."
+    },
+    {
+      "id": "IMP-06 / T-IMP-062",
+      "status": "NOT DEPLOYED",
+      "owner": "maintainer/operator",
+      "reason": "No push, exact candidate GitHub CI, approved private production backup or production migration/deploy. Docker engine unavailable locally."
+    },
+    {
+      "id": "IMP-06 / T-IMP-063",
+      "status": "BLOCKED",
+      "owner": "operator",
+      "reason": "No candidate rollback/restoration drill. Historical 12-order rollback evidence applies to older revisions only."
+    }
+  ],
+  "genuine_provider_requests_made": 0,
+  "new_recordings": 0,
+  "production_domain_writes": 0,
+  "production_migrations_deploys_rollbacks": 0,
+  "credential_or_public_access_policy_changes": false,
+  "approved_report": "WO-AFF1E3EE3BD2",
+  "judge_scope_unchanged": true,
+  "current_expiry_from_operator_api": "2026-12-09T12:16:30.004422Z",
+  "managed_backups": "free plan; current backup retention and a new private backup remain operator-owned",
+  "provider_balance": "not observed or fabricated",
+  "rubric": {
+    "kind": "provisional local engineering self-assessment only; no new deployed or official 95-point evaluation",
+    "baseline": [
+      18,
+      19,
+      18,
+      13,
+      8,
+      7,
+      4
+    ],
+    "local_candidate": [
+      19,
+      19,
+      19,
+      13,
+      9,
+      7,
+      5
+    ],
+    "local_total": 91,
+    "deployed_reassessment": null,
+    "heldout_and_durable_deployment_points_withheld": true
+  },
+  "participant_owned_submission": "contributions, eligibility, video, public post and final form remain untouched"
+}

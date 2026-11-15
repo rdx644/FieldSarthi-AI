@@ -10,15 +10,18 @@ import {
   Search,
 } from "lucide-react";
 import { api, date, label } from "../lib/api";
-import type { Location, Queue, User } from "../lib/api";
+import type { Location, Queue, QueueSummary, User } from "../lib/api";
 import { navigate } from "../lib/navigation";
 
 export function Orders({ user }: { user: User }) {
-  const [queue, setQueue] = useState<Queue>({
+  const [queue, setQueue] = useState<
+    Omit<Queue, "summary"> & { summary: QueueSummary | null }
+  >({
     items: [],
     total: 0,
     page: 1,
     page_size: 20,
+    summary: null,
   });
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
@@ -30,26 +33,38 @@ export function Orders({ user }: { user: User }) {
   const [page, setPage] = useState(1);
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
+  const [lookupError, setLookupError] = useState("");
+  const [lookupRevision, setLookupRevision] = useState(0);
   const [revision, setRevision] = useState(0);
   useEffect(() => {
     let active = true;
-    Promise.all([
+    Promise.allSettled([
       api<Location[]>("/locations"),
-      user.role === "SUPERVISOR" ? api<User[]>("/users") : Promise.resolve([]),
-    ])
-      .then(([places, people]) => {
-        if (active) {
-          setLocations(places);
-          setWorkers(people);
-        }
-      })
-      .catch((err) => {
-        if (active) setError(err.message);
-      });
+      user.role === "SUPERVISOR"
+        ? api<User[]>("/users")
+        : Promise.resolve<User[]>([]),
+    ]).then(([places, people]) => {
+      if (!active) return;
+      setLocations(places.status === "fulfilled" ? places.value : []);
+      setWorkers(people.status === "fulfilled" ? people.value : []);
+      setLookupError(
+        [places, people]
+          .flatMap((result) =>
+            result.status === "rejected"
+              ? [
+                  result.reason instanceof Error
+                    ? result.reason.message
+                    : "Filter lookup unavailable.",
+                ]
+              : [],
+          )
+          .join(" "),
+      );
+    });
     return () => {
       active = false;
     };
-  }, [user.role]);
+  }, [user.role, lookupRevision]);
   useEffect(() => {
     let active = true;
     const params = new URLSearchParams({
@@ -84,6 +99,14 @@ export function Orders({ user }: { user: User }) {
     setPage(1);
   }
   const hasFilters = !!(q || status || priority || location || assignee);
+  const summary = busy || error ? null : queue.summary;
+  const scopeLabel =
+    user.role === "JUDGE"
+      ? "Approved sample only"
+      : user.role === "WORKER"
+        ? "My reports"
+        : "All accessible reports";
+  const example = !busy && !error ? queue.items[0] : undefined;
   return (
     <>
       <div className="page-heading">
@@ -119,44 +142,98 @@ export function Orders({ user }: { user: User }) {
       </div>
       {user.role === "JUDGE" && (
         <div className="alert warning" role="status">
-          Judge demo · read-only. Only team-approved synthetic demonstration
-          reports are visible. Open a work order to inspect the actual
-          transcript, Gnani request and persisted audit trail. Team accounts can
-          record reports and perform supervisor actions.
+          <div>
+            Judge demo · read-only. Only participant-approved synthetic evidence
+            is visible. Live speech is disabled here because it consumes
+            provider credits. Inspect the original transcript, actual provider
+            metadata and persisted audit trail.
+            {example ? (
+              <p>
+                <a className="back-link" href={"#/orders/" + example.id}>
+                  Review this example
+                </a>
+              </p>
+            ) : (
+              !busy &&
+              !error && (
+                <p>
+                  No approved example in this view. Clear filters or try again
+                  later.
+                </p>
+              )
+            )}
+          </div>
         </div>
       )}
-      <div className="metrics">
-        <div className="metric">
-          <span>REPORTS IN THIS FILTER</span>
+      {lookupError && (
+        <div className="alert warning" role="status">
           <div>
-            <strong>{queue.total}</strong>
-            <ClipboardList size={23} />
+            <strong>Some filter options are unavailable.</strong> {lookupError}{" "}
+            <button
+              className="button secondary"
+              onClick={() => setLookupRevision((value) => value + 1)}
+            >
+              Retry filters
+            </button>
           </div>
-          <small>Persisted work orders</small>
         </div>
+      )}
+      <p className="small-muted" aria-live="polite">
+        <span>{scopeLabel}</span> · Counts include all pages and ignore search
+        filters.
+      </p>
+      <div
+        className="metrics"
+        role="group"
+        aria-label={scopeLabel}
+        aria-busy={busy}
+      >
         <div className="metric">
-          <span>AWAITING ACTION · THIS PAGE</span>
+          <span>ACTIVE WORK ORDERS</span>
           <div>
-            <strong>
-              {
-                queue.items.filter((x) =>
-                  ["OPEN", "ASSIGNED"].includes(x.status),
-                ).length
-              }
+            <strong data-testid="active-count">
+              {summary
+                ? summary.open + summary.assigned + summary.in_progress
+                : "—"}
             </strong>
             <Clock3 size={23} />
           </div>
-          <small>Open or assigned</small>
+          <small>Open, assigned or in progress</small>
         </div>
         <div className="metric">
-          <span>RESOLVED · THIS PAGE</span>
+          <span>HIGH PRIORITY · ACTIVE</span>
           <div>
-            <strong>
-              {queue.items.filter((x) => x.status === "RESOLVED").length}
+            <strong data-testid="high-priority-count">
+              {summary?.active_high_priority ?? "—"}
+            </strong>
+            <ClipboardList size={23} />
+          </div>
+          <small>Supervisor-set priority</small>
+        </div>
+        <div className="metric">
+          <span>RESOLVED</span>
+          <div>
+            <strong data-testid="resolved-count">
+              {summary?.resolved ?? "—"}
             </strong>
             <CheckCheck size={23} />
           </div>
-          <small>Completed by your team</small>
+          <small>
+            {summary?.mean_resolution_seconds != null
+              ? `Mean ${(summary.mean_resolution_seconds / 60).toFixed(1)} min · ${summary.resolution_sample_count} valid samples`
+              : "Mean resolution: Not enough data"}
+          </small>
+        </div>
+        <div className="metric">
+          <span>VOICE / MANUAL REPORTS</span>
+          <div>
+            <strong>
+              {summary
+                ? `${summary.voice_intake} / ${summary.manual_intake}`
+                : "—"}
+            </strong>
+          </div>
+          <small>Saved order sources · {summary?.total ?? "—"} total</small>
         </div>
       </div>
       <section className="queue-panel">
@@ -178,6 +255,7 @@ export function Orders({ user }: { user: User }) {
                   setBusy(true);
                   setStatus(value);
                   setPage(1);
+                  setRevision((current) => current + 1);
                 }}
               >
                 {name}
@@ -270,7 +348,9 @@ export function Orders({ user }: { user: User }) {
             }}
           />
           <span>
-            {queue.total} work order{queue.total === 1 ? "" : "s"}
+            {error
+              ? "Count unavailable"
+              : `${queue.total} work order${queue.total === 1 ? "" : "s"}`}
           </span>
         </div>
         {error && (
@@ -282,6 +362,11 @@ export function Orders({ user }: { user: User }) {
           <div className="empty-state" role="status">
             <RefreshCw className="pulse" />
             <h3>Getting the latest reports…</h3>
+          </div>
+        ) : error ? (
+          <div className="empty-state">
+            <h3>Queue unavailable</h3>
+            <p>Use Refresh queue to try again.</p>
           </div>
         ) : queue.items.length ? (
           <div className="table-scroll">
@@ -373,12 +458,14 @@ export function Orders({ user }: { user: User }) {
         )}
         <div className="table-footer">
           <span>
-            Page {page} · {queue.items.length} shown of {queue.total}
+            {error
+              ? "Counts unavailable"
+              : `Page ${page} · ${queue.items.length} shown of ${queue.total}`}
           </span>
           <div>
             <button
               className="button small"
-              disabled={page === 1}
+              disabled={busy || !!error || page === 1}
               onClick={() => {
                 setBusy(true);
                 setPage(page - 1);
@@ -388,7 +475,7 @@ export function Orders({ user }: { user: User }) {
             </button>
             <button
               className="button small"
-              disabled={page * 20 >= queue.total}
+              disabled={busy || !!error || page * 20 >= queue.total}
               onClick={() => {
                 setBusy(true);
                 setPage(page + 1);

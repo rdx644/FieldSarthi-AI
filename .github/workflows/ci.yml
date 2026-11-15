@@ -82,6 +82,22 @@ jobs:
         with:
           name: browser-regression
           path: docs/evidence/browser-regression
-      - name: Build deployment image
-        run: docker build --tag fieldsaarthi:ci .
+      - name: Prepare the previous-application compatibility source
+        run: uv run python -m scripts.prepare_compatibility_release --output ../output/compatibility-release
+      - name: Build candidate and compatibility images
+        run: |
+          docker build --tag fieldsaarthi:ci .
+          docker build --tag fieldsaarthi:compatibility output/compatibility-release
         working-directory: .
+      - name: Rehearse container activation, rollback and restoration
+        run: >-
+          uv run python tests/container/release_check.py
+          --candidate-image fieldsaarthi:ci
+          --bridge-image fieldsaarthi:compatibility
+          --output ../docs/evidence/release-rehearsal/results.json
+      - name: Preserve non-billable container release evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-rehearsal
+          path: docs/evidence/release-rehearsal

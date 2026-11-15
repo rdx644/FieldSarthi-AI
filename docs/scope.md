@@ -1,7 +1,7 @@
 # Frozen baseline - WBS-00.4
 Title: FieldSaarthi AI - Multilingual Voice-to-Action Intelligence for Field Operations.
 Personas: worker/reporter, supervisor/dispatcher; seeded setup admin only.
-Baseline: Hindi/Hinglish report, selected `hi-IN`, genuine Prisma v2.5 STT. English/Tamil speech quality remains unverified. Optional Timbre v2.5 acknowledgment and duplicate warnings are implemented and locally verified; Prisma v3 experiments remain deferred.
+Baseline: Hindi/Hinglish report, selected `hi-IN`, genuine Prisma v2.5 STT. The later genuine development corpus covers Hindi, English and Hinglish; Tamil speech remains unverified and excluded from acceptance. Optional Timbre v2.5 acknowledgment and duplicate warnings are implemented and verified in historical evidence; Prisma v3 experiments remain deferred.
 Scenario: Block B / second floor / water pump leaking, urgent repair cue. Synthetic inventory; actual recording from consenting speaker. Urgency is a suggestion requiring supervisor triage.
 
 P0 backlog frozen in dependency order: foundation and synthetic inventory (FR-01..02), auth/RBAC (FR-03), capture/validation (FR-04..05), genuine Prisma/provenance/errors (FR-06..09), catalog extraction (FR-10..12), correction/confirmation (FR-13..15), durable transactional/idempotent orders/audit (FR-16..19), supervisor workflow (FR-20..22), reliability/security/reproducibility (NFR-01..14), truthful demo and final form (O-04..10).

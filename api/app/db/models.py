@@ -8,6 +8,7 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     ForeignKey,
+    Index,
     Integer,
     String,
     Text,
@@ -140,3 +141,15 @@ class Idempotency(Base):
     request_hash: Mapped[str] = mapped_column(String(64))
     result_work_order_id: Mapped[str] = mapped_column(ForeignKey("work_orders.id"))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class ProviderAdmission(Base):
+    __tablename__ = "provider_admissions"
+    __table_args__ = (
+        CheckConstraint("operation IN ('STT','TTS')"),
+        Index("ix_provider_admissions_actor_time", "actor_id", "admitted_at"),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
+    actor_id: Mapped[str] = mapped_column(ForeignKey("users.id"))
+    operation: Mapped[str] = mapped_column(String(3))
+    admitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)

@@ -1,0 +1,99 @@
+{
+  "timestamp_utc": "2026-11-15T04:16:40.539175+00:00",
+  "baseline_git_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "verified_application_source_sha": "84366153682af65f96874dc717e4aa6febed10be",
+  "branch": "feature/95-improvements",
+  "remote_metadata": {
+    "timestamp_utc": "2026-11-15T04:07:56.142452+00:00",
+    "scope": "read-only remote metadata; zero provider requests, deploys or production writes",
+    "baseline_ci": [
+      {
+        "head_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/42850275143"
+      }
+    ],
+    "deployments": [
+      {
+        "status": "live",
+        "commit_sha": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+        "created_at": "2026-11-10T14:19:20.798951Z"
+      },
+      {
+        "status": "deactivated",
+        "commit_sha": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+        "created_at": "2026-11-10T14:17:29.642372Z"
+      },
+      {
+        "status": "deactivated",
+        "commit_sha": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+        "created_at": "2026-11-10T14:15:14.043066Z"
+      },
+      {
+        "status": "deactivated",
+        "commit_sha": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+        "created_at": "2026-11-09T19:24:01.451948Z"
+      },
+      {
+        "status": "canceled",
+        "commit_sha": "6f702c26f5d0ebca99cc71ba870bb7031fdd4dcd",
+        "created_at": "2026-11-09T19:23:02.599499Z"
+      }
+    ],
+    "database_metadata": {
+      "status": "available",
+      "plan": "free",
+      "version": "18",
+      "expiresAt": "2026-12-09T12:16:30.004422Z"
+    },
+    "health": [
+      {
+        "path": "/health/live",
+        "status": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      {
+        "path": "/health/ready",
+        "status": 200,
+        "body": {
+          "status": "ready"
+        }
+      }
+    ]
+  },
+  "approved_judge_readback": {
+    "timestamp_utc": "2026-11-15T04:10:13.691613+00:00",
+    "scope": "deployed baseline, public judge-only reads; session issuance makes no domain writes",
+    "live_provider_calls": 0,
+    "production_domain_writes": 0,
+    "session_status": 200,
+    "role": "JUDGE",
+    "queue_status": 200,
+    "visible_total": 1,
+    "only_approved_report_returned": true,
+    "approved_report": {
+      "public_code": "WO-AFF1E3EE3BD2",
+      "status": "OPEN",
+      "version": 1,
+      "source_type": "GNANI_STT",
+      "provider_name": "Gnani AI",
+      "provider_model": "prisma-v2.5",
+      "genuine_request_id_present": true,
+      "original_transcript_hash_matches_historical": true,
+      "audit_event_count": 1
+    },
+    "tts_enabled": false
+  },
+  "direct_schema_check": {
+    "timestamp_utc": "2026-11-15T04:08:19.756078+00:00",
+    "scope": "read-only production schema and approved-sample integrity check; no transcript output",
+    "status": "unverified",
+    "error_type": "OperationalError"
+  },
+  "schema_interpretation": "Live readiness at the recorded old application implies its exact 0004 head; direct SQL verification was unavailable and is not claimed.",
+  "provider_calls": 0,
+  "production_domain_writes": 0
+}

@@ -1,0 +1,65 @@
+{
+  "change_id": "IMP-01",
+  "timestamp_utc": "2026-11-15T04:16:40.539175+00:00",
+  "verified_application_source_sha": "84366153682af65f96874dc717e4aa6febed10be",
+  "status": "LOCAL VERIFIED — NOT DEPLOYED",
+  "scope": "new judge UX uses synthetic fixtures; separate readback verifies deployed baseline only",
+  "official_deadline": "2026-11-15T18:00:00+05:30",
+  "official_source": "https://www.gnani.ai/internship",
+  "official_source_checked_on": "2026-11-15",
+  "fixture_browser_results": "docs/evidence/improvement-browser-final/results.json",
+  "accessibility_layout_views_passed": 16,
+  "viewport_widths": [
+    320,
+    768,
+    1024,
+    1440
+  ],
+  "keyboard_example_shortcut": true,
+  "empty_and_unavailable_states": true,
+  "javascript_errors": [],
+  "direct_api_test": "api/tests/integration/test_judge_access.py::test_public_judge_is_read_only_and_sees_only_approved_reports",
+  "direct_api_denials": [
+    "STT upload",
+    "manual intake",
+    "order confirmation",
+    "assignment",
+    "priority",
+    "status",
+    "transcript correction",
+    "TTS",
+    "supervisor user enumeration"
+  ],
+  "test_assertions": [
+    "403 responses with valid CSRF headers",
+    "no provider invocation or provider_admissions rows",
+    "approved detail unchanged",
+    "hidden order/intake return 404",
+    "disabled judge session returns 401"
+  ],
+  "deployed_baseline_judge_readback": {
+    "timestamp_utc": "2026-11-15T04:10:13.691613+00:00",
+    "scope": "deployed baseline, public judge-only reads; session issuance makes no domain writes",
+    "live_provider_calls": 0,
+    "production_domain_writes": 0,
+    "session_status": 200,
+    "role": "JUDGE",
+    "queue_status": 200,
+    "visible_total": 1,
+    "only_approved_report_returned": true,
+    "approved_report": {
+      "public_code": "WO-AFF1E3EE3BD2",
+      "status": "OPEN",
+      "version": 1,
+      "source_type": "GNANI_STT",
+      "provider_name": "Gnani AI",
+      "provider_model": "prisma-v2.5",
+      "genuine_request_id_present": true,
+      "original_transcript_hash_matches_historical": true,
+      "audit_event_count": 1
+    },
+    "tts_enabled": false
+  },
+  "paid_provider_calls": 0,
+  "public_visibility_changed": false
+}

@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from starlette.concurrency import run_in_threadpool
 
 from app.core.errors import AppError
-from app.core.limits import provider_budget
+from app.core.limits import ensure_provider_requests_enabled, provider_budget
 from app.core.security import current_user, worker
 from app.core.telemetry import stage_event
 from app.db.models import Intake, Order, User
@@ -41,6 +41,10 @@ async def transcribe(
     if language_code not in {"hi-IN", "en-IN", "ta-IN"}:
         raise AppError(422, "INVALID_LANGUAGE", "Select Hindi, English or Tamil.")
     try:
+        ensure_provider_requests_enabled()
+        actor_id = user.id
+        # Release the authentication read transaction before normalization/admission.
+        db.rollback()
         data = await audio_file.read(MAX_BYTES + 1)
     finally:
         await audio_file.close()
@@ -53,9 +57,10 @@ async def transcribe(
         stage_event(request.state.request_id, "audio_normalize", started, code=exc.code)
         raise
     stage_event(request.state.request_id, "audio_normalize", started)
-    provider_budget.check(user.id)
+    # A separate short transaction commits before any provider/network wait.
+    await run_in_threadpool(provider_budget.check, actor_id, "STT")
     row = Intake(
-        reporter_id=user.id,
+        reporter_id=actor_id,
         language_code=language_code,
         audio_duration_seconds=duration,
         status="TRANSCRIBING",
@@ -121,7 +126,7 @@ async def transcribe(
                 "Retry later or type your report.",
             ),
         ) from None
-    return review_json(row, user.id, db)
+    return review_json(row, actor_id, db)
 
 
 def review_json(row: Intake, reporter_id: str, db: Session) -> dict[str, Any]:

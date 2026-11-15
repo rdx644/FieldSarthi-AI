@@ -1,3 +1,26 @@
+Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
+views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
+queue filter failure/retry, replay input protection, nested archive exclusions
+and timeout cleanup. Strict checks and dependency audits pass. Fresh hosted
+read-only checks preserve the sole approved sample, original transcript hash,
+OPEN/version-1 state and one audit event. The hosted app remains `85e1a5e`.
+See [current follow-up verification](evidence/improvement-continuation-verification.json). Exact follow-up CI and protected
+source merge are next; production remains gated on owner backup confirmation.
+Earlier checkpoint records below retain their historical scope.
+
+Latest ownership update: production backup is handled by the participant and
+completion is not yet confirmed. The agent completes automatic source publication,
+protected merge, CI and local/main synchronization. Engineering and image rollback
+are verified; live migration waits for backup confirmation. See
+[current status](release-finalisation.md). Earlier checkpoint statements below retain their scope.
+
+Latest finalisation: **307 backend tests and actual container compatibility,
+rollback and restoration pass locally**; independent evaluation is explicitly
+participant-deferred. The prepared compatibility build resolves the earlier local
+blocker. Both source CI runs pass; approved production backup/deployment remains pending.
+See [current finalisation](release-finalisation.md). Earlier checkpoint statements below retain their
+historical scope.
+
 # Risk register - reviewed 2026-11-09
 
 Severity describes impact if the risk occurs, not proof that a defect exists. See [the complete audit](evidence/roadmap-audit.md) for missing requirements and tests.
@@ -22,3 +45,15 @@ Severity describes impact if the risk occurs, not proof that a defect exists. Se
 | R-16 | High | Free Render PostgreSQL expires in 30 days; no managed backup | Deployment owner: private export/recovery; paid upgrade needs separate authorization |
 
 Review before G3/G4. Known Critical/High defects block release; absent evidence stays pending even when CI passes.
+
+## November 14 improvement candidate risks
+
+| ID | Impact | Current evidence / remaining trigger | Mitigation / owner |
+|---|---|---|---|
+| R-17 | Critical rollout blocker | Local ledger migration `0005` is additive, but old image startup cannot resolve that revision and exact-head readiness expects `0004` | Operator: stage and verify a compatibility rollback image before any production migration; private backup and deployment approval; never downgrade/delete records |
+| R-18 | High evaluation limitation | No verified human reference transcripts or independent held-out result; offline tool is tested on synthetic examples only | Participant: supply consented verified references and separately approve any bounded live study; retain historical 12/15 and no 95-point claim |
+| R-19 | High demo access | Intentionally shared synthetic worker/supervisor accounts can spend quota or mutate shared demo data | Preserve owner policy; monitor real credits and pause if needed; no new public report visibility or credential changes |
+| R-20 | Medium deployment assumption | Login limiter is now thread-safe locally but process-local; startup trusts forwarded headers from its ingress | Preserve one worker/replica; operator must verify ingress sanitizes forwarded client headers before any broader exposure |
+| R-21 | High verification gap | Candidate has local gates only; current hosted revision/health were rechecked November 15; direct schema SQL, exact candidate CI and container build remain unverified | No release claim; Docker engine unavailable locally; operator reviews exact CI/backup and health/provenance after approved deployment |
+
+November 15: exact old deployed API source independently reproduced the `0005` startup/readiness incompatibility; [executed evidence](evidence/improvement-rollback-compatibility.json). Current operator API confirms database expiry 2026-12-09; backup retention and balance remain owner-managed. See [handoff](improvement-handoff.md).

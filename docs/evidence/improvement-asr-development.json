@@ -1,0 +1,26 @@
+{
+  "change_id": "IMP-04A",
+  "date": "2026-11-14",
+  "scope": "Local offline tooling and synthetic regression fixtures only",
+  "baseline_source_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "paid_provider_requests": 0,
+  "new_recordings": 0,
+  "historical_evidence_modified": false,
+  "development_corpus_case_count": 15,
+  "explicitly_verified_reference_transcript_count": 0,
+  "development_wer": null,
+  "development_cer": null,
+  "measurement_status": "NOT MEASURED: private manifest has prompts and expected fields, without explicitly verified human references; prompts were not assumed to be verbatim references",
+  "heldout_status": "DEFERRED: independent consented data and explicit live-call authorization required",
+  "methodology": "docs/tests/offline-asr-methodology.md",
+  "tests": {
+    "red": "New scoring tests initially failed collection because scripts.score_transcripts did not exist",
+    "command": ".venv/Scripts/python.exe -m pytest tests/unit/test_transcript_scoring.py tests/unit/test_audio_evaluation.py tests/unit/test_evaluation_failure_acknowledgement.py -q",
+    "new_scoring_cases": 28,
+    "passed": 38,
+    "failed": 0,
+    "evidence_kind": "synthetic_fixture; does not establish genuine speech accuracy"
+  },
+  "test_ids": ["T-IMP-040", "T-IMP-041", "T-IMP-042", "T-IMP-044"],
+  "release_status": "LOCAL TOOLING VERIFIED; NOT DEPLOYED; no accuracy uplift claimed"
+}

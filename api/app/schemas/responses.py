@@ -89,11 +89,33 @@ class OrderResponse(BaseModel):
     audit: list[AuditResponse] = Field(default_factory=list)
 
 
+class IssueCount(BaseModel):
+    issue_category: Issue
+    count: int
+
+
+class QueueSummary(BaseModel):
+    scope: Literal["role_accessible_all"] = "role_accessible_all"
+    total: int
+    open: int
+    assigned: int
+    in_progress: int
+    resolved: int
+    cancelled: int
+    active_high_priority: int
+    voice_intake: int
+    manual_intake: int
+    mean_resolution_seconds: float | None
+    resolution_sample_count: int
+    issue_counts: list[IssueCount]
+
+
 class QueueResponse(BaseModel):
     items: list[OrderResponse]
     total: int
     page: int
     page_size: int
+    summary: QueueSummary
 
 
 class UserResponse(BaseModel):

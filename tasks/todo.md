@@ -1,3 +1,38 @@
+Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
+views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
+queue filter failure/retry, replay input protection, nested archive exclusions
+and timeout cleanup. Strict checks and dependency audits pass. Fresh hosted
+read-only checks preserve the sole approved sample, original transcript hash,
+OPEN/version-1 state and one audit event. The hosted app remains `85e1a5e`.
+See [current follow-up verification](../docs/evidence/improvement-continuation-verification.json). Exact follow-up CI and protected
+source merge are next; production remains gated on owner backup confirmation.
+Earlier checkpoint records below retain their historical scope.
+
+Latest ownership update: production backup is handled by the participant and
+completion is not yet confirmed. The agent completes automatic source publication,
+protected merge, CI and local/main synchronization. Engineering and image rollback
+are verified; live migration waits for backup confirmation. See
+[current status](../docs/release-finalisation.md). Earlier checkpoint statements below retain their scope.
+
+Latest finalisation: **307 backend tests and actual container compatibility,
+rollback and restoration pass locally**; independent evaluation is explicitly
+participant-deferred. The prepared compatibility build resolves the earlier local
+blocker. Both source CI runs pass; approved production backup/deployment remains pending.
+See [current finalisation](../docs/release-finalisation.md). Earlier checkpoint statements below retain their
+historical scope.
+
+Latest improvement verification ? 2026-11-15: **295 backend tests and 16 Chrome
+fixture accessibility/layout views pass locally. Not deployed.** All 34 T-IMP IDs
+are accounted for in [the improvement checklist](improvements.md); exact candidate
+CI, compatibility/backup/deployment and independent live evaluation remain gated.
+See [the current handoff](../docs/improvement-handoff.md). No new provider calls,
+recordings, production writes or participant submissions.
+
+Current improvement work — 2026-11-14: see [the separate improvement checklist](improvements.md).
+The November 10 signoff below is historical. New code is locally verified only;
+production migration/deployment, independent audio evaluation and participant
+submission remain gated as recorded in that checklist.
+
 Latest temporary-demo engineering signoff — 2026-11-10
 
 All identified engineering gaps are closed within the agreed scope. Application `85e1a5e20c1f623c0ce664493c8f002e7d5cff10`, engineering tag `demo-verified-2026-11-10`: 199 backend tests and required CI passed; actual hosted deploy -> compatible rollback -> restoration verified with all 12 persisted report details/audits/provenance and approved judge access unchanged. User provided actual-console credit observation; tested `GNANI_REQUESTS_ENABLED` pause controls both billable endpoints. No new recordings/provider calls. [Release proof](../docs/evidence/demo-operational-release.json).

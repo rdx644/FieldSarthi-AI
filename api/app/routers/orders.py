@@ -6,6 +6,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
+from starlette.concurrency import run_in_threadpool
 
 from app.core.errors import AppError
 from app.core.limits import provider_budget, provider_requests_enabled
@@ -17,6 +18,7 @@ from app.integrations.gnani import GnaniError
 from app.integrations.tts import TimbreClient, provider_slots
 from app.schemas.commands import Assignment, Confirm, Priority, PriorityChange, Status, StatusChange
 from app.schemas.responses import OrderResponse, QueueResponse
+from app.services.analytics import accessible_orders, queue_summary
 from app.services.orders import accessible_order, change_order, create_order, order_json
 
 router = APIRouter(prefix="/api/v1/work-orders")
@@ -52,7 +54,7 @@ async def acknowledgment(oid: str, request: Request, user: Current, db: DB) -> R
             "Spoken acknowledgment is not enabled. Your report remains saved.",
         )
     try:
-        provider_budget.check(actor_id)
+        await run_in_threadpool(provider_budget.check, actor_id, "TTS")
         started = perf_counter()
         async with asyncio.timeout(90):
             async with provider_slots:
@@ -96,11 +98,8 @@ def queue(
     page: Annotated[int, Query(ge=1)] = 1,
     page_size: Annotated[int, Query(ge=1, le=100)] = 20,
 ) -> dict[str, Any]:
-    query = select(Order)
-    if user.role == "JUDGE":
-        query = query.where(Order.judge_visible)
-    if user.role == "WORKER":
-        query = query.where(Order.reporter_id == user.id)
+    query = accessible_orders(user)
+    summary = queue_summary(db, query)
     for name, value in [
         ("status", status),
         ("priority", priority),
@@ -122,6 +121,7 @@ def queue(
         "total": total,
         "page": page,
         "page_size": page_size,
+        "summary": summary,
     }
 
 

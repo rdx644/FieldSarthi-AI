@@ -54,7 +54,7 @@ function Login({ onLogin }: { onLogin: (user: User) => void }) {
             <AudioLines size={32} />
             <div>
               <strong>Built for the way your team speaks</strong>
-              <span>Hindi · English · Tamil</span>
+              <span>Hindi · English · Hinglish</span>
             </div>
           </div>
           <div className="story-flow">

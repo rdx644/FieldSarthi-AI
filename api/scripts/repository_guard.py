@@ -4,9 +4,12 @@ No content/secret values are printed. This deterministic guard complements revie
 it is not a claim to detect every possible credential format.
 """
 
+import argparse
 import re
+import stat
 import subprocess
-from pathlib import Path
+import zipfile
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[2]
 MEDIA = {
@@ -23,6 +26,12 @@ MEDIA = {
     ".pem",
     ".p12",
 }
+ARCHIVE_SUFFIXES = (".zip", ".7z", ".tar", ".tgz", ".tbz2", ".txz", ".tzst")
+COMPRESSED_BACKUP_SUFFIXES = tuple(
+    f"{kind}.{compression}"
+    for kind in (".tar", ".sql", ".dump")
+    for compression in ("gz", "bz2", "xz", "zst", "zstd")
+)
 SIGNATURES = [
     re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     re.compile(rb"\bgh[pousr]_[A-Za-z0-9]{30,}\b"),
@@ -37,13 +46,26 @@ ASSIGNMENT = re.compile(
 
 
 def forbidden_path(path):
-    parts = Path(path.replace("\\", "/")).parts
+    parts = PurePosixPath(path.replace("\\", "/").lower()).parts
     name = parts[-1] if parts else ""
     return (
-        "private" in parts
+        bool(
+            {"private", "private-exports", "backups", "pgdata", "pg_wal", "pg_tblspc"}.intersection(
+                parts
+            )
+        )
         or name == ".env"
         or (name.startswith(".env.") and name != ".env.example")
         or Path(name).suffix.lower() in MEDIA
+        or name.endswith(ARCHIVE_SUFFIXES + COMPRESSED_BACKUP_SUFFIXES + (".pid",))
+        or name in {"postmaster.opts", "pg_hba.conf", "pg_ident.conf", "postgresql.auto.conf"}
+        or (
+            name.endswith(".sql")
+            and (
+                bool({"backup", "backups", "dumps"}.intersection(parts[:-1]))
+                or bool(re.search(r"(?:backup|dump|snapshot)", name))
+            )
+        )
     )
 
 
@@ -69,6 +91,53 @@ def inspect_content(body):
         ):
             return True
     return False
+
+
+def inspect_archive(path):
+    """Inspect a source ZIP without extracting, logging bodies, or trusting ignore rules."""
+    failures = []
+    with zipfile.ZipFile(path) as archive:
+        members = archive.infolist()
+        if len(members) > 10000 or sum(item.file_size for item in members) > 100 * 1024 * 1024:
+            return len(members), ["Archive exceeds source inspection limits"]
+        for item in members:
+            name = item.filename.replace("\\", "/")
+            parts = PurePosixPath(name).parts
+            normalized_name = name.lower()
+            normalized_parts = PurePosixPath(normalized_name).parts
+            unsafe = (
+                name.startswith("/")
+                or ".." in parts
+                or any(":" in part for part in parts)
+                or stat.S_ISLNK(item.external_attr >> 16)
+            )
+            # Graph/reference exports may exist in history, but never belong in a new export.
+            excluded_export = (
+                bool(
+                    {
+                        ".git",
+                        ".venv",
+                        "node_modules",
+                        "__pycache__",
+                        ".playwright-cli",
+                        "graphify-out",
+                    }.intersection(normalized_parts)
+                )
+                or any(
+                    normalized_parts[index : index + 2] == ("docs", "submission")
+                    for index in range(len(normalized_parts) - 1)
+                )
+                or normalized_parts[-2:] == ("docs", "roadmap.md")
+                or normalized_parts[-1:] == ("fieldsaarthi_ai_traceable_implementation_roadmap.md",)
+            )
+            if unsafe or forbidden_path(name) or excluded_export:
+                failures.append("Forbidden archive member: " + name)
+            elif not item.is_dir():
+                if item.file_size > 10 * 1024 * 1024:
+                    failures.append("Archive member exceeds inspection limit: " + name)
+                elif inspect_content(archive.read(item)):
+                    failures.append("Credential signature in archive member: " + name)
+    return len(members), failures
 
 
 def git(*arguments, data=None):
@@ -123,4 +192,20 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--archive", type=Path, help="Inspect a git archive ZIP without extracting it"
+    )
+    args = parser.parse_args()
+    if args.archive:
+        try:
+            count, failures = inspect_archive(args.archive)
+        except (OSError, RuntimeError, zipfile.BadZipFile):
+            raise SystemExit("Archive could not be safely inspected") from None
+        for failure in failures:
+            print(failure)
+        if failures:
+            raise SystemExit(1)
+        print(f"Archive guard passed: {count} members; no forbidden paths/key signatures.")
+    else:
+        main()

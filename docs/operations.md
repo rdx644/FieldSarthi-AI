@@ -1,3 +1,16 @@
+Latest ownership update: production backup is handled by the participant and
+completion is not yet confirmed. The agent completes automatic source publication,
+protected merge, CI and local/main synchronization. Engineering and image rollback
+are verified; live migration waits for backup confirmation. See
+[current status](release-finalisation.md). Earlier checkpoint statements below retain their scope.
+
+Latest finalisation: **307 backend tests and actual container compatibility,
+rollback and restoration pass locally**; independent evaluation is explicitly
+participant-deferred. The prepared compatibility build resolves the earlier local
+blocker. Both source CI runs pass; approved production backup/deployment remains pending.
+See [current finalisation](release-finalisation.md). Earlier checkpoint statements below retain their
+historical scope.
+
 # Operations
 
 ## Public judge access and rollback
@@ -6,8 +19,11 @@
 The flag is off in the local example and on in the submission Blueprint. The user
 approved publishing WO-AFF1E3EE3BD2; other reports default to private. This flag is
 owned by the participants and should be reviewed at the end of the challenge demo.
-Set it to false to deny both new and existing judge sessions. No team password is
-published; judges cannot mutate reports or call billable speech endpoints.
+Set it to false to deny both new and existing judge sessions. Judge entry needs
+no password; judges cannot mutate reports or call billable speech endpoints. The
+three shared synthetic team logins are intentionally public in README under the
+participant's existing policy; provider, database, JWT and hosting secrets remain
+private. Activity through those team accounts is shared demo data.
 
 Before rolling back to code older than migration 0004, first disable the flag and
 deactivate JUDGE users in the database with the authorized operator connection:
@@ -52,7 +68,7 @@ Liveness `/health/live`; readiness `/health/ready` checks a migrated reachable D
 Rollback application code to the prior verified commit/image with a compatible schema. Migrations are additive; destructive downgrades deliberately refuse. For database recovery, restore a reviewed backup into a new instance and verify counts/invariants before switching the secret connection URL. Do not delete production rows to reset a demo.
 
 ## Limits and privacy
-Single worker/replica, 20 sign-in attempts per IP/15 minutes, 24 provider calls per user/hour and 80 per process/hour. In-memory counters reset on restart and are not an account-wide credit guarantee; monitor the actual Gnani console. Clips target 25 seconds, provider maximum 30; local upload cap 10 MiB. Temporary decoded audio is removed in finally blocks. Existing consented test clips in private/ are operator test assets, not app storage; remove after the evidence/submission review unless continued retention is consented.
+Single worker/replica, 20 sign-in attempts per IP/15 minutes. The local IMP-05 candidate uses durable 24-per-actor/80-global hourly STT/TTS operation admissions; the prior deployed limiter resets on restart. Login throttling remains process-local, with its thread race fixed in the candidate. Admission counts are not an account-wide credit guarantee; monitor the actual Gnani console. Clips target 25 seconds, provider maximum 30; local upload cap 10 MiB. Temporary decoded audio is removed in finally blocks. Existing consented test clips in private/ are operator test assets, not app storage; remove after the evidence/submission review unless continued retention is consented.
 
 Render free services can sleep/cold-start and their files are ephemeral; DB storage is separate. Free PostgreSQL expires after 30 days. The prepared plan is for a submission demo, not a production availability or backup SLA.
 
@@ -62,8 +78,12 @@ Render free services can sleep/cold-start and their files are ephemeral; DB stor
 
 Before opening the demo, check the actual remaining balance in https://app.gnani.ai/voice/usage and record the value and UTC/IST timestamp privately. Recheck after a demo session and before re-enabling a paused service. Pause when balance is exhausted, uncertain or below the operator's chosen reserve. A 402 provider response remains a failed request, never success. This app does not invent a price per request, account balance or undocumented balance API.
 
-The shared 24-per-user/80-global hourly admission throttle covers both STT and TTS. Retries inside the adapter can produce more than one upstream attempt per admitted operation. Counters reset on restart and do not cover other uses of the key. They are request controls, not a monetary guarantee. The balance attestation and chosen reserve remain operator configuration. Backups and database expiry are explicitly user-managed for the temporary demo; no paid upgrade is required or performed.
+The local candidate's shared 24-per-actor/80-global rolling-hour admission ledger covers both STT and TTS and survives restarts. Failed processing retains reservations. Default STT retries permit up to two upstream attempts per operation (explicitly constructed adapters can allow three); TTS makes one. Other uses of the key are outside this ledger. The prior deployed RAM limiter resets on restart. These are operation controls, not money. Optional operator maintenance `app.services.provider_admission.cleanup_provider_admissions()` deletes at most 500 entries older than seven days per invocation; it is not called on request traffic. Follow [ADR-010](adrs/ADR-010-durable-provider-admission.md) and the [deployment compatibility gate](deployment.md#november-14-candidate-gate) before any migration. Balance checks, chosen reserve, backup retention and current expiry remain operator-owned; no paid upgrade was performed.
 
 ## Executed compatible rollback
 
 The [operational release drill](evidence/demo-operational-release.json) deployed verified application `85e1a5e20c1f623c0ce664493c8f002e7d5cff10`, rolled back via Render to the prior judge-safe `6f702c2` artifact, and restored the new artifact. All 12 existing report-detail hashes, including raw/provider/corrected facts and audit events, matched at every phase. The approved public report stayed OPEN/version 1 and was the only judge-visible report. No schema downgrade, report mutation or Gnani request was used. This validates these compatible revisions only; retain the pre-0004 judge-safety precautions above.
+
+## November 15 read-only status
+
+The operator API confirms the original application is still live and the free database expires on 2026-12-09T12:16:30.004422Z; both health endpoints returned 200. The only approved judge sample remains OPEN/version 1 with unchanged original transcript hash. These checks spent no speech credits and made no domain writes. Candidate release, backup/restore, direct schema verification and real credit observation remain gated; see [the current handoff](improvement-handoff.md).

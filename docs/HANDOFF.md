@@ -1,3 +1,43 @@
+Latest ownership update: production backup is handled by the participant and
+completion is not yet confirmed. The agent completes automatic source publication,
+protected merge, CI and local/main synchronization. Engineering and image rollback
+are verified; live migration waits for backup confirmation. See
+[current status](release-finalisation.md). Earlier checkpoint statements below retain their scope.
+
+# Latest finalisation checkpoint
+
+**307 backend tests and the real four-phase container rollback pass locally.**
+The compatibility blocker is resolved for the prepared build; independent audio
+evaluation is explicitly deferred by participant decision. Both source CI runs pass; production approval/backup/deployment remains pending. Read
+[the current release finalisation](release-finalisation.md) and
+[release evidence](evidence/improvement-finalisation-release.json).
+The earlier checkpoint below is preserved as history and is superseded where it
+calls the local compatibility build unavailable or reports 295 tests.
+
+# Latest improvement verification — 2026-11-15
+
+**LOCAL VERIFIED — NOT DEPLOYED.** Application/test source `84366153682af65f96874dc717e4aa6febed10be`,
+branch `feature/95-improvements`: 295 backend tests, strict static/frontend gates,
+clean dependency audits and 16 Chrome fixture accessibility/layout views pass.
+Read the [complete handoff](improvement-handoff.md),
+[34-ID plan](../tasks/improvements.md) and
+[release manifest](evidence/improvement-release.json) for the current status.
+
+Live application remains `85e1a5e` (fresh operator API/read-only verification).
+Both health endpoints returned 200; only the approved report is visible and its
+original transcript hash matches. Render reports December 9 expiry; backup
+retention and real provider balance remain operator-owned. Direct production SQL
+head verification was unavailable; readiness implies the prior exact `0004` head.
+No live provider call, recording, production mutation, deployment or submission.
+
+Offline replay retains 12/15 complete cases, 6/6 safe blocks and 3/3 correction
+recovery. Genuine WER/CER and independent held-out evaluation remain unavailable.
+Exact old deployed API source at local schema `0005` fails startup/readiness;
+compatible rollback image, exact candidate CI/container, approved backup and
+production release remain blocked. No 95/100 outcome is claimed.
+
+The following November 14 and earlier records preserve their original scope.
+
 Latest temporary-demo engineering signoff — 2026-11-10
 
 All identified engineering gaps are closed within the agreed scope. Application `85e1a5e20c1f623c0ce664493c8f002e7d5cff10`, engineering tag `demo-verified-2026-11-10`: 199 backend tests and required CI passed; actual hosted deploy -> compatible rollback -> restoration verified with all 12 persisted report details/audits/provenance and approved judge access unchanged. User provided actual-console credit observation; tested `GNANI_REQUESTS_ENABLED` pause controls both billable endpoints. No new recordings/provider calls. [Release proof](evidence/demo-operational-release.json).

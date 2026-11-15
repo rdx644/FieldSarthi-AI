@@ -1,8 +1,10 @@
 # Evaluate FieldSaarthi AI
 
-Deployment verified on 2026-11-10 IST at application commit `6f702c2`.
-The public judge dashboard is live; [deployed checks](evidence/hosted/judge-release-verification.json)
-and [desktop/mobile browser checks](evidence/hosted/judge-browser-verification.json) passed.
+Historical deployment checks on 2026-11-10 IST covered application commit `6f702c2`;
+the later [operational release](evidence/demo-operational-release.json) records
+`85e1a5e` and rollback/restoration. The [earlier deployed checks](evidence/hosted/judge-release-verification.json)
+and [desktop/mobile checks](evidence/hosted/judge-browser-verification.json) are dated
+evidence, not proof of today's deployed revision.
 
 Open **https://fieldsaarthi-ai.onrender.com** and choose **Open judge demo**.
 No password is required. A free-host cold start can take a little time; leave the
@@ -14,8 +16,9 @@ read unapproved reports or access team credentials. The team authorized publishi
 the synthetic Hindi report **WO-AFF1E3EE3BD2**, including its transcript and audit.
 New reports remain private unless deliberately approved for publication.
 
-1. Inspect the dashboard. Search the work-order code and try status, priority and
-   location filters. Counts come from the database.
+1. Inspect the approved sample. Search the work-order code and try status, priority
+   and location filters. This scope is only participant-approved synthetic evidence,
+   not the enterprise workload or a speech accuracy sample.
 2. Open WO-AFF1E3EE3BD2. Inspect the original transcript, selected language, actual
    **Prisma v2.5** model/request ID, human-confirmed structured fields and creation
    audit. This participant report remains OPEN; no completed resolution is claimed
@@ -28,20 +31,32 @@ New reports remain private unless deliberately approved for publication.
    [architecture](architecture.md) and [requirement mapping](rtm.md).
    The original implementation roadmap and submission drafts are intentionally private.
 
-To exercise recording and supervisor changes, ask the participants for the private
-worker/supervisor accounts. Sign out of the judge session first. Team accounts can:
+To exercise recording and supervisor changes, use the intentionally published
+[shared synthetic demo accounts](../README.md#demo-access). Sign out of the judge
+session first. Activity is shared with other users of each account; use a new
+synthetic report and preserve the approved judge example. Those accounts can:
 record/upload a consenting short clip → call genuine Gnani → review/correct →
 explicitly confirm → receive one durable order → assign/start/resolve → refresh.
 The optional Timbre Hindi acknowledgment is generated only for a saved order.
 A typed accessibility report is explicitly MANUAL_TEXT and is never claimed as
 Gnani speech recognition.
 
-Hindi/Hinglish is the verified speech baseline. English/Tamil options exist, but
-their quality must be assessed from the actual audio-evaluation report when
-available. Automated provider fixtures are labelled test-only and do not measure
-ASR accuracy. No mock provider path exists in the deployed application.
+The genuine development corpus covers Hindi, English and Hinglish: **14/15 nonempty
+transcripts**, **12/15 automatic complete cases**, all **6/6 expected safety blocks**
+and **3/3 explicit correction replays**. Ten hosted workflows reuse one consenting
+clip and measure repeatability, not independent accuracy. Same-corpus refinement
+was used; historical WER/CER and held-out results are unavailable. Tamil speech
+remains unvalidated and excluded from acceptance. Automated provider fixtures are
+test-only. No mock provider path exists in the deployed application.
+
+Optional Timbre acknowledgment is disabled for the judge session to prevent paid
+calls. Original provider transcript and original suggestions remain distinct from
+corrected text/confirmed fields. TTS documentation reports requested and actually
+returned model metadata separately; missing metadata is never inferred.
 
 This is a synthetic challenge demo on free Render infrastructure. PostgreSQL expires
-on **2026-12-09** unless the hosting plan changes; managed backups are unavailable on
-the current free plan. Submission video, public post, participant attestations and
-the final official form remain separate participant tasks.
+on the recorded date **2026-12-09** unless the hosting plan changes; the owner must
+verify current expiry and backups. The [official challenge page](https://www.gnani.ai/internship),
+checked November 14, gives **November 15, 2026 at 18:00 IST** as the final deadline.
+Submission video, public post, participant attestations and the final official
+form remain separate participant tasks.

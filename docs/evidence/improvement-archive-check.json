@@ -1,0 +1,36 @@
+{
+  "change_id": "IMP-00",
+  "date": "2026-11-14",
+  "scope": "local, nonbillable; baseline source export only",
+  "baseline_commit": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "check_version": "repository-guard-archive-v2",
+  "test_ids": ["T-IMP-001", "T-IMP-002"],
+  "checks": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/unit/test_repository_guard.py -q",
+      "working_directory": "api",
+      "result": "43 passed; initial 14 new protection cases failed against baseline; subsequent independent review reproduced 11 compressed-suffix/case-normalization failures before fixes"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/repository_guard.py",
+      "working_directory": "api",
+      "result": "passed; 447 reachable historical blobs and index entries inspected"
+    },
+    {
+      "command": "git archive --format=zip --output=output/fieldsaarthi-source-baseline.zip 0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+      "working_directory": "repository root",
+      "result": "created from committed tree only; existing private workspace untouched"
+    },
+    {
+      "command": "api/.venv/Scripts/python.exe api/scripts/repository_guard.py --archive output/fieldsaarthi-source-baseline.zip",
+      "working_directory": "repository root",
+      "result": "passed",
+      "archive_member_count": 237
+    }
+  ],
+  "limitations": [
+    "The archive is the baseline commit, not the uncommitted improvement candidate.",
+    "Known signatures and path checks are not a universal secret or consent audit.",
+    "No archive was published; no credentials rotated; no existing private files deleted."
+  ]
+}

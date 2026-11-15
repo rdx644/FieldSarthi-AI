@@ -1,3 +1,21 @@
+## Release preparation - compatibility and image rehearsal
+
+- Prepare an independently reviewed previous-app build for exact 0004/0005 startup with speech forced paused and no automatic migration.
+- Verify real candidate activation, rollback and restoration in isolated Docker PostgreSQL, preserving all domain and admission data.
+- Add the dual-image rehearsal to CI with cleanup and UTF-8 regressions; 307 backend tests pass.
+- Record participant-approved independent-evaluation deferral. Production rollout remains approval/backup gated.
+
+## Unreleased — targeted engineering improvements, 2026-11-15
+
+Local candidate only; migration/deployment and independent speech evaluation remain gated.
+
+- Add role-scoped SQL queue summaries that retain correct totals across pages and filters.
+- Clarify read-only judge navigation, human confirmation, language readiness and location/equipment review.
+- Guard tracked source ZIPs and compressed backups; add network-free WER/CER scoring with explicit denominators and private-input preservation, including hard links.
+- Add a durable shared STT/TTS admission ledger and serialize concurrent login throttle checks.
+- Preserve rules-v4 and original provider facts; verify cached safety/correction regressions.
+- Record 295 backend tests, 16 Chrome fixture views and a full requirement handoff. No provider calls or production changes; previous-image compatibility at schema 0005 blocks rollout.
+
 ## Demo operational controls ? 2026-11-10
 
 - Operators can pause both live STT and TTS with `GNANI_REQUESTS_ENABLED=false`; manual reports and saved workflows stay available.

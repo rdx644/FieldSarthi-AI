@@ -1,0 +1,31 @@
+{
+  "timestamp_utc": "2026-11-15T09:10:26.696706+00:00",
+  "scope": "read-only public judge and health checks",
+  "provider_calls": 0,
+  "production_domain_writes": 0,
+  "/health/live": {
+    "status": 200,
+    "body": {
+      "status": "ok"
+    }
+  },
+  "/health/ready": {
+    "status": 200,
+    "body": {
+      "status": "ready"
+    }
+  },
+  "judge_session_status": 200,
+  "visible_total": 1,
+  "approved_report": {
+    "public_code": "WO-AFF1E3EE3BD2",
+    "status": "OPEN",
+    "version": 1,
+    "source_type": "GNANI_STT",
+    "provider_model": "prisma-v2.5",
+    "genuine_request_id_present": true,
+    "original_transcript_hash_matches_historical": true,
+    "audit_count": 1
+  },
+  "status": "passed"
+}

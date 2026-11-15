@@ -1,0 +1,70 @@
+{
+  "timestamp_utc": "2026-11-15T06:39:07.336321+00:00",
+  "kind": "nonbillable_synthetic_isolated_container_release_rehearsal",
+  "status": "passed",
+  "provider_calls": 0,
+  "production_changes": 0,
+  "database_name": "fieldsaarthi_test",
+  "internal_network_only": true,
+  "phases": [
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": false,
+      "manual_provenance_preserved": true,
+      "phase": "stage",
+      "schema_head": "0004"
+    },
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": true,
+      "manual_provenance_preserved": true,
+      "phase": "activate",
+      "schema_head": "0005"
+    },
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": false,
+      "manual_provenance_preserved": true,
+      "phase": "rollback",
+      "schema_head": "0005"
+    },
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": true,
+      "manual_provenance_preserved": true,
+      "phase": "restore",
+      "schema_head": "0005"
+    }
+  ],
+  "image_ids": {
+    "candidate": "sha256:41db63be1a87c0b38d7e8d0b1d0c1cf9e92a05b8bbc022da27593ce61294cfe7",
+    "bridge": "sha256:2fd4f640083ac688cc83936d17da603a191d3a0f23aed9cb80a1aced67a901f0"
+  },
+  "domain_tables_unchanged": [
+    "users",
+    "locations",
+    "assets",
+    "report_intakes",
+    "work_orders",
+    "audit_events",
+    "idempotency_keys"
+  ],
+  "synthetic_order_count": 1,
+  "audit_event_count": 1,
+  "admission_rows_preserved": 2,
+  "schema_downgrades": 0,
+  "existing_host_databases_or_containers_changed": false,
+  "ci_binding": {
+    "candidate_source_sha": "c8de7d6cdfbe7876524759701e2a433082546310",
+    "run_url": "https://github.com/rdx644/FieldSarthi-AI/actions/runs/43686208851",
+    "artifact_id": 14150642559
+  }
+}

@@ -1,7 +1,4 @@
 import os
-import threading
-import time
-from collections import defaultdict, deque
 
 from starlette.responses import JSONResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
@@ -56,36 +53,25 @@ def provider_requests_enabled() -> bool:
     return os.getenv("GNANI_REQUESTS_ENABLED", "true").lower() == "true"
 
 
+def ensure_provider_requests_enabled() -> None:
+    if not provider_requests_enabled():
+        raise AppError(
+            503,
+            "GNANI_REQUESTS_PAUSED",
+            "Live audio is paused by the operator. Type your report; saved work remains available.",
+        )
+
+
 class ProviderBudget:
-    """Bounded single-process demo throttle. Deploy exactly one worker/replica."""
+    """Shared durable operation admission. Audio execution still uses one worker."""
 
-    def __init__(self) -> None:
-        self.entries: dict[str, deque[float]] = defaultdict(deque)
-        self.lock = threading.Lock()
+    def check(self, actor_id: str, operation: str = "STT") -> None:
+        ensure_provider_requests_enabled()
+        if operation not in {"STT", "TTS"}:
+            raise AppError(422, "INVALID_PROVIDER_OPERATION", "Unsupported audio operation.")
+        from app.services.provider_admission import reserve_provider_admission
 
-    def check(self, actor_id: str) -> None:
-        if not provider_requests_enabled():
-            raise AppError(
-                503,
-                "GNANI_REQUESTS_PAUSED",
-                "Live audio is paused by the operator. "
-                "Type your report; saved work remains available.",
-            )
-        with self.lock:
-            now = time.monotonic()
-            for key in list(self.entries):
-                while self.entries[key] and self.entries[key][0] < now - 3600:
-                    self.entries[key].popleft()
-                if not self.entries[key]:
-                    del self.entries[key]
-            if len(self.entries) >= 10000 and actor_id not in self.entries:
-                raise AppError(429, "PROVIDER_BUDGET", "Demo recognition usage is at its limit.")
-            if len(self.entries[actor_id]) >= 24 or len(self.entries["__global__"]) >= 80:
-                raise AppError(
-                    429, "PROVIDER_BUDGET", "Demo audio budget reached. Try again later."
-                )
-            self.entries[actor_id].append(now)
-            self.entries["__global__"].append(now)
+        reserve_provider_admission(actor_id, operation)
 
 
 provider_budget = ProviderBudget()

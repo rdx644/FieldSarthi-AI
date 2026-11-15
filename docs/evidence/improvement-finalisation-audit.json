@@ -1,0 +1,651 @@
+{
+  "timestamp_utc": "2026-11-15T07:03:03.075827+00:00",
+  "specification": {
+    "name": "FieldSaarthi_AI_95_Improvement_Specification.md",
+    "sha256": "33fd3f5d86ad91392de5ef1672bedbed819bb1e3edf23050e8ebc1b04be02253"
+  },
+  "baseline_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "verified_application_source_sha": "c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff",
+  "status": "ALL NON-MANUAL ENGINEERING VERIFIED; REPOSITORY FINALISATION IN PROGRESS; OWNER BACKUP GATES LIVE RELEASE",
+  "counts": {
+    "passed_local": 32,
+    "deferred_by_participant": 1,
+    "pending_release": 1
+  },
+  "items": [
+    {
+      "id": "T-IMP-001",
+      "requirement": "guarded archive",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_repository_guard.py::test_imp_001_clean_archive_is_allowed"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-archive-final.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-002",
+      "requirement": "synthetic forbidden paths/secrets",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_repository_guard.py::test_imp_001_archive_checks_paths_and_contents_without_disclosing_secrets",
+        "api/tests/unit/test_repository_guard.py::test_imp_002_backup_archive_and_runtime_paths_are_blocked"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-010",
+      "requirement": "judge access and hidden-report denial",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_judge_access.py::test_public_judge_is_read_only_and_sees_only_approved_reports"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-judge.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-011",
+      "requirement": "desktop/mobile quick review",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/browser/workflow_check.py"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-browser-final/results.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-012",
+      "requirement": "current documentation consistency",
+      "status": "passed_local",
+      "actual_tests": [],
+      "evidence": [
+        "docs/evidence/improvement-documentation-check.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-020",
+      "requirement": "more than 20 orders and pagination",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_queue_analytics.py::test_summary_is_role_scoped_and_stable_across_pages_filters"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-dashboard.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-021",
+      "requirement": "scope and filter invariance",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_queue_analytics.py::test_summary_is_role_scoped_and_stable_across_pages_filters"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-dashboard.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-022",
+      "requirement": "source/status/operational priority counts",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_queue_analytics.py::test_summary_is_role_scoped_and_stable_across_pages_filters"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-dashboard.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-023",
+      "requirement": "empty results and valid/null resolution time",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_queue_analytics.py::test_empty_summary_has_no_invented_resolution_time",
+        "api/tests/integration/test_queue_analytics.py::test_summary_is_role_scoped_and_stable_across_pages_filters"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-dashboard.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-024",
+      "requirement": "role count leakage",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_queue_analytics.py::test_summary_is_role_scoped_and_stable_across_pages_filters"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-dashboard.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-025",
+      "requirement": "browser refresh and stale state",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/browser/workflow_check.py"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-browser-final/results.json"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-030",
+      "requirement": "catalog/shared aliases",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_extraction_safety_assessment.py::test_imp_030_shared_alias_retains_all_candidates_and_requires_choice"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-031",
+      "requirement": "contradictory/unresolved cues",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_extraction_safety_assessment.py::test_imp_031_conflicting_or_negated_locations_stay_unresolved",
+        "api/tests/unit/test_extraction_safety_assessment.py::test_imp_031_multiple_issue_cues_require_review_even_with_negation"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-032",
+      "requirement": "original Unicode spans",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_extraction_safety_assessment.py::test_imp_032_unicode_combining_marks_preserve_original_span_offsets"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-033",
+      "requirement": "original transcript/evidence immutability",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_roadmap_regressions.py::test_edit_preserves_original_and_locks_provenance_after_confirmation",
+        "api/tests/integration/test_workflow.py::test_audit_and_provider_provenance_are_immutable"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-034",
+      "requirement": "explicit human confirmation",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_workflow.py::test_idor_invalid_asset_and_unconfirmed_create_nothing",
+        "api/tests/integration/test_release_guards.py::test_numeric_confirmation_is_not_human_confirmation"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-035",
+      "requirement": "corrected location/asset consistency",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_workflow.py::test_idor_invalid_asset_and_unconfirmed_create_nothing",
+        "api/tests/browser/workflow_check.py"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-036",
+      "requirement": "baseline safety regression/cache replay",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_extraction_safety_assessment.py",
+        "api/tests/integration/test_asr_correction_recovery.py::test_asr_failure_recovers_with_explicit_review"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-extraction-final.json"
+      ],
+      "note": "rules-v4 retained under the specification safe-baseline option; 12/15 complete, 6/6 safety blocks, 3/3 explicit recovery; no uplift claimed"
+    },
+    {
+      "id": "T-IMP-040",
+      "requirement": "offline WER/CER mathematics",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_transcript_scoring.py::test_hand_computed_alignment",
+        "api/tests/unit/test_transcript_scoring.py::test_cer_uses_normalized_codepoints_without_whitespace"
+      ],
+      "evidence": [
+        "docs/tests/offline-asr-methodology.md"
+      ],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-041",
+      "requirement": "coverage and denominator honesty",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_transcript_scoring.py::test_micro_average_failures_and_nonempty_denominators_are_distinct",
+        "api/tests/unit/test_transcript_scoring.py::test_missing_and_empty_references_are_unmeasured_not_perfect"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-042",
+      "requirement": "private manifest and data preservation",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_transcript_scoring.py::test_public_output_omits_transcripts_fields_conditions_and_original_ids",
+        "api/tests/unit/test_transcript_scoring.py::test_cli_rejects_hardlinked_output_without_changing_private_inputs"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-043",
+      "requirement": "genuine frozen held-out corpus",
+      "status": "deferred_by_participant",
+      "actual_tests": [],
+      "evidence": [
+        "docs/evidence/improvement-evaluation-disposition.json"
+      ],
+      "note": "Participant explicitly chose to finalise with independent evaluation deferred after the supplied folder was confirmed to be the tuned development corpus."
+    },
+    {
+      "id": "T-IMP-044",
+      "requirement": "split/fixture separation",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/unit/test_transcript_scoring.py::test_heldout_requires_predeclared_independence_and_stays_separate",
+        "api/tests/unit/test_transcript_scoring.py::test_private_manifest_rejects_invalid_or_mixed_cases"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-050",
+      "requirement": "durable rolling cap",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_provider_admission.py::test_actor_cap_is_shared_by_stt_tts_and_new_instances"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-051",
+      "requirement": "concurrent shared STT/TTS cap",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_provider_admission.py::test_global_cap_and_concurrent_operations_do_not_oversubscribe",
+        "api/tests/integration/test_provider_admission.py::test_concurrent_same_actor_limit_is_atomic"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-052",
+      "requirement": "restart resilience",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_provider_admission.py::test_actor_cap_is_shared_by_stt_tts_and_new_instances"
+      ],
+      "evidence": [],
+      "note": "includes independent Python process"
+    },
+    {
+      "id": "T-IMP-053",
+      "requirement": "DB-time expiry and bounded cleanup",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_provider_admission.py::test_expired_reservations_release_capacity_by_database_time",
+        "api/tests/integration/test_provider_admission.py::test_cleanup_is_bounded_and_keeps_recent_reservations"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-054",
+      "requirement": "pause and role denial",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_provider_admission.py::test_pause_inactive_and_judge_do_not_reserve",
+        "api/tests/integration/test_provider_pause.py"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-055",
+      "requirement": "fail-closed DB/commit errors",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_provider_admission.py::test_admission_transaction_rolls_back_failed_commit",
+        "api/tests/integration/test_provider_admission.py::test_denied_database_admission_never_calls_provider_or_changes_saved_order"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-056",
+      "requirement": "additive upgrade and old-app rollback compatibility",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_compatibility_release.py"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-container-release.json"
+      ],
+      "note": "A separate speech-paused previous-application build starts at exactly 0004/0005. Candidate upgrade, bridge rollback and candidate restoration preserve domain and ledger data. Production rollout still requires approval/backup/exact CI."
+    },
+    {
+      "id": "T-IMP-060",
+      "requirement": "full CI-equivalent local quality suite",
+      "status": "passed_local",
+      "actual_tests": [],
+      "evidence": [
+        "docs/evidence/improvement-release.json"
+      ],
+      "note": "295 pytest cases and static/frontend/audits/Chrome passed; remote candidate CI/container build not claimed"
+    },
+    {
+      "id": "T-IMP-061",
+      "requirement": "immutable data and readiness",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/integration/test_workflow.py::test_audit_and_provider_provenance_are_immutable",
+        "api/tests/integration/test_roadmap_regressions.py::test_readiness_fails_when_database_is_unavailable",
+        "api/tests/integration/test_foundation.py::test_live_and_ready"
+      ],
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "T-IMP-062",
+      "requirement": "exact candidate CI/deployment",
+      "status": "pending_release",
+      "actual_tests": [],
+      "evidence": [
+        "docs/evidence/improvement-finalisation-release.json",
+        "docs/evidence/improvement-ci-container-release.json"
+      ],
+      "note": "Candidate and rollback source CI passed; latest status is being synchronized and merged through required checks. Participant owns production backup; live deployment and hosted checks remain gated on its completion."
+    },
+    {
+      "id": "T-IMP-063",
+      "requirement": "candidate rollback rehearsal",
+      "status": "passed_local",
+      "actual_tests": [
+        "api/tests/container/release_check.py",
+        "api/tests/integration/test_compatibility_release.py"
+      ],
+      "evidence": [
+        "docs/evidence/improvement-container-release.json"
+      ],
+      "note": "Actual local and CI Docker-image rollback/restoration passed. A production rehearsal remains dependent on owner backup completion and staged deployment."
+    }
+  ],
+  "scope_choices_permitted_by_spec": [
+    "retain rules-v4 without demonstrated safe gain",
+    "retain explicit manual field correction; optional corrected-text re-extraction not introduced",
+    "no optional chart dependency, optional daily cap or multi-tenant redesign",
+    "public synthetic access and exactly one approved report unchanged",
+    "Phase B and production release remain approval/verification gated"
+  ],
+  "waived_requirements": [],
+  "live_provider_calls": 0,
+  "numbered_specification_sections": [
+    {
+      "section": "1",
+      "heading": "Official context and ownership boundaries",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "1.1",
+      "heading": "Owner boundaries",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "2",
+      "heading": "High-level existing codebase context",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "2.1",
+      "heading": "Product and system responsibilities",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "2.2",
+      "heading": "Technical stack and deployment",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "2.3",
+      "heading": "Repository map — actual paths inspected in the ZIP",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "2.4",
+      "heading": "Data model and workflow invariants",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "2.5",
+      "heading": "Existing API surface (preserve compatibility)",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "3",
+      "heading": "Baseline evidence and scoring",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "3.1",
+      "heading": "Scoring bridge (same 100-point rubric as prior review)",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "4",
+      "heading": "Implementation rules and change control",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "4.1",
+      "heading": "Agent first-read sequence",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "4.2",
+      "heading": "Non-negotiable safeguards",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "5",
+      "heading": "IMP-00 — Baseline, security and archive hygiene",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "5.1",
+      "heading": "Modification instructions",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "6",
+      "heading": "IMP-01 — Reviewer-facing documentation and judge experience",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "6.1",
+      "heading": "README structure (preserve existing content)",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "6.2",
+      "heading": "Judge page and guide",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "7",
+      "heading": "IMP-02 — Correct, operationally useful dashboard analytics",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "7.1",
+      "heading": "API contract and implementation",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "7.2",
+      "heading": "UI contract",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "8",
+      "heading": "IMP-03 — Safer speech extraction and review UX",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "8.1",
+      "heading": "Catalog and parser refinement",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "8.2",
+      "heading": "Review UX",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "9",
+      "heading": "IMP-04 — Honest ASR and independent evaluation",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "9.1",
+      "heading": "Phase A: no-cost evaluation infrastructure (implement now)",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "9.2",
+      "heading": "Phase B: held-out genuine corpus (only with approval, available data and time)",
+      "status": "deferred_by_participant",
+      "note": "Explicit participant decision; no independent metrics or new provider calls."
+    },
+    {
+      "section": "10",
+      "heading": "IMP-05 — Durable provider budget and access controls",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "10.1",
+      "heading": "Durable admission reservations",
+      "status": "passed_local",
+      "note": "Source and actual image compatibility now verified; production rollout requires approval and backup."
+    },
+    {
+      "section": "10.2",
+      "heading": "Demo account policy and isolation",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "11",
+      "heading": "IMP-06 — Release reliability and operational handoff",
+      "status": "local_verified_release_pending",
+      "note": "307 backend tests and real two-image rehearsal pass; source CI/production approval still pending."
+    },
+    {
+      "section": "11.1",
+      "heading": "Verification and release steps",
+      "status": "local_verified_release_pending",
+      "note": "307 backend tests and real two-image rehearsal pass; source CI/production approval still pending."
+    },
+    {
+      "section": "11.2",
+      "heading": "Infrastructure and handoff",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "12",
+      "heading": "Traceability and test matrix",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "13",
+      "heading": "Execution order, scope cut and release gating",
+      "status": "local_verified_release_pending",
+      "note": "307 backend tests and real two-image rehearsal pass; source CI/production approval still pending."
+    },
+    {
+      "section": "14",
+      "heading": "95-point reassessment and definition of done",
+      "status": "local_reassessment_only",
+      "note": "91/100 provisional local; no 95-point or deployed reassessment claimed."
+    },
+    {
+      "section": "14.1",
+      "heading": "Evidence-driven reassessment",
+      "status": "local_reassessment_only",
+      "note": "91/100 provisional local; no 95-point or deployed reassessment claimed."
+    },
+    {
+      "section": "14.2",
+      "heading": "Required handoff report",
+      "status": "covered_local_or_preserved",
+      "note": "See the matching IMP section, original RTM and handoff."
+    },
+    {
+      "section": "14.3",
+      "heading": "Release checklist",
+      "status": "local_verified_release_pending",
+      "note": "307 backend tests and real two-image rehearsal pass; source CI/production approval still pending."
+    }
+  ],
+  "compatibility_source_sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+  "traceability_correction": "T-IMP-010..012 and 020..025 labels now match section 12 of the supplied specification verbatim in meaning; the earlier audit labels were reordered, not omitted tests.",
+  "supersedes": "docs/evidence/improvement-completion-audit.json",
+  "owner_managed_backup": "Participant explicitly took responsibility; completed backup is not yet confirmed and is not marked passed."
+}
