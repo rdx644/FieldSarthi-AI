@@ -6,18 +6,20 @@ Turn a spoken maintenance report into a human-verified work order that a supervi
 
 [Open judge demo](https://fieldsaarthi-ai.onrender.com) (choose the password-free, read-only option; first request may wake the free host) · [Demo credentials](#demo-access) · [Overview](#overview) · [Getting started](#getting-started) · [Usage](#usage) · [Architecture](#architecture) · [Contributing and support](#contributing-and-support) · [License and credits](#license-and-credits)
 
-Improvement implementation verified locally on **November 15, 2026**: role-scoped
-queue totals, clearer judge/review navigation, offline WER/CER tooling, archive
-protection and durable speech admission. **328 backend tests and 18 Chrome fixture accessibility/layout views pass.
-Not deployed.** The prior two-image rollback passes locally and in CI; the latest
-follow-up source is awaiting its exact-head CI rehearsal. A compatible rollback
-build and both exact source CI runs are verified. Production backup is
-participant-owned; confirmation of a current restore-ready backup gates deployment. Independent evaluation is deferred by participant decision. See the [complete requirement status](tasks/improvements.md),
-[current engineering handoff](docs/release-finalisation.md),
+Improvement source is merged through [PR #18](https://github.com/rdx644/FieldSarthi-AI/pull/18).
+**328 backend tests, 18 Chromium fixture accessibility/layout views and the actual
+container activation/rollback/restoration rehearsal pass in exact candidate and
+merged-application main CI.** Strict static/build checks and dependency audits pass.
+See the [source completion record](docs/evidence/improvement-source-finalisation.json),
+[requirement status](tasks/improvements.md), [engineering handoff](docs/HANDOFF.md),
 [analytics definitions](docs/architecture.md#operational-queue-summary--imp-02)
 and [offline scoring method](docs/tests/offline-asr-methodology.md).
-Genuine WER/CER and held-out accuracy remain unmeasured; 95/100 is a target,
-not a verified result. Historical hosted measurements below retain their original scope.
+
+**Not deployed:** production remains at `85e1a5e` with auto-deploy off, pending owner
+confirmation of a current restore-ready backup and the staged release approval.
+Independent evaluation is participant-deferred. Genuine WER/CER and held-out
+accuracy remain unmeasured; **95/100 is a target**, not a verified result.
+Historical hosted measurements below retain their original scope.
 
 ## Overview
 

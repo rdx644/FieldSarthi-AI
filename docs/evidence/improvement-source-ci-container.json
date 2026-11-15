@@ -1,0 +1,67 @@
+{
+  "timestamp_utc": "2026-11-15T09:20:07.687765+00:00",
+  "kind": "nonbillable_synthetic_isolated_container_release_rehearsal",
+  "status": "passed",
+  "provider_calls": 0,
+  "production_changes": 0,
+  "database_name": "fieldsaarthi_test",
+  "internal_network_only": true,
+  "phases": [
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": false,
+      "manual_provenance_preserved": true,
+      "phase": "stage",
+      "schema_head": "0004"
+    },
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": true,
+      "manual_provenance_preserved": true,
+      "phase": "activate",
+      "schema_head": "0005"
+    },
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": false,
+      "manual_provenance_preserved": true,
+      "phase": "rollback",
+      "schema_head": "0005"
+    },
+    {
+      "ready": 200,
+      "root": 200,
+      "work_order_count": 1,
+      "tts_enabled": true,
+      "manual_provenance_preserved": true,
+      "phase": "restore",
+      "schema_head": "0005"
+    }
+  ],
+  "image_ids": {
+    "candidate": "sha256:9cd31954cd490f48994a937aa1bee27b80574b0f7f73f701f1f95a8f33b00940",
+    "bridge": "sha256:82b86df1af5869a40fbd3ebb71c71a3422a45680b37e755b1ad10a607801cb5b"
+  },
+  "domain_tables_unchanged": [
+    "users",
+    "locations",
+    "assets",
+    "report_intakes",
+    "work_orders",
+    "audit_events",
+    "idempotency_keys"
+  ],
+  "synthetic_order_count": 1,
+  "audit_event_count": 1,
+  "admission_rows_preserved": 2,
+  "schema_downgrades": 0,
+  "existing_host_databases_or_containers_changed": false,
+  "cleanup_complete": true,
+  "cleanup_failures": []
+}

@@ -1,3 +1,19 @@
+Current source completion - 2026-11-15: **specification engineering complete
+and merged through protected PR #18**. Exact candidate and merged-application
+main CI pass with 328 backend tests, 18 Chromium fixture accessibility/layout
+views, dependency/static/build checks and the actual four-phase container
+activation/rollback/restoration rehearsal. Read
+[the source completion record](evidence/improvement-source-finalisation.json) for exact commits and CI links.
+
+The accompanying maintenance change records the compatibility branch history
+without changing any application file; its original deployable tip is preserved.
+All future main updates continue through required CI and branch protection.
+Production remains at `85e1a5e` with auto-deploy off, pending owner confirmation
+of a current restore-ready backup and the staged release approval. Independent
+held-out evaluation remains explicitly participant-deferred; no 95/100 result
+is claimed. The earlier checkpoints below are historical and superseded for
+source publication and local compatibility status.
+
 Latest ownership update: production backup is handled by the participant and
 completion is not yet confirmed. The agent completes automatic source publication,
 protected merge, CI and local/main synchronization. Engineering and image rollback

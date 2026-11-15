@@ -1,3 +1,19 @@
+Current source completion - 2026-11-15: **specification engineering complete
+and merged through protected PR #18**. Exact candidate and merged-application
+main CI pass with 328 backend tests, 18 Chromium fixture accessibility/layout
+views, dependency/static/build checks and the actual four-phase container
+activation/rollback/restoration rehearsal. Read
+[the source completion record](evidence/improvement-source-finalisation.json) for exact commits and CI links.
+
+The accompanying maintenance change records the compatibility branch history
+without changing any application file; its original deployable tip is preserved.
+All future main updates continue through required CI and branch protection.
+Production remains at `85e1a5e` with auto-deploy off, pending owner confirmation
+of a current restore-ready backup and the staged release approval. Independent
+held-out evaluation remains explicitly participant-deferred; no 95/100 result
+is claimed. The earlier checkpoints below are historical and superseded for
+source publication and local compatibility status.
+
 Latest continuation ? 2026-11-15: **328 backend tests and 18 Chrome fixture
 views pass; not deployed.** Follow-ups fix scarce-connection STT admission,
 queue filter failure/retry, replay input protection, nested archive exclusions
@@ -8,14 +24,8 @@ See [current follow-up verification](evidence/improvement-continuation-verificat
 source merge are next; production remains gated on owner backup confirmation.
 Earlier checkpoint records below retain their historical scope.
 
-Publication gate for this continuation: the follow-up commits are local only.
-Automatic approval review rejected `git push` because publishing source and
-sanitized evidence to `rdx644/FieldSarthi-AI` requires explicit owner authorization.
-No remote write or protected merge was performed in this continuation. After
-approval, publish `feature/95-improvements`, require its exact-head quality result,
-and complete PR #18 through branch protection. Local Docker is currently stopped;
-the current actual image rehearsal must run in CI. Historical container evidence
-below retains its original scope.
+Previous publication blocker was resolved by the participant's explicit
+authorization to publish and synchronize main. PR #18 is now merged.
 
 # FieldSaarthi release finalisation
 
