@@ -1,3 +1,10 @@
+## Release preparation - compatibility and image rehearsal
+
+- Prepare an independently reviewed previous-app build for exact 0004/0005 startup with speech forced paused and no automatic migration.
+- Verify real candidate activation, rollback and restoration in isolated Docker PostgreSQL, preserving all domain and admission data.
+- Add the dual-image rehearsal to CI with cleanup and UTF-8 regressions; 307 backend tests pass.
+- Record participant-approved independent-evaluation deferral. Production rollout remains approval/backup gated.
+
 ## Unreleased — targeted engineering improvements, 2026-11-15
 
 Local candidate only; migration/deployment and independent speech evaluation remain gated.

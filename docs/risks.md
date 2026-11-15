@@ -1,3 +1,10 @@
+Latest finalisation: **307 backend tests and actual container compatibility,
+rollback and restoration pass locally**; independent evaluation is explicitly
+participant-deferred. The prepared compatibility build resolves the earlier local
+blocker. Source CI and approved production backup/deployment remain pending.
+See [current finalisation](release-finalisation.md). Earlier checkpoint statements below retain their
+historical scope.
+
 # Risk register - reviewed 2026-11-09
 
 Severity describes impact if the risk occurs, not proof that a defect exists. See [the complete audit](evidence/roadmap-audit.md) for missing requirements and tests.

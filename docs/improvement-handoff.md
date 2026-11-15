@@ -1,3 +1,14 @@
+# Latest finalisation checkpoint
+
+**307 backend tests and the real four-phase container rollback pass locally.**
+The compatibility blocker is resolved for the prepared build; independent audio
+evaluation is explicitly deferred by participant decision. Source CI and
+production approval/backup/deployment remain pending. Read
+[the current release finalisation](release-finalisation.md) and
+[release evidence](evidence/improvement-finalisation-release.json).
+The earlier checkpoint below is preserved as history and is superseded where it
+calls the local compatibility build unavailable or reports 295 tests.
+
 # FieldSaarthi improvement handoff — 2026-11-15
 
 Status: **LOCAL VERIFIED — NOT DEPLOYED. Hold production migration/release.**

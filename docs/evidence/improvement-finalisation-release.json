@@ -1,0 +1,52 @@
+{
+  "timestamp_utc": "2026-11-15T06:32:51.435894+00:00",
+  "status": "LOCAL ENGINEERING VERIFIED - RELEASE PENDING",
+  "baseline_sha": "0fca9716e3589eb9cac70f12e2468aacf7cadb5a",
+  "candidate_code_sha": "c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff",
+  "compatibility_sha": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+  "candidate_branch": "feature/95-improvements",
+  "compatibility_branch": "release/schema-compatibility",
+  "backend": {
+    "passed": 307,
+    "duration_seconds": 91.84,
+    "database": "fieldsaarthi_test"
+  },
+  "static_checks": {
+    "ruff": "passed",
+    "format": "82 files formatted",
+    "mypy": "24 application files passed",
+    "python_audit": "no known vulnerabilities"
+  },
+  "container_rehearsal": "docs/evidence/improvement-container-release.json",
+  "source_compatibility_tests": {
+    "passed": 7,
+    "result": "0004 stage; 0005 activation/rollback/restore; bad/mixed/missing heads refused"
+  },
+  "tooling_regressions": {
+    "passed": 5,
+    "red": "Four resource-leak cases plus a Windows UTF-8 failure reproduced before fixing",
+    "green": "All five preservation/Unicode cases passed"
+  },
+  "candidate_ci": null,
+  "compatibility_ci": null,
+  "candidate_pr": null,
+  "compatibility_pr": null,
+  "production_actions": 0,
+  "provider_calls": 0,
+  "new_recordings": 0,
+  "evaluation_disposition": "docs/evidence/improvement-evaluation-disposition.json",
+  "release_sequence": [
+    "Review exact candidate and compatibility source CI",
+    "Approve temporary backup ingress for current operator IP/32 and restore original allowlist",
+    "Create private consistent production backup and verify isolated restore",
+    "Deploy the paused compatibility build first while schema stays 0004",
+    "Deploy the approved candidate, advancing schema additively to 0005",
+    "Use the paused compatibility build for approved rollback and verify data/ledger preservation",
+    "Restore candidate and verify readiness, protected report and original snapshots"
+  ],
+  "approval_required": "Specification section 11.1 step 4 requires an approved deployment plan and private backup before production migration. No production changes are authorized solely by preparing these artifacts.",
+  "credit_policy": "No new billable smoke required; pause speech through the approved release if balance is not owner-verified.",
+  "local_docker_initial_failure": "Parallel builds hit read-only BuildKit metadata during low disk space; after Docker recovered and space returned, sequential candidate and bridge builds both passed. No existing container was pruned or reset.",
+  "current_score": "Prior 91/100 local provisional assessment retained until deployed reassessment. Independent accuracy credit remains withheld; no 95/100 claim.",
+  "participant_submission": "Eligibility/contributions/video/public post/form untouched"
+}

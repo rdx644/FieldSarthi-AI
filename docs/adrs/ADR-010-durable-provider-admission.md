@@ -103,3 +103,16 @@ executed the API source from actual deployed commit `85e1a5e` against only
 were made. This confirms the previously reasoned blocker; it is not a built-image
 or hosted rollback rehearsal. A staged compatible rollback image, exact CI,
 approved backup and deployment remain mandatory before any production migration.
+
+
+## Compatibility blocker resolved locally
+
+The [finalisation design](../release-finalisation.md) and
+[real two-image rehearsal](../evidence/improvement-container-release.json) now
+provide a separate paused previous-app build that starts at exactly 0004 or 0005
+without migrating, plus a strict 0005 candidate. Stage -> activate -> rollback ->
+restore passed with seven domain tables and two admission rows unchanged. The
+original unmodified 85e1a5e image remains incompatible; use the newly prepared,
+reviewed rollback artifact. Production backup/approval and exact source CI remain
+required before deployment. Earlier reasoned and failed-source checks above are
+historical and are not altered.

@@ -1,3 +1,10 @@
+Latest finalisation: **307 backend tests and actual container compatibility,
+rollback and restoration pass locally**; independent evaluation is explicitly
+participant-deferred. The prepared compatibility build resolves the earlier local
+blocker. Source CI and approved production backup/deployment remain pending.
+See [current finalisation](../docs/release-finalisation.md). Earlier checkpoint statements below retain their
+historical scope.
+
 Latest improvement verification ? 2026-11-15: **295 backend tests and 16 Chrome
 fixture accessibility/layout views pass locally. Not deployed.** All 34 T-IMP IDs
 are accounted for in [the improvement checklist](improvements.md); exact candidate

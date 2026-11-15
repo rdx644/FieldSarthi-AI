@@ -1,0 +1,27 @@
+{
+  "timestamp_utc": "2026-11-15T06:16:50.998603+00:00",
+  "change_id": "IMP-04B",
+  "test_id": "T-IMP-043",
+  "status": "DEFERRED BY EXPLICIT PARTICIPANT DECISION",
+  "supplied_directory": "private/evaluation",
+  "private_manifest_case_count": 15,
+  "matches_existing_development_case_ids": true,
+  "independent_heldout_cases_identified": 0,
+  "marked_verified_reference_transcripts": 0,
+  "participant_decision": "Finalise with independent evaluation deferred",
+  "development_results_retained": {
+    "automatic_complete_cases": "12/15",
+    "nonempty_transcripts": "14/15",
+    "required_safety_blocks": "6/6"
+  },
+  "genuine_wer": null,
+  "genuine_cer": null,
+  "provider_calls_made": 0,
+  "new_recordings": 0,
+  "original_private_files_modified": false,
+  "limitations": [
+    "The supplied folder contains the existing tuned development corpus, not an independent held-out set.",
+    "Recording prompts are not independently verified verbatim references.",
+    "No held-out or WER/CER accuracy uplift is claimed."
+  ]
+}

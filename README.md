@@ -8,11 +8,11 @@ Turn a spoken maintenance report into a human-verified work order that a supervi
 
 Improvement implementation verified locally on **November 15, 2026**: role-scoped
 queue totals, clearer judge/review navigation, offline WER/CER tooling, archive
-protection and durable speech admission. **295 backend tests and 16 Chrome
-accessibility/layout views pass. Not deployed.** Migration `0005` is blocked from
-production until startup/readiness rollback compatibility is resolved and the
-release gates pass. See the [complete requirement status](tasks/improvements.md),
-[engineering handoff](docs/improvement-handoff.md),
+protection and durable speech admission. **307 backend tests, actual two-image rollback and 16 Chrome
+fixture accessibility/layout views pass. Not deployed.** A compatible rollback
+build is prepared and verified; exact source CI, backup and production approval
+remain release gates. Independent evaluation is deferred by participant decision. See the [complete requirement status](tasks/improvements.md),
+[current engineering handoff](docs/release-finalisation.md),
 [analytics definitions](docs/architecture.md#operational-queue-summary--imp-02)
 and [offline scoring method](docs/tests/offline-asr-methodology.md).
 Genuine WER/CER and held-out accuracy remain unmeasured; 95/100 is a target,
