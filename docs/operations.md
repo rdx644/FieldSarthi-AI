@@ -1,3 +1,23 @@
+Current hosted completion - 2026-11-15: **migration, rollback and restoration
+verified on Render**, application `241a063`. All 14 saved report details, audit
+histories and original provider facts match the private pre-deploy baseline.
+The sole approved judge report remains OPEN/version 1 with its original transcript,
+provider provenance and one audit event. Hosted queue summaries reconcile with
+saved data; six actual Chrome judge views pass accessibility/layout/keyboard
+checks. No new Gnani calls or report mutations were made.
+
+The participant confirmed a current restore-ready backup, then the service passed
+compatibility stage at 0004 -> candidate at 0005 -> compatibility rollback at 0005
+-> candidate restoration at 0005. Live speech was subsequently restored following
+the participant's explicit current-balance confirmation. Automatic deployment
+remains off. Direct SQL/SSH was unavailable; schema proof uses the exact deployed
+source's database-backed readiness checks. Backup retention and the December 9
+free-database expiry remain participant-owned. Independent audio evaluation is
+still explicitly deferred; no 95/100 result is claimed.
+
+See [current hosted evidence](evidence/improvement-hosted-release.json). Earlier checkpoints below retain their
+historical scope and are superseded where they describe deployment/backup gates.
+
 Latest ownership update: production backup is handled by the participant and
 completion is not yet confirmed. The agent completes automatic source publication,
 protected merge, CI and local/main synchronization. Engineering and image rollback

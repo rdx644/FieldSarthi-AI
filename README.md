@@ -15,11 +15,18 @@ See the [source completion record](docs/evidence/improvement-source-finalisation
 [analytics definitions](docs/architecture.md#operational-queue-summary--imp-02)
 and [offline scoring method](docs/tests/offline-asr-methodology.md).
 
-**Not deployed:** production remains at `85e1a5e` with auto-deploy off, pending owner
-confirmation of a current restore-ready backup and the staged release approval.
-Independent evaluation is participant-deferred. Genuine WER/CER and held-out
-accuracy remain unmeasured; **95/100 is a target**, not a verified result.
-Historical hosted measurements below retain their original scope.
+**Hosted release verified:** application `241a063` passed compatibility staging,
+additive migration to `0005`, actual Render rollback and restoration. All **14 saved
+reports**, their audits/provider facts and the sole approved judge report remain
+unchanged. Six actual hosted browser views pass. The owner confirmed a current
+restore-ready backup and current Gnani balance; live speech is enabled again.
+The rehearsal made **zero paid speech calls** and no report mutations.
+[Hosted release evidence](docs/evidence/improvement-hosted-release.json).
+
+Independent evaluation remains participant-deferred. Genuine WER/CER and held-out
+accuracy are unmeasured; **95/100 is a target**, not a verified result. Backup
+retention and the free database's December 9 expiry remain owner-managed.
+Historical measurements below retain their original scope.
 
 ## Overview
 

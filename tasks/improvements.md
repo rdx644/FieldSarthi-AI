@@ -1,3 +1,23 @@
+Current hosted completion - 2026-11-15: **migration, rollback and restoration
+verified on Render**, application `241a063`. All 14 saved report details, audit
+histories and original provider facts match the private pre-deploy baseline.
+The sole approved judge report remains OPEN/version 1 with its original transcript,
+provider provenance and one audit event. Hosted queue summaries reconcile with
+saved data; six actual Chrome judge views pass accessibility/layout/keyboard
+checks. No new Gnani calls or report mutations were made.
+
+The participant confirmed a current restore-ready backup, then the service passed
+compatibility stage at 0004 -> candidate at 0005 -> compatibility rollback at 0005
+-> candidate restoration at 0005. Live speech was subsequently restored following
+the participant's explicit current-balance confirmation. Automatic deployment
+remains off. Direct SQL/SSH was unavailable; schema proof uses the exact deployed
+source's database-backed readiness checks. Backup retention and the December 9
+free-database expiry remain participant-owned. Independent audio evaluation is
+still explicitly deferred; no 95/100 result is claimed.
+
+See [current hosted evidence](../docs/evidence/improvement-hosted-release.json). Earlier checkpoints below retain their
+historical scope and are superseded where they describe deployment/backup gates.
+
 Current source completion - 2026-11-15: **specification engineering complete
 and merged through protected PR #18**. Exact candidate and merged-application
 main CI pass with 328 backend tests, 18 Chromium fixture accessibility/layout
@@ -49,7 +69,7 @@ this status supersedes those local compatibility blockers.
 - [x] IMP-06 local: 307 backend tests, strict checks and actual four-phase Docker rehearsal.
 - [x] IMP-06 source CI: both approved draft PR heads pass the required quality workflow.
 - [x] IMP-06 repository: latest-status push, protected candidate merge and exact main CI.
-- [ ] IMP-06 production: participant confirms current restore-ready backup; staged release follows.
+- [x] IMP-06 production: owner backup confirmed; staged deployment, hosted rollback, restoration and speech recovery verified.
 
 Candidate code: `c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff`.
 Published source: `c8de7d6cdfbe7876524759701e2a433082546310`, [PR #18](https://github.com/rdx644/FieldSarthi-AI/pull/18), exact CI passed.
@@ -100,8 +120,8 @@ the labels while preserving all test coverage.
 | T-IMP-056 | additive upgrade and old-app rollback compatibility | `api/tests/integration/test_compatibility_release.py` | PASSED LOCAL |
 | T-IMP-060 | full CI-equivalent local quality suite | `docs/evidence/improvement-release.json` | PASSED LOCAL |
 | T-IMP-061 | immutable data and readiness | `api/tests/integration/test_workflow.py::test_audit_and_provider_provenance_are_immutable`; `api/tests/integration/test_roadmap_regressions.py::test_readiness_fails_when_database_is_unavailable`; `api/tests/integration/test_foundation.py::test_live_and_ready` | PASSED LOCAL |
-| T-IMP-062 | exact candidate CI/deployment | `docs/evidence/improvement-release.json` | PENDING RELEASE |
-| T-IMP-063 | candidate rollback rehearsal | `api/tests/container/release_check.py`; `api/tests/integration/test_compatibility_release.py` | PASSED LOCAL |
+| T-IMP-062 | exact candidate CI/deployment | `docs/evidence/improvement-hosted-release.json` | PASSED HOSTED |
+| T-IMP-063 | candidate rollback rehearsal | `api/tests/container/release_check.py`; `api/tests/integration/test_compatibility_release.py`; `docs/evidence/improvement-hosted-release.json` | PASSED LOCAL AND HOSTED |
 
 ## Scope and release decision
 

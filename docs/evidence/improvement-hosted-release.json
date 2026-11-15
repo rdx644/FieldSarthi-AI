@@ -1,0 +1,172 @@
+{
+  "timestamp_utc": "2026-11-15T10:24:42.300295+00:00",
+  "status": "HOSTED MIGRATION, ROLLBACK AND RESTORATION VERIFIED; LIVE SPEECH RESTORED",
+  "application_commit": "241a063d302769a1ba4aba8a4e52bc4ad5b2e0ee",
+  "compatibility_commit": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+  "base_url": "https://fieldsaarthi-ai.onrender.com",
+  "final_deployment_id": "dep-dbsofm61egvs73ee587g",
+  "owner_backup": {
+    "current_restore_ready_backup_confirmed": true,
+    "source": "explicit participant confirmation in this session",
+    "agent_did_not_export_production_database": true,
+    "database_ingress_unchanged": true
+  },
+  "phases": {
+    "stage": {
+      "id": "dep-dbsobp6k1f9s739rbvqg",
+      "commit": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+      "requested_at_utc": "2026-11-15T10:13:52.607591+00:00",
+      "status": "live",
+      "last_observed_at_utc": "2026-11-15T10:16:15.315665+00:00",
+      "verified": true,
+      "verified_at_utc": "2026-11-15T10:16:21.108835+00:00",
+      "preserved_order_count": 14,
+      "approved_judge_report_unchanged": true,
+      "all_detail_audit_and_provenance_hashes_unchanged": true,
+      "summary_verified": false,
+      "speech_paused_verified": true,
+      "schema_verification": {
+        "method": "known deployed source and database-backed readiness contract",
+        "expected_head": "0004",
+        "direct_external_sql": "unavailable; ingress unchanged",
+        "interpretation": "Stage has no migration. Activation/restoration readiness checks exactly 0005; compatibility rollback does not migrate or seed."
+      }
+    },
+    "activate": {
+      "id": "dep-dbsocubbc2fs73c4ddhg",
+      "commit": "241a063d302769a1ba4aba8a4e52bc4ad5b2e0ee",
+      "requested_at_utc": "2026-11-15T10:16:21.790082+00:00",
+      "status": "live",
+      "last_observed_at_utc": "2026-11-15T10:18:03.776889+00:00",
+      "verified": true,
+      "verified_at_utc": "2026-11-15T10:18:09.200039+00:00",
+      "preserved_order_count": 14,
+      "approved_judge_report_unchanged": true,
+      "all_detail_audit_and_provenance_hashes_unchanged": true,
+      "summary_verified": true,
+      "speech_paused_verified": true,
+      "schema_verification": {
+        "method": "known deployed source and database-backed readiness contract",
+        "expected_head": "0005",
+        "direct_external_sql": "unavailable; ingress unchanged",
+        "interpretation": "Stage has no migration. Activation/restoration readiness checks exactly 0005; compatibility rollback does not migrate or seed."
+      }
+    },
+    "rollback": {
+      "id": "dep-dbsodpec6qcc739nj1vg",
+      "commit": "be608cb4ea807d8fd0280633f05595e89d83fb2d",
+      "requested_at_utc": "2026-11-15T10:18:09.840609+00:00",
+      "status": "live",
+      "last_observed_at_utc": "2026-11-15T10:19:32.346538+00:00",
+      "verified": true,
+      "verified_at_utc": "2026-11-15T10:19:36.922776+00:00",
+      "preserved_order_count": 14,
+      "approved_judge_report_unchanged": true,
+      "all_detail_audit_and_provenance_hashes_unchanged": true,
+      "summary_verified": false,
+      "speech_paused_verified": true,
+      "schema_verification": {
+        "method": "known deployed source and database-backed readiness contract",
+        "expected_head": "0005",
+        "direct_external_sql": "unavailable; ingress unchanged",
+        "interpretation": "Stage has no migration. Activation/restoration readiness checks exactly 0005; compatibility rollback does not migrate or seed."
+      }
+    },
+    "restore": {
+      "id": "dep-dbsoefe7bikc73c1hp90",
+      "commit": "241a063d302769a1ba4aba8a4e52bc4ad5b2e0ee",
+      "requested_at_utc": "2026-11-15T10:19:37.595847+00:00",
+      "status": "live",
+      "last_observed_at_utc": "2026-11-15T10:22:03.730120+00:00",
+      "verified": true,
+      "verified_at_utc": "2026-11-15T10:22:10.037844+00:00",
+      "preserved_order_count": 14,
+      "approved_judge_report_unchanged": true,
+      "all_detail_audit_and_provenance_hashes_unchanged": true,
+      "summary_verified": true,
+      "speech_paused_verified": true,
+      "schema_verification": {
+        "method": "known deployed source and database-backed readiness contract",
+        "expected_head": "0005",
+        "direct_external_sql": "unavailable; ingress unchanged",
+        "interpretation": "Stage has no migration. Activation/restoration readiness checks exactly 0005; compatibility rollback does not migrate or seed."
+      }
+    }
+  },
+  "final_speech_restoration": {
+    "deployment_id": "dep-dbsofm61egvs73ee587g",
+    "commit": "241a063d302769a1ba4aba8a4e52bc4ad5b2e0ee",
+    "requested_at_utc": "2026-11-15T10:22:12.301016+00:00",
+    "status": "live",
+    "verified": true,
+    "verified_at_utc": "2026-11-15T10:23:43.321882+00:00",
+    "preserved_order_count": 14,
+    "speech_capability_enabled": true
+  },
+  "baseline_verification": {
+    "persisted_report_count": 14,
+    "all_order_details_audits_and_provider_facts_unchanged": true,
+    "raw_report_data_or_private_ids_published": false,
+    "protected_public_report": "WO-AFF1E3EE3BD2",
+    "protected_report_state": "OPEN",
+    "protected_report_version": 1,
+    "protected_report_audit_count": 1,
+    "protected_report_original_transcript_and_provider_match_historical": true,
+    "only_approved_report_public": true
+  },
+  "analytics": {
+    "role_scoped_summary_verified_on_hosted_candidate": true,
+    "summary_invariant_under_filter_and_pagination": true,
+    "status_source_operational_priority_resolution_metrics_reconcile": true
+  },
+  "browser": {
+    "report": "docs/evidence/hosted-improvements/browser-verification.json",
+    "actual_hosted_views": 6,
+    "widths": [
+      320,
+      768,
+      1440
+    ],
+    "javascript_errors": 0,
+    "accessibility_violations": 0,
+    "no_provider_fixtures": true
+  },
+  "schema": {
+    "before": "0004",
+    "after": "0005",
+    "verification": "Known deployed commit plus actual database-backed exact-head readiness. Compatibility startup is read-only and never migrates or seeds.",
+    "direct_external_sql_or_ssh": "unavailable with existing access; no ingress or paid-plan change",
+    "downgrade_performed": false
+  },
+  "speech": {
+    "state": "enabled",
+    "basis": "participant explicitly checked current balance and requested restoration after rehearsal",
+    "numeric_balance": "not supplied; no amount invented",
+    "live_paid_test_calls": 0,
+    "historical_genuine_provider_evidence_retained": true
+  },
+  "traceability": {
+    "T-IMP-062": "passed_hosted",
+    "T-IMP-063": "passed_hosted_and_container",
+    "verified_test_ids": 33,
+    "T-IMP-043": "participant_deferred",
+    "total_test_ids": 34
+  },
+  "monitoring_incidents": [
+    {
+      "observed_at_utc": "2026-11-15T10:22:02.651401+00:00",
+      "phase": "restore",
+      "kind": "transient local DNS lookup failure while polling Render",
+      "recovery": "resume polling the existing deployment ID; no duplicate deployment or data change"
+    }
+  ],
+  "independent_audio_evaluation": "deferred by participant; no new recordings, genuine WER/CER or held-out accuracy claim",
+  "database_expiry": "2026-12-09T12:16:30.004422Z",
+  "backup_retention_and_database_expiry_owner": "participant",
+  "auto_deploy": "off",
+  "provider_calls": 0,
+  "production_domain_writes_by_rehearsal": 0,
+  "production_changes": "authorized speech flag, additive 0005 migration, service deployment/rollback/restoration only",
+  "participant_submission": "untouched",
+  "score": "No verified 95/100 or independent accuracy uplift claimed"
+}
