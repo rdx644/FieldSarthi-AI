@@ -1,0 +1,23 @@
+{
+  "change_id": "IMP-00",
+  "timestamp_utc": "2026-11-15T04:20:25.858733+00:00",
+  "source_commit": "84366153682af65f96874dc717e4aa6febed10be",
+  "check_version": "repository-guard-archive-v2",
+  "status": "passed",
+  "archive_member_count": 263,
+  "archive_kind": "git archive committed application/test source only; following documentation/evidence commits are separate",
+  "commands": [
+    "git archive --format=zip --output=output/fieldsaarthi-source-application.zip 84366153682af65f96874dc717e4aa6febed10be",
+    "api/.venv/Scripts/python.exe api/scripts/repository_guard.py --archive output/fieldsaarthi-source-application.zip"
+  ],
+  "private_paths_or_key_signatures_found": false,
+  "limitations": [
+    "Path/signature checks are not a universal secret or consent audit.",
+    "No archive was published; original Gnani.zip, DB backups and private files remain untouched.",
+    "The final documentation commit may be exported and scanned separately with the same policy."
+  ],
+  "test_ids": [
+    "T-IMP-001",
+    "T-IMP-002"
+  ]
+}

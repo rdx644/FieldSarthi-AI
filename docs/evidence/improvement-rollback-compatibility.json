@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-11-15T04:13:31.535015+00:00",
+  "scope": "exact deployed API source in isolated fieldsaarthi_test at 0005; no image or production execution",
+  "source_sha": "85e1a5e20c1f623c0ce664493c8f002e7d5cff10",
+  "database_head": "0005",
+  "old_startup_upgrade_returncode": 4294967295,
+  "old_startup_cannot_resolve_revision_0005": true,
+  "old_readiness_status": 503,
+  "domain_writes": 0,
+  "live_provider_calls": 0,
+  "decision": "BLOCK PRODUCTION MIGRATION until a separately verified compatible rollback image, exact CI, backup and operator approval are available"
+}

@@ -92,3 +92,14 @@ forwarded headers could undermine address-based throttling. This change preserve
 the current deployment policy; verifying Render ingress behavior or narrowing
 trusted proxy peers is a separate operator-reviewed change, not established by
 these local limiter tests.
+
+
+## November 15 exact previous-source verification
+
+The [fresh compatibility check](../evidence/improvement-rollback-compatibility.json)
+executed the API source from actual deployed commit `85e1a5e` against only
+`fieldsaarthi_test` at `0005`. Its startup `alembic upgrade head` failed to resolve
+`0005` and its real `/health/ready` returned 503. No domain writes or provider calls
+were made. This confirms the previously reasoned blocker; it is not a built-image
+or hosted rollback rehearsal. A staged compatible rollback image, exact CI,
+approved backup and deployment remain mandatory before any production migration.

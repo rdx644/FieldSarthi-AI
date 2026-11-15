@@ -1,3 +1,65 @@
+# Latest improvement verification — 2026-11-15
+
+**LOCAL VERIFIED — NOT DEPLOYED.** Application/test source `84366153682af65f96874dc717e4aa6febed10be`,
+branch `feature/95-improvements`: 295 backend tests, strict static/frontend gates,
+clean dependency audits and 16 Chrome fixture accessibility/layout views pass.
+Read the [complete handoff](improvement-handoff.md),
+[34-ID plan](../tasks/improvements.md) and
+[release manifest](evidence/improvement-release.json) for the current status.
+
+Live application remains `85e1a5e` (fresh operator API/read-only verification).
+Both health endpoints returned 200; only the approved report is visible and its
+original transcript hash matches. Render reports December 9 expiry; backup
+retention and real provider balance remain operator-owned. Direct production SQL
+head verification was unavailable; readiness implies the prior exact `0004` head.
+No live provider call, recording, production mutation, deployment or submission.
+
+Offline replay retains 12/15 complete cases, 6/6 safe blocks and 3/3 correction
+recovery. Genuine WER/CER and independent held-out evaluation remain unavailable.
+Exact old deployed API source at local schema `0005` fails startup/readiness;
+compatible rollback image, exact candidate CI/container, approved backup and
+production release remain blocked. No 95/100 outcome is claimed.
+
+The following November 14 and earlier records preserve their original scope.
+
+# Current local improvement candidate — 2026-11-14
+
+The Downloads improvement specification is implemented locally on
+`feature/95-improvements`, based on `0fca9716e3589eb9cac70f12e2468aacf7cadb5a`.
+Read [the improvement log](../tasks/improvements.md) and
+[release manifest](evidence/improvement-release.json) before further work.
+The unchanged baseline passed 199 tests in a detached local worktree; the
+candidate passed 293 tests against isolated `fieldsaarthi_test`, with no live
+speech calls. New browser artifacts are synthetic fixtures, separate from older
+hosted/genuine evidence. No code was pushed, deployed or merged into main.
+
+Implemented: tracked-source ZIP guard, active reviewer/deadline documentation,
+typed SQL role-scoped queue summary across all pages, judge example shortcut,
+explicit review/language guidance, standalone offline WER/CER scorer, cached
+parser replay, durable speech-operation ledger and synchronized login limiter.
+`rules-v4` is retained: cached replay still yields 12/15 complete cases and six
+safe blocks, without regressions. Independent held-out results and genuine
+WER/CER remain unavailable because verified human reference transcripts are
+missing. Do not call this a verified 95/100 result.
+
+Local schema head is `0005`; the deployed schema/revision were not directly
+verified through operator credentials. Public health/ready returned 200 after
+initial cold-start timeouts; neither endpoint reports a SHA/schema head.
+Public baseline GitHub CI for `0fca971` passed. Candidate CI remains pending.
+The previous image cannot start or pass readiness on `0005`; production rollout
+is held pending a verified staged compatibility image, approved private backup
+and exact candidate CI. Never downgrade a live database to make an old app boot.
+Provider operation counts survive restarts locally; they are not credit balances.
+Login counts remain process-local and deployment remains one worker/replica.
+
+Participant credentials, report visibility, original audio/transcripts and
+historical release tags/evidence are preserved. No new recordings, paid
+provider calls, production writes, account rotations or public submissions.
+Backup/expiry and current balance remain operator-owned. The December 9 expiry
+below is historical; recheck through the operator before any release.
+
+## Historical November 10 operational completion
+
 Latest operational completion: the identified engineering gaps are closed for the agreed temporary-demo scope. Actual hosted rollback/restore preserves all existing reports; console credit observation and tested STT/TTS pause cover credit operations; an immutable engineering tag records release signoff. See [release proof](evidence/demo-operational-release.json). Backups/DB expiry and participant/submission work belong to the user. 199 backend tests, strict backend/frontend checks and exact-application CI passed. No new recordings or paid provider requests were needed.
 
 # FieldSaarthi AI — project context for future changes

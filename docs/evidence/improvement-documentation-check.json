@@ -1,0 +1,29 @@
+{
+  "timestamp_utc": "2026-11-15T04:38:25.185362+00:00",
+  "status": "passed",
+  "change_ids": [
+    "IMP-01",
+    "IMP-06"
+  ],
+  "files_checked": [
+    "README.md",
+    "docs/judge-guide.md",
+    "docs/improvement-handoff.md",
+    "tasks/improvements.md",
+    "docs/architecture.md",
+    "docs/security.md",
+    "docs/tests/offline-asr-methodology.md"
+  ],
+  "relative_links_and_anchors_checked": 56,
+  "failures": [],
+  "all_34_actual_test_references_validated": true,
+  "numbered_specification_headings_accounted_for": 39,
+  "official_deadline": "2026-11-15T18:00:00+05:30",
+  "official_source": "https://www.gnani.ai/internship",
+  "official_source_rechecked_on": "2026-11-15",
+  "notes": [
+    "Markdown directories are valid source-navigation links.",
+    "Evidence links are checked for existence; source/application and local/hosted scopes remain explicit.",
+    "No historical signed release evidence was modified."
+  ]
+}

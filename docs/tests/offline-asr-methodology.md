@@ -146,7 +146,7 @@ normalization, split/kind/version labels, validated held-out freeze metadata whe
 applicable and input SHA256 hashes. It omits original
 case IDs, transcripts, field values, raw conditions, provider IDs, paths and audio.
 Errors do not echo input values. Output cannot overwrite either resolved input
-path. Freeze manifest ordering and retain private inputs to reproduce the report.
+path or an existing hard link to either input (checked using filesystem identity). Freeze manifest ordering and retain private inputs to reproduce the report.
 Review the sanitized summary before explicitly publishing it.
 
 On 2026-11-14, the existing private 15-case manifest had recording prompts and

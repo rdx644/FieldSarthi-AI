@@ -1,0 +1,144 @@
+{
+  "change_id": "IMP-03",
+  "timestamp_utc": "2026-11-15T04:10:58.901197+00:00",
+  "evaluation_kind": "cached_development_transcript_replay",
+  "dataset_split": "development",
+  "parser_version_before": [
+    "rules-v4"
+  ],
+  "parser_version_after": "rules-v4",
+  "parser_logic_changed": false,
+  "test_ids": [
+    "T-IMP-030",
+    "T-IMP-031",
+    "T-IMP-032",
+    "T-IMP-036"
+  ],
+  "before": {
+    "sample_count": 15,
+    "complete_cases_correct": 12,
+    "per_field": {
+      "location_code": {
+        "correct": 12,
+        "total": 14
+      },
+      "asset_code": {
+        "correct": 11,
+        "total": 14
+      },
+      "issue_category": {
+        "correct": 13,
+        "total": 14
+      },
+      "priority_suggestion": {
+        "correct": 14,
+        "total": 14
+      }
+    },
+    "expected_safety_blocks": {
+      "correct": 6,
+      "total": 6
+    }
+  },
+  "after": {
+    "sample_count": 15,
+    "complete_cases_correct": 12,
+    "per_field": {
+      "location_code": {
+        "correct": 12,
+        "total": 14
+      },
+      "asset_code": {
+        "correct": 11,
+        "total": 14
+      },
+      "issue_category": {
+        "correct": 13,
+        "total": 14
+      },
+      "priority_suggestion": {
+        "correct": 14,
+        "total": 14
+      }
+    },
+    "expected_safety_blocks": {
+      "correct": 6,
+      "total": 6
+    }
+  },
+  "previously_correct_cases_regressed": [],
+  "failing_cases": [
+    {
+      "case_id": "NLP-04",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code"
+      ]
+    },
+    {
+      "case_id": "NLP-12",
+      "incorrect_fields": [
+        "location_code",
+        "asset_code"
+      ]
+    },
+    {
+      "case_id": "NLP-14",
+      "incorrect_fields": [
+        "asset_code",
+        "issue_category"
+      ]
+    }
+  ],
+  "live_provider_calls": 0,
+  "failure_patterns": [
+    {
+      "case_id": "NLP-04",
+      "exact_location_candidate_count": 0,
+      "exact_asset_candidate_count": 1,
+      "unresolved_fields": [
+        "location_id",
+        "asset_id"
+      ]
+    },
+    {
+      "case_id": "NLP-12",
+      "exact_location_candidate_count": 0,
+      "exact_asset_candidate_count": 1,
+      "unresolved_fields": [
+        "location_id",
+        "asset_id"
+      ]
+    },
+    {
+      "case_id": "NLP-14",
+      "exact_location_candidate_count": 1,
+      "exact_asset_candidate_count": 0,
+      "unresolved_fields": [
+        "asset_id",
+        "issue_category"
+      ]
+    }
+  ],
+  "database_scope": "fieldsaarthi_test, read-only transaction; no schema reset or seed",
+  "hosted_database_writes": 0,
+  "raw_transcripts_published": false,
+  "decision": "Retain the baseline parser without separately verified safe improvement.",
+  "assessment": "No failed case has shared alias candidates. Location-conditioned disambiguation cannot recover absent exact location or asset evidence. Keep explicit human correction.",
+  "limitations": [
+    "Replay of the previously tuned development corpus is not a held-out evaluation.",
+    "No new recordings, ASR calls, WER/CER measurement or provider metadata generated."
+  ],
+  "reviewed_manifest_labels_verified": true,
+  "verified_application_source_sha": "84366153682af65f96874dc717e4aa6febed10be",
+  "commands": [
+    ".venv/Scripts/python.exe -m scripts.replay_cached_extraction --results ../private/evaluation/results --output ../output/improvement-final-extraction.json (from api)",
+    "FIELD_SAARTHI_REPLAY_RESULTS=<private existing results>; .venv/Scripts/python.exe -m pytest tests/integration/test_asr_correction_recovery.py -q (from api)"
+  ],
+  "explicit_correction_replay": {
+    "passed": 3,
+    "duration_seconds": 2.67,
+    "live_provider_calls": 0,
+    "kind": "private cached development transcripts replayed through test-only adapter; original evidence preserved"
+  }
+}

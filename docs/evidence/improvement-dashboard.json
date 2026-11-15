@@ -1,0 +1,58 @@
+{
+  "change_id": "IMP-02",
+  "timestamp_utc": "2026-11-15T04:16:40.539175+00:00",
+  "verified_application_source_sha": "84366153682af65f96874dc717e4aa6febed10be",
+  "status": "LOCAL VERIFIED — NOT DEPLOYED",
+  "evidence_kind": "synthetic fixture in isolated fieldsaarthi_test; not enterprise or speech accuracy data",
+  "scope": "role_accessible_all before pagination and user filters; filtered total remains separate",
+  "tests": [
+    "api/tests/integration/test_queue_analytics.py::test_summary_is_role_scoped_and_stable_across_pages_filters",
+    "api/tests/integration/test_queue_analytics.py::test_empty_summary_has_no_invented_resolution_time",
+    "api/tests/integration/test_queue_controls.py",
+    "api/tests/browser/workflow_check.py"
+  ],
+  "actual_fixture_assertions": {
+    "total": 25,
+    "first_page_rows": 20,
+    "each_status_count": 5,
+    "active_high_priority": 8,
+    "voice_intake": 20,
+    "manual_intake": 5,
+    "mean_resolution_seconds": 120.0,
+    "valid_resolution_sample_count": 2,
+    "excluded_resolution_durations": [
+      "null",
+      "negative"
+    ],
+    "worker_totals": [
+      23,
+      2
+    ],
+    "judge_total": 1,
+    "issue_counts": {
+      "LEAKAGE": 24,
+      "OTHER": 1
+    },
+    "same_summary_across": [
+      "page 1",
+      "page 2",
+      "CANCELLED filter",
+      "unmatched search"
+    ],
+    "empty_mean": null
+  },
+  "browser_result": "docs/evidence/improvement-browser-final/results.json",
+  "browser_checks": [
+    "filter retains global accessible counts",
+    "supervisor mutation followed by refresh shows resolved count",
+    "empty queue shows zero",
+    "unavailable queue hides stale counts and prior example links",
+    "mobile, keyboard and role labels"
+  ],
+  "no_provider_calls_or_audit_writes_for_aggregates": true,
+  "notes": [
+    "Active HIGH uses operational priority, not worker suggestion.",
+    "Source mix counts confirmed orders only; it is not ASR coverage.",
+    "No SLA, savings or predictive metrics are claimed."
+  ]
+}

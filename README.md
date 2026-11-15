@@ -4,7 +4,19 @@ Turn a spoken maintenance report into a human-verified work order that a supervi
 
 ---
 
-[Live demo](https://fieldsaarthi-ai.onrender.com) · [Demo credentials](#demo-access) · [Overview](#overview) · [Getting started](#getting-started) · [Usage](#usage) · [Architecture](#architecture) · [Contributing and support](#contributing-and-support) · [License and credits](#license-and-credits)
+[Open judge demo](https://fieldsaarthi-ai.onrender.com) (choose the password-free, read-only option; first request may wake the free host) · [Demo credentials](#demo-access) · [Overview](#overview) · [Getting started](#getting-started) · [Usage](#usage) · [Architecture](#architecture) · [Contributing and support](#contributing-and-support) · [License and credits](#license-and-credits)
+
+Improvement implementation verified locally on **November 15, 2026**: role-scoped
+queue totals, clearer judge/review navigation, offline WER/CER tooling, archive
+protection and durable speech admission. **295 backend tests and 16 Chrome
+accessibility/layout views pass. Not deployed.** Migration `0005` is blocked from
+production until startup/readiness rollback compatibility is resolved and the
+release gates pass. See the [complete requirement status](tasks/improvements.md),
+[engineering handoff](docs/improvement-handoff.md),
+[analytics definitions](docs/architecture.md#operational-queue-summary--imp-02)
+and [offline scoring method](docs/tests/offline-asr-methodology.md).
+Genuine WER/CER and held-out accuracy remain unmeasured; 95/100 is a target,
+not a verified result. Historical hosted measurements below retain their original scope.
 
 ## Overview
 
@@ -35,18 +47,32 @@ These credentials are intentionally public for this temporary hosted demo. Worke
 
 A free-host cold start may delay the first request. Leave the page open and retry once after it wakes. See the [judge walkthrough](docs/judge-guide.md).
 
+### 60-second technical inspection
+
+1. Open the live application and select **Open judge demo**. Only participant-approved synthetic evidence is accessible; this session cannot generate billable speech.
+2. Open the returned approved report and inspect its original transcript, actual returned Prisma model/request ID and selected language.
+3. Compare original extraction suggestions with the human-confirmed fields and immutable event timeline. The approved example is OPEN; its current state does not establish a completed resolution.
+4. For a separate full supervisor lifecycle, inspect the [historical hosted workflow evidence](docs/evidence/hosted/README.md). This read-only inspection is separate from the participant's required public demo video.
+
+### Genuine Gnani integration
+
+The backend sends normalized audio to **Prisma v2.5** for transcription. FieldSaarthi then performs deterministic catalog extraction, requires human confirmation and persists the workflow in PostgreSQL. It uses no LLM to make maintenance decisions. Optional **Timbre v2.5** generates an acknowledgment only after an authorized saved-order request. TTS evidence distinguishes the requested model from any model metadata actually returned; the interface never invents missing provider facts. Editing a corrected transcript preserves the original provider transcript and extraction.
+
 ### Verified release and limits
 
 | Check | Recorded result | Evidence |
 | --- | --- | --- |
 | Backend regression suite | **199 passing tests**, plus strict backend/frontend checks | [Engineering release](docs/evidence/demo-operational-release.json) |
 | Genuine 15-recording development evaluation | **12/15 automatic complete cases**; all **6 safety cases blocked** | [Measured evaluation](docs/evidence/audio-evaluation.json) |
+| Genuine transcription coverage | **14/15 nonempty transcripts**; coverage is distinct from recognition accuracy | [Development corpus](docs/evidence/audio-evaluation.json) |
 | Explicit correction recovery | **3/3 saved ASR failures recovered** in isolated test replay; automatic score remains 12/15 | [Correction evidence](docs/evidence/asr-correction-recovery.json) |
 | Hosted workflow reliability | **10 consecutive genuine voice-to-resolved workflows** using one repeated consenting clip | [Hosted reliability](docs/evidence/hosted/reliability.json) |
 | Application rollback and restoration | All **12 baseline report details**, audits, provider facts and judge visibility preserved | [Rollback/release proof](docs/evidence/demo-operational-release.json) |
 | Technical release snapshot | `demo-verified-2026-11-10`, application `85e1a5e` | [Engineering tag](https://github.com/rdx644/FieldSarthi-AI/tree/demo-verified-2026-11-10) |
 
-These are scoped demo measurements, not a held-out accuracy benchmark or availability guarantee. Evaluated speech covers **Hindi, English and Hinglish**; Tamil is excluded from acceptance and remains unverified. Parser rules were refined on the same development corpus. The free PostgreSQL database expires **December 9, 2026**; backups and expiry are managed by the project owner for this temporary demo.
+These are historical scoped demo measurements, not a held-out accuracy benchmark or availability guarantee. WER/CER and independent held-out generalization were not measured in that release. Evaluated speech covers **Hindi, English and Hinglish**; Tamil is excluded from acceptance and remains unverified. Parser rules were refined on the same development corpus. The free PostgreSQL database's recorded expiry is **December 9, 2026**; backups, current retention and expiry verification are managed by the project owner for this temporary demo.
+
+The [official challenge page](https://www.gnani.ai/internship), checked November 14, 2026, states that final submissions close **November 15, 2026 at 18:00 IST (6 PM)**. Participant contributions, public video/post and final form remain participant-owned.
 
 ## Getting started
 
@@ -131,7 +157,7 @@ Open the URL Vite prints, normally **http://127.0.0.1:5173**. Vite proxies `/api
 5. **Manage the report:** Sign out and use the supervisor account to find the new report, assign a worker, start work and resolve it. Keep the approved judge example unchanged; use a newly created synthetic report for this walkthrough.
 6. **Play acknowledgment:** Where enabled, request optional Timbre playback from a saved ticket. If audio is paused or unavailable, the work order remains saved.
 
-The shared speech admission limits are **24 operations per user/hour** and **80 per process/hour** across STT and TTS. Counters reset on restart, and adapter retries may add upstream attempts; these are not monetary caps. The operator monitors the actual Gnani console balance. Pausing with `GNANI_REQUESTS_ENABLED=false` leaves saved workflows and manual reporting available; a Render environment change needs a deploy to take effect.
+The local candidate uses a PostgreSQL ledger for **24 operations per actor/hour** and **80 globally/hour** across STT and TTS; reservations survive process restarts. The previously deployed baseline used process-memory counters that reset on restart. Adapter retries may add upstream attempts; these are admission counts, not monetary caps. The operator monitors the actual Gnani console balance. Pausing with `GNANI_REQUESTS_ENABLED=false` leaves saved workflows and manual reporting available; a Render environment change needs a deploy to take effect. Keep one worker/replica; see [quota design and rollout blocker](docs/adrs/ADR-010-durable-provider-admission.md).
 
 ## Architecture
 
@@ -165,6 +191,8 @@ tasks/         # Execution and handoff status
 [Architecture and trust boundaries](docs/architecture.md) · [ADRs](docs/adrs/) · [API schema](https://fieldsaarthi-ai.onrender.com/docs) · [Deployment](docs/deployment.md) · [Operations](docs/operations.md) · [Complete future-change context](docs/final-project-context.md)
 
 ### Deployment and privacy
+
+See [security and source distribution](docs/security.md) before sharing a ZIP. Export a verified Git commit with `git archive`, then run the archive guard; ignore rules do not protect a recursive workspace ZIP.
 
 The canonical [render.yaml](render.yaml) defines the free Docker web service and PostgreSQL 18 database. Automatic deployments are off; verified application commits are deployed deliberately. The container builds the frontend, applies migrations and seeds before serving with one worker. Keep Gnani, database and JWT secrets in the host secret manager. The published demo passwords above are the sole intentional credential-publication exception.
 

@@ -1,4 +1,31 @@
 # Deployment package - Render submission demo
+
+## November 14 candidate gate
+
+The improvement branch is local and is not a deployed release. Do not deploy its
+`0005` migration directly over the current service: the previous image both runs
+`alembic upgrade head` at startup and expects exact schema head `0004` at readiness.
+Its migration tree cannot resolve `0005`. First prepare and verify a compatibility
+image containing the additive migration and reviewed startup/readiness behavior,
+with the old limiter, then verify that image as the rollback target before
+activating the durable limiter. Obtain operator approval, a private backup and
+exact candidate CI success before any production action. Never down-migrate or
+delete admission/domain evidence to make an old image boot. The older executed
+rollback evidence below only covers the revisions named in that evidence.
+
+Current database expiry/backup retention and provider balance need operator
+verification; December 9, 2026 is the historical recorded expiry. Local November
+14 Docker verification was unavailable because Docker Desktop's engine was not
+running. Previous successful Linux container CI remains historical evidence.
+
+November 15: exact deployed API source was executed locally against only the
+`0005` test database; startup failed to resolve the new revision and readiness
+returned 503. See the [compatibility evidence](evidence/improvement-rollback-compatibility.json).
+Fresh operator metadata still identifies `85e1a5e` as live, both health endpoints
+return 200, and the free database expiry remains December 9. The candidate has
+295 passing backend tests and 16 passing Chrome fixture views; it is not deployed.
+
+The following deployment record predates these local improvements.
 User approved using the verified Gnani key for hosting and supplied https://github.com/rdx644/FieldSarthi-AI.git. **Live app: https://fieldsaarthi-ai.onrender.com**. Blueprint **GNANI** is in_sync; [executed hosted evidence](evidence/hosted/README.md) records exact IDs, commit, real provider workflow and restart persistence. The current judge release at application commit `6f702c2` passed ten genuine hosted workflows, deployed judge desktop/mobile checks, Timbre WAV and controlled restart persistence. All 15 participant recordings were evaluated (12/15 complete cases; all safety cases blocked). Participant submission work and the free-plan managed-backup limitation remain separate.
 
 A multi-stage non-root Docker image builds React, installs the frozen Python lockfile and serves the entire app from one FastAPI origin. `scripts/start.py` applies migrations and seeds before starting exactly one Uvicorn worker. Render Blueprint `render.yaml` provisions a free Singapore web service and separate free PostgreSQL 18 database from this repository's `main` branch. TLS is platform-managed. `autoDeployTrigger: off` keeps releases deliberate.

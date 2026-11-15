@@ -1,3 +1,15 @@
+Latest improvement verification ? 2026-11-15: **295 backend tests and 16 Chrome
+fixture accessibility/layout views pass locally. Not deployed.** All 34 T-IMP IDs
+are accounted for in [the improvement checklist](improvements.md); exact candidate
+CI, compatibility/backup/deployment and independent live evaluation remain gated.
+See [the current handoff](../docs/improvement-handoff.md). No new provider calls,
+recordings, production writes or participant submissions.
+
+Current improvement work — 2026-11-14: see [the separate improvement checklist](improvements.md).
+The November 10 signoff below is historical. New code is locally verified only;
+production migration/deployment, independent audio evaluation and participant
+submission remain gated as recorded in that checklist.
+
 Latest temporary-demo engineering signoff — 2026-11-10
 
 All identified engineering gaps are closed within the agreed scope. Application `85e1a5e20c1f623c0ce664493c8f002e7d5cff10`, engineering tag `demo-verified-2026-11-10`: 199 backend tests and required CI passed; actual hosted deploy -> compatible rollback -> restoration verified with all 12 persisted report details/audits/provenance and approved judge access unchanged. User provided actual-console credit observation; tested `GNANI_REQUESTS_ENABLED` pause controls both billable endpoints. No new recordings/provider calls. [Release proof](../docs/evidence/demo-operational-release.json).

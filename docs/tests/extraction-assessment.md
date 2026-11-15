@@ -43,3 +43,5 @@ understanding; a human must check every suggestion, including a lone negated cue
 This is a replay of the development corpus previously used to refine rules.
 It is neither held-out generalization nor a new STT/WER/CER measurement. Existing
 provider-error and no-speech safety cases retain their original scoring semantics.
+
+November 15: the same read-only cached replay again produced unchanged counts and no regressions; [fresh evidence](../evidence/improvement-extraction-final.json). The three private cached correction replays passed 3/3 without provider calls. Keep the November 14 artifact above unchanged.
