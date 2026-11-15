@@ -1,0 +1,49 @@
+{
+  "timestamp_utc": "2026-11-15T10:22:48.421991+00:00",
+  "status": "passed",
+  "deployed_commit": "241a063d302769a1ba4aba8a4e52bc4ad5b2e0ee",
+  "scope": "actual hosted judge UI; sole approved historical genuine report; no provider fixture",
+  "live_provider_calls": 0,
+  "production_domain_writes": 0,
+  "keyboard_shortcut_verified": true,
+  "approved_report_refresh_verified": true,
+  "checks": [
+    {
+      "view": "judge-queue",
+      "width": 320,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-queue",
+      "width": 768,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-queue",
+      "width": 1440,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail",
+      "width": 320,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail",
+      "width": 768,
+      "violations": [],
+      "horizontal_overflow": false
+    },
+    {
+      "view": "judge-detail",
+      "width": 1440,
+      "violations": [],
+      "horizontal_overflow": false
+    }
+  ],
+  "javascript_errors": []
+}

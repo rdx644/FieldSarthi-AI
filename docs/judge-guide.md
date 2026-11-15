@@ -1,5 +1,13 @@
 # Evaluate FieldSaarthi AI
 
+Current hosted verification on November 15: application `241a063` passed the
+0005 migration, actual Render rollback/restoration and six deployed Chrome
+judge views. The approved sample and all 14 saved report details/audits/provider
+facts are unchanged. Live team speech is restored after the owner's balance
+confirmation; the judge remains read-only with paid audio disabled. See the
+[current hosted release record](evidence/improvement-hosted-release.json).
+No new speech request or independent accuracy measurement was made.
+
 Historical deployment checks on 2026-11-10 IST covered application commit `6f702c2`;
 the later [operational release](evidence/demo-operational-release.json) records
 `85e1a5e` and rollback/restoration. The [earlier deployed checks](evidence/hosted/judge-release-verification.json)
