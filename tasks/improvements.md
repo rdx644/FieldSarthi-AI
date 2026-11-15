@@ -5,7 +5,7 @@ Baseline: `0fca9716e3589eb9cac70f12e2468aacf7cadb5a`.
 
 **Local engineering, source compatibility and real container rollback are verified.**
 The participant explicitly approved deferring independent audio evaluation.
-Production release is pending exact source CI, an approved backup and deployment.
+Both exact source CI runs pass. Production release awaits an approved backup, merge and deployment.
 No requirement was silently waived. The previous [audit](../docs/evidence/improvement-completion-audit.json)
 and [handoff](../docs/improvement-handoff.md) preserve the earlier 30-pass/3-blocked checkpoint;
 this status supersedes those local compatibility blockers.
@@ -18,9 +18,12 @@ this status supersedes those local compatibility blockers.
 - [x] IMP-04B disposition: participant-approved deferral; no independent accuracy claim.
 - [x] IMP-05 local: durable admissions and a separate verified compatibility rollback build.
 - [x] IMP-06 local: 307 backend tests, strict checks and actual four-phase Docker rehearsal.
-- [ ] IMP-06 external: exact source CI, approved private production backup and staged release.
+- [x] IMP-06 source CI: both approved draft PR heads pass the required quality workflow.
+- [ ] IMP-06 production: approved private backup, merge and staged release.
 
 Candidate code: `c94e06f04dfb75c8e1384298ea2dc1aaa2fea4ff`.
+Published source: `c8de7d6cdfbe7876524759701e2a433082546310`, [PR #18](https://github.com/rdx644/FieldSarthi-AI/pull/18), exact CI passed.
+Rollback source: [PR #19](https://github.com/rdx644/FieldSarthi-AI/pull/19), exact CI passed.
 Compatibility build: `be608cb4ea807d8fd0280633f05595e89d83fb2d`, branch `release/schema-compatibility`.
 The compatibility build is a rollback artifact, not a feature merge target; it
 forces paid speech paused, accepts only exact schemas 0004/0005 and never migrates

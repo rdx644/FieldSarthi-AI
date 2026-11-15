@@ -4,7 +4,7 @@ The [current audit](evidence/improvement-finalisation-audit.json) supersedes the
 previous checkpoint: 32 local passes, one explicit participant deferral and one
 pending release gate. All 39 specification headings and 34 exact section-12 test
 IDs are accounted for. 307 backend tests and the actual two-image rollback pass.
-Source CI, private backup and production approval remain pending; see
+Both source CI runs pass; private backup and production approval remain pending; see
 [release finalisation](release-finalisation.md). Historical evidence below is retained.
 
 # Requirements traceability

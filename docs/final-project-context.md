@@ -2,8 +2,7 @@
 
 **307 backend tests and the real four-phase container rollback pass locally.**
 The compatibility blocker is resolved for the prepared build; independent audio
-evaluation is explicitly deferred by participant decision. Source CI and
-production approval/backup/deployment remain pending. Read
+evaluation is explicitly deferred by participant decision. Both source CI runs pass; production approval/backup/deployment remains pending. Read
 [the current release finalisation](release-finalisation.md) and
 [release evidence](evidence/improvement-finalisation-release.json).
 The earlier checkpoint below is preserved as history and is superseded where it

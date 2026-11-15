@@ -380,9 +380,10 @@
       "status": "pending_release",
       "actual_tests": [],
       "evidence": [
-        "docs/evidence/improvement-release.json"
+        "docs/evidence/improvement-finalisation-release.json",
+        "docs/evidence/improvement-ci-container-release.json"
       ],
-      "note": "Exact candidate source CI and production backup/deployment approval are pending. No production action claimed."
+      "note": "Both exact source CI runs passed and draft PRs are published; production backup, merge and staged deployment still await participant approval."
     },
     {
       "id": "T-IMP-063",

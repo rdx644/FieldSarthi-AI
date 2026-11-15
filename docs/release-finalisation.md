@@ -1,10 +1,9 @@
 # FieldSaarthi release finalisation
 
-Status: **local engineering and actual container rollback verified; production pending**.
+Status: **local engineering, exact source CI and actual container rollback verified; production approval pending**.
 
 The final backend suite passed **307 tests in 91.84 seconds**. Strict Ruff/format,
-mypy and the Python dependency audit pass. Earlier frontend checks and 16 Chrome
-fixture views remain valid; exact source CI repeats them. Both candidate and
+mypy and the Python dependency audit pass. Exact candidate CI repeats frontend checks and all 16 Chrome fixture views successfully. Both candidate and
 compatibility Docker images built successfully after a local Docker storage
 failure recovered. No existing images/containers were pruned or reset.
 
@@ -37,8 +36,7 @@ compatibility tests also pass, including rejection of missing/mixed/future heads
   correct the reordered labels in the earlier audit; no coverage was removed.
 
 The CI workflow now builds both images and runs the actual activation/rollback/
-restoration script automatically. Exact branch CI results are recorded in the
-[release manifest](evidence/improvement-finalisation-release.json) when available.
+restoration script automatically. Both exact branch CI runs passed: [candidate](https://github.com/rdx644/FieldSarthi-AI/actions/runs/43686208851) and [compatibility](https://github.com/rdx644/FieldSarthi-AI/actions/runs/43686213536). The [release manifest](evidence/improvement-finalisation-release.json) records them.
 The compatibility branch is a reviewed rollback artifact; do not merge its paused
 old-application behavior into the candidate feature branch.
 
@@ -70,8 +68,8 @@ No 95-point result or new speech accuracy uplift is claimed.
    or delete evidence to make an old image boot.
 
 Specification section 11.1 step 4 explicitly requires an approved deployment plan
-and private backup before production migration. Source preparation and local tests
-are complete; publication/CI and actual production execution must be distinguished
+and private backup before production migration. Source preparation, local tests and approved source publication/CI
+are complete; actual production execution must remain distinguished
 in the final status. Official contribution/eligibility, video, public post and
 submission form remain participant-owned and untouched.
 
