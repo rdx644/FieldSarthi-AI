@@ -68,7 +68,7 @@ export function Review({
       </div>
       {!!intake.unresolved_fields.length && (
         <div className="alert warning" role="status">
-          Missing or conflicting details:{" "}
+          Original extraction had missing or conflicting details:{" "}
           {intake.unresolved_fields.map(label).join(", ")}. Select a known
           location, then its equipment, and check every suggested field.
         </div>
@@ -172,7 +172,7 @@ export function Review({
                 ))}
               {!!intake.unresolved_fields.length && (
                 <p>
-                  Choose missing or ambiguous details:{" "}
+                  Unresolved in the original extraction:{" "}
                   {intake.unresolved_fields.map(label).join(", ")}.
                 </p>
               )}

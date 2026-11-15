@@ -33,26 +33,38 @@ export function Orders({ user }: { user: User }) {
   const [page, setPage] = useState(1);
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
+  const [lookupError, setLookupError] = useState("");
+  const [lookupRevision, setLookupRevision] = useState(0);
   const [revision, setRevision] = useState(0);
   useEffect(() => {
     let active = true;
-    Promise.all([
+    Promise.allSettled([
       api<Location[]>("/locations"),
-      user.role === "SUPERVISOR" ? api<User[]>("/users") : Promise.resolve([]),
-    ])
-      .then(([places, people]) => {
-        if (active) {
-          setLocations(places);
-          setWorkers(people);
-        }
-      })
-      .catch((err) => {
-        if (active) setError(err.message);
-      });
+      user.role === "SUPERVISOR"
+        ? api<User[]>("/users")
+        : Promise.resolve<User[]>([]),
+    ]).then(([places, people]) => {
+      if (!active) return;
+      setLocations(places.status === "fulfilled" ? places.value : []);
+      setWorkers(people.status === "fulfilled" ? people.value : []);
+      setLookupError(
+        [places, people]
+          .flatMap((result) =>
+            result.status === "rejected"
+              ? [
+                  result.reason instanceof Error
+                    ? result.reason.message
+                    : "Filter lookup unavailable.",
+                ]
+              : [],
+          )
+          .join(" "),
+      );
+    });
     return () => {
       active = false;
     };
-  }, [user.role]);
+  }, [user.role, lookupRevision]);
   useEffect(() => {
     let active = true;
     const params = new URLSearchParams({
@@ -150,6 +162,19 @@ export function Orders({ user }: { user: User }) {
                 </p>
               )
             )}
+          </div>
+        </div>
+      )}
+      {lookupError && (
+        <div className="alert warning" role="status">
+          <div>
+            <strong>Some filter options are unavailable.</strong> {lookupError}{" "}
+            <button
+              className="button secondary"
+              onClick={() => setLookupRevision((value) => value + 1)}
+            >
+              Retry filters
+            </button>
           </div>
         </div>
       )}

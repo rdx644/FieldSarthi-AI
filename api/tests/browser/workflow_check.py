@@ -277,9 +277,65 @@ def main():
             page.get_by_role("heading", name="The reported issue").wait_for()
             assert page.locator(".original-transcript img").count() == 0
             assert page.evaluate("window.__xss === undefined")
+            lookup_pattern = "**/api/v1/locations"
+            pending_lookups = []
+            page.route(lookup_pattern, lambda route: pending_lookups.append(route))
+            page.get_by_role("button", name="My reports", exact=False).click()
+            expect(page.get_by_role("link", name=order["public_code"], exact=True)).to_be_visible()
+            assert pending_lookups
+            for lookup in pending_lookups:
+                lookup.fulfill(
+                    status=503,
+                    json={
+                        "error": {
+                            "code": "TEST_ONLY",
+                            "message": "Test-only lookup unavailable",
+                        }
+                    },
+                )
+            page.get_by_text("Test-only lookup unavailable", exact=False).wait_for()
+            expect(page.get_by_role("link", name=order["public_code"], exact=True)).to_be_visible()
+            expect(page.get_by_test_id("active-count")).to_have_text("1")
+            audit("worker-location-lookup-failure")
+            page.unroute(lookup_pattern)
+            page.get_by_role("button", name="Retry filters", exact=True).click()
+            expect(page.get_by_role("button", name="Retry filters", exact=True)).to_have_count(0)
+            expect(page.get_by_label("Location filter").locator("option")).to_have_count(4)
+            page.get_by_role("link", name=order["public_code"], exact=True).click()
+            page.get_by_role("heading", name="The reported issue").wait_for()
             page.get_by_label("Sign out").click()
             sign_in(accounts[2])
+            lookup_pattern = "**/api/v1/users"
+            pending_lookups = []
+            page.route(lookup_pattern, lambda route: pending_lookups.append(route))
             page.get_by_role("button", name="All reports", exact=True).click()
+            expect(page.get_by_role("link", name=order["public_code"], exact=True)).to_be_visible()
+            assert pending_lookups
+            for lookup in pending_lookups:
+                lookup.fulfill(
+                    status=503,
+                    json={
+                        "error": {
+                            "code": "TEST_ONLY",
+                            "message": "Test-only lookup unavailable",
+                        }
+                    },
+                )
+            page.get_by_text("Test-only lookup unavailable", exact=False).wait_for()
+            expect(page.get_by_role("link", name=order["public_code"], exact=True)).to_be_visible()
+            expect(page.get_by_label("Location filter").locator("option")).to_have_count(4)
+            audit("supervisor-user-lookup-failure")
+            page.unroute(lookup_pattern)
+            page.get_by_role("button", name="Retry filters", exact=True).click()
+            expect(page.get_by_role("button", name="Retry filters", exact=True)).to_have_count(0)
+            assignee_options = page.get_by_label("Assignee filter").locator("option")
+            expect(assignee_options).to_have_count(3)
+            assert set(assignee_options.all_text_contents()) == {
+                "All assignees",
+                "Asha Rao",
+                "Ravi Kumar",
+            }
+            page.get_by_role("link", name=order["public_code"], exact=True).wait_for()
             expect(page.get_by_test_id("active-count")).to_have_text("1")
             page.get_by_label("Priority filter").select_option("HIGH")
             page.get_by_role("heading", name="No reports match this view.").wait_for()
@@ -392,6 +448,10 @@ def main():
         "supervisor_resolution_and_refresh": True,
         "judge_read_only_dashboard": True,
         "role_scoped_summary_ignores_filters": True,
+        "worker_queue_survives_location_lookup_failure": True,
+        "supervisor_queue_survives_user_lookup_failure": True,
+        "independent_filter_lookup_success_retained": True,
+        "filter_lookup_retry_recovers_without_queue_refresh": True,
         "changing_location_clears_equipment_and_confirmation": True,
         "judge_example_keyboard_shortcut": True,
         "judge_empty_and_unavailable_states": True,
