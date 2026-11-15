@@ -174,3 +174,51 @@ def test_deleted_forbidden_path_with_identical_safe_blob_is_still_found(tmp_path
     assert ".env" in repository_guard.historical_paths()
     with pytest.raises(SystemExit):
         repository_guard.main()
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "backups/accounts.json",
+        "release/backups/accounts.json",
+        "local/BACKUPS/account-export.txt",
+    ],
+)
+def test_backup_directories_reject_non_sql_exports(path):
+    assert forbidden_path(path)
+
+
+@pytest.mark.parametrize("prefix", ["./", "release/", "release/./"])
+@pytest.mark.parametrize(
+    "reference",
+    [
+        "docs/submission/draft.md",
+        "docs/roadmap.md",
+        "FieldSaarthi_AI_Traceable_Implementation_Roadmap.md",
+    ],
+)
+def test_private_reference_exclusions_survive_normalized_archive_prefixes(
+    tmp_path, prefix, reference
+):
+    import zipfile
+
+    from scripts.repository_guard import inspect_archive
+
+    archive = tmp_path / "source.zip"
+    with zipfile.ZipFile(archive, "w") as target:
+        target.writestr(prefix + reference, "TEST ONLY private reference")
+    count, failures = inspect_archive(archive)
+    assert count == 1 and len(failures) == 1
+
+
+def test_prefixed_safe_source_and_sanitized_evidence_stay_exportable(tmp_path):
+    import zipfile
+
+    from scripts.repository_guard import inspect_archive
+
+    archive = tmp_path / "source.zip"
+    with zipfile.ZipFile(archive, "w") as target:
+        target.writestr("release/README.md", "TEST ONLY source")
+        target.writestr("release/api/alembic/versions/0005.sql", "SELECT 1;")
+        target.writestr("release/docs/evidence/backup-restore.json", "{}")
+    assert inspect_archive(archive) == (3, [])

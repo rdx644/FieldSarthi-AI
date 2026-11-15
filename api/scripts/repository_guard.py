@@ -49,7 +49,11 @@ def forbidden_path(path):
     parts = PurePosixPath(path.replace("\\", "/").lower()).parts
     name = parts[-1] if parts else ""
     return (
-        bool({"private", "private-exports", "pgdata", "pg_wal", "pg_tblspc"}.intersection(parts))
+        bool(
+            {"private", "private-exports", "backups", "pgdata", "pg_wal", "pg_tblspc"}.intersection(
+                parts
+            )
+        )
         or name == ".env"
         or (name.startswith(".env.") and name != ".env.example")
         or Path(name).suffix.lower() in MEDIA
@@ -119,9 +123,12 @@ def inspect_archive(path):
                         "graphify-out",
                     }.intersection(normalized_parts)
                 )
-                or normalized_name.startswith("docs/submission/")
-                or normalized_name
-                in {"docs/roadmap.md", "fieldsaarthi_ai_traceable_implementation_roadmap.md"}
+                or any(
+                    normalized_parts[index : index + 2] == ("docs", "submission")
+                    for index in range(len(normalized_parts) - 1)
+                )
+                or normalized_parts[-2:] == ("docs", "roadmap.md")
+                or normalized_parts[-1:] == ("fieldsaarthi_ai_traceable_implementation_roadmap.md",)
             )
             if unsafe or forbidden_path(name) or excluded_export:
                 failures.append("Forbidden archive member: " + name)
