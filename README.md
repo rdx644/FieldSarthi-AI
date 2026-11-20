@@ -22,7 +22,7 @@ Designed for **frontline facility workers, maintenance supervisors and operation
 
 ## Solution pitch
 
-FieldSaarthi AI connects a field worker's voice report to an accountable maintenance workflow. Gnani Prisma transcribes the report; the worker reviews catalog-backed equipment, location and issue details before explicitly confirming a durable work order. A supervisor assigns an owner, sets priority and tracks resolution. Original transcripts, corrections and workflow history remain traceable, while optional Gnani Timbre provides a spoken acknowledgment after saving.
+FieldSaarthi AI connects a field worker's voice report to a much accountable maintenance workflow. Gnani Prisma transcribes the report; the worker reviews catalog-backed equipment, location and issue details before explicitly confirming a durable work order. A supervisor assigns an owner, sets priority and tracks resolution. Original transcripts, corrections and workflow history remain traceable, while optional Gnani Timbre provides a spoken acknowledgment after saving.
 
 ## Key capabilities
 
